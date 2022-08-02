@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/creating-cross-language-apis.png"/>
+    
+    <meta name="twitter:title" content="Creating Cross-Language APIs">
+    <meta name="twitter:description" content="This post explores how to create C# and Rust bindings for The Machinery."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Creating Cross-Language APIs · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/creating-cross-language-apis/"/>
+    
+       <meta property="og:image" content="../../images/creating-cross-language-apis.png"/>
+    
+
+    
+    <meta property="og:description" content="This post explores how to create C# and Rust bindings for The Machinery."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2019-04-29T00:00:00Z"/>
+
+    
+    
+
+    <title>Creating Cross-Language APIs &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="This post explores how to create C# and Rust bindings for The Machinery."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.1.14"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20201215065606cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.37.1"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20201215065606/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="../../js/login.js?v=1.0.10"></script>
+
+ <div class="site-wrapper">
+    <header class="site-header">
+        <nav class="site-header-nav clearfix">
+          
+          <a class="our-machinery-logo" href="../../"><img src="../../images/full-logo.png"></a>
+
+          <div id="menu-bar">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/sign-up.html">Sign Up</a>
+            <a class="dropdown-icon menu-option-hamburger" onclick="toggleHamburgerMenu()">&#9776;</a>
+            <a class="dropdown-icon menu-option-user" onclick="toggleUserMenu()"><img class="user-icon" src="../../images/user.png"/></a>
+          </div>
+
+          <div class="dropdown-menu" id="hamburger-menu">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/sign-up.html">Sign Up</a>
+          </div>
+         
+          <div class="dropdown-menu" id="user-menu">
+            <a href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/profile.html">Profile</a>
+            <a href="index.html" onclick="signOut(); return false;">Sign Out</a>
+          </div>
+        </nav>
+    </header>
+
+
+<script>
+
+function toggleDisplay(item, visibleDisplayStyle) {
+  item.style.display = item.style.display != visibleDisplayStyle ? visibleDisplayStyle : "none";
+}
+
+
+function toggleHamburgerMenu() {
+  document.getElementById("user-menu").style.display = "none";
+  toggleDisplay(document.getElementById("hamburger-menu"), "block");
+}
+
+
+function toggleUserMenu() {
+  document.getElementById("hamburger-menu").style.display = "none";
+  toggleDisplay(document.getElementById("user-menu"), "block");
+}
+
+
+window.onclick = function(event) {
+  let e = event.target;
+  let hitMenu = false;
+  while (e && e.classList && !hitMenu) {
+    if (e.classList.contains("dropdown-menu") || e.classList.contains("dropdown-icon"))
+      hitMenu = true;
+    e = e.parentNode;
+  }
+  if (!hitMenu) {
+    document.getElementById("user-menu").style.display = "none";
+    document.getElementById("hamburger-menu").style.display = "none";
+  }
+}
+
+initLogin();
+</script>
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Creating Cross-Language APIs</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-04-29T00:00:00Z">
+            Apr 29, 2019
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <blockquote>
+<p>This week’s blog is a guest post from <a href="http://web.archive.org/web/20201215065606/https://twitter.com/laylbongers">Layl Bongers</a>, who tried our pre-alpha and wanted to share some experiences. Thank you so much Layl!</p>
+</blockquote>
+
+<p></p>
+
+<p>One of the biggest reasons I&rsquo;m excited about <em>The Machinery</em> is <a href=" ../../post/little-machines-working-together-part-1/">its powerful plugin system</a>. Most engines have some sort of plugin system that allows you to write code on top of the engine. Often this is done through scripting languages like C# or Lua. Sometimes engines allow you to write in the language the engine is written in, which is usually C++. Rarely you get a C interface that you can call into from other languages.</p>
+
+<p><em>The Machinery</em> takes this a step further by designing the entire engine around a plugin-friendly architecture. On top of that, everything publicly accessible restricts itself to C, a dream for cross-language support!</p>
+
+<p>So, when I got access to <em>The Machinery</em> pre-alpha, the first thing I did was see if I could make a <em>Hello World</em> plugin in two of my favorite languages, Rust and C#. Since the entire API&rsquo;s accessible through C interfaces, it should be easy right? Well as it turns out, it&rsquo;s not as straightforward as that.</p>
+
+<p>As I explored implementing language bindings, I started writing down some issues I encountered. The people working on <em>The Machinery</em> asked me to write a blog post on this, and I&rsquo;m happy to do so! I hope this helps people create APIs that enable game developers to work more with their languages of choice.</p>
+
+<h2 id="why-c">Why C?</h2>
+
+<p>When making a cross-language interface, you pretty much have only one choice, creating a public C interface to your code. The C ABI (Application Binary Interface) has taken the de facto place as the way to communicate between languages. This is because the C ABI is universal and standardized.</p>
+
+<p>For C, how to call functions, the way data is laid out in memory, what should be where on the stack, what should be in the registers, it&rsquo;s all been defined and standardized decades ago. This is not the case for most other languages, like C++, where these things can differ from compiler to compiler. Even different versions of the same compiler can be incompatible.</p>
+
+<p>For this reason, C has become the de facto standard for talking between languages. All current major operating systems expose a C API to applications running on it. Most languages have some method of directly working with a C API, even languages far removed from the low level like C#. This means that, if you want broad language support you want your engine or library to expose a C API.</p>
+
+<h2 id="so-what-s-the-issue">So, what&rsquo;s the issue?</h2>
+
+<p>Unfortunately, just exposing a C API is not enough to provide a decent or even remotely usable API for most languages. There&rsquo;s a few big issues you&rsquo;ll quickly run into.</p>
+
+<ul>
+<li><p>Direct C bindings are almost never enough to create a nice-to-use API in other languages. Languages like C# and Rust don&rsquo;t even allow you to call FFI functions without an <code>unsafe</code> block. If you want to support these languages you will need native wrappers around the raw C bindings.</p></li>
+
+<li><p>C code is often a lot looser with memory lifetime requirements. A simple function that registers a callback needs that callback to continue to be valid until an indeterminate amount of time. This conflicts with Garbage Collected languages, which try to hide memory management by doing it automatically.</p></li>
+
+<li><p>Certain ways of working and some features in C may not work at all in other languages. In C you can create global structures that will stay valid for as long as your DLL will continue to stay loaded, where this does exist in other languages it&rsquo;s heavily discouraged. Untagged unions are basically non-existant outside C and C++ and heavily discouraged where they do exist. Variadic functions aren&rsquo;t supported at all by some foreign function interfaces.</p></li>
+
+<li><p>Writing bindings is tedious, really really tedious. Especially if you have a large API. <em>Especially</em> if you want broad language support. These bindings can also easily and silently go out of date.</p></li>
+</ul>
+
+<p>Additionally, <em>The Machinery</em>&rsquo;s extreme modularity exposes another issue. If someone writes a plugin to <em>The Machinery</em>, it too will need API bindings for other languages if someone using those languages wants to use that plugin.</p>
+
+<h2 id="solving-some-problems">Solving some problems</h2>
+
+<p>These issues are solvable, but you&rsquo;ll have to create some rules for your API. I recommend you create a document with strict guidelines around your public APIs.</p>
+
+<p>Limit the public API around a subset of C that&rsquo;s friendly to other languages. Specifically, stick to C89 as this is more broadly supported. Research which features of C89 actually work with the Foreign Function Interface of the languages you&rsquo;re interested in supporting.
+Avoid constructs not friendly to other languages such as untagged unions. As a rule of thumb, stick to plain data structures where you can.</p>
+
+<p>Create strict rules around the lifetime requirements of pointers. Where you can, only allow pointers to be used in the function call itself, copy out data if it&rsquo;s necessary later. This may not be possible for everything, function pointer callbacks for example may need to live a
+lot longer, and you can&rsquo;t copy out a function&rsquo;s implementation. Limit this just to where it&rsquo;s strictly necessary, and document the exceptions. This will lower the surface area for mistakes a lot.</p>
+
+<p>As an extension to the previous rule of thumb, avoid pointers in data structures. This is prone to error and often unnecessary. In this case, prefer big data structures over many smaller ones. Of course you can&rsquo;t always avoid this, it&rsquo;s necessary for arrays and function pointers for example. Where you do need pointers, have them follow the same lifetime rules as function calls.</p>
+
+<p>Lots of other libraries follow these rules already either implicitly or explicitly. These few changes will already make it much easier to create broad language support for your
+project, but I have one more suggestion to take it to the next level…</p>
+
+<h2 id="define-your-api-as-a-specification">Define your API as a Specification</h2>
+
+<p>Unsurprisingly, there&rsquo;s been other projects that have encountered the issue of broad language support, creating friendly bindings for many languages, and keeping them up-to-date for a large non-trivial API. Quite a few of these projects have decided to define their API in a machine-readable format, from which they can generate headers for both implementations and bindings libraries.</p>
+
+<p>A great example of this is Vulkan. The entirety of Vulkan&rsquo;s API is available in XML format which they call their &ldquo;API Registry&rdquo;.</p>
+
+<blockquote>
+<p>Vulkan defines an API Registry for the core API and extensions, formally defining command prototypes, structures, enumerants, and many other aspects of the API and extension mechanisms. The Vulkan Registry is used for many more purposes than most other Khronos API registries, and is the basis for generating the header files; AsciiDoc include files used in the Specification, and reference pages for interface definitions, parameter and member validity language, and synchronization language; and more.</p>
+</blockquote>
+
+<p>This means that to support the entirety of the Vulkan API, including extensions, and all future updates, an implementer only has to write a code generator that generates code based on the API Registry. Having this additional information also means the generator can create wrappers on top of the raw bindings, providing a more language-friendly API.
+You can see how this works in action in libraries such as <a href="http://web.archive.org/web/20201215065606/https://github.com/MaikKlein/ash">ash for Rust</a> and <a href="http://web.archive.org/web/20201215065606/https://github.com/mono/VulkanSharp">VulkanSharp for C#</a>.</p>
+
+<p>Basing your plugin system around your specification solves a lot of issues.</p>
+
+<ul>
+<li><p>You can enforce the subset of the C API that you want to use by simply making it impossible to express anything else.</p></li>
+
+<li><p>You can create higher level abstractions beyond just what C has, and automatically implement friendly language-specific wrappers for those abstractions. For example, you can create an <code>interface</code> construct, which when generated to C# creates a wrapper class with member functions for the function pointers.</p></li>
+
+<li><p>The cost of updating your public API becomes much cheaper. When your interfaces change, you can immediately automatically update all bindings with the new changes, for free.</p></li>
+
+<li><p>Plugins too can provide a public API spec using the same system. This means anyone who writes a plugin immediately benefits from the broad cross-language support of the existing bindings generators.</p></li>
+</ul>
+
+<p><strong>A side-note on IDLs</strong></p>
+
+<p>Specifications in XML or JSON may be unnecessarily verbose and unfriendly to write. You may want to consider creating an IDL (Interface Definition Language) for your API specification. An IDL essentially works like a high-level Domain Specific Language for defining your API in. It can cut down the amount of work you need to do to define your specification, but you trade this in for the additional cost of writing a parser.</p>
+
+<p>For example, to define an interface, instead of writing:</p>
+
+<pre><code class="language-json">{
+    &quot;interfaces&quot;: {
+        &quot;logger&quot;: {
+            &quot;functions&quot;: {
+                &quot;print&quot;: {
+                    &quot;parameters&quot;: [
+                        {
+                            &quot;name&quot;: &quot;text&quot;,
+                            &quot;type&quot;: &quot;string&quot;,
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>You could have this instead:</p>
+
+<pre><code>interface logger {
+    fn print(text: string);
+}
+</code></pre>
+
+<p>Admittedly this is an extreme example.</p>
+
+<h2 id="in-summary">In summary</h2>
+
+<p>To hook up my Rust and C# plugins to <em>The Machinery</em>, I decided to go with an API specification. I created a specification of the registry and logging APIs in YAML, which I then created a parser and generator tools for. I did eventually decide afterwards that a YAML specification was too time-intensive to write and not very human-readable, and switched to a custom IDL instead.
+The bindings I generated already had functions wrapping around the raw function-pointers, so it was easy to add in automatic conversions for types such as strings as well. All in all, it took me just a few days to get a <em>Hello World</em> plugin working in both Rust and C# on these generated API bindings:</p>
+
+
+<figure>
+    
+        <img src="../../images/creating-cross-language-apis.png"/>
+    
+    
+    <figcaption>
+        <h4> Console output in The Machinery’s editor from Hello World plugins in Rust and C#.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>The ideal for bindings generators like this is if the specification is already included with <em>The Machinery</em>. This would save a lot of time for people trying to make bindings for their favorite languages, as well as avoiding user-error and bindings getting out of date. However in this situation it was easy enough to create a spec that could generate the bindings I needed, with only some minor hiccups.</p>
+
+<p>Hopefully this gave you some more insights into the challenges and solutions to writing APIs with broad language support. <em>The Machinery</em> is an extreme case, not many engines have a public API this large and available as a native C interface. This however has me personally excited for the future to come, I feel like this will open up a lot more possibilities for experimentation and new paradigms in game development. This extreme non-compromises approach is what got me interested in <em>The Machinery</em> in the first place, and I hope it will continue to push the boundaries of what&rsquo;s possible.</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+    
+
+
+<section class="author">
+  <h4><a href="../../">Guest</a></h4>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20201215065606/https://twitter.com/share?text=Creating%20Cross-Language%20APIs - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fcreating-cross-language-apis%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20201215065606/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fcreating-cross-language-apis%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20201215065606/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fcreating-cross-language-apis%2f&amp;description=Creating%20Cross-Language%20APIs" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+</section>
+
+
+
+  </footer>
+
+  <br clear="all"/>
+
+  
+
+
+
+
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2020</section>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201215065606/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201215065606/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201215065606/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201215065606/https://ourmachinery.com/cdn-cgi/l/email-protection#4e3e2720290e213b3c232f2d2627202b3c37602d2123" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div> 
+<script data-cfasync="false" src="http://web.archive.org/web/20201215065606js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 06:56:06 Dec 15, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:44 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 198.038
+  exclusion.robots: 0.226
+  exclusion.robots.policy: 0.213
+  RedisCDXSource: 3.43
+  esindex: 0.013
+  LoadShardBlock: 167.261 (3)
+  PetaboxLoader3.datanode: 80.484 (4)
+  CDXLines.iter: 22.558 (3)
+  PetaboxLoader3.resolve: 206.322 (3)
+  load_resource: 141.287
+-->

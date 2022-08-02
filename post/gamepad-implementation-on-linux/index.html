@@ -1,0 +1,830 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="A discussion of how to implement Gamepad support on Linux."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/gamepad__gamepad.png"/>
+  
+  <meta name="twitter:title" content="Gamepad Implementation on Linux">
+  <meta name="twitter:description" content="A discussion of how to implement Gamepad support on Linux."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Gamepad Implementation on Linux · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/gamepad-implementation-on-linux/"/>
+  
+  <meta property="og:image" content="../../images/gamepad__gamepad.png"/>
+  
+  
+  <meta property="og:description" content="A discussion of how to implement Gamepad support on Linux."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-04-26T00:00:00Z"/>
+  
+
+  <title>Gamepad Implementation on Linux &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804175426/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804175426\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Raphael De Vasconcelos Nascimento",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804175426\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Gamepad Implementation on Linux",
+    "name": "Gamepad Implementation on Linux",
+    "wordCount":  1313 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/gamepad-implementation-on-linux/",
+    "datePublished": "2021-04-26T00:00Z",
+    "dateModified": "2021-04-26T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804175426/https://ourmachinery.com/gamepad__gamepad.png"
+    },
+    
+    
+    "description": "A discussion of how to implement Gamepad support on Linux."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804175426/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804175426/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Gamepad Implementation on Linux</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-04-26T00:00:00Z">
+          Apr 26, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Hey everyone! If you remember my last
+<a href=" ../../post/porting-the-machinery-to-linux/">post</a>, one of the missing features
+was joystick support on Linux, which I’d say is pretty much essential for any game engine. We have
+gamepad support working on The Machinery now and, in this post, I want to share the implementation
+process, what you need to know to support gamepads in an application, and talk a little about the
+input system in the engine. I had never worked with joystick programming before and this is the
+research I did about the subject and some notes I took during development, so if I missed some point
+or misinterpreted some information, please let me know in the comments.</p>
+<p>My first step was to visit the Linux Kernel Documentation
+<a href="http://web.archive.org/web/20210804175426/https://www.kernel.org/doc/html/latest/input/joydev/joystick-api.html">https://www.kernel.org/doc/html/latest/input/joydev/joystick-api.html</a>,
+which has an important note: “This document describes legacy <code>js</code> interface. Newer clients are
+encouraged to switch to the generic event (<code>evdev</code>) interface.”, so let’s discover what it means.</p>
+<p>Linux I/O follows a model where everything is a file, a concept called <strong>universality of I/O</strong>,
+letting you read from a device the same way you read from a normal file. The <code>evdev</code> kernel
+interface gives us access to input devices events through <code>/dev/input/eventX</code> files, so basically,
+all you need to do is to <a href="http://web.archive.org/web/20210804175426/http://man.he.net/?topic=read&amp;section=2">read()</a> from these files, which can also be
+done in a non-blocking fashion using <a href="http://web.archive.org/web/20210804175426/http://man.he.net/?topic=select&amp;section=2">select()</a> or
+<a href="http://web.archive.org/web/20210804175426/http://man.he.net/?topic=poll&amp;section=2">poll()</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> input_event {
+        <span style="color:#66d9ef">struct</span> timeval time;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">short</span> type;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">short</span> code;
+        <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> value;
+};
+<span style="color:#66d9ef">struct</span> input_event events[NUM_EVENTS];
+int32_t num_events <span style="color:#f92672">=</span> read(fd, events, <span style="color:#66d9ef">sizeof</span>(events));
+</code></pre></div><p>On top of that, we have <a href="http://web.archive.org/web/20210804175426/https://www.freedesktop.org/software/libevdev/doc/latest/"><code>libevedev</code></a>
+<a href="http://web.archive.org/web/20210804175426/https://www.freedesktop.org/software/libevdev/doc/latest/"></a>which is a wrapper for <code>evdev</code> devices,
+<a href="http://web.archive.org/web/20210804175426/https://wayland.freedesktop.org/libinput/doc/latest/what-is-libinput.html#what-is-libinput"><code>libinput</code></a>
+that helps with commonly used devices, and finally, X11 and Wayland. Note that <code>libinput</code> and the
+Window System don’t provide access to joystick events.</p>
+<p>For the gamepad implementation, I decided to go only with the <code>evdev</code> interface, partly because I
+wanted to learn more about it, and partly because we are dealing with only one kind of device, which
+I believe is a simple use case. Anyway, whether we are using <code>libevedev</code> or not, we still need to
+understand the <code>evdev</code> kernel interface.</p>
+<p>We know that we need to open a file and read from it, but which one? The <code>/dev/input/eventX</code> file
+names don’t provide any clues. The good thing is that <a href="http://web.archive.org/web/20210804175426/https://en.wikipedia.org/wiki/Udev">udev</a>
+creates more descriptive symlinks in <code>/dev/input/by-id</code> and <code>dev/input/by-path</code> paths, although I’m
+not 100% sure how <code>udev</code> creates these links. What’s nice is that joystick devices are listed in
+these paths by names ending with <code>-event-joystick</code> (<a href="http://web.archive.org/web/20210804175426/https://wiki.archlinux.org/index.php/Gamepad)">https://wiki.archlinux.org/index.php/Gamepad)</a>.
+With that in mind we can use
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_system_api.directory_entries()"><code>tm_os_api-&gt;file_system-&gt;directory_entries()</code></a>
+to find already connected devices, and
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_system_api.detailed_changes()"><code>tm_os_api-&gt;file_system-&gt;detailed_changes()</code></a>
+to monitor new ones.</p>
+<p>Before starting to process device events, we need to gather some basic information. This can be done
+using the  <a href="http://web.archive.org/web/20210804175426/https://man7.org/linux/man-pages/man2/ioctl.2.html"><code>ioctl()</code></a> system call, which
+provides a way to do some operations that fall out of the standard I/O model. You can have a look at
+all IOCTLs supplied by the event interface in the
+<a href="http://web.archive.org/web/20210804175426/https://elixir.bootlin.com/linux/v5.12-rc3/source/include/uapi/linux/input.h">input.h</a> Linux
+header, and understand a little more about them in the article <a href="http://web.archive.org/web/20210804175426/https://www.linuxjournal.com/article/6429">Using the Input Subsystem, Part
+II</a>. For our purposes, we have to use the <code>EVIOCGBIT</code>
+ioctl to check if the joystick device follows the <a href="http://web.archive.org/web/20210804175426/https://www.kernel.org/doc/html/latest/input/gamepad.html">Linux Gamepad
+Specification</a> (if the controller has the
+<code>BTN_GAMEPAD</code> key),  find out which axes are supported by the device, and  use <code>EVIOCABS</code> ioctl to
+get specific information about them.</p>
+<p>Here are some examples of how to use these calls to get the information needed. Note that event
+types and codes can be found in the
+<a href="http://web.archive.org/web/20210804175426/https://elixir.bootlin.com/linux/v5.12-rc3/source/include/uapi/linux/input-event-codes.h">input-event-codes.h</a>
+header:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>gamepad_button_names[BTN_THUMBR <span style="color:#f92672">-</span> BTN_GAMEPAD <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> { 
+    [BTN_A <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_GAMEPAD/BTN_SOUTH/BTN_A&#34;</span>, 
+    [BTN_B <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_EAST/BTN_B&#34;</span>, 
+    [BTN_C <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_C&#34;</span>, 
+    [BTN_X <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_NORTH/BTN_X&#34;</span>, 
+    [BTN_Y <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_WEST/BTN_Y&#34;</span>, 
+    [BTN_Z <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_Z&#34;</span>, 
+    [BTN_TL <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_TL&#34;</span>, 
+    [BTN_TR <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_TR2&#34;</span>, 
+    [BTN_TL2 <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_TL2&#34;</span>, 
+    [BTN_TR2 <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_TR2&#34;</span>, 
+    [BTN_SELECT <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_SELECT&#34;</span>, 
+    [BTN_START <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_START&#34;</span>, 
+    [BTN_MODE <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_MODE&#34;</span>, 
+    [BTN_THUMBL <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_THUMBL&#34;</span>, 
+    [BTN_THUMBR <span style="color:#f92672">-</span> BTN_GAMEPAD] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BTN_THUMBR&#34;</span> 
+};
+            
+uint32_t <span style="color:#f92672">*</span>supported_keys <span style="color:#f92672">=</span> NULL;
+<span style="color:#75715e">// Bit Array with KEY_CNT bits
+</span><span style="color:#75715e"></span>tm_carray_temp_resize(supported_keys, tm_uint32_div_ceil(KEY_CNT, <span style="color:#ae81ff">32</span>), ta);
+    
+<span style="color:#66d9ef">if</span> (ioctl(gamepad<span style="color:#f92672">-&gt;</span>fd.opaque, EVIOCGBIT(EV_KEY, KEY_MAX), supported_keys) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">for</span> (uint32_t c <span style="color:#f92672">=</span> BTN_GAMEPAD; c <span style="color:#f92672">&lt;</span> BTN_THUMBR <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">++</span>c) {
+        uint32_t idx <span style="color:#f92672">=</span> c <span style="color:#f92672">/</span> <span style="color:#ae81ff">32</span>;
+        uint32_t pos <span style="color:#f92672">=</span> c <span style="color:#f92672">%</span> <span style="color:#ae81ff">32</span>;
+        <span style="color:#66d9ef">if</span> (supported_keys[idx] <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> pos)) {
+            TM_LOG(<span style="color:#e6db74">&#34;name: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, gamepad_button_names[c <span style="color:#f92672">-</span> BTN_GAMEPAD]);
+        }
+    }
+}
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> controller_absinfo_t
+{
+    <span style="color:#66d9ef">float</span> value;
+    <span style="color:#66d9ef">float</span> max;
+    <span style="color:#66d9ef">float</span> min;
+    <span style="color:#66d9ef">float</span> deadzone;
+} controller_absinfo_t;
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>gamepad_axis_names[ABS_HAT3Y <span style="color:#f92672">-</span> ABS_X <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> {
+    [ABS_X] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_X&#34;</span>,
+    [ABS_Y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_Y&#34;</span>,
+    [ABS_RX] <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ABS_RX&#34;</span>,
+    [ABS_RY] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_RY&#34;</span>,
+    [ABS_Z] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_Z&#34;</span>,
+    [ABS_RZ] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_RZ&#34;</span>,
+    [ABS_HAT0X] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT0X&#34;</span>,
+    [ABS_HAT0Y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT0Y&#34;</span>,
+    [ABS_HAT1X] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT1X&#34;</span>,
+    [ABS_HAT1Y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT1Y&#34;</span>,
+    [ABS_HAT2X] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT2X&#34;</span>,
+    [ABS_HAT2Y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABS_HAT2Y&#34;</span>,
+};
+    
+uint32_t <span style="color:#f92672">*</span>supported_axis <span style="color:#f92672">=</span> NULL;
+tm_carray_temp_resize(supported_axis, tm_uint32_div_ceil(ABS_CNT, <span style="color:#ae81ff">32</span>), ta);
+
+<span style="color:#66d9ef">if</span> (ioctl(gamepad<span style="color:#f92672">-&gt;</span>fd.opaque, EVIOCGBIT(EV_ABS, ABS_MAX), supported_axis) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+            <span style="color:#66d9ef">return</span>;
+
+<span style="color:#66d9ef">for</span> (uint32_t c <span style="color:#f92672">=</span> ABS_X; c <span style="color:#f92672">&lt;</span> ABS_HAT3Y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#f92672">++</span>c) {
+    idx <span style="color:#f92672">=</span> c <span style="color:#f92672">/</span> <span style="color:#ae81ff">32</span>;
+    pos <span style="color:#f92672">=</span> c <span style="color:#f92672">%</span> <span style="color:#ae81ff">32</span>;
+    <span style="color:#66d9ef">if</span> (supported_axis[idx] <span style="color:#f92672">&amp;</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> pos)) {
+        TM_LOG(<span style="color:#e6db74">&#34;name: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, gamepad_axis_names[c]);
+        controller_absinfo_t axis_info <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span> };
+        <span style="color:#66d9ef">struct</span> input_absinfo absinfo <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span> };
+        <span style="color:#66d9ef">if</span> (ioctl(gamepad<span style="color:#f92672">-&gt;</span>fd.opaque, EVIOCGABS(c), <span style="color:#f92672">&amp;</span>absinfo) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+            <span style="color:#66d9ef">continue</span>;
+        axis_info.max <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)absinfo.maximum;
+        axis_info.min <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)absinfo.minimum;
+        axis_info.value <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)absinfo.value;
+        axis_info.deadzone <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)absinfo.flat;
+        TM_LOG(<span style="color:#e6db74">&#34;max: %f, min: %f, value: %f, deadzone: %f</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, axis_info.max, axis_info.min, axis_info.value, axis_info.deadzone);
+    }
+}
+</code></pre></div><p>To support a device using the
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/input.h.html#structtm_input_api"><code>tm_input_api</code></a> you
+need to create a
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/input.h.html#structtm_input_source_i"><code>tm_input_source_i</code></a>
+interface, which provides details about the input device and supplies events to the application
+using the
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/input.h.html#structtm_input_source_i.events()"><code>tm_input_source_i-&gt;events()</code></a>
+callback. We need to poll for events using <code>evdev</code>, so we’ll do it in this callback. Below, you can
+see how to do it using a circular buffer to keep events around:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">poll</span>()
+{
+    <span style="color:#66d9ef">struct</span> input_event events[<span style="color:#ae81ff">64</span>];
+    <span style="color:#66d9ef">for</span> (uint32_t d <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; d <span style="color:#f92672">&lt;</span> NUM_LINUX_GAMEPADS; <span style="color:#f92672">++</span>d) {
+        gamepad_controller_t <span style="color:#f92672">*</span>gamepad <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>gamepads[d];
+        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>gamepad<span style="color:#f92672">-&gt;</span>connected)
+            <span style="color:#66d9ef">continue</span>;
+        fd_set fds;
+        FD_ZERO(<span style="color:#f92672">&amp;</span>fds);
+        FD_SET(gamepad<span style="color:#f92672">-&gt;</span>fd.opaque, <span style="color:#f92672">&amp;</span>fds);
+        <span style="color:#66d9ef">struct</span> timeval timout;
+        timout.tv_sec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        timout.tv_usec <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">bool</span> any_changes <span style="color:#f92672">=</span> select(FD_SETSIZE, <span style="color:#f92672">&amp;</span>fds, NULL, NULL, <span style="color:#f92672">&amp;</span>timout) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">if</span> (any_changes) {
+            int32_t r <span style="color:#f92672">=</span> read(gamepad<span style="color:#f92672">-&gt;</span>fd.opaque, events, <span style="color:#66d9ef">sizeof</span>(events));
+            <span style="color:#66d9ef">if</span> (r <span style="color:#f92672">&lt;</span> (int32_t)<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> input_event))
+                <span style="color:#66d9ef">continue</span>;
+            uint32_t num_events <span style="color:#f92672">=</span> (uint32_t)(r <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> input_event));
+            <span style="color:#66d9ef">for</span> (uint32_t e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; e <span style="color:#f92672">&lt;</span> num_events; <span style="color:#f92672">++</span>e) {
+                <span style="color:#66d9ef">struct</span> input_event <span style="color:#f92672">*</span>ev <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>events[e];
+                <span style="color:#66d9ef">if</span> (ev<span style="color:#f92672">-&gt;</span>type <span style="color:#f92672">==</span> EV_KEY) {
+                    TM_LOG(<span style="color:#e6db74">&#34;key: %s value: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, gamepad_button_names[ev<span style="color:#f92672">-&gt;</span>code <span style="color:#f92672">-</span> BTN_GAMEPAD], ev<span style="color:#f92672">-&gt;</span>value);
+                    uint64_t tmid <span style="color:#f92672">=</span> button_map[ev<span style="color:#f92672">-&gt;</span>code <span style="color:#f92672">-</span> BTN_GAMEPAD];
+                    tm_input_event_t btn_ev <span style="color:#f92672">=</span> {
+                        .time <span style="color:#f92672">=</span> tm_os_api<span style="color:#f92672">-&gt;</span>time<span style="color:#f92672">-&gt;</span>now().opaque,
+                        .source <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>linux_gamepad_input_source,
+                        .controller_id <span style="color:#f92672">=</span> gamepad<span style="color:#f92672">-&gt;</span>index,
+                        .item_id <span style="color:#f92672">=</span> tmid,
+                        .type <span style="color:#f92672">=</span> TM_INPUT_EVENT_TYPE_DATA_CHANGE,
+                        .data.f.x <span style="color:#f92672">=</span> (<span style="color:#66d9ef">float</span>)ev<span style="color:#f92672">-&gt;</span>value,
+                    };
+                    gamepad_events[gamepad_events_n <span style="color:#f92672">%</span> LINUX_GAMEPAD_BUFFER_SIZE] <span style="color:#f92672">=</span> btn_ev;
+                }
+            }
+        }
+    }
+}
+</code></pre></div><p>The last detail I think is worth mentioning is the mapping between <code>evdev</code> codes and
+<a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com//apidoc/foundation/input.h.html#enumtm_input_gamepad_item"><code>tm_input_gamepad_item</code></a>.
+As you can note in the figure below, buttons can be directly mapped, but for axes, we have 1:1, 2:1,
+and 1:2 mappings, e.g: <code>ABS_X/Y</code>  → <code>TM_INPUT_ITEM_LEFT_STICK</code>, <code>ABS_HAT0X</code>  →
+<code>TM_INPUT_GAMEPAD_DPAD_RIGHT/LEFT</code>.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Gamepad input mapping." src="../../images/gamepad__gamepad.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Gamepad input mapping.</h4>
+    </figcaption>
+  </figure>
+<p>This is not really a problem as we can have an <code>if/else</code> for each specific axis, but I wanted to
+keep the array/table approach using the <code>evdev</code> code as a key, so for each entry in the array we
+have a positive/negative mapping for the 1:2 case and a component index for the 2:1 case. This way
+we can do something like the following in the <code>poll()</code> code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> axis_map_info_t {
+    uint8_t positive_map;
+    uint8_t negative_map;
+    uint8_t component_index;
+} axis_map_info_t;
+
+<span style="color:#66d9ef">static</span> axis_map_info_t axis_map[ABS_HAT3Y <span style="color:#f92672">-</span> ABS_X <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> {
+    [ABS_X] <span style="color:#f92672">=</span> { TM_INPUT_GAMEPAD_ITEM_LEFT_STICK, TM_INPUT_GAMEPAD_ITEM_LEFT_STICK, <span style="color:#ae81ff">0</span> },
+    [ABS_Y] <span style="color:#f92672">=</span> { TM_INPUT_GAMEPAD_ITEM_LEFT_STICK, TM_INPUT_GAMEPAD_ITEM_LEFT_STICK, <span style="color:#ae81ff">1</span> },
+    [ABS_HAT0X] <span style="color:#f92672">=</span> { TM_INPUT_GAMEPAD_ITEM_DPAD_RIGHT, TM_INPUT_GAMEPAD_ITEM_DPAD_LEFT, <span style="color:#ae81ff">0</span> },
+};
+
+uint64_t tmid <span style="color:#f92672">=</span> ev<span style="color:#f92672">-&gt;</span>value <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> axis_map[ev<span style="color:#f92672">-&gt;</span>code].positive_map : axis_map[ev<span style="color:#f92672">-&gt;</span>code].negative_map;
+tm_vec2_t v;
+v.x <span style="color:#f92672">=</span> axis_map[ev<span style="color:#f92672">-&gt;</span>code].component_index <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> value : gamepad_state[gamepad<span style="color:#f92672">-&gt;</span>index][tmid].data.f.x;
+v.y <span style="color:#f92672">=</span> axis_map[ev<span style="color:#f92672">-&gt;</span>code].component_index <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> value : gamepad_state[gamepad<span style="color:#f92672">-&gt;</span>index][tmid].data.f.y;
+</code></pre></div><h2 id="wrap-up">Wrap up</h2>
+<p>I hope this information can be helpful, either if you want to create your implementation or just
+understand a little more about gamepad programming. To me, it was a nice experience and not as hard
+as I thought that would be when I started.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/authors/raphael" class="text-decoration-none">Raphael De Vasconcelos Nascimento</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804175426/https://twitter.com/share?text=Gamepad%20Implementation%20on%20Linux - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fgamepad-implementation-on-linux%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804175426/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fgamepad-implementation-on-linux%2f&amp;description=Gamepad%20Implementation%20on%20Linux" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2021-3/" class="text-decoration-none"><img src="../../images/beta_21_3__sky_component.png" class="card-img-top" alt="The Machinery Beta — March 2021 (version 2021.3)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2021-3/">The Machinery Beta — March 2021 (version 2021.3)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-03-31T00:00:00Z">
+                      31 Mar 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Happy anniversary, The Machinery!</p>
+<p>It’s hard to believe it’s been a full year since our <a href=" ../../post/beta/">first beta
+release</a>. With the …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2021-3/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">13 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/porting-the-machinery-to-linux/">Porting The Machinery to Linux</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-03-08T00:00:00Z">
+                      8 Mar 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hi, my name is Raphael, and I&rsquo;m an intern at Our Machinery.</p>
+<p>I&rsquo;m a Linux user and passionate about Game …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/porting-the-machinery-to-linux/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2021-2/" class="text-decoration-none"><img src="../../images/beta_21_2__node_highlights.png" class="card-img-top" alt="The Machinery Beta — February 2021 (version 2021.2)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2021-2/">The Machinery Beta — February 2021 (version 2021.2)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-02-26T00:00:00Z">
+                      26 Feb 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hope your winter was cozy and warm. Days are starting to get longer and we see spring buds on the
+branches. To brighten …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2021-2/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/gamepad-implementation-on-linux/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804175426/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804175426/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/cdn-cgi/l/email-protection#3e4e5750597e514b4c535f5d5657505b4c47105d5153" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804175426/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 17:54:26 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:53 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 65.942
+  exclusion.robots: 0.208
+  exclusion.robots.policy: 0.192
+  RedisCDXSource: 0.949
+  esindex: 0.013
+  LoadShardBlock: 36.936 (3)
+  PetaboxLoader3.datanode: 64.802 (4)
+  CDXLines.iter: 22.318 (3)
+  load_resource: 93.746
+  PetaboxLoader3.resolve: 40.606
+-->

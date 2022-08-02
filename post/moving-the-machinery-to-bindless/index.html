@@ -1,0 +1,736 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Moving The Machinery to a bindless resource binding model."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Moving The Machinery to Bindless">
+  <meta name="twitter:description" content="Moving The Machinery to a bindless resource binding model."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Moving The Machinery to Bindless · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/moving-the-machinery-to-bindless/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="Moving The Machinery to a bindless resource binding model."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-02-22T00:00:00Z"/>
+  
+
+  <title>Moving The Machinery to Bindless &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220127012854/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220127012854\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220127012854\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Moving The Machinery to Bindless",
+    "name": "Moving The Machinery to Bindless",
+    "wordCount":  1490 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/moving-the-machinery-to-bindless/",
+    "datePublished": "2021-02-22T00:00Z",
+    "dateModified": "2021-02-22T00:00Z",
+    
+    
+    "description": "Moving The Machinery to a bindless resource binding model."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220127012854/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Moving The Machinery to Bindless</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-02-22T00:00:00Z">
+          Feb 22, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>It’s been quite some time since I wrote anything about the low-level rendering architecture in <em>The
+Machinery</em>, but recently a lot of stuff has happened and one thing in particular feels worth
+covering: I’m happy to say that I finally feel that we have reached a pretty nice solution to one of
+my biggest frustration points in our rendering APIs — the resource binding model. I.e. the way we
+expose access to GPU resources (such as buffers or textures) to the shaders.</p>
+<p>I’ve blogged about this topic before:</p>
+<ul>
+<li><a href=" ../../post/the-machinery-shader-system-part-2/">The Machinery Shader System (part 2)</a></li>
+<li><a href=" ../../post/vulkan-descriptor-sets-management/">Vulkan: Descriptor Sets Management</a></li>
+<li><a href=" ../../post/efficient-binding-of-shader-resources/">Efficient Binding of Shader Resources</a></li>
+</ul>
+<p>The fact that I wrote a post titled <em>“Efficient binding of shader resources”</em> feels a bit ironic
+today since what I ended up with was quite far from being efficient. Sure, it wasn’t a total
+catastrophe, but I’ve always felt it should be possible to create something better. Unfortunately
+back then, in the early Vulkan 1.0 days, there wasn’t proper support for going full <em>bindless</em> in
+Vulkan.</p>
+<p>The name <em>bindless</em> is a somewhat overloaded term, so for the sake of clarity, in this post I’ll use
+it to describe a binding model that allows for <em>a constant number of bind points per GPU resource</em>
+that can be looked up from any shader using simple array indirection.</p>
+<h2 id="resource-handles">Resource Handles</h2>
+<p>It’s important to realize that there’s not always a 1:1 relationship between resources and bind
+points. The reason for this is that a resource can have multiple views depending on how it will be
+accessed by the graphics pipeline. The most common view separation is between read and write access
+of a resource, but there’s also a need for being able to bind views for sub-resource access such as
+the individual 2D surfaces in a cubemap or mip-chain.</p>
+<p>Since all rendering is heavily multi-threaded in The Machinery, we try to carefully design our
+systems to avoid fine-grained access to centralized data stores as that typically requires some kind
+of locking. Having any kind of lock-in high-throughput multi-threaded code very easily leads to
+serious lock contention crippling the performance.</p>
+<p>For the binding model, what that means is that we’d like to allocate the bind points once during
+resource creation, and have them available throughout the lifetime of the resource in a form that
+requires no centralized lookup before we can pass them to a shader. Luckily, a bind point is just an
+array index represented as a <code>uint32_t</code> that we can embed in the handle returned from the
+<code>tm_renderer_resource_command_buffer_api</code> responsible for all GPU resource creation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// A `tm_renderer_handle_t` identifies a GPU resource allocated using one of the
+</span><span style="color:#75715e">// `create_*()`methods in the [[tm_renderer_resource_command_buffer_api]].
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> tm_renderer_handle_t
+{
+    <span style="color:#75715e">// Handle identifying a resource in the render backend.
+</span><span style="color:#75715e"></span>    uint32_t resource;
+
+    <span style="color:#75715e">// Optional bindless srv &amp; uav handles identifying the bindless array element
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// of the resource if the backend is setup to run in bindless mode.
+</span><span style="color:#75715e"></span>    uint32_t bindless_srv;
+    uint32_t bindless_uav;
+} tm_renderer_handle_t;
+
+<span style="color:#75715e">// Interface for allocating and deallocating render resources, free-threaded.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> tm_renderer_resource_command_buffer_api
+{
+    <span style="color:#75715e">// Creates a buffer described by `tm_render_buffer_t` and returns a handle to
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// it.
+</span><span style="color:#75715e"></span>    tm_renderer_handle_t (<span style="color:#f92672">*</span>create_buffer)(
+        <span style="color:#66d9ef">struct</span> tm_renderer_resource_command_buffer_o <span style="color:#f92672">*</span>inst,
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_renderer_buffer_desc_t <span style="color:#f92672">*</span>buffer,
+        uint32_t device_affinity_mask);
+
+    <span style="color:#75715e">// and so on...
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p>I’ve opted to use the <a href="http://web.archive.org/web/20220127012854/https://docs.microsoft.com/en-us/windows/uwp/graphics-concepts/shader-resource-view--srv-">DirectX terminology SRV (ShaderResourceView) and UAV
+(UnorderedAccessView)</a>
+as I think that is what most graphics programmers are used to.</p>
+<h2 id="vulkan-implementation">Vulkan implementation</h2>
+<p>In the Vulkan backend, the implementation relies on running on a Vulkan 1.2 instance where
+<code>[VK_EXT_descriptor_indexing](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_EXT_descriptor_indexing.html)</code>
+nowadays is a core feature. As you will see, where we used to have a rather complicated <a href=" ../../post/vulkan-descriptor-sets-management/">Descriptor
+Sets management system</a> we now
+have something really simple. Let’s take a look at the actual implementation.</p>
+<p><strong>Setup</strong></p>
+<p>When we boot the backend, we create <em>a single</em> <code>VkDescriptorPool</code>, from which we allocate <em>a single</em>
+global <code>VkDescriptorSet</code> using <em>a single</em> <code>VkDescriptorSetLayout</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> VkDescriptorSetLayoutBinding bindless_layout[] <span style="color:#f92672">=</span> {
+    {
+        .binding <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, 
+        .descriptorType <span style="color:#f92672">=</span> VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+        .descriptorCount <span style="color:#f92672">=</span> device<span style="color:#f92672">-&gt;</span>bindless_manager.setup.storage_buffers,
+        .stageFlags <span style="color:#f92672">=</span> VK_SHADER_STAGE_ALL
+    },
+    {
+        .binding <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
+        .descriptorType <span style="color:#f92672">=</span> VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+        .descriptorCount <span style="color:#f92672">=</span> device<span style="color:#f92672">-&gt;</span>bindless_manager.setup.sampled_images,
+        .stageFlags <span style="color:#f92672">=</span> VK_SHADER_STAGE_ALL
+    },
+    {
+        .binding <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, 
+        .descriptorType <span style="color:#f92672">=</span> VK_DESCRIPTOR_TYPE_STORAGE_IMAGE,
+        .descriptorCount <span style="color:#f92672">=</span> device<span style="color:#f92672">-&gt;</span>bindless_manager.setup.storage_images,
+        .stageFlags <span style="color:#f92672">=</span> VK_SHADER_STAGE_ALL
+    },
+    {
+        .binding <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, 
+        .descriptorType <span style="color:#f92672">=</span> VK_DESCRIPTOR_TYPE_SAMPLER,
+        .descriptorCount <span style="color:#f92672">=</span> device<span style="color:#f92672">-&gt;</span>bindless_manager.setup.samplers,
+        .stageFlags <span style="color:#f92672">=</span> VK_SHADER_STAGE_ALL
+    },
+    {
+        .binding <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>,
+        .descriptorType <span style="color:#f92672">=</span> VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR,
+        .descriptorCount <span style="color:#f92672">=</span>
+            device<span style="color:#f92672">-&gt;</span>bindless_manager.setup.acceleration_structures,
+        .stageFlags <span style="color:#f92672">=</span> VK_SHADER_STAGE_ALL
+    },
+};
+</code></pre></div><p>The application can optionally specify the array sizes, if nothing has been supplied we default to
+arbitrary but rather beefy array sizes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> tm_vulkan_bindless_setup_t default_bindless_setup <span style="color:#f92672">=</span> {
+    .storage_buffers <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>,
+    .samplers <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>,
+    .sampled_images <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>,
+    .storage_images <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>,
+    .acceleration_structures <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>
+};
+</code></pre></div><p>During setup, we make sure we don’t exceed any device limitations. If we do, we log a warning and
+adjust accordingly.</p>
+<p>To gracefully handle “null resource” access where the user tries to bind a resource to a shader that
+hasn’t been allocated, we have dedicated fallback null-resources that we always bind in the first
+<code>n</code> elements of each array.</p>
+<p><strong>Management</strong></p>
+<p>For each descriptor type, we maintain a free array holding previously freed indices as well as a
+<code>next</code> counter pointing to the next unallocated index. During resource creation, we determine how
+many bind points it will need and scan for a consecutive range in the free array. If that fails, we
+allocate a consecutive range starting from the “next unallocated index” and bump it.</p>
+<p>Returning the bind points during resource destruction relies on the same mechanism we use for
+destroying the actual resource. For each <code>vkQueueSubmit()</code> we have an associated <code>VkFence</code> that we
+monitor for completion. Once we are certain that there are no more commands in-flight referencing
+the resource, we destroy it, release its memory, <em>and</em> return the bind points to the appropriate
+free arrays.</p>
+<p><strong>Command list building</strong></p>
+<p>As we are now only dealing with a single <code>VkDescriptorSet</code> and a single <code>VkDescriptorSetLayout</code>, a
+lot of the performance-sensitive code around pipeline creation and descriptor set binding simply
+goes away. We end up with much fewer <code>VkPipelines</code> and only have to bind the global descriptor set
+once per <code>VkPipelineBindPoint</code> and command buffer.</p>
+<p>We still have the old code path hanging around for cross-referencing and potential fallback if we
+need to bring up The Machinery on a Vulkan capable platform without full support for
+<code>[VK_EXT_descriptor_indexing](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_EXT_descriptor_indexing.html)</code>.
+But just looking at the sheer amount of code related to the old way of doing descriptor set
+management makes my whole body itch, I want to nuke it so badly! And to be honest, it’s very likely
+it will rot as that code path isn’t getting exercised, so I will probably remove it soon, and if
+worst comes to worst I’ll bite the bullet and re-implement something similar in the future.</p>
+<p>Not too surprising, the new code runs A LOT faster too. In one of my more heavy test scenes, I
+measured a <em><strong>6x speed improvement</strong></em> during command buffer building, compared to the old model.</p>
+<h2 id="shader-system-integration">Shader System Integration</h2>
+<p>We have a <a href=" ../../post/the-machinery-shader-system-part-1/">Shader System</a> in The
+Machinery that provides a high-level abstraction when authoring shaders that support concepts such
+as shader variation selection, multi-pass shaders, and viewer contexts.</p>
+<p>When authoring a shader that runs through the shader system, it also provides you with the concepts
+of a <em>constant buffer</em> and a <em>resource binder</em> — basically, a mechanism that allows the author to
+declare named resources and constants that the shader operates on.</p>
+<p>The <code>tm_shader_api</code> exposes functions for creating, updating, and destroying instances of shader
+constant buffers and resource binders. On the inside, they map to two raw buffers
+(ByteAddressBuffers), one that holds all the instanced constant buffers and one that holds all the
+instanced resource binders. The content of a resource binder instance is just an array of indices,
+which is derived from the <code>tm_renderer_handle_t::bindless_srv</code> or
+<code>tm_renderer_handle_t::bindless_uav</code>.</p>
+<p>For all the shader stages except ray tracing stages, we then encode the identity of the constant
+buffer and resource binder instances into a few Push Constants. For the ray tracing stages, we use
+the exact same approach but expose the identity through the Shader Record (written to the Shader
+Binding Table).</p>
+<p>The shader system automatically emits HLSL load-/get functions for all the requested constants and
+resources, resolving the exact binding information by querying the low-level shader compiler for
+each render backend based on the resource type, usage flags, and wanted access.</p>
+<p>What this means in practice is that as long as the users author their shaders using our shader
+system, it will act as an abstraction for how the low-level binding model in the backend is
+implemented, providing a platform-/graphics API- independent interface for accessing resources and
+constants in their shader and C code.</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>After spending some time ironing out some initial bumps with not correctly respecting all device
+limitations, and an accidental breaking of a <code>NonUniformResourceIndex()</code> (due to the additional
+array indirection), everything now appears to be well-behaving and stable. The performance is great,
+the code is way simpler, and everything mapped really well to the ray tracing pipeline.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220127012854/https://twitter.com/share?text=Moving%20The%20Machinery%20to%20Bindless - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fmoving-the-machinery-to-bindless%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220127012854/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fmoving-the-machinery-to-bindless%2f&amp;description=Moving%20The%20Machinery%20to%20Bindless" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2021-1/" class="text-decoration-none"><img src="../../images/beta_21_1__ubuntu.png" class="card-img-top" alt="The Machinery Beta — January 2021 (version 2021.1)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2021-1/">The Machinery Beta — January 2021 (version 2021.1)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-01-28T00:00:00Z">
+                      28 Jan 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Welcome to a new and hopefully better year than 2020! Let’s all be safe and put an end to this
+pandemic. Here at Our …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2021-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/summer-fun-with-creation-graphs/" class="text-decoration-none"><img src="../../images/sumcg__poster.jpeg" class="card-img-top" alt="Summer Fun with Creation Graphs"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/summer-fun-with-creation-graphs/">Summer Fun with Creation Graphs</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-01-14T00:00:00Z">
+                      14 Jan 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><blockquote>
+<p>This week’s blog is a guest post from <a href="http://web.archive.org/web/20220127012854/https://twitter.com/karll_henning">Karll Henning</a>, who has
+been experimenting with Creation Graphs. Thank you so much …</p></blockquote></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/summer-fun-with-creation-graphs/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">13 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2020-12/" class="text-decoration-none"><img src="../../images/beta_20_12__interaction.png" class="card-img-top" alt="The Machinery Beta — December 2020 (version 2020.12)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2020-12/">The Machinery Beta — December 2020 (version 2020.12)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-12-16T00:00:00Z">
+                      16 Dec 2020
+                    </time>
+                  </h6>
+                  <p class="card-text">Happy holidays! Here at Our Machinery, we’re taking some well-earned time off. Hope you have the opportunity to do the …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2020-12/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/moving-the-machinery-to-bindless/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220127012854/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220127012854/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220127012854/https://ourmachinery.com/cdn-cgi/l/email-protection#7101181f16311e04031c101219181f1403085f121e1c" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 01:28:54 Jan 27, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:56 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 103.874
+  exclusion.robots: 0.097
+  exclusion.robots.policy: 0.087
+  cdx.remote: 0.061
+  esindex: 0.01
+  LoadShardBlock: 81.052 (3)
+  PetaboxLoader3.datanode: 95.033 (4)
+  CDXLines.iter: 13.39 (3)
+  load_resource: 106.915
+  PetaboxLoader3.resolve: 77.37
+-->

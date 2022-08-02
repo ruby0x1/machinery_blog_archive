@@ -1,0 +1,809 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="A description of our graph based GPU simulation system for particles, etc."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/gpu_sim__particle_effect.gif"/>
+  
+  <meta name="twitter:title" content="GPU Simulation">
+  <meta name="twitter:description" content="A description of our graph based GPU simulation system for particles, etc."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="GPU Simulation · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/gpu-simulation/"/>
+  
+  <meta property="og:image" content="../../images/gpu_sim__particle_effect.gif"/>
+  
+  
+  <meta property="og:description" content="A description of our graph based GPU simulation system for particles, etc."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-04-14T00:00:00Z"/>
+  
+
+  <title>GPU Simulation &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804195219/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804195219\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804195219\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "GPU Simulation",
+    "name": "GPU Simulation",
+    "wordCount":  2022 ,
+    "timeRequired": "PT10M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/gpu-simulation/",
+    "datePublished": "2020-04-14T00:00Z",
+    "dateModified": "2020-04-14T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804195219/https://ourmachinery.com/gpu_sim__particle_effect.gif"
+    },
+    
+    
+    "description": "A description of our graph based GPU simulation system for particles, etc."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195219/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195219/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>GPU Simulation</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-04-14T00:00:00Z">
+          Apr 14, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>I know I said I was going to do a multi-part series on the <a href=" ../../post/borderland-between-rendering-and-editor-part-1/">“Borderland between Rendering and
+Editor”</a> and I’m
+still planning to do so, but over the last 2.5 weeks, I’ve been working on something else that I
+feel is worth writing about while it’s still fresh in my head. In the latest release of <a href=" ../../post/beta-2020-4/">The
+Machinery beta (2020.4)</a>, we introduced a way to setup and
+author various types of <em>GPU Simulations</em> using <a href=" ../../post/more-on-creation-graphs/">Creation
+Graphs</a>.</p>
+<!--more -->
+<p>Back in December 2018, I talked about <a href=" ../../post/the-anti-feature-dream/">“The Anti-Feature
+dream”</a>, the idea is that instead of building
+complete features and expose them directly to the user we should be focusing on breaking down the
+features into reusable building blocks and expose those instead. We then assemble those building
+blocks at a higher level (often in data) to create the complete feature. This is a development
+strategy we deploy pretty much everywhere in The Machinery code base, the GPU Simulation system is
+no exception.</p>
+<p>So while the initial development focus has been to get the building blocks in place to be able to
+create particle systems, you can already use it for doing any kind of arbitrary buffer processing
+reaching way beyond simple particles.</p>
+<p>In today’s post, I will try to give you a high-level overview of this new system, primarily
+targeting Technical Artists with the hope to spark their interest in toying around with it.</p>
+<h2 id="core-nodes">Core nodes</h2>
+<p>The main building blocks for setting up a GPU Simulation circulates around the <code>*GPUSim*</code> <em>-nodes</em>
+found under the <code>Simulation/</code> category when editing a Creation Graph.</p>
+<p>There are <em>three</em> core nodes:</p>
+<h3 id="gpusim---init"><code>GPUSim - Init</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Init node." src="../../images/gpu_sim__init.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Init node.</h4>
+    </figcaption>
+  </figure>
+<p>The responsibility of the <code>GPUSim - Init</code>-node is to set up a new simulation. A simulation operates
+on a number of <em>elements</em>, where each element is defined by a set of user-defined <em>channels.</em>
+Channels can be freely named and typed to anything that makes sense for the specific type of effect
+you are building.</p>
+<p>In addition to defining the different channels, you also decide if the elements should have a
+maximum lifetime after which they are automatically recycled, or if the spawned elements should live
+forever (lifetime = 0). If the lifetime is set to anything greater than 0 an implicit “system”
+-channel called <code>time</code> is automatically added.</p>
+<p>Lastly, you need to set the <em>capacity</em> of the system, i.e specify the maximum number of elements
+that can be alive simultaneously in the system. The total memory requirement of your system then
+becomes <em>capacity * stride</em> bytes.</p>
+<p>The output of the node is a <code>System</code>, which is what all of the other nodes operate on.</p>
+<h3 id="gpusim---spawn"><code>GPUSim</code> <code>-</code> <code>Spawn</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Spawn node." src="../../images/gpu_sim__spawn.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Spawn node.</h4>
+    </figcaption>
+  </figure>
+<p>When the setup of a simulation is done, using the <code>GPUSim - Init</code> node, it’s time to inject some
+elements into the simulation. This is done using the <code>GPUSim - Spawn</code> node. It runs when it’s
+triggered by an Event. In this case, I’ve just hooked up the “Init Event” which is an event that is
+automatically triggered by the Render Component after an entity has been loaded.</p>
+<p>The number of elements to inject into the simulation is defined by <code>Count</code>.  It’s worth noting that
+a spawn will never fail unless <code>Count</code> is greater than the <code>Capacity</code> of the system (as specified on
+the init-node). The reason for this is that the simulation buffer is treated as a ring-buffer on the
+engine side, so if the simulation buffer can’t fit the spawn operation it will overwrite the oldest
+n elements in the buffer.</p>
+<p>Exactly what the channels of the spawned elements are initialized to is controlled by a compute
+shader. In this case, I’ve just hooked up the default “Simulation Emitter Shader”. In itself, it
+won’t do anything (except initialize the element time to 0 if the system has a <code>Lifetime</code> specified
+to anything other than zero on the init node), unless you hook something up to at least one of the
+<code>Write Func</code> connectors. We will take a closer look at how this works later in this post.</p>
+<p>It might also be worth mentioning that the reason for why the background color of the “Simulation
+Emitter Shader” node is tinted dark green is to indicate that it’s a node that will execute entirely
+on the GPU, as it will compile into a shader program.</p>
+<h2 id="gpusim---update"><code>GPUSim - Update</code></h2>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Update node." src="../../images/gpu_sim__update.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Update node.</h4>
+    </figcaption>
+  </figure>
+<p>Once we have a number of elements injected into the system, we typically want to update them in one
+way or another. This is done using the <code>GPUSim - Update</code> node. Just as with the spawn node, it runs
+when it’s triggered by an Event, and for most types of effects you will likely be hooking up
+something like the “Tick Event” which is an event triggered by the Render Components once per frame.</p>
+<p>Again, similar to the spawn node, the update node will update all active elements using a compute
+shader. I’ve wired the default “Simulation Update Shader” to it, which in itself doesn’t really do
+anything (except advancing the element time with the frame delta-time if the system has a <code>Lifetime</code>
+specified to something other than zero on the init node) unless you hook something up to any of its
+<code>Write Func</code> connectors.</p>
+<h2 id="additional-nodes">Additional nodes</h2>
+<p>So with the three nodes described above, we have a way to set up a new simulation system, inject
+elements into the simulation and update those elements. That can be viewed as the <em>core</em> nodes of
+the new GPU Simulation system in The Machinery.</p>
+<p>Now, let’s take a look at some more nodes that we need to do some actual work:</p>
+<h3 id="gpusim---write"><code>GPUSim - Write</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Write node." src="../../images/gpu_sim__write.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Write node.</h4>
+    </figcaption>
+  </figure>
+<p>As the name suggests, <code>GPUSim - Write</code> is responsible for writing channel data to the element
+pointed to by <code>Index</code>. The inputs <code>Position</code>, <code>Velocity</code>, and <code>Tobias</code> are the three channels we
+declared on the <code>GPUSim - Init</code> node. So essentially any connector that appears below <code>Index</code> is
+data-driven by the channels declared in the system.</p>
+<p>Per default,  the index will be translated to be relative to the start (i.e., first active element)
+of the system, but there’s nothing stopping you from freely indexing any part of the buffer by
+setting the indexing mode to <em>absolute indexing.</em> Note though that care must be taken to
+accidentally write to memory that simultaneously might be read from or written to by another
+“thread”.</p>
+<h3 id="gpusim---read"><code>GPUSim - Read</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Read node." src="../../images/gpu_sim__read.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Read node.</h4>
+    </figcaption>
+  </figure>
+<p>Same as <code>GPUSim - Write</code> but for reading the channel data of an element pointed to by <code>Index</code>.</p>
+<p>Here you can see there’s also a <code>Time</code> output. This is because the <code>System</code> hooked up to this node
+has a <code>Lifetime</code> that is greater than 0 specified on the <code>GPUSim - Init</code>-node. As the time channel
+is controlled internally by the system it can never be written to, only read.</p>
+<p>The output from <code>Time</code> is a floating-point value holding the normalized elapsed time (0–1) from the point the element was injected into the system by a spawn node.</p>
+<h3 id="gpusim---draw-command"><code>GPUSim - Draw Command</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Draw node." src="../../images/gpu_sim__draw.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Draw node.</h4>
+    </figcaption>
+  </figure>
+<p>The write and read nodes together with the <em>core</em> nodes give us everything we need to start
+authoring particle behaviors. Depending on what kind of effect you are authoring it’s not unlikely
+that you want to visualize each element as some kind of draw call instance, this is where the
+<code>GPUSim - Draw Command</code>-node comes into play.</p>
+<p>Its job is to build a draw call with an instance count that equals the number of elements currently
+alive in the system. In the current release of The Machinery, this node is fairly primitive as the
+only thing you can specify as input to it is the number of vertices the draw call should contain,
+but going forward my intention is to flesh it out with more features, and also expose some way for
+shaders authored to procedurally generate their vertices to output it’s desired vertex count. That
+way there will be less room for user error (right now there’s an implicit assumption that you know
+that the <code>Billboards Output</code> shader executes on 6 vertices per billboard — clearly not ideal from a
+user perspective).</p>
+<p>Since the system has been designed to be able to simulate massive amounts of elements (hundreds of
+thousands, or even millions) we don’t want to keep track of element lifetime on the CPU. Even if we
+were to track the lifetime per spawn (i.e the injection point of a number of new elements into the
+simulation) there are no guarantees that we won’t end up with a very large number of spawn calls to
+keep track of. Instead, my current idea is to keep track of lifetime and the number of active
+elements in the simulation entirely on the GPU and use indirect dispatch and draw calls that read
+their arguments from GPU buffers.</p>
+<p>As I’m still working on this, I’m not 100% sure how well this will work out for us in practice, but
+I can’t see any reason for it to fail. And as a nice side effect, we’ll also get an efficient way to
+drive spawning of new elements entirely from the GPU, something that can be very useful when you
+want to do stuff like spawning new elements into a system when an element of another system collides
+with something.</p>
+<h3 id="rate-emitter"><code>Rate Emitter</code></h3>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Rate emitter node." src="../../images/gpu_sim__rate_emitter.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Rate emitter node.</h4>
+    </figcaption>
+  </figure>
+<p>The last node I wanted to touch on is the <code>Rate Emitter</code>. This is a very simple node that is set up
+to trigger itself at a certain frequency. Setting the frequency to 1 means that every second the
+node will trigger, schedule itself to trigger again in 1 second, and then forward the event to the
+<code>GPUSim - Spawn</code> node.</p>
+<p>At the moment, this node runs entirely on the CPU, but it’s not unlikely that we will end up
+deprecating this node eventually. I’ve started thinking that it might be better to just introduce a
+generic spawn event buffer associated with the system. This spawn event buffer could then be
+populated either from a node similar to this one or from another system requesting a spawn.</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>Let’s put all of the above nodes together and create a simple particle effect:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="A few frames exported as a gif animation." src="../../images/gpu_sim__particle_effect.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>A few frames exported as a gif animation.</h4>
+    </figcaption>
+  </figure>
+<p>The Creation Graph for creating the above effect looks like this at the moment:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Creation graph for particle effect." src="../../images/gpu_sim__graph.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Creation graph for particle effect.</h4>
+    </figcaption>
+  </figure>
+<p>In the middle, you have the initialization of the system. On the upper left side, you have the spawn
+which basically just randomizes a velocity for each element. On the lower left side, you see the
+update code which basically just integrates the velocity with the gravity and then integrates the
+position with the velocity.</p>
+<p>Last, but not least, you have the visualization part on the right side. Each element is rendered as
+a billboard. The billboards are locked to face the camera but only allowed to rotate around the
+velocity vector (read from the element). The color is just a <em>lerp</em> between yellow and red using the
+normalized time of the element as <em>t.</em></p>
+<p>This might look a bit overwhelming to some, but as you can see, most of the nodes are tinted dark
+green, meaning that they are simply just generating a snippet of HLSL-code. Over time I think we and
+our users will create lots of small helper nodes that significantly will reduce the overall number
+of nodes needed, so right now I don’t see it as a big problem.</p>
+<p>What I’m a bit more worried about though, is that it feels somewhat hard to organize the graph in a
+nice way, I’d like to somehow make it clearer which parts of the graph that belong to a specific
+“stage” (spawn, update, visualize). Also, I find it kind of painful to drag out all the <code>system</code>
+wires (all the yellow wires going from the <code>GPUSim - Init</code> node in the middle). If you are a reader
+with experience in similar systems and feel you have good ideas on how to improve the workflow —
+don’t hesitate to reach out.</p>
+<p>That’s it for this time. If you haven’t already, sign up for our <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/beta.html">closed
+beta</a> and try it out yourself. We’d love to hear your thoughts
+and get feedback.</p>
+
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804195219/https://twitter.com/share?text=GPU%20Simulation - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fgpu-simulation%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804195219/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fgpu-simulation%2f&amp;description=GPU%20Simulation" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/wasabi-part-3-accessibility/">WaSaBi Part 3: Accessibility</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-04-03T00:00:00Z">
+                      3 Apr 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>We talk a lot in our blogs and podcast about inclusivity. It’s something I really, really want us to
+achieve as a …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/wasabi-part-3-accessibility/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta/" class="text-decoration-none"><img src="../../images/beta__editor.png" class="card-img-top" alt="The Machinery Beta — March 2020 (version 2020.3)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta/">The Machinery Beta — March 2020 (version 2020.3)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-03-18T00:00:00Z">
+                      18 Mar 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Welcome to the very first beta release of Our Machinery. Since these are our first official release
+notes they will …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">13 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/writing-a-low-level-sound-system/" class="text-decoration-none"><img src="../../images/low_level_sound__basic_mixer.png" class="card-img-top" alt="Writing a Low-Level Sound System — You Can Do It!"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/writing-a-low-level-sound-system/">Writing a Low-Level Sound System — You Can Do It!</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-03-17T00:00:00Z">
+                      17 Mar 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In this post, I’ll take a look at what it takes to write a low-level sound system. I.e., one where
+you do all the …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/writing-a-low-level-sound-system/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">38 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/gpu-simulation/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804195219/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195219/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/cdn-cgi/l/email-protection#5c2c35323b1c33292e313d3f343532392e25723f3331" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804195219/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:52:19 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:23 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 328.058
+  exclusion.robots: 0.078
+  exclusion.robots.policy: 0.071
+  cdx.remote: 0.054
+  esindex: 0.008
+  LoadShardBlock: 270.845 (3)
+  PetaboxLoader3.datanode: 111.845 (4)
+  CDXLines.iter: 13.876 (3)
+  PetaboxLoader3.resolve: 66.065 (2)
+  load_resource: 56.999
+-->

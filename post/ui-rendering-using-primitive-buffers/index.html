@@ -1,0 +1,638 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content=""/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="UI rendering using Primitive Buffers">
+  <meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="UI rendering using Primitive Buffers · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/ui-rendering-using-primitive-buffers/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-06-19T00:00:00Z"/>
+  
+
+  <title>UI rendering using Primitive Buffers &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210831125334/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210831125334\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210831125334\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "UI rendering using Primitive Buffers",
+    "name": "UI rendering using Primitive Buffers",
+    "wordCount":  1667 ,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/ui-rendering-using-primitive-buffers/",
+    "datePublished": "2017-06-19T00:00Z",
+    "dateModified": "2017-06-19T00:00Z",
+    
+    
+    "description": ""
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/academic.html" aria-label="Link Academic License" target="_blank">Academic License</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210831125334/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>UI rendering using Primitive Buffers</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-06-19T00:00:00Z">
+          Jun 19, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Over the years we have used a lot of different frameworks for creating user interfaces for various editors: <em>wxWidgets</em>, <em>WinForms</em>, <em>WPF</em>, <em>QT</em>, <em>Chromium/HTML5</em> and others. To be honest we&rsquo;ve never really liked any of them. Most of them feel bloated and they usually drag in huge dependencies. And when they don’t behave or perform as expected it can be very hard to navigate, debug and understand these monster frameworks.</p>
+<p>From time to time we’ve pitched the idea of building our own UI system instead of relying on some existing huge framework, but since pretty much all of the tools programmers we’ve ever worked with have recommended against it we haven’t been bold enough to go for it. But recently we have started seeing more lightweight libraries for doing immediate mode GUIs popping up (<a href="http://web.archive.org/web/20210831125334/https://github.com/ocornut/imgui">Dear IMGUI</a> and <a href="http://web.archive.org/web/20210831125334/https://github.com/vurtun/nuklear">Nuklear</a> are two excellent examples), these have inspired us and yet again sparked our interest in building our own system.</p>
+<p>So for <em>The Machinery</em> we&rsquo;ve decided to ignore all recommendations and run full steam a head rolling our own UI system for the editor. This might be a decision that we will regret in the future, but then so be it! At least we&rsquo;ll be in a position where we understand exactly what we regert and why. Another reason for this decision is that we have started seeing a blurring of the lines between editors and runtime and we expect this trend to continue as more editing workflows move into VR/AR.</p>
+<p>If we back out and take a bird&rsquo;s-eye view of the editor we are aiming to build it can be broken down into only a handful of components / sub-editors:</p>
+<ul>
+<li>Windows management and a docking system</li>
+<li>Widget library with standard buttons, check boxes, color picker, etc.</li>
+<li>A tree view</li>
+<li>A property editor</li>
+<li>A graph editor</li>
+</ul>
+<p>And that&rsquo;s about it really. Sure, there will also be a bunch of special dialog boxes, diagnostics windows, etc. But if we do a good job with the above core components and make it easy to extend them, adding more widgets to the widget library, etc., we should hopefully be in a decent place.</p>
+<p>Also note that since <em>The Machinery</em> is heavily data-driven there is not much to gain from having some kind of visual editor for doing the UI design. As most of the content in the panels won&rsquo;t be known until we run the editor we are forced to dynamically generate the layouts of our UI’s anyway.</p>
+<p>Exactly how we&rsquo;ll go about building the high-level interface for creating UI’s (immediate vs retained mode, or perhaps some kind of mix?) hasn&rsquo;t been completely ironed out yet, and is outside the scope of this blog post. What we do know though is that the system will be built around draw functions that generate data into buffers that the GPU will render for us. And today we will take a look at what goes into those buffers. We call them <em>&ldquo;Primitive Buffers&rdquo;</em>.</p>
+<h2 id="primitive-buffers">Primitive Buffers</h2>
+<p>One of the core design philosophies at <em>Our Machinery</em> is to always think about how to make data flow through the various systems as efficiently as possible. While we today might be a bit less afraid of wasting some memory for programmer / developer convenience (compared to what we had to be when targeting last generation consoles), we try to be cautious not to move big chunks of data around more than absolutely necessary.</p>
+<p>If you think about immediate mode GUI systems they have a tendency to generate quite a lot of index and vertex data. On a PC this data needs to be transferred over the PCI-E bus before the GPU can execute some (usually) very simple vertex and pixel shaders. Another performance culprit to be aware of is the large amount of draw calls and state switches a naive implementation might end up generating. This might not be a big deal if the UI is simple or if it is the only thing the application has to render. But as we intend to focus on mostly rendering other things than UI and expect to have rather complex user interfaces that have to feel snappy, we’ve started playing with some alternative ideas.</p>
+<p>One of the core modeling blocks of any UI is the rectangle. A complex user interface can easily generate tens of thousands of rectangles. Typically each rectangle would generate 4 vertices into a vertex buffer as well as 6 indices into an index buffer.</p>
+<p>A simple vertex format for an untextured rectangle might look something like this:</p>
+<pre><code>struct RectVertex {
+    float x, y; 
+    uint8_t col[4];
+};
+</code></pre>
+<p><code>sizeof(RectVertex)</code> == 12 bytes. 4 vertices * 12 bytes = 48 bytes + 6 indices * 4 bytes = 72 bytes of data per rectangle in total.</p>
+<p>Now, assuming you are running on a decently modern graphics API and on hardware that supports doing “raw” buffer loads in the vertex shader (using D3D&rsquo;s ByteAddressBuffers or equivalent) it is easy to significantly reduce the memory footprint of this simple rectangle.</p>
+<p>The idea is simple, just stop relying on the Input Assembler to fetch the vertex data for you. Instead construct the vertices in the vertex shader by manually loading primitive information from a <em>Primitive Buffer</em> guided by data encoded in the index buffer.</p>
+<p>Let’s take the rectangle example from above and express it this way instead:</p>
+<pre><code>struct Rect {
+  float x, y, w, h;
+  uint8_t col[4];
+};
+</code></pre>
+<p>This is what we would write to the primitive buffer. In the index buffer we still would write 6 indices but as we no longer depend on the Input Assembler to fetch the vertex data for us we don’t have to store regular vertex indices. Instead we can freely encode whatever we want into the index buffer as long as we know how to interpret that data in the vertex shader.</p>
+<p>In the current implementation of our new UI system we use the lower 24 bits of the vertex id to store the offset into the primitive data (i.e. the <code>Rect</code> in this example), and the upper 8 bits as auxiliary data that guides how to interpret and generate vertices from the primitive. At the moment we use the upper 6 bits of the aux-data to encode primitive type information and the lower 2 bits to encode which rectangle corner the current vertex represents.</p>
+<pre><code>00000000 00000000 00000000 00000000
+|     |  |
+|     |  |- offset into primitive buffer
+|     |- rect corner id
+|- primitive type
+</code></pre>
+<p>Using this representation the size of a rectangle goes from 72 bytes down to <code>sizeof(Rect)</code> == 20 bytes + 6 indices * 4 bytes = 44 bytes, or ~40% less than the original approach.</p>
+<p>You could argue that the win is less that 40% as you might be able to get away with 16-bit indices when using the vertex buffer approach (depending on the complexity of your UI). But keep in mind that this is a very simple example and the real gains don’t show up until you start mixing in more complex primitive types. Our goal is to render the entire UI with as few draw calls as possible (ideally just one) and if you are using the vertex buffer approach there is no way around padding to the worst case scenario stride, which potentially might become a rather fat vertex (adding UV coordinates, clipping and any other stuff the other primitives types might need). And then for each of these simple rectangles you are stuck with having to amplify this rather fat vertex by four! Using the primitive buffer approach this problem completely goes away as we can tightly pack primitive data of varying sizes without any padding.</p>
+<p>Another nice thing with using primitive buffers is that the primitive representations encoded in the buffer often are close to or even identical to the representations exposed in the interface of the UI system. This eliminates the cost you have with the traditional vertex buffer approach when translating from e.g. a rectangle representation in the UI into four vertices. With primitive buffers you typically get away with a memcpy and occasionally some patch up.</p>
+<h2 id="clipping">Clipping</h2>
+<p>For editor UI we don’t expect to need anything more complex than simple rectangular clipping, neither do we think we’ll need to clip against more than one rectangle at a time. So we’ve tried to design a simple and efficient clipping system based on that. Here’s how it works:</p>
+<p>To activate a clip rectangle you first have to register it to the UI system. When doing so the clip rectangle gets written to the primitive buffer and its offset in the buffer is returned. Later, when you are drawing primitives and want to clip them against a previously registered rectangle, you simply provide the offset of the clip rectangle to the draw functions. To simplify the engine code we only cull the primitive against the active clip rectangle on the CPU, if we then determine that the primitive is in need of clipping the actual clipping responsibility is pushed to the GPU.</p>
+<p>This works by storing an <code>uint32_t</code> containing the offset of the clip rectangle (or 0 if clipping is disabled) inside each primitive representation encoded in the primitive buffer. In the vertex shader we can then decide based on what type of primitive we are currently rendering how to best clip it. (A brute force simple implementation would be to discard any pixels outside the clip rect in the pixel shader, but for simple primitive types like rectangles you might be better off with clamping the vertex-/uv coordinates etc.)</p>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>Overall we feel pretty satisfied with how this is shaping up. The primitive buffer idea reflects one of the core design ideas for <em>The Machinery</em> — i.e. that most systems can be designed around how data is laid out in memory and how it flows to and from other systems. If done correctly it becomes trivial to (almost transparently) shift and scale the actual computational responsibility over multiple processors, GPUs, or even remote machines.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210831125334/https://twitter.com/share?text=UI%20rendering%20using%20Primitive%20Buffers - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fui-rendering-using-primitive-buffers%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210831125334/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fui-rendering-using-primitive-buffers%2f&amp;description=UI%20rendering%20using%20Primitive%20Buffers" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/little-machines-working-together-part-2/">Little Machines Working Together (Part 2)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-06-05T00:00:00Z">
+                      5 Jun 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In the <a href=" ../../post/little-machines-working-together-part-1/">previous post</a> in this series I talked about our API registry that lets parts of our code register interfaces that …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/little-machines-working-together-part-2/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/efficient-binding-of-shader-resources/">Efficient binding of shader resources</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-05-30T00:00:00Z">
+                      30 May 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Since my <a href=" ../../post/a-modern-rendering-architecture/">last post</a> I&rsquo;ve discovered a couple of more resource types that I feel it makes sense to expose through …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/efficient-binding-of-shader-resources/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">6 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/finding-alignment/">Finding Alignment</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-05-22T00:00:00Z">
+                      22 May 2017
+                    </time>
+                  </h6>
+                  <p class="card-text">Finding alignment in your work is imperative to a well-balanced life. There have been too many times when myself and my …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/finding-alignment/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/ui-rendering-using-primitive-buffers/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210831125334/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210831125334/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/cdn-cgi/l/email-protection#2c5c45424b6c43595e414d4f444542495e55024f4341" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210831125334/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 12:53:34 Aug 31, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:43 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 133.567
+  exclusion.robots: 0.135
+  exclusion.robots.policy: 0.123
+  RedisCDXSource: 0.934
+  esindex: 0.025
+  LoadShardBlock: 108.56 (3)
+  PetaboxLoader3.resolve: 162.904 (4)
+  PetaboxLoader3.datanode: 45.741 (5)
+  CDXLines.iter: 20.089 (3)
+  load_resource: 144.21
+  loaddict: 31.592
+-->

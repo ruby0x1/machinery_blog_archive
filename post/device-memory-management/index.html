@@ -1,0 +1,684 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Using visual tools to inspect Vulkan device memory usage makes it easy to spot flaws."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/device-memory-analyzer.png"/>
+  
+  <meta name="twitter:title" content="Device Memory Management">
+  <meta name="twitter:description" content="Using visual tools to inspect Vulkan device memory usage makes it easy to spot flaws."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Device Memory Management · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/device-memory-management/"/>
+  
+  <meta property="og:image" content="../../images/device-memory-analyzer.png"/>
+  
+  
+  <meta property="og:description" content="Using visual tools to inspect Vulkan device memory usage makes it easy to spot flaws."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2018-08-29T00:00:00Z"/>
+  
+
+  <title>Device Memory Management &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804184315/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804184315\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804184315\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Device Memory Management",
+    "name": "Device Memory Management",
+    "wordCount":  1356 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/device-memory-management/",
+    "datePublished": "2018-08-29T00:00Z",
+    "dateModified": "2018-08-29T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804184315/https://ourmachinery.com/device-memory-analyzer.png"
+    },
+    
+    
+    "description": "Using visual tools to inspect Vulkan device memory usage makes it easy to spot flaws."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184315/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184315/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Device Memory Management</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2018-08-29T00:00:00Z">
+          Aug 29, 2018
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Welcome back! We’ve had a bit of a blog break to relax, enjoy the summer and hang out with friends and family. But now we’re back, and to kick things off I will walk you through my thoughts around strategies for managing device memory, but more importantly I will also show how important it is to have visual debug tools when working with memory management.</p>
+<p>While The Machinery so far is Vulkan only, device memory management in DX12 is fairly similar so anything described in this post should be applicable to DX12. There’s a decent amount of information online (<a href="http://web.archive.org/web/20210804184315/https://gpuopen.com/vulkan-device-memory/">Lottes2016</a>,  <a href="http://web.archive.org/web/20210804184315/https://developer.nvidia.com/vulkan-memory-management">Hebert2016</a>, <a href="http://web.archive.org/web/20210804184315/http://twvideo01.ubm-us.net/o1/vault/gdc2018/presentations/Sawicki_Adam_Memory%20management%20in%20Vulkan.pdf">Sawicki2018</a>) covering the various memory heaps and memory types in Vulkan, so instead of repeating the low-level API details and to make this post less Vulkan specific I’ll focus on a higher level.</p>
+<h1 id="current-strategy">Current Strategy</h1>
+<p>In our Vulkan render backend there are currently three types of memory that we reason about:</p>
+<ol>
+<li>
+<p><em>Device Local</em> — This is GPU local memory that isn’t visible on the host/CPU side. All persistent GPU resources are backed by device local memory.</p>
+</li>
+<li>
+<p><em>Staging Uncached</em> — This is system memory that is visible on the host/CPU side, it’s coherent — i.e. no need to explicitly call <code>vkFlushMappedMemoryRanges()</code>/<code>vkInvalidateMappedMemoryRanges()</code> — but uncached — i.e. reads are slow — on the host side. Typically all transfers of data from host/CPU to device/GPU uses this memory type.</p>
+</li>
+<li>
+<p><em>Staging Cached —</em> This is system memory that is host visible, coherent and cached. Transfers going from the device/GPU to the host/CPU use this memory type.</p>
+</li>
+</ol>
+<p>The different types of memory are accessed through a common allocator API called <code>device_memory_allocator_i</code> which looks something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> device_memory_allocation_t
+{
+    <span style="color:#75715e">// Handle to device memory.
+</span><span style="color:#75715e"></span>    VkDeviceMemory memory;
+    <span style="color:#75715e">// Byte offset into device memory.
+</span><span style="color:#75715e"></span>    uint64_t offset;
+    <span style="color:#75715e">// Size of allocation in bytes.
+</span><span style="color:#75715e"></span>    uint64_t size;
+    <span style="color:#75715e">// If the memory served by the allocator is host visible &#39;host_mapped&#39; will
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// point to the first byte of the allocation (i.e offset has already been
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// added).
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>host_mapped;
+};
+
+<span style="color:#66d9ef">struct</span> device_memory_allocator_i
+{
+    <span style="color:#66d9ef">struct</span> device_memory_allocator_o <span style="color:#f92672">*</span>inst;
+    
+    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">device_memory_allocation_t</span> (<span style="color:#f92672">*</span>allocate)(
+        <span style="color:#66d9ef">struct</span> device_memory_allocator_o <span style="color:#f92672">*</span>inst, uint64_t size,
+        uint64_t alignment, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>debug_tag);
+    
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>free)(<span style="color:#66d9ef">struct</span> device_memory_allocator_o <span style="color:#f92672">*</span>inst,
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> device_memory_allocation_t <span style="color:#f92672">*</span>allocation);
+};
+</code></pre></div><p>On top of this interface there are a few different allocators implemented exposing the three different types of device memory:</p>
+<ul>
+<li>
+<p><em>Device Local</em> memory is handled by two types of allocators:</p>
+<ul>
+<li>
+<p>Allocations that are smaller than or equal to 256MB are directed to a <a href="http://web.archive.org/web/20210804184315/https://bitsquid.blogspot.com/2015/08/allocation-adventures-3-buddy-allocator.html">Buddy Allocator</a> that in turn allocates memory in blocks of 256MB using <code>vkAllocateMemory()</code>.</p>
+</li>
+<li>
+<p>Allocations larger then 256MB falls back to use a “dedicated allocator” that maps 1:1 with a call to <code>vkAllocateMemory()</code> . I’ve made the assumption that allocations larger than 256MB will be rare but we still need to be able to handle them.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Both <em>Staging Uncached</em> and <em>Staging Cached</em> memory use a Linear Allocator that in turn allocates memory in blocks of <code>max(size, 256MB)</code>.  When the transfers of all allocations within a block are complete the memory block will be reused by the allocator.</p>
+</li>
+</ul>
+<h1 id="debug-visualization">Debug Visualization</h1>
+<p>We’ve been running with the above described strategy for managing device memory for some time now and while it so far has worked just fine, I’ve had an itching feeling that I should take the time to add some kind of debug view for visualizing our memory usage. Last week I finally got around to doing just that and added a new tab called <em>Device Memory Analyzer</em> to The Machinery.</p>
+<p>Here’s a screenshot showing a somewhat naive and extreme case with a bunch of glTF-scenes loaded running with uncompressed high-resolution textures:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The “Device Memory Analyzer” tab in The Machinery" src="../../images/device-memory-analyzer.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The “Device Memory Analyzer” tab in The Machinery</h4>
+    </figcaption>
+  </figure>
+<p>The view shows a breakdown of memory blocks allocated by each allocator. Each block corresponds to a call to <code>vkAllocateMemory()</code>. (Note: In the above example there’s one allocator missing, the “Staging Linear (cached)” since no read backs from GPU to CPU have been done in the running session.)</p>
+<p>The view can be zoomed in/out and scrolled left/right. <em>Green</em> indicates free memory within a block, <em>red</em> indicates allocated memory in use by a resource, and <em>yellow</em> shows potential overhead caused by the allocation algorithm (i.e. internal fragmentation). By clicking on a red/yellow chunk the information panel will display more detailed information about the resource currently being mapped to that memory range.</p>
+<p>From the above breakdown it quickly becomes apparent that we are wasting a bunch of memory due to the Buddy allocator’s implicit requirement of rounding allocation sizes to the next power-of-two. While this didn’t come as a surprise it’s still something that is easy to ignore unless clearly visualized like this. We also get a good understanding of how fragmented each memory block is. On top of that it also shows that we never release any blocks after they’ve been allocated even though they are completely free.</p>
+<p>The takeaway here is simple — visual debug tools like this is key to quickly grasp any flaws or bugs in your systems, but unless you work in a framework that makes it trivial to implement them there’s a huge risk they will never get added. The above view didn’t take me more then a day to implement and is no more than 400 lines of C-code.</p>
+<h1 id="improvements">Improvements</h1>
+<p>So now when we’ve seen our current state of device memory management, let’s discuss some various improvements and other ideas.</p>
+<p>First of all it feels fairly clear that we want to move away from using a Buddy allocator when managing memory for semi-static GPU resources like textures. One alternative would be to push more responsibility over to the user of our render backend APIs and expose a clear separation between memory management and resource creation/destruction. By doing so the user could group multiple GPU resources with the same life scope together into a single memory allocation with the goal of minimizing the power-of-two overhead caused by the Buddy allocator. While that would work in theory, it does not feel very clean to leak low-level render backend specific details into a high-level API. With that said, there’s another reasons for why it’s tempting to decouple device memory management from resource creation and destruction — it would make for a cleaner API when aliasing two or more resources on top of the same memory.</p>
+<p>Resource aliasing is something that isn’t very common but for large transient resources like render targets it can give significant memory savings [<a href="http://web.archive.org/web/20210804184315/https://www.ea.com/frostbite/news/framegraph-extensible-rendering-architecture-in-frostbite">O’Donnell17</a>], especially when rendering in high resolutions like 4K. My current take for handling resource aliasing in The Machinery has been to allow a resource to specify that it is aliasing another resource by pointing out the other resource using its resource handle. While this approach works, the API would become a lot cleaner if the device memory allocation itself became a resource, and instead of pointing out another buffer- or image- resource to alias the user would point to the new “device memory” resource (potentially also allowing to specify a byte offset into the allocation).</p>
+<p>As for replacing the Buddy allocator I’ve been planning to look into implementing a <a href="http://web.archive.org/web/20210804184315/http://www.gii.upv.es/tlsf/files/papers/tlsf_desc.pdf">TLSF</a> allocator but haven’t got around to it yet. Another alternative that probably is worth exploring in more detail would be to plugin AMD’s <a href="http://web.archive.org/web/20210804184315/https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator">VulkanMemoryAllocator</a>. It would inject at a higher level though and while it looks well designed I’m a bit reluctant replacing the 1000 lines of C-code that makes up my current device memory management system with 14000 lines of C++-code that someone else has written.</p>
+<p>Speaking of AMD, their GPUs exposes a 256MB device local heap that is accessible directly from the host, i.e. it can be mapped for writes. Currently we do not expose access to this heap in The Machinery, meaning that any update of a resource, no matter how small it is or how frequent we need to update it, always ends up as a staged update. It would be nice if we could utilize this heap for resources in need of frequent host updates (like constant buffers) and it shouldn’t be too hard to implement an abstraction that falls back to staged updates on GPUs not exposing this heap. This is definitely something I’m planning to explore in more detail moving forward.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804184315/https://twitter.com/share?text=Device%20Memory%20Management - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdevice-memory-management%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804184315/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdevice-memory-management%2f&amp;description=Device%20Memory%20Management" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/" class="text-decoration-none"><img src="../../images/gizmo-spline-transform.jpeg" class="card-img-top" alt="Making the move/rotate/scale gizmos work with any component"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/">Making the move/rotate/scale gizmos work with any component</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-06-11T00:00:00Z">
+                      11 Jun 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Our goal with <em>The Machinery</em> has always been to make a system that takes flexibility and extensibility to new levels. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/the-machinery-shader-system-part-3/" class="text-decoration-none"><img src="../../images/materials.png" class="card-img-top" alt="The Machinery Shader System (part 3)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-machinery-shader-system-part-3/">The Machinery Shader System (part 3)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-05-29T00:00:00Z">
+                      29 May 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>This will be the third and probably last part in my series covering the “shader system” in The Machinery that I’ve …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-machinery-shader-system-part-3/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-mini-series-part-8-online-marketing/">Marketing Mini Series Part 8: Online Marketing 101: The Four Pillars</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-05-17T00:00:00Z">
+                      17 May 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>When I started working on MMOs for the first time, I saw the world of marketing rapidly change. Once the tidal wave …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-mini-series-part-8-online-marketing/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">4 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/device-memory-management/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804184315/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184315/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/cdn-cgi/l/email-protection#6e1e0700092e011b1c030f0d0607000b1c17400d0103" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804184315/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 18:43:15 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:01 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 167.122
+  exclusion.robots: 0.085
+  exclusion.robots.policy: 0.078
+  cdx.remote: 0.063
+  esindex: 0.009
+  LoadShardBlock: 144.956 (3)
+  PetaboxLoader3.datanode: 160.28 (4)
+  CDXLines.iter: 13.774 (3)
+  load_resource: 57.701
+  PetaboxLoader3.resolve: 26.838
+-->

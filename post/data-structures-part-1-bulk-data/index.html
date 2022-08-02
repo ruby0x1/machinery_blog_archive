@@ -1,0 +1,1154 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Examines the options for storing object arrays"/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/dsp1-bulk-data.jpg"/>
+  
+  <meta name="twitter:title" content=" Data Structures Part 1: Bulk Data ">
+  <meta name="twitter:description" content="Examines the options for storing object arrays"/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content=" Data Structures Part 1: Bulk Data  · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/data-structures-part-1-bulk-data/"/>
+  
+  <meta property="og:image" content="../../images/dsp1-bulk-data.jpg"/>
+  
+  
+  <meta property="og:description" content="Examines the options for storing object arrays"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2019-07-23T00:00:00Z"/>
+  
+
+  <title> Data Structures Part 1: Bulk Data  &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220313202555/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220313202555\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220313202555\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": " Data Structures Part 1: Bulk Data ",
+    "name": " Data Structures Part 1: Bulk Data ",
+    "wordCount":  5191 ,
+    "timeRequired": "PT25M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/data-structures-part-1-bulk-data/",
+    "datePublished": "2019-07-23T00:00Z",
+    "dateModified": "2019-07-23T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220313202555/https://ourmachinery.com/dsp1-bulk-data.jpg"
+    },
+    
+    
+    "description": "Examines the options for storing object arrays"
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313202555/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1> Data Structures Part 1: Bulk Data </h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2019-07-23T00:00:00Z">
+          Jul 23, 2019
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Any programmer can benefit from some understanding of different <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Data_structure">data
+structures</a> and how to analyze their performance. But
+in practice, I’ve never found any use for <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/AVL_tree">AVL trees</a>,
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black trees</a>,
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Trie">tries</a>, <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Skip_list">skip lists</a>,
+etc. Some data structures I just use for one particular algorithm, and nothing else (e.g.,
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Heap_(data_structure)">heaps</a> to implement the <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Priority_queue">priority
+queue</a> for <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/A*_search_algorithm">A*
+search</a>).</p>
+<p>In most of my day-to-day work, I get by with surprisingly few data structures. What I mostly need
+is:</p>
+<ul>
+<li>Bulk data — a way of efficiently storing a large number of objects.</li>
+<li>Weak references (or <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Handle_(computing)">handles</a>) — a way of
+referencing objects in the bulk data without crashing if an object has been deleted.</li>
+<li>Indices — a way of quickly accessing specific subsets of the bulk data.</li>
+<li>Arrays of arrays — a way of storing dynamically sized bulk data objects.</li>
+</ul>
+<p>In the next few blog posts, I’ll show how I implement these things. Let’s start with the simplest
+and most useful one — bulk data.</p>
+<h2 id="bulk-data">Bulk Data</h2>
+<p>There is no good term for it that I’m aware of, but I use <em>bulk data</em> to mean any large collection
+of similar objects. It might be things like:</p>
+<ul>
+<li>All the bullets in the game.</li>
+<li>All the trees in the game.</li>
+<li>All the coins in the game.</li>
+</ul>
+<p>Or, if you are writing your code at a higher abstraction level, it might be things like:</p>
+<ul>
+<li>All the entities in the game.</li>
+<li>All the meshes in the game.</li>
+<li>All the sounds in the game.</li>
+</ul>
+<p>Typically each system (rendering, sound, animation, physics, …) in the game has a couple of
+different types of objects that it needs to keep track of. For example, for a sound system it might
+be:</p>
+<ul>
+<li>All the sound resources that <em>can</em> be played.</li>
+<li>All the <em>currently</em> playing sounds.</li>
+<li>All the effects (fades, pitches, etc) that are being applied to the sounds.</li>
+</ul>
+<p>For the bulk data, I will assume that:</p>
+<ul>
+<li>The order in which the objects are stored doesn’t matter. I.e., we think of it as a
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Set_(mathematics)">set</a> of objects.</li>
+<li>Each object is represented as a fixed-size
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Passive_data_structure">POD-struct</a> that can be moved or duplicated
+with <code>memcpy()</code>.</li>
+</ul>
+<p>It is certainly possible to think of cases where order <em>does</em> matter. For example, if the objects
+represent renderable items we might want to sort them front-to-back before rendering to reduce
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Fillrate">overdraw</a>.</p>
+<p>However, in most cases, I think it is preferable to sort the data <em>as it is being used,</em> rather than
+storing the data in a sorted container, such as a <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black
+tree</a> or
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/B-tree">B-tree</a>. For example, we can sort our renderable objects
+front-to-back before passing them down to the renderer, or sort our files alphabetically before
+showing them in a list. It might seem expensive to sort the data every frame, but in many cases, we
+can do it in <em>O(n)</em> with a <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Radix_sort">radix sort</a>.</p>
+<p>As for only using POD-structs, I prefer plain C structs to C++ objects, because it is easier to see
+what is going on in memory and reason about the performance implications. However, there are
+situations where you might want to store something in the bulk data that doesn’t have a fixed size,
+like a name or a list of child objects. I will discuss this in a future post when I talk about
+“arrays of arrays”. For now, let’s just assume that all objects are fixed-size PODs.</p>
+<p>As an example, here’s what the bulk data structures for our hypothetical sound system might look
+like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    resource_t <span style="color:#f92672">*</span>resource;       <span style="color:#75715e">// Resource manager data
+</span><span style="color:#75715e"></span>    uint64_t bytes;             <span style="color:#75715e">// Size of data
+</span><span style="color:#75715e"></span>    uint64_t format;            <span style="color:#75715e">// Data format identifier
+</span><span style="color:#75715e"></span>} sound_resource_t;
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    sound_resource_t <span style="color:#f92672">*</span>resource; <span style="color:#75715e">// Resource that&#39;s playing
+</span><span style="color:#75715e"></span>    uint64_t samples_played;    <span style="color:#75715e">// Number of samples played
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> volume;               <span style="color:#75715e">// Volume of playing sound
+</span><span style="color:#75715e"></span>} playing_sound_t;
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    playing_sound_t <span style="color:#f92672">*</span>sound;     <span style="color:#75715e">// Faded sound
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> fade_from;            <span style="color:#75715e">// Volume to fade from
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> fade_to;              <span style="color:#75715e">// Volume to fade to
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> fade_from_ts;        <span style="color:#75715e">// Time to start fade
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> fade_to_ts;          <span style="color:#75715e">// Time to end fade
+</span><span style="color:#75715e"></span>} playing_fade_t;
+</code></pre></div><p>When thinking about how to store bulk data, we have a couple of goals:</p>
+<ul>
+<li>
+<p>Adding and deleting objects should be fast.</p>
+</li>
+<li>
+<p>The data should be laid out in a <strong>cache-friendly</strong> way so that we can iterate quickly over it for
+system updates.</p>
+</li>
+<li>
+<p>It should support <strong>referencing</strong> — there should be a way to talk <em>about</em> specific objects in the
+bulk data. In the example above, the fade needs to be able to indicate which sound it is fading.
+I’ve written the references as pointers in the example but depending on how we implement the bulk
+data we might use something else.</p>
+</li>
+<li>
+<p>The data should be <strong>allocator friendly</strong> — it should use a few large allocations, rather than
+allocating single objects on the heap.</p>
+</li>
+</ul>
+<p>The two simplest ways of representing bulk data is to use a static array or a C++ vector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Static array
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define MAX_PLAYING_SOUNDS 1024
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">uint32_t</span> num_playing_sounds;
+playing_sound_t playing_sounds[MAX_PLAYING_SOUNDS];
+
+<span style="color:#75715e">// C++ vector
+</span><span style="color:#75715e"></span>std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>playing_sound_t<span style="color:#f92672">&gt;</span> playing_sounds;
+</code></pre></div><p>Using an array is super simple, and it can be a great choice if you know exactly how many objects
+your application will need. If you <em>don’t know</em>, you’ll either waste memory or run out of objects.</p>
+<p>Using an <code>std::vector</code> is a pretty decent, simple solution too, but you should be wary of a few
+things:</p>
+<ul>
+<li>
+<p>The standard <code>std::vector</code> implementation in Visual Studio runs slow in Debug mode, because of
+Debug iterators. Make sure to set
+<a href="http://web.archive.org/web/20220313202555/https://docs.microsoft.com/en-us/cpp/standard-library/iterator-debug-level?view=vs-2019">_ITERATOR_DEBUG_LEVEL=0</a>.</p>
+</li>
+<li>
+<p><code>std::vector</code> uses constructors and destructors to create and destroy objects which in some cases
+can be significantly slower than <code>memcpy()</code>.</p>
+</li>
+<li>
+<p><code>std::vector</code> is a lot harder to introspect than a simple <a href=" ../../post/minimalist-container-library-in-c-part-1/">stretchy
+buffer</a> implementation.</p>
+</li>
+</ul>
+<p>Also, without some additional measures, neither plain arrays or vectors support referencing
+individual objects. Let’s look into that, as well as the other main design decisions that come into
+creating a custom bulk data solution.</p>
+<h2 id="deletion-strategy">Deletion strategy</h2>
+<p>The first important decision is what to do when an object <code>a[i]</code> gets deleted. There are three main
+options:</p>
+<ul>
+<li>You can move all the subsequent elements: <code>a[i+1]</code> → <code>a[i]</code>, <code>a[i+2]</code> → <code>a[i+1]</code>, etc, covering
+the empty slot.</li>
+<li>You can move the last element of the array into the empty slot <code>a[i] = a[n-1]</code>.</li>
+<li>Or, you can leave the slot empty, creating a “hole” in the array. This hole can later be used to
+allocate a new object.</li>
+</ul>
+<p>The first option is terrible — moving all those elements costs <em>O(n)</em>. The only useful thing about
+the first method is that if the array is sorted, it preserves the order. But, as stated above, we
+don’t care about the order. Beware, if you use <code>a.erase()</code> to delete an element in an <code>std::vector</code>,
+this is exactly what it will do!</p>
+<p>The second option is often called a “swap-and-pop”. Why? Because if you are using a C++ vector, you
+would typically implement it by swapping the element you want to delete with the last one and then
+erasing or popping the last element:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">std<span style="color:#f92672">::</span>swap(a[i], a[a.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]);
+a.pop_back();
+</code></pre></div><p>Why all this? Well, in C++, if we did <em>assignment</em> <code>a[i] = a[n-1]</code>, then we would first have to
+destroy <code>a[i]</code> , calling its destructor, then call the copy constructor to create a copy of <code>a[n-1]</code>
+at position <code>i</code> and then finally call the destructor of <code>a[n-1]</code> when we shrink the vector. If the
+copy constructor allocates memory and copies data, that can be pretty bad. By using <code>std::swap</code>
+instead of assignment, we can get by with only using move constructors and don’t need to allocate
+memory.</p>
+<p>Again, this is why I prefer POD structures and C operations to C++. There are a lot of performance
+traps you can fall into in C++ if you don’t know exactly what is going on behind the scene. In C,
+the swap-erase operation would just be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">a.data[i] <span style="color:#f92672">=</span> a.data[<span style="color:#f92672">--</span>a.n];
+</code></pre></div><p>Using swap-and-pop keeps the objects tightly packed. To allocate a new object, we just tuck it on to
+the end of the array.</p>
+<p>In contrast, if we use the “with holes” approach, when we allocate a new object we first want to
+check if there are any “holes” we can reuse. We only want to grow the array if there are no “holes”
+available. Otherwise, the array would grow indefinitely, as objects are deleted and created.</p>
+<p>We could use a separate <code>std::vector&lt;uint32_t&gt;</code> to keep track of the positions of all the holes, but
+there is a better approach that doesn’t require any additional memory.</p>
+<p>Since the object data in the “holes” isn’t used for anything we can repurpose it to hold a pointer
+to the next free hole. All the holes in the array thus form a <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Linked_list#Singly_linked_lists">singly linked
+list</a>, and we can add and remove
+items from this list as needed.</p>
+<p>This kind of data structure, where we repurpose the unused memory to link the free items together is
+usually called a <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Free_list">free list</a>.</p>
+<p>In a traditional linked list, a special <em>list header item</em> points to the first node in the list and
+then the last item in the list points to NULL, indicating the end of the list. I prefer using a
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Linked_list#Circularly_linked_list">circularly linked list</a> instead,
+where the header is just a special list item  and the last item in the list points back to the
+header item:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Traditional and cyclic linked lists." src="../../images/dsp1-linked-lists.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Traditional and cyclic linked lists.</h4>
+    </figcaption>
+  </figure>
+<p>The advantage of this approach is that the code becomes a lot simpler with fewer special cases for
+the start and the end of the list.</p>
+<p>Note that if you are using an <code>std::vector</code> for storage of the objects, the pointers to the objects
+will change every time the vector is reallocated. This means you cannot use regular pointers for the
+linked list since the pointers keep changing. To get around this, you can use indices as your
+“pointers” in the linked list, since an index will permanently identify a specific slot, even if the
+array gets reallocated. I will talk a bit more about reallocation in the next section.</p>
+<p>We can make room for the special list header item, by always storing it in slot 0 of the array.</p>
+<p>With this, the code might look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// The objects that we want to store:
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {...} object_t;
+
+<span style="color:#75715e">// An item in the free list points to the next one.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    uint32_t next;
+} freelist_item_t;
+
+<span style="color:#75715e">// Each item holds either the object data or the free list pointer.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">union</span> {
+    object_t;
+    freelist_item_t;
+} item_t;
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>item_t<span style="color:#f92672">&gt;</span> items;
+} bulk_data_t;
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete_item</span>(bulk_data_t <span style="color:#f92672">*</span>bd, uint32_t i) {
+    <span style="color:#75715e">// Add to the freelist, which is stored in slot 0.
+</span><span style="color:#75715e"></span>    bd<span style="color:#f92672">-&gt;</span>items[i].next <span style="color:#f92672">=</span> bd<span style="color:#f92672">-&gt;</span>items[<span style="color:#ae81ff">0</span>].next;
+    bd<span style="color:#f92672">-&gt;</span>items[<span style="color:#ae81ff">0</span>].next <span style="color:#f92672">=</span> i;
+}
+
+uint32_t <span style="color:#a6e22e">allocate_slot</span>(bulk_data_t <span style="color:#f92672">*</span>bd) {
+    <span style="color:#66d9ef">const</span> uint32_t slot <span style="color:#f92672">=</span> bd<span style="color:#f92672">-&gt;</span>items[<span style="color:#ae81ff">0</span>].next;
+    bd<span style="color:#f92672">-&gt;</span>items[<span style="color:#ae81ff">0</span>].next <span style="color:#f92672">=</span> bd<span style="color:#f92672">-&gt;</span>items[slot].next;
+    <span style="color:#75715e">// If the freelist is empty, slot will be 0, because the header
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// item will point to itself.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (slot) <span style="color:#66d9ef">return</span> slot;
+    bd<span style="color:#f92672">-&gt;</span>items.resize(bd<span style="color:#f92672">-&gt;</span>items.size() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+    <span style="color:#66d9ef">return</span> bd<span style="color:#f92672">-&gt;</span>items.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+}
+</code></pre></div><p>Which deletion strategy is best? Moving the last item to the empty slot, keeping the array tightly
+packed or keeping all the items in place, creating a “hole” in the array where the deleted item was?</p>
+<p>There are two things to consider:</p>
+<ul>
+<li>
+<p>Iteration is faster over a tightly packed array because we are traversing less memory and don’t
+have to spend any time skipping over empty slots.</p>
+</li>
+<li>
+<p>If we use a tightly packed array, items will move. This means that we cannot use an item’s index
+as a permanent ID to reference items externally. Instead, we have to assign another ID to each
+item and use a lookup table to resolve these permanent IDs to the objects’ current indices. This
+lookup table could be a hash table, or it could be an <code>std::vector</code> with holes, just as we
+described above, which is faster. But either way, we need some extra memory for this table and an
+extra indirection step to lookup IDs.</p>
+</li>
+</ul>
+<p>Which approach is better depends on your circumstances.</p>
+<p>You could argue that keeping the array tightly packed is better because iterating over all elements
+(for a system update) happens more often than resolving external references. On the other hand, you
+could argue that the performance of the “array with holes” is only bad if there are a lot of holes,
+and in game development we usually care about
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Best,_worst_and_average_case">worst-case</a> performance (we want to hit
+that 60 Hz frame rate even when we have a lot of stuff going on). The worst-case performance is when
+we have the maximum number of live objects, and in this case, the array will have <em>no holes</em>. Holes
+are only created when the object count goes down and we delete some of those objects.</p>
+<p>There are also strategies we can use to speed up the processing of arrays with lots of holes. For
+example, we can keep track of the run-length of sequences of holes, so that we can skip over an
+entire sequence of holes at once, instead of skipping element by element. Since this data is only
+needed for “holes” and not for regular items, we can store it together with the free list pointer in
+the unused object memory and it won’t consume any extra memory.</p>
+<p>In my view, unless you need to optimize for fast iteration, you are probably better of using the
+“array with holes” approach. It is more straightforward, doesn’t require any additional lookup
+structures and you can just use an object’s index as its ID, which is nice. Not having to worry
+about objects moving around can also eliminate some potential bugs.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Bulk data deletion strategies." src="../../images/dsp1-bulk-data.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Bulk data deletion strategies.</h4>
+    </figcaption>
+  </figure>
+<h2 id="weak-pointers">Weak Pointers</h2>
+<p>As a side note, it is easy to support “weak pointers” or “handles” to our bulk data objects.</p>
+<p>A <em>weak pointer</em> is a reference to an object that can somehow detect if the object its referencing
+has been deleted. The nice thing about weak pointers is that it lets us delete objects without
+worrying about who might be referencing them. Without weak pointers, to delete an object, we would
+have to find every single reference to it and invalidate it. This can be especially tricky if
+references are held by script code, other computers on the network, etc.</p>
+<p>Remember that we already have an ID to uniquely identify <em>live</em> objects. In the “with holes”
+approach, this ID is simply the index of the item (since items never move). In the “tightly packed”
+case, this the index of the object’s entry in the <em>lookup array</em>.</p>
+<p>The ID by itself cannot be used as a weak pointer, because IDs can be reused. If the item gets
+deleted and a new item gets created in the same slot, there is no way for us to detect it with just
+the ID. To get a weak pointer, we can combine the ID with a <code>generation</code> field:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">uint32_t</span> id;
+    <span style="color:#66d9ef">uint32_t</span> generation;
+} weak_pointer_t;
+</code></pre></div><p>The <code>generation</code> field is a field in the object struct that keeps track of how many times a slot in
+our bulk data array has been reused. (In the “tightly packed” case, it keeps track of how many times
+the slot in the <em>lookup</em> array has been reused.)</p>
+<p>Whenever we delete an item, we tick the generation number in its slot. To test if a weak pointer is
+still valid, we check whether the <code>generation</code> in the weak pointer’s struct matches the generation
+in the slot indicated by the <code>id</code>. If they match, it means the original object we referenced is
+still alive. If not, it means it has been deleted and that the slot is either in the free list or
+that it has been reused for a newer object.</p>
+<p>Note that since the <code>generation</code> field is needed both for “holes” and for actual objects, you should
+make sure that it is stored outside the union:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">uint32_t</span> generation;
+    <span style="color:#66d9ef">union</span> {
+        object_t;
+        freelist_item_t;
+    };
+} item_t;
+</code></pre></div><h2 id="allocation-strategy">Allocation Strategy</h2>
+<p>If you use an <code>std::vector</code> for storing the item data, the entire array of elements will be
+reallocated whenever the array is full and needs to grow. The existing elements are then copied over
+to the new array.</p>
+<p><code>std::vector</code> grows <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Exponential_growth"><em>geometrically</em></a>. That means
+that every time the vector needs to grow, the number of allocated elements is multiplied by some
+factor (typically ×2). Geometric growth is important because it keeps the cost of growing the array
+constant.</p>
+<p>When we reallocate the array, we need to move all elements, which has a cost of <em>O(n)</em>. However, we
+also add room for <em>n</em> more elements, as we double the size. This means that we won’t have to grow
+again until we have pushed <em>n</em> more elements to the array. So the cost of growing is <em>O(n)</em>, but we
+only do it every <em>O(n)</em> th time we push, which means that on average the cost of pushing a single
+element is <em>O(n) / O(n) = O(1)</em>.</p>
+<p>The cost of pushing an element is said to be <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Amortized_analysis">amortized
+constant</a> because if you average it out over
+all the pushes we make, the cost is constant. We shouldn’t forget though, that before we take the
+average, the cost is super spiky. Every <em>O(n)</em> pushes, we get a spike that is <em>O(n)</em> high:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Cost of pushing to std::vector." src="../../images/dsp1-cost-of-pushing.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Cost of pushing to std::vector.</h4>
+    </figcaption>
+  </figure>
+<p>Note what happens if we don’t use geometric growth. Say that instead of doubling the memory when we
+need to grow, we just add 128 more slots. Moving the old data still costs us <em>O(n)</em>, but now we have
+to do it for every 128 elements we add, so the average cost is now: <em>O(n) / O(128) = O(n)</em>. The cost
+of pushing an element to the array is proportional to the size of the array, so as the array gets
+big, pushing will slow to a crawl. Oops!</p>
+<p>The <code>std::vector</code> allocation strategy is a good default and works well in a lot of cases, but there
+are some problems with it:</p>
+<ul>
+<li>
+<p>“Amortized constant” is not great for real-time software. If you have a really large array, say
+with hundreds of millions of items, then growing that array and moving all the elements will cause
+a noticeable frame rate stall. This is problematic for the same reason that garbage collection can
+be problematic in games. It doesn’t matter if the average cost is low if the cost can spike in
+some frames, causing the game to glitch.</p>
+</li>
+<li>
+<p>Similarly, this allocation strategy can waste a lot of memory for large arrays. Suppose we have an
+array of 16M items and we need to push one more. This forces the array to grow to 32M. We now have
+16M items in the array that we don’t use. On a memory-constrained platform, that is a lot of
+wasted memory.</p>
+</li>
+<li>
+<p>Finally, the reallocation will move objects in memory, invalidating all object pointers. This can
+be a source of subtle bugs.</p>
+</li>
+</ul>
+<p>As an example of bugs that can occur when objects are moved, look at this code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Create two items and return the sum of their costs. 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> <span style="color:#a6e22e">f</span>(bulk_data_t <span style="color:#f92672">*</span>bd) {
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">uint32_t</span> slot_1 <span style="color:#f92672">=</span> allocate_slot(bd);
+    item_t <span style="color:#f92672">*</span>item_1 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>bd<span style="color:#f92672">-&gt;</span>items[slot_1];
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">uint32_t</span> slot_2 <span style="color:#f92672">=</span> allocate_slot(bd);
+    item_t <span style="color:#f92672">*</span>item_2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>bd<span style="color:#f92672">-&gt;</span>items[slot_2];
+    <span style="color:#66d9ef">return</span> item_1<span style="color:#f92672">-&gt;</span>cost <span style="color:#f92672">+</span> item_2<span style="color:#f92672">-&gt;</span>cost;
+}
+</code></pre></div><p>The problem here is that <code>allocate_slot()</code> may need to reallocate the array to make room for
+<code>item_2</code>. In this case, <code>item_1</code> will be moved in memory and the <code>item_1</code> pointer will no longer be
+valid. In this specific case, we can fix the issue by moving the assignment of <code>item_1</code>, but bugs
+like this can show up in subtler ways. I’ve personally been bitten by them many times.</p>
+<p>It is also treacherous because the bug will only trigger if the reallocation of the array happens
+exactly when <code>slot_2</code> is allocated. The program may run fine for a long time until something changes
+the allocation pattern and triggers the bug.</p>
+<p>We can fix all these issues by using a different allocation strategy. Here are some options:</p>
+<ul>
+<li>
+<p>We can allocate a sequence of geometric growing buffers: 16, 32, 64, … etc,  but <em>keep</em> the old
+buffers as we are allocating new ones. I.e., the first 16 elements are stored in one buffer, the
+next 32 elements in the next, etc. To keep track of all these buffers we can store pointers to
+them in a separate <code>std::vector</code>.</p>
+</li>
+<li>
+<p>We can allocate a sequence of fixed-size buffers and store as many elements will fit into each
+buffer. Since we can pick the size of the buffers, we can choose them to be a multiple of the page
+size. That way we can allocate the memory directly from virtual memory and avoid going through the
+heap. Note that using a fixed size does not cause <em>O(n)</em> <code>push()</code> performance in this case,
+because we never move the old elements.</p>
+</li>
+<li>
+<p>We can <a href=" ../../post/virtual-memory-tricks/">use the virtual memory system to reserve a huge
+array</a> — enough to hold all the objects we
+will ever need, but then only commit the memory that we are using.</p>
+</li>
+</ul>
+<p>Again, each method has advantages and drawbacks. The last approach is nice because the elements will
+still be contiguous in memory and you only have a single buffer to keep track of, so you won’t need
+any additional vectors or lists to keep track of your buffers. It does require you to set a maximum
+size for your array, but the virtual address space is so big that you can usually set it to
+something ridiculously large without causing problems.</p>
+<p>If you can’t use the virtual memory approach, which is better — fixed size or geometrically growing
+blocks? Using a fixed size will waste memory if your array is really small. For example, with a 16 K
+block size, you will use all those 16 K even if your array only has a single element. On the other
+hand, with geometric growth, you will waste memory if your array is really big since on average the
+last block you allocate will only be 50 % full. For a large array, that can be multiple megabytes.</p>
+<p>Again, in game development, it is more important to optimize for the <em>worst-case,</em> so it doesn’t
+bother me much if the small arrays are wasteful, as long as the big arrays perform well. The total
+memory wasted will never be more than <em>n × 16 K</em>, where <em>n</em> is the number of distinct bulk data
+arrays in the project and I don’t expect us to have that many different arrays (only a few per
+system).</p>
+<p>Fixed-size blocks have two other advantages. First, the calculation to find an element from its
+index is simpler, it is just: <code>blocks\[i / elements_per_block\][i % elements_per_block]</code><em>.</em> Second,
+allocating memory directly from the virtual memory system is more efficient than going through a
+heap allocator, since it avoids fragmentation.</p>
+<p>In conclusion, if you are using the “with holes” approach for storing the data I think it is worth
+also changing the allocation strategy from the <code>std::vector</code> approach, so that objects get permanent
+pointers that never change. Reserving a large array of virtual memory is probably the best approach,
+but if you are not able to do that, using a sequence of fixed-size blocks is the next best option.</p>
+<p>Note that since this approach makes object pointers permanent, we can now use object pointers in
+addition to IDs to reference objects. An advantage of this is that we can access objects directly,
+without having to perform an index lookup. On the other hand, a pointer needs 64 bits of storage
+while an index can usually get by with 32 (4 billion objects is plenty).</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Allocation strategies." src="../../images/dsp1-allocation-strategies.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Allocation strategies.</h4>
+    </figcaption>
+  </figure>
+<h2 id="array-of-structures-vs-structure-of-arrays">Array of Structures vs Structure of Arrays</h2>
+<p>Another important design decision is choosing between an <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/AOS_and_SOA">Array of
+Structures</a> (AoS) or a <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/AOS_and_SOA">Structure of
+Arrays</a> (SoA) approach. The difference is best explained
+with an example. Suppose we have a simple particle system where particles have lifetime, position,
+velocity and color:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">float</span> t;
+    vec3_t pos;
+    vec3_t vel;
+    vec3_t col;
+} particle_t;
+</code></pre></div><p>The normal way of storing this would be to put a number of these structs in an array. That’s why we
+refer to it as an “array of structures”. That is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">uint32_t</span> num_particles;
+particle_t <span style="color:#f92672">*</span>particles;
+</code></pre></div><p>Of course, instead of a regular array, any of the storage strategies discussed above could be used.</p>
+<p>In a Structure of Arrays (SoA) approach, we instead use a separate array for each field of the
+struct:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">uint32_t</span> num_particles;
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>t;
+    vec3_t <span style="color:#f92672">*</span>pos;
+    vec3_t <span style="color:#f92672">*</span>vel;
+    vec3_t <span style="color:#f92672">*</span>col;
+} particles;
+</code></pre></div><p>In fact, we can go even further, since <code>vec3_t</code> is itself a struct:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">uint32_t</span> num_particles;
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>t;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>pos_x;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>pos_y;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>pos_z;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>vel_x;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>vel_y;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>vel_z;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>col_r;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>col_g;
+    <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>col_b;
+} particles;
+</code></pre></div><p>This looks a lot more complicated than our original AoS setup, so why would we ever do this? There
+are two arguments:</p>
+<ul>
+<li>
+<p>Some algorithms only work on a subset of the fields. For example a <code>tick()</code> algorithm might only
+touch the <code>t</code> field. A <code>simulate_physics()</code> algorithm might only touch the <code>pos</code> and <code>vel</code> fields.
+With an SoA layout, only the parts of the structs used need to be loaded into memory. If we are
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Memory_bound_function">memory-bound</a> (which we often are on modern
+processors), this can make a huge difference. For example, the <code>tick()</code> function will touch 1/10th
+as much memory and thus get a ×10 speedup.</p>
+</li>
+<li>
+<p>The SoA layout lets us load data directly into <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/SIMD">SIMD</a>
+registers for processing. This can make a huge difference if we’re
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Floating-point_unit">FPU</a> bound. With
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX</a> we can process up to eight floats
+at a time, giving us a ×8 speedup.</p>
+</li>
+</ul>
+<p>Does this mean that, with both these speedups, <code>tick()</code> will be ×80 faster? No. We only get the
+first ×10 speedup if we’re completely memory-bound, and if we’re completely memory-bound, SIMD can’t
+make us run faster.</p>
+<p>The drawbacks of the SoA approach are:</p>
+<ul>
+<li>
+<p>The code becomes more complicated.</p>
+</li>
+<li>
+<p>More pressure on the allocator, since we need to allocate 10 separate arrays, instead of a single
+one.</p>
+</li>
+<li>
+<p>We can no longer refer to an individual particle with a <code>particle_t *</code> pointer since the fields of
+the particle are now spread out in different places. We have to refer to particles by index.</p>
+</li>
+<li>
+<p>Accessing the fields of a particle from its index requires a lot more computation since we have to
+perform a separate index calculation for each field.</p>
+</li>
+<li>
+<p>When processing a single particle we have to touch data in more places (each array), which <em>might</em>
+be harder on the cache. Whether it’s <em>actually</em> harder depends on the specifics of the memory
+architecture.</p>
+</li>
+</ul>
+<p>As an example of how things might go bad with the cache, consider again the particle struct above,
+and suppose that we have allocated all arrays using the VM (so they are aligned on 4K page
+boundaries). Because of this alignment, all of the 10 fields of a particle’s struct will map to the
+same cache block. If our cache is 8-way <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Cache_placement_policies#Set_Associative_Cache">set associative</a> this
+means that all the fields of the particle can’t be in the cache at the same time. Oops!</p>
+<p>One way of fixing this is to group particles by the SIMD vector size. For example, we can do this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">uint32_t</span> num_particles;
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">float</span> t[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> position_x[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> position_y[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> position_z[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> velocity_x[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> velocity_y[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> velocity_z[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> color_r[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> color_g[<span style="color:#ae81ff">8</span>];
+    <span style="color:#66d9ef">float</span> color_b[<span style="color:#ae81ff">8</span>];
+} eight_particles_t;
+eight_particles_t <span style="color:#f92672">*</span>particles;
+</code></pre></div><p>With this layout, we can still process eight particles at a time with SIMD instructions, but the
+fields of a single particle are close-ish in memory and we don’t get the problem with cache line
+collisions that we had before. It is also nicer to the allocation system since we’re back to having
+a single allocation for the whole particle array.</p>
+<p>The <code>tick()</code> algorithm, in this case, will touch 32 bytes, skip 288 bytes, touch 32 bytes, etc. This
+means we won’t get the full ×10 speedup that we got from having a separate <code>t</code> array. For one, cache
+lines are typically 64 bytes, and since we’re only using half of that we can’t be faster than ×5.
+There might also be some cost associated with the skipping, even if we were processing full cache
+lines, not 100 % sure.</p>
+<p>You can fiddle with the group size to address this. For example, you could change the group size to
+<code>[16]</code> so that a single float field will fill an entire cache line. Or, if you use the block
+allocation method, you could just set the group size to whatever will fit into the block:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="AoS vs SoA." src="../../images/dsp1-aos-vs-soa.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>AoS vs SoA.</h4>
+    </figcaption>
+  </figure>
+<p>When it comes to the deletion strategy, SoA is not a great fit for the “with holes” approach,
+because if we’re using SIMD to process eight elements at the time, there is no way for us to skip
+the holes (unless all eight elements are “holes”).</p>
+<p>Since the SIMD instructions will process the “holes” as well as the real data, we have to make sure
+that the holes contain “safe” data. I.e., we don’t want the operations on the holes to trigger
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Floating-point_arithmetic#Dealing_with_exceptional_cases">floating-point
+exceptions</a>,
+or create <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Denormal_number">denormals</a> that will hurt performance.
+Also, we can’t store the free list <code>next</code> pointer using a union anymore, since the SIMD operations
+would overwrite it. We have to use a proper struct field.</p>
+<p>If we use the “tightly packed” approach, deletion will be a bit more expensive, because we have to
+move each field separately, instead of moving the whole struct at once. But since deletion should be
+a lot rarer than updates, this shouldn’t be a big concern.</p>
+<p>My take on AoS vs SoA is that in most cases, the performance improvements are not worth the extra
+hassle of writing code in this more cumbersome way. I would use a regular AoS as the “default”
+storage format for systems and only switch to SoA for systems that need the speed of SIMD
+calculations, such as culling and particles. In these cases, I would probably also go with tightly
+packed arrays to get the maximum speed.</p>
+<p>Another thing I might consider is to keep the data stored at AoS, but generate temporary SoA data
+for processing by some algorithm. I.e., I would do a single pass over the AoS data and write it out
+into a temporary SoA buffer, crunch that buffer and then write the results back as AoS (if needed).
+Since in this case, I know exactly what algorithm I’m going to run on the data, I can optimize the
+storage format for it.</p>
+<p>Note that this approach works well with the “block storage” approach. You could process one 16 K
+block at a time, convert it into SoA, run your algorithm and write the results back. You only need a
+16 K scratch buffer to hold the temporary data.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>There are advantages and drawbacks to everything, but my default recommendation for storing bulk
+data for a new system would be:</p>
+<blockquote>
+<p>An array of structures, with “holes” and permanent pointers, either allocated as one single large
+VM reservation (if possible) or as an array of fixed size blocks (of 16 K or whatever is a good
+fit for your data).</p>
+</blockquote>
+<p>And for the cases where you need really fast number crunching over the data:</p>
+<blockquote>
+<p>A structure of arrays of tightly packed objects, grouped 8 at a time for SIMD processing and
+allocated as one single large VM reservation, or as an array of fixed-size blocks.</p>
+</blockquote>
+<p>Next time we’ll look at indexing this data.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220313202555/https://twitter.com/share?text=%20Data%20Structures%20Part%201%3a%20Bulk%20Data%20 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-1-bulk-data%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220313202555/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-1-bulk-data%2f&amp;description=%20Data%20Structures%20Part%201%3a%20Bulk%20Data%20" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/syncing-a-data-oriented-ecs/" class="text-decoration-none"><img src="../../images/hierarchical-dirty-flags.jpeg" class="card-img-top" alt="Syncing a data-oriented ECS with a stateful external system"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/syncing-a-data-oriented-ecs/">Syncing a data-oriented ECS with a stateful external system</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-06-08T00:00:00Z">
+                      8 Jun 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>The simulation model in <em>The Machinery</em> is based around a
+<a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Data-oriented_design">data-oriented</a> <a href="http://web.archive.org/web/20220313202555/https://en.wikipedia.org/wiki/Entity_component_system">entity-component-system
+framework (ECS)</a>. In this …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/syncing-a-data-oriented-ecs/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">20 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-machinery-asset-pipeline/">The Machinery Asset Pipeline</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-05-29T00:00:00Z">
+                      29 May 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In my last post, I covered the idea of building data pipelines for buffer and image processing using
+a concept called …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-machinery-asset-pipeline/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/quick-update/">Quick Update</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-05-14T00:00:00Z">
+                      14 May 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hey Friends! This blog is going to be short and sweet. I wanted to give you a quick update since last I posted. We had …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/quick-update/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">2 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/data-structures-part-1-bulk-data/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220313202555/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313202555/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313202555/https://ourmachinery.com/cdn-cgi/l/email-protection#77071e1910371802051a16141f1e1912050e5914181a" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:25:55 Mar 13, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:39 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 70.932
+  exclusion.robots: 0.088
+  exclusion.robots.policy: 0.08
+  cdx.remote: 0.063
+  esindex: 0.009
+  LoadShardBlock: 47.0 (3)
+  PetaboxLoader3.datanode: 58.851 (4)
+  CDXLines.iter: 15.336 (3)
+  load_resource: 109.135
+  PetaboxLoader3.resolve: 55.251
+-->

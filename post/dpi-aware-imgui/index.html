@@ -1,0 +1,674 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content=""/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="DPI-aware IMGUI">
+  <meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="DPI-aware IMGUI · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/dpi-aware-imgui/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-08-07T00:00:00Z"/>
+  
+
+  <title>DPI-aware IMGUI &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220313014325/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220313014325\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220313014325\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "DPI-aware IMGUI",
+    "name": "DPI-aware IMGUI",
+    "wordCount":  1860 ,
+    "timeRequired": "PT9M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/dpi-aware-imgui/",
+    "datePublished": "2017-08-07T00:00Z",
+    "dateModified": "2017-08-07T00:00Z",
+    
+    
+    "description": ""
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220313014325/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>DPI-aware IMGUI</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-08-07T00:00:00Z">
+          Aug 7, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Today’s topic might not be the most exotic, but nonetheless it is something that is very important to get right if you&rsquo;re developing a desktop application in 2017. Failure to do so will make your application look blurry and amateurish, to an extent that it almost feels buggy. We&rsquo;re going to talk about how to play nicely with the Windows UI scaling mechanism to give your users the most bang for the buck out of their new high resolution monitors. This is commonly referred to as making your application DPI-aware.</p>
+<h2 id="goals">Goals</h2>
+<p>So what does it mean that your application is DPI-aware? Basically it boils down to not relying on Windows built-in mechanism to rescale the application for you when the user has set some other UI scale factor than 100%.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="On my Razer Blade 14in (QHD) I run the Windows UI with 150% scaling" src="../../images/windows-ui-scaling.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>On my Razer Blade 14in (QHD) I run the Windows UI with 150% scaling</h4>
+    </figcaption>
+  </figure>
+<p>Instead the application takes over the responsibility of keeping track of the scale factor and doing whatever it feel makes sense to give a pleasant user experience — typically this means delivering a sharp user interface that leverages the full potential of the user’s monitor(s).</p>
+<p>If your UI is based completely on vector graphics then this pretty much comes for free, as authoring of the UI can then happen in a normalized coordinate system and the only thing to keep track of is what resolution to use for your back buffer, based on the currently set UI scale factor in Windows.</p>
+<p>While a lot of stuff in our editor user interface is authored with pure vector graphics we will still have a fair amount of bitmaps, mainly in the form of thumbnails and text. We will soon take a look at how we achieve crispness for those elements, but before we do that we’ll take a quick look at the Windows API for handling DPI-awareness.</p>
+<h2 id="windows-api">Windows API</h2>
+<p>I always fear the days when I have to do something I’m not familiar with that touches any parts of the Windows API because it usually is such a pain to find the relevant and most up to date documentation online. Luckily though, this time I found an excellent tutorial walking through all the relevant APIs: <a href="http://web.archive.org/web/20220313014325/https://msdn.microsoft.com/en-us/library/windows/desktop/dn469266(v=vs.85).aspx">Writing DPI-Aware Desktop and Win32 Applications</a>.</p>
+<p>It turns out implementing solid DPI handling in your own application is actually very simple and straightforward. Especially if you don’t have to worry about any third party component also playing nicely with the API. Sure, parts of the API are a bit weird (especially functions like: <code>SetThreadDpiAwarenessContext()</code> feel wacky — it globally changes the DPI-awareness settings, but only for the calling thread…), but overall it’s rather simple.</p>
+<p>The first thing you want to do is to globally change the DPI-awareness setting for your application, this is done by calling:</p>
+<pre><code>SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
+</code></pre>
+<p>somewhere early in the initialization code of your application. This disables windows built-in coordinate scaling mechanism and hands over the control to you. Note: it is important that you do this before you start doing any windows creation or similar.</p>
+<p>The second thing you need to do is to figure out the UI scale factor for each window you intend to create. The core idea behind Windows UI scaling is that 100% scaling maps to 96 DPI. This is defined in <code>WinUser.h</code>:</p>
+<pre><code>#define USER_DEFAULT_SCREEN_DPI 96
+</code></pre>
+<p>For other UI scale factors (125%, 150%, 175%, 200%, and so on) the DPI is just linearly scaled:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Scale</strong></th>
+<th><strong>DPI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100%</td>
+<td>96</td>
+</tr>
+<tr>
+<td>125%</td>
+<td>120</td>
+</tr>
+<tr>
+<td>150%</td>
+<td>144</td>
+</tr>
+<tr>
+<td>175%</td>
+<td>168</td>
+</tr>
+<tr>
+<td>200%</td>
+<td>192</td>
+</tr>
+</tbody>
+</table>
+<p>As the scale factor can differ per monitor you cannot globally poll the scale factor and be done with it. Instead you need to keep track of the scale factor per window and gracefully handle rescaling if a window moves between monitors with different UI scale factors.</p>
+<p>We’ll start by enumerating all connected monitors using <code>EnumDisplayMonitors()</code> then for each monitor we poll its DPI setting using:</p>
+<pre><code>uint32_t dpi_x, dpi_y;
+GetDpiForMonitor(monitor, MDT_EFFECTIVE_DPI, &amp;dpi_x, &amp;dpi_y);
+</code></pre>
+<p>As you can see the API can return a different DPI for the x- and y-axis, but in practice I can’t see any use cases where that is ever needed so I suspect it’s just the API that is a bit over-engineered. I might very well be wrong about this but until someone points that out we’ll continue to rely on them always returning the same value and just pick <code>dpi_x</code> as the truth. From that we can reconstruct the scale factor:</p>
+<pre><code>float dpi_scale_factor = (float)dpi_x / (float)USER_DEFAULT_SCREEN_DPI;
+</code></pre>
+<p>We now have everything we need to create a window on a certain monitor and associate it with a dpi scale factor.</p>
+<p>To simplify development of the editor UI we’ve decided to work in pixels with the upper left corner being [0,0]. Also, as we don’t want to be bothered with rescaling the pixel coordinates to take into account the per monitor DPI setting, the editor UI works in a virtual coordinate system that maps 1:1 to pixels when the DPI scale factor is 1.0.</p>
+<p>However, our cross platform API for dealing with desktop windows in <em>The Machinery</em> always reasons about pixels for clarity. So for convenience we’ve exposed a small helper method for transforming a rectangle between virtual coordinates and pixel coordinates:</p>
+<pre><code>// Adjust rect behavior:
+enum {
+    // Go from virtual coordinates to pixels
+    TM_OS_WINDOW_ADJUST_RECT_TO_PIXELS,
+    // Go from pixels to virtual coordinates
+    TM_OS_WINDOW_ADJUST_RECT_TO_VIRTUAL,
+};
+
+// Helper function to transform window rectangle between virtual coordinates and pixel coordinates based on a dpi scale factor
+void (*adjust_rect)(int32_t *x, int32_t *y, uint32_t *width, uint32_t *height, float dpi_scale_factor, uint32_t operation); 
+</code></pre>
+<p>We use that to rescale the virtualized size of our editor windows to actual pixels before creating the windows.</p>
+<p>The last thing we need to do is to make sure we catch the windows message <code>WM_DPICHANGED</code> in our message pump.  <code>WM_DPICHANGED</code> is triggered if the center pixel of a window is moved between monitors with different DPI scale factors, or if the user changes the UI scale factor for a monitor while the application is running. If a window straddles between two monitors with different UI scale factors the monitor containing the center pixel of the window dictates the scale factor.</p>
+<p>If triggered we get the DPI of the monitor that the window was moved onto in the hi-word of the <code>WPARAM</code> and can simply calculate a new DPI scale factor using:</p>
+<pre><code>float dpi_scale_factor = (float)HIWORD(wparam) / (float)USER_DEFAULT_SCREEN_DPI;
+</code></pre>
+<p>And then use that to resize and reposition the window accordingly.</p>
+<p>With that we have everything covered on the low-level side of things. Each window can be polled for its DPI scale factor and they are correctly resized if moved to a window with a different scale factor or the user changes the monitor scale factor while the application is running.</p>
+<p>Now let’s move on and take a look at how our IMGUI system utilizes this to make sure the UI renders crisp.</p>
+<h2 id="vector-graphics">Vector graphics</h2>
+<p>All pure vector primitives (i.e., rectangles, lines, splines, clipping rectangles, etc) are simply rescaled from the editor’s virtual coordinates to pixels using the DPI scale factor polled from the window. To maintain our IMGUI system simple and clean we’ve opted to keep it unaware of the whole concept of DPI scaling. Instead we simply apply the DPI scale in the vertex shader used when rendering the UI.</p>
+<h2 id="text-rendering">Text rendering</h2>
+<p>For text rendering we use bitmap font atlases dynamically generated from TrueType fonts using Sean Barrett’s awesome <code>[stb_truetype.h](https://github.com/nothings/stb/blob/master/stb_truetype.h)</code>. The font size is specified in points and remapped to pixels based on the DPI scale factor of the window and the knowledge that TrueType fonts assume the point size being specified in 72 DPI. The remapping is done as follows:</p>
+<pre><code>static float font_points_to_pixels(float pt, float dpi)
+{
+    return ceilf(pt * dpi / 72.f);
+}
+</code></pre>
+<p>While I’m not a 100% sure that this is the right way to do the remapping the results looks correct when comparing to other Windows programs.</p>
+<p>We use <a href="http://web.archive.org/web/20220313014325/https://github.com/nothings/stb/tree/master/tests/oversample">2x2 oversampling</a> when generating the font bitmaps and stash all generated bitmaps in a cache where the cache key encodes:</p>
+<ul>
+<li>Which font we use.</li>
+<li>The size of the font in points.</li>
+<li>View DPI, i.e DPI of the monitor currently displaying the window rendering the text.</li>
+</ul>
+<p>Currently we don’t do any preheating of the font cache as <code>stb_truetype</code> appears to be pretty fast, but that would be simple to add as an optimization if we discover we need it at a later stage.</p>
+<p>Just as with regular vector graphics all DPI awareness scaling happens in the vertex shader. The position of a text field is specified in virtual coordinates, while advancing from one glyph to the next is done in pixels coordinates.</p>
+<p>Below you can find a quality comparison between rendering some text in DPI-aware manner (left) vs without being DPI-aware (right).</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Font comparison" src="../../images/font-comparison.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Font comparison</h4>
+    </figcaption>
+  </figure>
+<h2 id="thumbnails">Thumbnails</h2>
+<p>As we plan to generate all thumbnails needed by the editor using the runtime, we can follow a similar scheme as for text rendering. We simply specify all thumbnail sizes in actual pixels rather than using the “virtualized size” before requesting the runtime to render them. That way they will stay crisp as long as the input source(s) has high enough resolution.</p>
+<h2 id="viewports">Viewports</h2>
+<p>Last thing I’d like to cover is the behavior of 3D scene viewports when displayed in a window that has a DPI scale factor above 1.0. While you obviously would get the best quality by rendering them following the same scheme as for thumbnails (i.e., native resolution) I would argue that the <em>default</em> behavior probably should be to use the “virtualized resolution” of the viewport.</p>
+<p>My main argument behind this is for performance on laptops. There are lots of laptops that ship with small but high resolution displays nowadays. A good example is my 14” Razer Blade with QHD (3840 x 2160) display. Even I, who love keeping my text barely readable (to fit lots of information on screen) can’t run that thing without putting Windows UI scaling to 150%. Keep in mind that most laptops also have weaker GPUs than typical discrete desktop GPUs <em>and</em> that you want your application to be well behaved even when the laptop is running from battery. Rendering at native resolution will put a lot of strain on your laptop.</p>
+<p>But obviously you want to make this configurable through a settings dialog somewhere so the user can change the default behavior if they prefer (maybe even on a per-viewport level).</p>
+<p>Also note that the resolution we are talking about here should be considered the final “back buffer” resolution used when rendering 3D scene viewports. That resolution is typically decoupled from the resolution of the various render targets you would render your 3D geometry / post processing results into.</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>Handling multi-monitor setups with various DPI-scaling per monitor cleanly doesn’t have to be tricky. However, being in control of all components that goes into your editor framework helps tremendously when implementing something like this. I’ve seen people struggling to to get this right when depending on various frameworks for doing editor UI, and I think that is also the main reason that there are still a lot of applications out there that don’t behave well when moving their windows between multiple monitors with different DPI scaling.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220313014325/https://twitter.com/share?text=DPI-aware%20IMGUI - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdpi-aware-imgui%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220313014325/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdpi-aware-imgui%2f&amp;description=DPI-aware%20IMGUI" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/one-draw-call-ui/">One Draw Call UI</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-17T00:00:00Z">
+                      17 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Tobias wrote a nice post about <a href=" ../../post/ui-rendering-using-primitive-buffers/">the low level rendering of our UI</a>. If you haven&rsquo;t checked it out already, go ahead …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/one-draw-call-ui/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">16 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/interviewing-part-1-the-interviewee/">Interviewing Part 1: The Interviewee</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-05T00:00:00Z">
+                      5 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Full disclosure: I can sometimes be a bit of a glutton for punishment.</p>
+<p>This trait has allowed me to endure and sometimes …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/interviewing-part-1-the-interviewee/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/defaulting-to-zero/">Defaulting to Zero</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-06-26T00:00:00Z">
+                      26 Jun 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>The activity of programming is sometimes divided into high-level <em>system architecture</em> and low-level <em>implementation</em> — the …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/defaulting-to-zero/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">6 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/dpi-aware-imgui/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220313014325/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313014325/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220313014325/https://ourmachinery.com/cdn-cgi/l/email-protection#81f1e8efe6c1eef4f3ece0e2e9e8efe4f3f8afe2eeec" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 01:43:25 Mar 13, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:38 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 63.829
+  exclusion.robots: 0.123
+  exclusion.robots.policy: 0.114
+  RedisCDXSource: 1.595
+  esindex: 0.011
+  LoadShardBlock: 40.888 (3)
+  PetaboxLoader3.datanode: 51.915 (4)
+  CDXLines.iter: 17.889 (3)
+  load_resource: 59.68
+  PetaboxLoader3.resolve: 30.634
+-->

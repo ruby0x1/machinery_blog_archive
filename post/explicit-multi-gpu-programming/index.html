@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/multi-gpu-rendering.png"/>
+    
+    <meta name="twitter:title" content="Explicit Multi-GPU Programming">
+    <meta name="twitter:description" content="Details on how we handle multi-GPU programming in The Machinery."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Explicit Multi-GPU Programming · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/explicit-multi-gpu-programming/"/>
+    
+       <meta property="og:image" content="../../images/multi-gpu-rendering.png"/>
+    
+
+    
+    <meta property="og:description" content="Details on how we handle multi-GPU programming in The Machinery."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2018-01-22T00:00:00Z"/>
+
+    
+    
+
+    <title>Explicit Multi-GPU Programming &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="Details on how we handle multi-GPU programming in The Machinery."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.1.12"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20201112002739cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.37.1"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20201112002739/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Explicit Multi-GPU Programming,
+    "name": Explicit Multi-GPU Programming,
+    "wordCount": 2122,
+    "timeRequired": "PT10M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://ourmachinery.com/post/explicit-multi-gpu-programming/,
+    "datePublished": 2018-01-22T00:00Z,
+    "dateModified": 2018-01-22T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://ourmachinery.com/multi-gpu-rendering.png,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": ,
+    "description": Details on how we handle multi-GPU programming in The Machinery.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://ourmachinery.com/post/explicit-multi-gpu-programming/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20201112002739/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="../../js/login.js?v=1.0.8"></script>
+
+ <div class="site-wrapper">
+    <header class="site-header">
+        <nav class="site-header-nav clearfix">
+          
+          <a class="our-machinery-logo" href="../../"><img src="../../images/full-logo.png"></a>
+
+          <div id="menu-bar">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/sign-up.html">Sign Up</a>
+            <a class="dropdown-icon menu-option-hamburger" onclick="toggleHamburgerMenu()">&#9776;</a>
+            <a class="dropdown-icon menu-option-user" onclick="toggleUserMenu()"><img class="user-icon" src="../../images/user.png"/></a>
+          </div>
+
+          <div class="dropdown-menu" id="hamburger-menu">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/sign-up.html">Sign Up</a>
+          </div>
+         
+          <div class="dropdown-menu" id="user-menu">
+            <a href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/profile.html">Profile</a>
+            <a href="index.html" onclick="signOut(); return false;">Sign Out</a>
+          </div>
+        </nav>
+    </header>
+
+
+<script>
+
+function toggleDisplay(item, visibleDisplayStyle) {
+  item.style.display = item.style.display != visibleDisplayStyle ? visibleDisplayStyle : "none";
+}
+
+
+function toggleHamburgerMenu() {
+  document.getElementById("user-menu").style.display = "none";
+  toggleDisplay(document.getElementById("hamburger-menu"), "block");
+}
+
+
+function toggleUserMenu() {
+  document.getElementById("hamburger-menu").style.display = "none";
+  toggleDisplay(document.getElementById("user-menu"), "block");
+}
+
+
+window.onclick = function(event) {
+  let e = event.target;
+  let hitMenu = false;
+  while (e && e.classList && !hitMenu) {
+    if (e.classList.contains("dropdown-menu") || e.classList.contains("dropdown-icon"))
+      hitMenu = true;
+    e = e.parentNode;
+  }
+  if (!hitMenu) {
+    document.getElementById("user-menu").style.display = "none";
+    document.getElementById("hamburger-menu").style.display = "none";
+  }
+}
+
+initLogin();
+</script>
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Explicit Multi-GPU Programming</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2018-01-22T00:00:00Z">
+            Jan 22, 2018
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>I’ve touched on today’s topic a few times before, but so far not dived into any actual details. However, since I’ve recently spent some time fleshing out and verifying that our APIs for dealing with explicit multi-GPU targeting actually work in practice, I thought it would be nice to do just that.</p>
+
+<p></p>
+
+<h2 id="background">Background</h2>
+
+<p>Taking advantage of multiple GPUs in the same system is something that typically hasn’t been highly prioritized by the games industry. Probably because the install base of multi-GPU enabled consumer PCs hasn’t been that great, but also because graphics APIs prior to DX12 and Vulkan didn’t expose any way to explicitly reason about and control multiple GPUs. Instead game developers had to rely on Nvidia and AMD to patch up their drivers to enable <a href="http://web.archive.org/web/20201112002739/https://www.geforce.com/hardware/technology/sli">SLI</a> and <a href="http://web.archive.org/web/20201112002739/https://www.amd.com/en/technologies/crossfire">CrossFire</a> “profiles” for the game in question.</p>
+
+<p>The primary focus for IHVs is usually to achieve positive framerate scaling, and the standard go-to solution has been the same for over ten years, relying on a technique that goes under the name <a href="http://web.archive.org/web/20201112002739/https://en.wikipedia.org/wiki/Alternate_frame_rendering">Alternate Frame Rendering (AFR)</a>.  AFR in a 2-GPU system basically means that GPU 0 renders even frames while GPU 1 renders odd frames. Historically achieving good AFR scaling hasn’t been very hard as most games had very little frame to frame interdependencies, but with the increasing popularity of rendering techniques relying on temporal reprojection, together with the introduction of UHD/4K resolutions things have become “a bit” more complicated. This is due to the increased GPU to GPU memory shuffling and the fact that most history buffers used for temporal reprojection has tendency to not be available until very late in the frame. I’m not sure what the latest tricks are to combat this problem, and to be honest I don’t really care too much about it either. I’m more focused on the future.</p>
+
+<p>With the introduction of explicit multi-GPU control in DX12 and Vulkan (well, not really in Vulkan yet&hellip; but almost) the application developer becomes in control of directing and scheduling work across multiple GPUs. This opens the door for doing more exotic and application specific multi-GPU optimizations than AFR. And while I’m sure the games industry will come up with new strategies that behaves well on typical gaming hardware rigs, we are also interested in reaching outside the games industry and want to provide flexibility beyond that.</p>
+
+<p>For other industries the strategies for how to best take advantage of multi-GPU capable systems starts to differ. E.g. increased framerate might not always be the main objective, it might just as well be increasing visual fidelity, or rendering different views into multiple high-resolution screens. And while games typically don’t have to care about scaling to more than 2 GPUs (or maybe 4 in the extreme case), it is not uncommon to see rigs with 8 GPUs in other industries.</p>
+
+<p>So in <em>The Machinery</em> one of our goals has been to provide a rendering API that has multi-GPU awareness as a first-class citizen.</p>
+
+<p>In this post I will try to give you an overview of how I’ve structured that in the low-level rendering APIs, but it’s not unlikely that I will follow up with some more high-level thoughts on the subject in a later post.</p>
+
+<h2 id="render-backends-devices">Render Backends &amp; Devices</h2>
+
+<p>A Render Backend is responsible for translating our graphics API agnostic command buffers to actual graphics API calls (e.g Vulkan, DX12, Metal). Adding support for a new graphics API basically means writing a new plugin that implements the <code>tm_renderer_backend_i</code> interface. I’ve covered the high-level aspects of this API in <a href=" ../../post/a-modern-rendering-architecture/">“A Modern Rendering Architecture”</a> so I won’t go through that again, instead I’ll focus on how to direct work to be executed on one or many GPUs using this API.</p>
+
+<p>A render backend can have one or many devices active simultaneously, with each device wrapping one or many GPUs. Each GPU in a device gets a unique bit in a 32 bit bit-mask we call the <code>device_affinity_mask</code>. A device that wraps *n-*number of GPUs will return a <code>device_affinity_mask</code> that has <em>n</em>-number of consecutive bits set.</p>
+
+<p>There are some terminology differences between DX12 and Vulkan that might be worth mentioning before moving on. In DX12 a <code>ID3D12Device</code> is created from an enumerated “Adapter”, an Adapter that wraps multiple GPUs is called a <a href="http://web.archive.org/web/20201112002739/https://msdn.microsoft.com/en-us/library/windows/desktop/dn933253(v=vs.85).aspx">Multi-Adapter</a> or a “linked node adapter”.
+In Vulkan a GPU is referred to as a “Physical Device” and a <code>VkDevice</code> that wraps multiple physical devices is called a <a href="http://web.archive.org/web/20201112002739/https://www.khronos.org/registry/vulkan/specs/1.0-extensions/html/vkspec.html#VK_KHX_device_group_creation">Device Group</a>.</p>
+
+<p>Both DX12 and Vulkan use a bit-mask to direct commands to one or many GPUs in a device, this is identical to our <code>device_affinity_mask</code> concept except that our bit-mask also has the ability to address multiple devices in a backend.</p>
+
+<p>Here’s some pseudo code that hopefully will clear up what I mean by that:</p>
+
+<pre><code>// integrated_gpu and device_group_gpu0_gpu1 are assumed to come from some kind of device enumeration code.
+wanted_devices[] = { integrated_gpu, device_group_gpu0_gpu1}
+uint32_t device_affinities[2];
+
+create_devices(2, wanted_devices, device_affinities);
+
+// If create_devices() succeeds: 
+// device_affinities[0] = 0b1
+// device_affinities[1] = 0b110
+
+// To create a device affinity mask for broadcasting to all GPUs in all devices simply or them together (0b111):
+uint32_t device_affinity_mask_all = device_affinities[0] | device_affinities[1];
+</code></pre>
+
+<p>So now when we have the concept of the <code>device_affinity_mask</code> for addressing individual GPUs within multiple devices sorted out, let’s take a look at what this means for our API for creating, updating and destroying resources — <code>tm_renderer_resource_command_buffer_api</code>.</p>
+
+<h2 id="resource-management">Resource Management</h2>
+
+<p>The <code>tm_renderer_resource_command_buffer_api</code> is used to create, update and destroy backend resources. At the time of writing we have a total of six different types of backend resources: buffers, images, shaders, samplers, “queue fences” and <a href=" ../../post/vulkan-descriptor-sets-management/">“resource binders”</a>. Most of them behave fairly similar with respect to the <code>device_affinity_mask</code> so I won’t cover all of them in detail, but let’s take a look at what they have in common.</p>
+
+<p><strong>Creation</strong></p>
+
+<p>The basic idea is that all <code>create_()</code> functions takes a <code>device_affinity_mask</code> as argument. Only the devices who’s bit has been set in the mask will create the resource in question.</p>
+
+<p>When creating a buffer or an image resource in a “device group“ (a device wrapping multiple GPUs) the <code>device_affinity_mask</code> must either address all the GPUs in the device or just one. In the case where a resource is only created for one GPU in the group, it will only allocate local memory for the resource on that specific GPU.</p>
+
+<p><strong>Updating</strong></p>
+
+<p>All <code>update_()</code> functions used for updating the contents within a resource also takes a <code>device_affinity_mask</code> as argument. This makes it possible to let the contents of a resource diverge between GPUs. This can be really useful when doing certain types of parallel rendering across multiple GPUs, e.g in VR where you might want to render the view from the left eye on GPU0 simultaneously as you render the view of the right eye on GPU1.</p>
+
+<p>As for resizing of buffers and images I’ve decided to not allow the sizes to diverge across different devices and GPUs. I thought about it and reached the conclusion that it will become too mind-boggling to keep track of, both for the user of the API, and for the person implementing new backends. At the moment I also don’t see any real use cases where it would be needed.</p>
+
+<h2 id="scheduling-execution-and-synchronization">Scheduling, Execution and Synchronization</h2>
+
+<p>With resource creation and updating covered, it’s time to look at how we target execution of graphics, compute and transfer commands to happen on specific queues of specific GPUs.</p>
+
+<p>It’s not enough to only target specific GPUs, we also have different queues within each GPU that runs in parallel. There are three types of different queues: Graphics, Compute and Transfer (or Copy) queues. The number of queues on a GPU differ depending on hardware. With today’s hardware there is never more than one Graphics queue per GPU, but there can be any number of Compute and Transfer queues.</p>
+
+<p>Here’s a quick sketch of what we are dealing with (reflecting the hypothetical device creation pseudo code from the example above):</p>
+
+
+<figure>
+    
+        <img src="../../images/multi-gpu-rendering.png"/>
+    
+    
+    <figcaption>
+        <h4>Dispatching commands to GPUS.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>On the left in the image above, the worker threads in the application are filling command buffers using the <code>tm_renderer_command_buffer_api</code>. Scheduling (i.e ordering) of the commands in these buffers is handled through the 64-bit sort key that was covered in my post about <a href=" ../../post/simple-parallel-rendering/">“Simple Parallel Rendering”</a>.</p>
+
+<p>When all command buffers (that have some kind of ordering interdependencies between them) are filled, they are submitted to the Render Backend. The Render Backend then translates the commands in the these buffers into graphics API calls, i.e it builds new graphics API specific command buffers that get submitted for execution on the various queues of the GPUs.</p>
+
+<p>For this to work in practice we need two things,</p>
+
+<ol>
+<li>To be able to direct commands to target a specific queue within one or multiple GPUs.</li>
+<li>To be able to synchronize queues and GPUs with each other.</li>
+</ol>
+
+<p><strong>Directing Commands</strong></p>
+
+<p>In <code>tm_renderer_command_buffer_api</code> there are two functions for directing commands:</p>
+
+<pre><code>void (*bind_render_pass)(struct tm_renderer_command_buffer_o *inst, uint64_t sort_key, const struct tm_renderer_render_pass_bind_t *render_pass, uint32_t device_affinity_mask);
+</code></pre>
+
+<p>and</p>
+
+<pre><code>void (*bind_queue)(struct tm_renderer_command_buffer_o *inst, uint64_t sort_key, const struct tm_renderer_queue_bind_t *queue_bind, uint32_t device_affinity_mask);
+</code></pre>
+
+<p>Both functions takes a <code>device_affinity_mask</code> as argument, and similar to the <code>create_()</code> functions in the <code>tm_renderer_resource_command_buffer_api</code> it is used to specify which devices and GPUs that should be targeted. There’s one distinct difference though, when binding a render pass or queue we are also implicitly entering a “broadcast scope”, where all of the following commands will be directed according to the last bound <code>device_affinity_mask</code>.</p>
+
+<p><code>bind_render_pass()</code> is used for binding a set of render targets and will implicitly target the Graphics queue.</p>
+
+<p><code>bind_queue()</code> is used for directing non-draw commands to target the Graphics, Compute- or Transfer queues:</p>
+
+<pre><code>// Command for switching execution to another command queue.
+typedef struct tm_renderer_queue_bind_t
+{
+    // One of the `tm_renderer_queue_*` enums.
+    uint8_t queue_family;
+
+    // 0--maximum value returned from `tm_renderer_backend_i::num_command_queues`.
+    uint8_t queue_index;
+
+    // Scheduling information, describes queue synchronization as well as
+    // broadcasting to multiple devices.
+    tm_renderer_scheduling_t scheduling;
+} tm_renderer_queue_bind_t;
+</code></pre>
+
+<p><code>queue_family</code> specifies the queue family: Graphics, Compute or Transfer, and <code>queue_index</code> specifies which queue within the family that should consume the commands.</p>
+
+<p>That’s all we need for explicitly directing commands to a specific queue to be executed by one or multiple GPUs.</p>
+
+<p><strong>Synchronization</strong></p>
+
+<p>The last missing piece to the puzzle is some way to synchronize between queues and GPUs. For that we use a resource that, in lack of a better name, I have dubbed a “queue-fence”. In Vulkan a queue-fence maps to a <code>VkSemaphore</code>, and in DX12 it would map to a <code>ID3D12Fence</code>.</p>
+
+<p>At the moment queue-fences only support synchronization within the same device. Copying data between two different devices requires reading back the resource data from the source device to main memory and then use that to update the resource on the destination device. This might not sound very useful in practice but depending on your latency requirements it might not be too bad. We support asynchronous read backs of both buffers and images so there’s no need for stalling.</p>
+
+<p>Within the same device a queue-fence can be used both for synchronizing different queues with each other as well as synchronizing between GPUs within a device group.</p>
+
+<p>In both <code>tm_renderer_render_pass_bind_t</code> and <code>tm_renderer_queue_bind_t</code> there’s a struct called <code>tm_renderer_scheduling_t</code> which looks like this:</p>
+
+<pre><code>typedef struct tm_renderer_scheduling_t
+{
+    // Resource handles for queue-fences to wait on before starting command
+    // (optional).
+    uint32_t wait_queue_fences[TM_RENDERER_MAX_QUEUE_FENCES];
+    uint32_t num_wait_fences;
+
+    // Resource handle for queue-fence to signal when command is done (optional).
+    uint32_t signal_queue_fence;
+
+    // Device affinity mask identifying the GPU that will be signalling the
+    // queue-fence.
+    uint32_t signal_device_affinity_mask;
+} tm_renderer_scheduling_t;
+</code></pre>
+
+<p>This is hopefully fairly self-explanatory, the idea is rather simple. The command queue on the executing GPU(s) will be blocked until all queue-fence resources referenced in <code>wait_queue_fences</code> have been signaled.</p>
+
+<p>If <code>signal_queue_fence</code> is specified it will be signaled by the GPU referenced in <code>signal_device_affinity_mask</code> (which must reference <em>a single</em> GPU within the same device group). The signal will trigger as soon as the currently bound render pass or queue has completed all of its work.</p>
+
+<h2 id="wrapping-up">Wrapping up</h2>
+
+<p>I think that covers most of how our low-level rendering API works with respect to multiple devices, GPUs and command queues.</p>
+
+<p>For those of you who have some experience with “asynchronous compute” (or in other ways taking advantage of multiple GPU command queues), this shouldn’t feel too hard or weird. For those of you who hasn’t, this might feel a bit overwhelming and rather hard to get grip of at a first glance. And in a way it is, especially when you get down to the nitty-gritty details. Our ambition though is to try to make it as easy as possible to take advantage of multi-GPU systems in <em>The Machinery,</em> and while we realize that this might not be a high priority for today’s game developers, there are other industries where this is becoming super-important.</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+    
+
+
+<section class="author">
+  <h4><a href="../../">Tobias Persson</a></h4>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20201112002739/https://twitter.com/share?text=Explicit%20Multi-GPU%20Programming - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fexplicit-multi-gpu-programming%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20201112002739/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fexplicit-multi-gpu-programming%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20201112002739/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fexplicit-multi-gpu-programming%2f&amp;description=Explicit%20Multi-GPU%20Programming" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+</section>
+
+
+
+  </footer>
+
+  <br clear="all"/>
+
+  
+
+
+
+
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2020</section>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201112002739/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201112002739/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201112002739/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201112002739/https://ourmachinery.com/cdn-cgi/l/email-protection#bcccd5d2dbfcd3c9ced1dddfd4d5d2d9cec592dfd3d1" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div> 
+<script data-cfasync="false" src="http://web.archive.org/web/20201112002739js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 00:27:39 Nov 12, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:11 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 175.384
+  exclusion.robots: 0.121
+  exclusion.robots.policy: 0.112
+  cdx.remote: 0.082
+  esindex: 0.011
+  LoadShardBlock: 142.006 (3)
+  PetaboxLoader3.datanode: 147.483 (5)
+  CDXLines.iter: 17.635 (3)
+  load_resource: 117.42
+  PetaboxLoader3.resolve: 37.028
+  loaddict: 72.986
+-->

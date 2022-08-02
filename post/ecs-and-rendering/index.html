@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/ecs-2.png"/>
+    
+    <meta name="twitter:title" content="Entity-Component-Systems and Rendering">
+    <meta name="twitter:description" content="How to efficiently implement rendering in a flexible entity-component system."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Entity-Component-Systems and Rendering · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/ecs-and-rendering/"/>
+    
+       <meta property="og:image" content="../../images/ecs-2.png"/>
+    
+
+    
+    <meta property="og:description" content="How to efficiently implement rendering in a flexible entity-component system."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2018-10-23T00:00:00Z"/>
+
+    
+    
+
+    <title>Entity-Component-Systems and Rendering &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="How to efficiently implement rendering in a flexible entity-component system."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.1.12"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20201109031813cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.37.1"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20201109031813/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Entity-Component-Systems and Rendering,
+    "name": Entity-Component-Systems and Rendering,
+    "wordCount": 1538,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://ourmachinery.com/post/ecs-and-rendering/,
+    "datePublished": 2018-10-23T00:00Z,
+    "dateModified": 2018-10-23T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://ourmachinery.com/ecs-2.png,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": ,
+    "description": How to efficiently implement rendering in a flexible entity-component system.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://ourmachinery.com/post/ecs-and-rendering/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20201109031813/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="../../js/login.js?v=1.0.8"></script>
+
+ <div class="site-wrapper">
+    <header class="site-header">
+        <nav class="site-header-nav clearfix">
+          
+          <a class="our-machinery-logo" href="../../"><img src="../../images/full-logo.png"></a>
+
+          <div id="menu-bar">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/sign-up.html">Sign Up</a>
+            <a class="dropdown-icon menu-option-hamburger" onclick="toggleHamburgerMenu()">&#9776;</a>
+            <a class="dropdown-icon menu-option-user" onclick="toggleUserMenu()"><img class="user-icon" src="../../images/user.png"/></a>
+          </div>
+
+          <div class="dropdown-menu" id="hamburger-menu">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/sign-up.html">Sign Up</a>
+          </div>
+         
+          <div class="dropdown-menu" id="user-menu">
+            <a href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/profile.html">Profile</a>
+            <a href="index.html" onclick="signOut(); return false;">Sign Out</a>
+          </div>
+        </nav>
+    </header>
+
+
+<script>
+
+function toggleDisplay(item, visibleDisplayStyle) {
+  item.style.display = item.style.display != visibleDisplayStyle ? visibleDisplayStyle : "none";
+}
+
+
+function toggleHamburgerMenu() {
+  document.getElementById("user-menu").style.display = "none";
+  toggleDisplay(document.getElementById("hamburger-menu"), "block");
+}
+
+
+function toggleUserMenu() {
+  document.getElementById("hamburger-menu").style.display = "none";
+  toggleDisplay(document.getElementById("user-menu"), "block");
+}
+
+
+window.onclick = function(event) {
+  let e = event.target;
+  let hitMenu = false;
+  while (e && e.classList && !hitMenu) {
+    if (e.classList.contains("dropdown-menu") || e.classList.contains("dropdown-icon"))
+      hitMenu = true;
+    e = e.parentNode;
+  }
+  if (!hitMenu) {
+    document.getElementById("user-menu").style.display = "none";
+    document.getElementById("hamburger-menu").style.display = "none";
+  }
+}
+
+initLogin();
+</script>
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Entity-Component-Systems and Rendering</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2018-10-23T00:00:00Z">
+            Oct 23, 2018
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Scenes in The Machinery are built using an
+<a href=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/">Entity-Component-System</a>
+(ECS), where components are written as plugins. This means that we need some way
+to efficiently feed the renderer from the ECS. In today’s post I will walk you
+through how that works by doing a breakdown of the steps we go through on the
+CPU side to render a frame of The Machinery editor.</p>
+
+<p></p>
+
+<p>This post assumes knowledge about various concepts that I’ve covered in earlier
+blogs posts, so if you haven’t read them I encourage you to do so before
+continuing:</p>
+
+<ul>
+<li><p><a href=" ../../post/a-modern-rendering-architecture/">“A Modern Rendering
+Architecture”</a>
+— Our graphics API abstraction, responsible for generating an intermediate
+representation (IR) that each rendering backend later translates into actual
+graphics API calls.</p></li>
+
+<li><p><a href=" ../../post/high-level-rendering-using-render-graphs/">“High-Level Rendering Using Render
+Graphs”</a>
+— Our system for defining and scheduling what GPU work needs to be done for a
+specific view. I.e., when and how various buffers and render targets are
+populated with things like lighting, shadows, post processing, etc.</p></li>
+
+<li><p><a href=" ../../post/the-machinery-shader-system-part-1/">“The Machinery Shader
+System”</a> (+
+part <a href=" ../../post/the-machinery-shader-system-part-2/">2</a> &amp;
+<a href=" ../../post/the-machinery-shader-system-part-3/">3</a>) — Our
+high-level system for authoring and managing shaders.</p></li>
+
+<li><p><a href=" ../../post/simple-parallel-rendering/">“Simple Parallel
+Rendering”</a> —
+Describes the benefits of completely decoupling GPU frame scheduling from the
+CPU rendering code.</p></li>
+</ul>
+
+<p>Also worth noting before we begin is that our goal is to build technology that
+is highly modular, therefore the ECS in itself is also a plugin, opening up for
+the possibility to roll your own system for modelling scenes if desired. Bear in
+mind though that the editor that we ship together with The Machinery is built
+around our entity component system and a lot of features we develop are exposed
+through it.</p>
+
+<h2 id="feeding-the-renderer">Feeding the renderer</h2>
+
+<p>What does it mean “to feed the renderer” from the ECS? From my point of view
+it’s about coming up with a few simple, but yet powerful and efficient,
+interfaces that make it easy for plugin authors to do stuff like:</p>
+
+<ul>
+<li><p>Introducing new types of <em>renderable</em> objects and have them interact correctly
+with the view-frustum culling system and the <a href=" ../../post/high-level-rendering-using-render-graphs/">Render
+Graph</a>
+(which is responsible for defining how the final rendered image is assembled
+on the GPU). This is done by implementing various callbacks of an interface
+called <code>tm_ci_render_i</code>.</p></li>
+
+<li><p>Introducing new types of <em>auxiliary</em> objects that feed data into the Render
+Graph and <a href=" ../../post/the-machinery-shader-system-part-1/">Shader
+System</a> to
+make the final rendered image beautiful in various ways. A few examples:
+lights, decal projectors, reflection probes, post processing volumes/settings.
+These auxiliary objects may or may not have a location in space. If they do,
+they may or may not want to run through the view frustum culling system. This
+is achieved by implementing various callbacks of an interface called
+<code>tm_ci_shader_i</code>.</p></li>
+
+<li><p>Dynamically extend the running Render Graph with more passes exposed through
+modules defined in a plugin. This is also handled by implementing a callback
+in the <code>tm_ci_shader_i</code> interface.</p></li>
+
+<li><p>Introducing new views to render the “scene” from and feed the result into the
+Render Graph. E.g., rending of shadow maps and reflection probes. This is done
+during the execution of the Render Graph by first extending it with a plugin
+defined module using the <code>tm_ci_shader_i</code> interface. This works because the
+scheduling of the GPU work is completely decoupled from the scheduling of the
+CPU work as described in my post about <a href=" ../../post/simple-parallel-rendering/">“Simple Parallel
+Rendering”</a>.</p></li>
+</ul>
+
+<p>On top of this, we need the code that calls these interfaces to run fast, like
+<em>really</em> fast. We are not talking about dealing with hundreds <em>or</em> thousands of
+these user defined components, we want to be able to handle hundreds <em>of</em>
+thousands of them <em>each</em> frame. Or at least we aim to be able to handle that, if
+the plugin code is well-written and designed for it.</p>
+
+<p>To achieve that we have to be cache friendly and make it easy to go as wide as
+possible across all available worker cores. But at the same time we also want
+our interfaces to be simple to use without having to enforce too strict rules on
+the plugin author. A tricky balance…</p>
+
+<h2 id="frame-breakdown">Frame breakdown</h2>
+
+<p>To explain how we achieve this using the <code>tm_ci_shader_i</code> and <code>tm_ci_render_i</code>
+interfaces mentioned above, let’s do a high-level breakdown of rendering a frame
+in The Machinery editor.</p>
+
+
+<figure>
+    
+        <img src="../../images/ecs-1.jpg"/>
+    
+    
+    <figcaption>
+        <h4>A typical editor frame.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>The rendering of viewports happens in parallel. We start by gathering all
+visible editor tabs that have some form of embedded viewport, then for each
+viewport we launch a job responsible for rendering its contents. Input to the
+viewport rendering job is a <a href=" ../../post/high-level-rendering-using-render-graphs/">Render Graph
+Module</a>,
+the output render target and some camera parameters.</p>
+
+<p>Then for each rendering job we do the following:</p>
+
+<ol>
+<li><p>Extend the Render Graph Module associated with the viewport (main module) for
+any component plugin that implements the
+<code>tm_ci_shader_i::graph_module_inject()</code> callback. This allows the plugin to
+append any number of additional modules to execute as part of the main module
+by injecting them at one of the extension points defined in the main module.</p></li>
+
+<li><p>Create the Render Graph instance from the main module.</p></li>
+
+<li><p>Run view-frustum culling from the camera associated with the viewport (main
+camera) for any component plugins interested in introducing new cullable
+auxiliary objects (lights, reflection probes and similar).</p></li>
+
+<li><p>Execute the <code>tm_ci_shader_i::update()</code> function to let each component plugin
+generate whatever auxiliary data they want and expose the result to the
+Render Graph and/or globally through a <code>tm_shader_system_o</code> (as described in
+<a href=" ../../post/the-machinery-shader-system-part-3/">this
+post</a>). If
+the component plugin requested to be view-frustum culled, then each component
+will get its visibility result in a bit stream passed to the update function.</p></li>
+
+<li><p>Build and execute the Render Graph. At this point any input/output data to
+the Render Graph is known and we can figure out exactly what passes of the
+graph that really need to be executed, how to schedule their work on the
+graphics and compute queues (on one or potentially more GPUs), as well as
+establishing what synchronization points and resource barriers we need.
+During the execution of the render graph more viewers might get generated for
+rendering of things like shadow maps, reflections and similar. These viewers
+are registered to the render graph instance.</p></li>
+
+<li><p>Assemble the final array of scene viewers, the main camera plus any
+additional viewers that were generated during the render graph execution.
+Each viewer has knowledge of:</p>
+
+<ul>
+<li><p>A 64-bit sort key specifying when during the GPU frame the renderable
+objects seen from the viewer should be rendered.</p></li>
+
+<li><p>View dependent data that the shader assigned to the renderable object needs
+to render correctly. Typically this is just the camera settings exposed
+through a
+<a href=" ../../post/the-machinery-shader-system-part-3/">tm_shader_system_o</a>,
+but it can include any other resources as well.</p></li>
+
+<li><p>A 64-bit visibility mask categorizing the viewer. Used for handling user
+defined visibility settings.</p></li>
+
+<li><p>Camera settings for view-frustum culling.</p></li>
+</ul></li>
+
+<li><p>For each component plugin implementing the culling callbacks of a
+<code>tm_ci_render_i</code> we now run view-frustum culling. The view-frustum culling
+runs for all cameras associated with the viewers that we assembled in step 6,
+at once.</p></li>
+
+<li><p>For each component plugin implementing the <code>tm_ci_render_i::render()</code>
+callback we now have everything we need to render all renderable objects
+defined by its components, from all viewers, in a single pass over the
+component data. Similar to how <code>tm_ci_shader_i::update()</code> worked, if the
+component plugin requested to be view-frustum culled (in step 7) each
+component will get its visibility result in a bit stream passed to the render
+function, but since we now might have more than one viewer the visibility
+bit-stream is interleaved, holding one visibility bit per viewer.</p></li>
+</ol>
+
+<p>The final output from the viewport rendering job is a number of resource command
+buffers and command buffers that later gets submitted to the rendering backend
+who’s responsible for translating the commands to graphics API calls.</p>
+
+<p>It’s worth noting that all of the above steps, except 1, 2 and 6 runs in
+parallel for each component plugin (and depending on workload we further split
+and go wide when processing the data):</p>
+
+
+<figure>
+    
+        <img src="../../images/ecs-2.png"/>
+    
+    
+    <figcaption>
+        <h4>Data flow through the renderer.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Once all rendering jobs for the viewports are done we move on and render the
+editor UI for each window and finally present the swap chain.</p>
+
+<p>That’s it. So far, I’m feeling really happy with this architecture as it makes
+it easy to efficiently implement rendering algorithms that traditionally can be
+hard to express in a self-contained way inside a plugin, without having to touch
+“core” rendering systems. My personal pet peeve are algorithms in need of
+somehow rendering the scenes into additional views (like shadows, reflection,
+voxelization, etc) something that has been rather complicated to implement
+efficiently in previous renderers I’ve worked on but now has become super
+trivial.</p>
+
+<p>I also like that on an engine level this architecture has very few predefined
+behaviors and objects. There’s no awareness of things like meshes, lights
+sources, particle systems, terrains, whatnot. All those concepts are built on
+top of the <code>tm_ci_shader_i</code>  and <code>tm_ci_render_i</code> interfaces and its code can be
+completely self-contained and isolated inside plugins.</p>
+
+<p>I’m aware that I have skimmed over a bunch of implementation details with
+respect to the view frustum culling, visibility management, and so on. I did so
+both in the interest of making this post a bit easier to digest, but also
+because a lot of this code is still a bit in flux. In a later post I might
+revisit some of these systems in more detail.</p>
+
+<p>Stay tuned…</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+    
+
+
+<section class="author">
+  <h4><a href="../../">Tobias Persson</a></h4>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20201109031813/https://twitter.com/share?text=Entity-Component-Systems%20and%20Rendering - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fecs-and-rendering%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20201109031813/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fecs-and-rendering%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20201109031813/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fecs-and-rendering%2f&amp;description=Entity-Component-Systems%20and%20Rendering" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+</section>
+
+
+
+  </footer>
+
+  <br clear="all"/>
+
+  
+
+
+
+
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2020</section>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201109031813/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201109031813/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201109031813/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201109031813/https://ourmachinery.com/cdn-cgi/l/email-protection#fa8a93949dba958f88979b999293949f8883d4999597" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div> 
+<script data-cfasync="false" src="http://web.archive.org/web/20201109031813js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 03:18:13 Nov 09, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:57 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 121.731
+  exclusion.robots: 0.145
+  exclusion.robots.policy: 0.132
+  cdx.remote: 0.089
+  esindex: 0.012
+  LoadShardBlock: 53.577 (3)
+  PetaboxLoader3.datanode: 64.919 (5)
+  CDXLines.iter: 18.14 (3)
+  load_resource: 111.897
+  PetaboxLoader3.resolve: 71.87
+  loaddict: 23.015
+-->

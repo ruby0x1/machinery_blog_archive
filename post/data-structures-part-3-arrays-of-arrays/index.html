@@ -1,0 +1,1191 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="This is a post about my stuff."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/ds3-string-interning.jpg"/>
+  
+  <meta name="twitter:title" content="Data Structures Part 3: Arrays of arrays">
+  <meta name="twitter:description" content="This is a post about my stuff."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Data Structures Part 3: Arrays of arrays · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/data-structures-part-3-arrays-of-arrays/"/>
+  
+  <meta property="og:image" content="../../images/ds3-string-interning.jpg"/>
+  
+  
+  <meta property="og:description" content="This is a post about my stuff."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2019-09-18T00:00:00Z"/>
+  
+
+  <title>Data Structures Part 3: Arrays of arrays &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220430023903/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220430023903\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220430023903\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Data Structures Part 3: Arrays of arrays",
+    "name": "Data Structures Part 3: Arrays of arrays",
+    "wordCount":  5883 ,
+    "timeRequired": "PT28M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/data-structures-part-3-arrays-of-arrays/",
+    "datePublished": "2019-09-18T00:00Z",
+    "dateModified": "2019-09-18T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220430023903/https://ourmachinery.com/ds3-string-interning.jpg"
+    },
+    
+    
+    "description": "This is a post about my stuff."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220430023903/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Data Structures Part 3: Arrays of arrays</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2019-09-18T00:00:00Z">
+          Sep 18, 2019
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Welcome to part 3 in this series covering all the data structures you <em>really</em> need (kind of).</p>
+<ul>
+<li>
+<p>In <a href=" ../../post/data-structures-part-1-bulk-data/">part 1</a>, we saw that the best
+way to store most data is just to use a big old array and that with some tricks we can allocate
+this array so that the objects in it have fixed indices and permanent pointers.</p>
+</li>
+<li>
+<p>In <a href=" ../../post/data-structures-part-2-indices/">part 2</a>, we saw how to fix the
+most glaring problem with these arrays — that it is kind of expensive to find things in them — by
+adding search indices that let us quickly find any subset of objects that we are interested in.</p>
+</li>
+</ul>
+<p>In this part, we will tackle a final problem. When we created our bulk data arrays, we assumed that
+all objects were fixed size so that we could fit their data into a single struct and store the bulk
+data as just an array of such structs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> object_t {
+    ...
+};
+uint32_t num_objects;
+<span style="color:#66d9ef">struct</span> object_t <span style="color:#f92672">*</span>objects;
+</code></pre></div><p>But what if we need some fields in the object that are <em>dynamically</em> sized?</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> object_t {
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    uint32_t num_children;
+    object_t <span style="color:#f92672">**</span>children;
+};
+</code></pre></div><p>How can we store the object names and children in a good way?</p>
+<h2 id="capped-size">Capped Size</h2>
+<p>The simplest way of handling dynamically sized objects is to just get rid of the problem. If we set
+a maximum size for our strings and arrays, we’re back to having a fixed size struct, with the string
+and array data stored in the struct itself:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {MAX_NAME_LENGTH <span style="color:#f92672">=</span> <span style="color:#ae81ff">63</span>};
+<span style="color:#66d9ef">enum</span> {MAX_CHILDREN <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>};
+<span style="color:#66d9ef">struct</span> object_t {
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> name[MAX_NAME_LENGTH <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>];
+    uint32_t num_children;
+    object_t <span style="color:#f92672">*</span>children[MAX_CHILDREN];
+};
+</code></pre></div><p>Now we can just make an <code>object_t[]</code> as before and have all the data in there.</p>
+<p>Capping sizes is always a bit scary, because what if we set the cap too low and hit the limit?
+Personally, I feel a little bit dirty every time I do this. I think it’s PTSD from run-ins with some
+really ridiculous size limits, such as <code>MAX_PATH = 260</code> in Windows.</p>
+<p>But there are a lot of situations where having a maximum size is fine. There is a big difference
+between locking a maximum size down in a file format or an OS API, where it might live for 50 years,
+causing headaches to generations of programmers, versus just having it in your runtime, where you
+can change it whenever you want without worrying about compatibility with old software. You can
+start with a fixed size and change to something more advanced when you need to. Code doesn’t have to
+be “future-proof” if it is easy for future you to change it.</p>
+<p>Also, if you are writing code for just one particular game and not a generic engine, you don’t need
+to support anything beyond what your game needs. If you only support four players, your player
+arrays can all be <code>players[4]</code>. And anything that’s just for internal use, you can limit to whatever
+you find reasonable. For example, object debug names can probably be <code>s[64]</code> without any problems.
+Longer names are too hard to read anyway.</p>
+<p>Also, keep in mind, that even if you don’t specify an explicit maximum size, there is probably a
+practical limit anyway. If you have too many things you will eventually overflow an <code>uint32_t</code>, run
+out of memory or drive the FPS down to the point where your app is unusable.</p>
+<p>Judicious use of maximum sizes can simplify the code a lot. Of course, it doesn’t always work:</p>
+<ul>
+<li>
+<p>Some things can get arbitrarily large.</p>
+</li>
+<li>
+<p>Some things have a limit, but the limit is so high that you will waste a lot of memory by using a
+fixed-size array.</p>
+</li>
+<li>
+<p>Some things have a small limit, but enforcing the limit is more trouble than its worth.</p>
+</li>
+</ul>
+<p>As an example of the last case, consider your application’s window system. You could probably limit
+the number of windows to 128 because no sane user will want to deal with more than 128 open windows.
+(Note that this <em>does not</em> apply to tabs — many users are perfectly happy having a couple of
+thousand Chrome tabs open.) Using a fixed size of 128 won’t waste much memory either since you only
+need one global window array.</p>
+<p><em>But…</em> if you decide to set a limit of 128 windows, you have to decide what to do if the user tries
+to open more than that. You probably don’t want to <em>crash</em>. Do you beep? Show an error message? What
+if the window you can’t open is the window that was supposed to show the error message? Now you have
+this extra code path in your code, that you have to write, maintain and test. An extra place where
+things can go wrong. It might be easier to just support an “unlimited” number of windows and let the
+users dig their own graves.</p>
+<h2 id="heap-allocation">Heap allocation</h2>
+<p>If we can’t use a fixed-size array, the next simplest thing is to just use an off-the-shelf STL
+object, such as <code>std::string</code> or <code>std::vector</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> object_t {
+    std<span style="color:#f92672">::</span>string name;
+    std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>object_t <span style="color:#f92672">*&gt;</span> children;
+};
+</code></pre></div><p>What happens when we use one of these types? STL will allocate data for the <code>string</code> and the
+<code>vector</code> on the system heap. Each <code>string</code> and <code>vector</code> gets its own individual little memory
+allocation, so we have a situation that looks something like this:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="STL memory layout." src="../../images/ds3-stl-memory.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>STL memory layout.</h4>
+    </figcaption>
+  </figure>
+<p>If we have an <code>std::vector&lt;object_t&gt;</code> with 10 000 items in it, we will use <em>one</em> memory allocation
+for the <code>object_t *</code> array, but an <em>additional</em> 20 000 allocations for the names and children of
+those objects.</p>
+<p>This seems a bit wasteful, but computers are really fast, so this approach can work well in many
+cases. We have a fair number of arrays like this in <em>The Machinery</em> &ndash; not for strings (more about
+that later), but certainly for vectors. The only difference is that instead of using an
+<code>std::vector</code> we use a <a href=" ../../post/minimalist-container-library-in-c-part-1/">stretchy
+buffer</a>. Why? Well, for
+one, we program in C rather than C++ so we can’t use STL. But even if we used C++ we might still
+prefer this approach, because C++ classes can be tricky to use with the bulk data allocation
+approaches I described in <a href=" ../../post/data-structures-part-1-bulk-data/">part 1</a>.</p>
+<p>First, remember how we stored the objects in an “array with holes” by making the stored data type a
+union of the original data we wanted to store and a free list pointer for keeping track of the free
+items:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">union</span> {
+    object_t;
+    freelist_item_t;
+} item_t;
+</code></pre></div><p>This doesn’t work with <code>std::vector</code>, because objects with non-trivial copy constructors can’t be
+stored in unions. To make this work with STL objects we either have to use extra memory to store the
+freelist pointers with the object itself, or use something like <code>std::variant</code> (shudder).</p>
+<p>Second, remember our nice trick of just reserving a large chunk of VM memory to hold our bulk data
+array. This works well with our C data structures, because they are zero-initialized and the memory
+we get from the VM is always cleared to zero (since otherwise, the VM would leak information between
+processes). So, with C data structures, we can just use the memory directly, whereas with C++ we
+would have to placement-new our strings and vectors into the memory.</p>
+<p>In other words, in this use case, using the STL data types adds a lot of extra bookkeeping for
+limited benefits.</p>
+<p>As I said above, heap allocation can certainly be “good enough” in a lot of circumstances, but if
+you want to store a really large number of objects, it has some drawbacks that I’ve already talked
+about earlier in this series:</p>
+<ul>
+<li>
+<p>Making thousands of small allocations is time-consuming and can waste a substantial amount of
+memory on fragmentation, allocation headers, etc.</p>
+</li>
+<li>
+<p>Since the arrays are allocated individually on the heap, they might be far apart in memory,
+resulting in cache misses when we process the objects.</p>
+</li>
+<li>
+<p>With lots and lots of small allocations, it is hard to get a good picture of how much memory the
+system is using and what the access patterns are.</p>
+</li>
+</ul>
+<p>So let’s look at alternatives!</p>
+<h2 id="private-heap">Private heap</h2>
+<p>One way of avoiding to make lots of <em>small</em> allocations from system memory is to make one <em>big</em>
+allocation and then chop it up ourselves into smaller pieces. Since we’re allocating a big chunk, we
+can request it directly from the VM and bypass the system heap allocator completely:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Private heap." src="../../images/ds3-private-heap.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Private heap.</h4>
+    </figcaption>
+  </figure>
+<p>Essentially, what we’re doing here is implementing our own memory allocator. Getting chunks of
+memory from the VM and chopping them up into chunks to fulfill <code>malloc</code> and <code>new</code> requests is just
+what a memory allocator does.</p>
+<p>Why would we ever want to do this, since we already have a perfectly good system memory allocator?</p>
+<p>Well, to begin with, I think it is a really useful exercise. Writing your own memory allocator makes
+you think about how memory really works — it’s just bytes all the way down, and any “objects” you
+see are just your own mental projections. It may seem daunting and scary at first, but it’s not as
+hard as you might think. Try it!</p>
+<p>But OK, personal development aside, why would we want to write our own memory allocator? Certainly,
+the system allocator has been written by “experts” and there is nothing we mere mortals could ever
+do to improve on it.</p>
+<p>Actually, you’d be surprised. It used to be, not too long ago, a lot of systems shipped with really
+crappy system allocators. By switching out the standard allocator for something like
+<a href="http://web.archive.org/web/20220430023903/http://gee.cs.oswego.edu/dl/html/malloc.html">dlmalloc</a>, you could give your game a nice 5-10 %
+performance boost. (Provided your game did tons of small memory allocations in the update loop,
+which of course you should <em>not</em> be doing. That’s what this whole series is about, remember?) I
+think that’s all fixed these days, though, and everything ships with something that is at least
+comparable to dlmalloc in terms of performance.</p>
+<p>But it’s still possible to do better! How? Well, the standard memory allocator has to deal with a
+lot of different situations. Different applications have different memory patterns and since the
+standard allocator can never know exactly what’s going to be thrown at it, it has to do something
+that works kind-of-okay in a lot of different situations. And it’s really hard to write something
+that works good for everything, so you can usually come up with some adversarial worst-case input
+that makes the allocator completely crap out and go O(n²).</p>
+<p>In contrast, if you are writing an allocator just for your specific application — or even better,
+for <em>one</em> <em>specific system</em> in your application — you have a lot more information. Your allocator
+doesn’t have to work well for any weird data that might be thrown at it, it just has to work well
+for the allocation patterns of <em>that</em> system. That is a lot simpler, and a lot more well-defined
+problem to solve. It is also a lot easier to test — you can just feed the allocator the data you
+expect and see how well it performs. So you can easily check if you manage to do better than the
+system allocator or not.</p>
+<p>Just to convince you further, here are some examples of how you can do better than the system
+allocator:</p>
+<ul>
+<li>
+<p>A lot of command-line programs just perform a single task and then exit. They tend to allocate a
+bunch of memory as they are performing the task and then free it all when they exit. These
+programs may actually run significantly faster with an allocator that just <em>never frees</em> the
+memory. Memory leaks aren’t really an issue with these programs, since once they exit, all the
+memory is returned to the system anyway. So doing a lot of bookkeeping in order to reclaim memory
+is not worth it. If memory is never freed we can use a simple <a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Region-based_memory_management">pointer bump
+allocator</a> to allocate it.</p>
+</li>
+<li>
+<p>If you’re not writing a generic allocator, you can change the allocator API. For example, you can
+make your <code>free()</code> function take two arguments — the pointer and the <em>size</em> of the memory block
+that is being freed. This size should always be known by the owner of the memory block, because if
+the owner didn’t know the size, how could they use the memory without causing access violations?
+Forcing the owner to pass the size to <code>free()</code> means that the allocator doesn’t have to remember
+it, which is nice. For example, suppose someone calls <code>malloc()</code> to allocate 4K of memory. With a
+4K page size, <code>malloc()</code> could service this directly from the VM, but where would it store the
+size of the memory block? Either it has to allocate more memory for a preamble that holds the
+size, which means that the allocation no longer fits nicely into a system page, or it has to store
+the size some other way — such as in a hash table. If <code>free()</code> passes the size, <code>malloc()</code> doesn’t
+have to worry about storing it. We actually use this approach for all memory allocations in <em>The
+Machinery</em>.</p>
+</li>
+<li>
+<p>A generic allocator needs to implement synchronization to make sure multiple threads are not
+allocating memory simultaneously. If you are writing your own allocator for a specific system,
+synchronization might already be dealt with by that system, at a higher level, which means you
+don’t have to repeat the effort in the allocator.</p>
+</li>
+</ul>
+<p>So writing your own memory allocator can make things faster. But depending on how simple you are
+able to make it, there can still be a significant overhead from all those allocations. Also, we
+haven’t done anything to solve the problem of fragmentation. Allocating and freeing blocks of
+different sizes will leave holes of different sizes in our memory block, that are hard to reuse.</p>
+<p>Can we do better?</p>
+<h2 id="chunked-allocator">Chunked allocator</h2>
+<p>One way of getting rid of fragmentation is to implement <a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Mark-compact_algorithm">heap
+compaction</a>. I.e., instead of holding pointers
+to objects we hold <em>handles</em> that can be resolved into pointers. This allows us to
+<a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Defragmentation">defragment</a> the heap by moving the memory blocks and
+updating the pointers that the handles resolve to. The main problem with this is that it can be
+really error prone, since you have to make sure to lock and unlock pointers so they don’t get moved
+while you are using them.</p>
+<p>But there is another way. Fragmentation is caused by allocating and freeing memory blocks of
+<em>different sizes</em>. This leaves differently sized holes that we have to try to fill with future
+allocations. If all allocations were <em>the same size</em> we wouldn’t have this problem at all. In fact,
+in this case, we would just have the same situation as we had in the first part of this series — the
+bulk data array. We can just keep all the freed blocks in a free list and when the user wants to
+allocate more memory, we just give her the first block from the free list. Since all the blocks are
+the same size, the block will be the right size.</p>
+<p>Is there a way to make all allocations the same size when all the objects can have a different
+number of children? Yes. What if we make each allocation a fixed-size “chunk” or “block” of children
+— say 16 at a time. If an object needs more than 16 children we can just allocate multiple chunks
+for that object and link them together with pointers.</p>
+<p>Let’s see what it might look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {CHILD_CHUNK_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>};
+
+<span style="color:#66d9ef">struct</span> child_chunk_t {
+    object_t <span style="color:#f92672">*</span>children[CHILD_CHUNK_SIZE];
+    child_chunk_t <span style="color:#f92672">*</span>prev_chunk;
+    child_chunk_t <span style="color:#f92672">*</span>next_chunk;
+};
+
+<span style="color:#66d9ef">struct</span> object_t {
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    uint32_t num_children;
+    child_chunk_t <span style="color:#f92672">*</span>child_chunks;
+};
+
+uint32_t num_child_chunks;
+<span style="color:#66d9ef">struct</span> child_chunk_t <span style="color:#f92672">*</span>child_chunks;
+
+uint32_t num_objects;
+<span style="color:#66d9ef">struct</span> object_t <span style="color:#f92672">*</span>objects;
+</code></pre></div><p>With this approach, both <code>objects</code>  and <code>child_chunks</code> are just bulk data arrays, like the ones we
+encountered in the first part of this series. To find all the children of an object, we follow its
+<code>child_chunks</code> pointer to get to the first chunk of children and then follow the <code>next_chunk</code>
+pointers to get any additional chunks.</p>
+<p>How does this solution perform compared to using an <code>std::vector</code>? The main drawback is that we can
+no longer randomly access objects in constant time with <code>[i]</code>, so if you need that, this is not a
+good solution. Note though, that we can still iterate over all objects in <em>O(n)</em> — same as for the
+<code>std::vector</code>.</p>
+<p>Allocating and freeing a <code>child_chunk_t</code> is very cheap — just a few operations — a lot cheaper than
+if we were using a generic memory allocator. We can also make use of the tricks we used for the bulk
+data — such as allocating memory directly from the VM. It is very easy to see how much memory the
+system is using and what the access patterns are since we only have two allocations that we need to
+worry about — <code>objects</code> and <code>child_chunks</code>.</p>
+<p>We get less memory coherency than we would with an <code>std::vector</code>. Instead of having all items
+continuous in memory, they are only continuous in chunks of <code>CHILD_CHUNK_SIZE</code>. Whenever we follow
+the <code>next_chunk</code> pointer we might get a cache miss. Note though that we have some control of this,
+by using different values for <code>CHILD_CHUNK_SIZE</code>. The higher we set it, the more objects we can
+process at one time before pointer chasing.</p>
+<p>Also note that <em>most of the time</em>, chunks from the same child array will tend to end up next to each
+other since typically the children will be added at the same time, which means they will be
+allocated next to each other in memory (unless they’re allocated from the free list). So this might
+be less of an issue than you think.</p>
+<p>In terms of memory, this solution has no external fragmentation — all the “holes” created when we
+free a <code>child_chunk_t</code> are perfectly sized for the allocation of another <code>child_chunk_t</code>. However,
+we do have internal fragmentation, since we’re always allocating at least <code>CHILD_CHUNK_SIZE</code> items
+in every chunk, even if we need less than that. The larger <code>CHILD_CHUNK_SIZE</code>  is, the more memory
+we lose to internal fragmentation. We also have some overhead from the <code>prev_chunk</code> and <code>next_chunk</code>
+pointers. (We could store them as indices to reduce the overhead.)</p>
+<p>How does the memory use compare to <code>std::vector</code>? It’s a bit tricky to say since there are a lot of
+factors involved. First, will children be added dynamically, so that we need to use <code>push_back()</code>
+and rely on geometric growth to get amortized constant time for adding elements, or, are all
+children known in advance so that we can just <code>resize()</code> the vector to the right size? If it’s the
+former, then the vector will be about 50 % empty on average, which for big vectors will be a lot
+more than the <code>CHILD_CHUNK_SIZE</code>. Second, the <code>vector</code> will have some amount of external
+fragmentation as well as overhead from preambles and postambles. But how much this is depends on the
+implementation details of the allocator and the size of the vector. For example, if the vector is
+small enough to fit in one of the fixed-size allocation pools of the system allocator, it doesn’t
+need a preamble and postamble and will not cause external fragmentation.</p>
+<p>Personally, the main reason I like this approach over using an std::vector is that it’s
+<em>transparent</em>. It is easy to see exactly how much memory is being used and where memory is being
+wasted. We can easily follow the access pattern and see how much pointer-chasing we are doing. This
+transparency makes it easy to discover and fix any performance issues we run into. For example, we
+can play with the <code>CHILD_CHUNK_SIZE</code> or even create two different <code>child_chunk</code> arrays with
+different chunk sizes, to better accommodate both large and small arrays.</p>
+<p>In constrast, the system allocator is essentially a black box. Unless you want to do some really
+deep digging, it’s hard to tell how it works, hard to tell how much memory you are spending on
+headers and fragmentation. It’s hard to even see if you have a problem, and even harder to fix it,
+since that means rewriting the system allocator.</p>
+<p>I always prefer simple transparent system that can be easily hacked and tweaked over complicated
+black boxes.</p>
+<p>What is a good chunk size for the chunked allocator? If we set it too low then we’re jumping around
+in memory a lot and also spending a lot of memory overhead on the <code>prev_chunk</code> and <code>next_chunk</code>
+pointers. If we set it too high, then we’re losing a lot of memory to internal fragmentation.</p>
+<p>I think you shouldn’t go smaller than fitting a <code>child_chunk_t</code> in a cache line. If we use 32-bit
+indices instead of pointers for everything to save space, that means we’re using 4 bytes each for
+the <code>prev</code> and <code>next</code> references and 4 bytes for every object index. So if we use <code>CHILD_CHUNK_SIZE = 14</code> 
+each <code>child_chunk_t</code> will be exactly 64 bytes. I don’t think there are many cases where you
+would want to go &gt;14 elements either. Usually, small arrays are more common than large ones, so a
+higher number would mean a lot of internal fragmentation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {CHILD_CHUNK_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">14</span>};
+
+<span style="color:#66d9ef">struct</span> child_chunk_t {
+    uint32_t child_indices[CHILD_CHUNK_SIZE];
+    uint32_t prev_chunk_index;
+    uint32_t next_chunk_index;
+};
+</code></pre></div><p>It is interesting to note what happens if we let <code>CHILD_CHUNK_SIZE = 1</code>. In this case, we get:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> child_chunk_t {
+    object_t <span style="color:#f92672">*</span>child;
+    child_chunk_t <span style="color:#f92672">*</span>prev_sibling;
+    child_chunk_t <span style="color:#f92672">*</span>next_sibling;
+};
+</code></pre></div><p>I.e., the child chunks just turn into a linked list of siblings. In fact, in this case, we don’t
+really need the <code>child_chunk_t</code> structure at all, we could just let the sibling pointers point
+directly into the <code>object_t *</code> array and get:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> object_t {
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    object_t <span style="color:#f92672">*</span>first_child;
+    object_t <span style="color:#f92672">*</span>prev_sibling;
+    object_t <span style="color:#f92672">*</span>next_sibling;
+};
+</code></pre></div><p>To enumerate all the children of an object stored in this way, we would first follow the
+<code>first_child</code> pointer to get to its first child and then keep following the <code>next_sibling</code> pointers
+to enumerate all the siblings of that child.</p>
+<p>This solution is almost exactly the same as the one we used in part 2 of this series to find all the
+observations with a particular observer.</p>
+<p>So this gives us another way of storing arrays of arrays. Instead of explicitly representing the
+children as an array:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parent</strong></th>
+<th><strong>Children</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ewing</td>
+<td>[Edith, Phelan, Bouvier]</td>
+</tr>
+<tr>
+<td>Bouvier</td>
+<td>[Jr, Nicholas, Christopher]</td>
+</tr>
+</tbody>
+</table>
+<p>We can represent that data as a relationship, as we would in a relational database:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parent</strong></th>
+<th><strong>Child</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ewing</td>
+<td>Edith</td>
+</tr>
+<tr>
+<td>Ewing</td>
+<td>Phelan</td>
+</tr>
+<tr>
+<td>Ewing</td>
+<td>Bouvier</td>
+</tr>
+<tr>
+<td>Bouvier</td>
+<td>Jr</td>
+</tr>
+<tr>
+<td>Bouvier</td>
+<td>Nicholas</td>
+</tr>
+<tr>
+<td>Bouvier</td>
+<td>Christopher</td>
+</tr>
+</tbody>
+</table>
+<p>and then use the techniques outlined in the previous post to enumerate all the children of a
+particular parent.</p>
+<p>Which approach is best? Using explicit arrays is faster and uses less memory, but it only allows us
+to search the data one way, from parent to children. If we want to remove a particular child from
+the child array of its parent, we have to iterate through all the children to find the child we are
+looking for, which can be expensive if the arrays get large.</p>
+<p>In contrast, the relational representation allows us to search using multiple criteria. For example,
+as we saw in the last post, we can add a child index and then we can search for a particular child
+and remove it from its parent as an <em>O(1)</em> operation.</p>
+<p>I would use the array representation if I didn’t need these more advanced search options, and the
+relational representation otherwise.</p>
+<h2 id="arrays-of-strings">Arrays of strings</h2>
+<p>So far, I’ve talked a lot about the <code>children</code> array, but I haven’t really said anything about the
+<code>name</code> string. Well, a string is just an array of characters, right? So we could just use any of the
+techniques described above for storing <em>arrays of things</em> to store an <em>array of characters</em>, i.e. a
+<em>string,</em> right?</p>
+<p>Wrong! Well, not totally wrong, of course, we <em>could</em> do that, theoretically. But I think that
+thinking of a string as an “array of characters” is fundamentally misguided. In fact, it’s one of my
+pet peeves. What matters in data-oriented design is how data is used, and strings are used <em>very
+differently</em> than other “arrays of things”.</p>
+<p>When you think of an <code>std::vector</code>, what are the typical operations that you want to do with it?</p>
+<ul>
+<li>
+<p>Iterate through all the items and call some method on each one:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>it <span style="color:#f92672">=</span> v.begin(); it <span style="color:#f92672">!=</span> v.end(); <span style="color:#f92672">++</span>it)
+    f(it);
+</code></pre></div></li>
+<li>
+<p>Add a new item to the vector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">v.push_back(x);
+</code></pre></div></li>
+<li>
+<p>Remove an item from the vector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">std<span style="color:#f92672">::</span>iter_swap(it, v.end() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>); 
+v.pop_back();
+</code></pre></div></li>
+</ul>
+<p>None of these operations are things you would typically do with a string!</p>
+<p>If I have a string <code>&quot;Niklas&quot;</code> in my program, I never want to randomly add or remove characters.
+<code>&quot;Nklas&quot;</code> and <code>&quot;Niklasz&quot;</code> make no sense. I might iterate over the characters to draw them in
+the UI, but that’s only at one place in the code. Instead I’m probably more interested in comparing
+strings for equality (<code>strcmp()</code>) or composing substrings into larger strings (<code>sprintf()</code>). None of
+these are typical operations for other “arrays of things”.</p>
+<p>The primary differences between strings and other arrays are:</p>
+<ul>
+<li>
+<p>Strings are almost always <a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Immutable_object">immutable</a>.</p>
+</li>
+<li>
+<p>In some situations, it is common to <em>reuse</em> the same string over and over again.</p>
+</li>
+</ul>
+<p>By strings being <em>immutable</em>, I simply mean what I said earlier, that we don’t tend to add and
+remove characters in strings the same way we do with other arrays. Instead, when we change strings,
+we typically change <em>the whole thing.</em></p>
+<p>For example, imagine we want to change the string:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">- last_name = &#34;Frykholm&#34;
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+ last_name = &#34;Gray&#34;
+</span></code></pre></div><p>We don’t think of this as removing the letters <code>F, k, h, o, l, m</code> and adding <code>G, a</code>. Rather, we
+think of this as a single <em>rename</em> operation — changing the whole last name. And that’s how most
+strings work (we’ll look at some exceptions later).</p>
+<p>So strings aren’t really “arrays of characters”, they are <em>names</em> or <em>identifiers.</em> This is why in a
+lot of cases, you don’t even need to store the string itself, you can just store an <code>uint64_t</code> hash
+of the string and compare <em>that</em> to check if a name matches. The only time you need to store the
+string is if you need to show it to a human (debug printing, logging, UI) or pass it to another
+system (<code>fopen()</code>).</p>
+<p>Unless you’re writing a word processor or something like that, I can only think of two cases where
+you have mutating strings:</p>
+<ul>
+<li>
+<p>When the user is editing a string in a text box.</p>
+</li>
+<li>
+<p>When you are building a string up from parts — i.e., concatenating substrings into a path, or an
+error message.</p>
+</li>
+</ul>
+<p>For editing — presumably the user can’t be editing more than one string at a time (in whatever text
+box has focus), so this is really a special case. You can have a single <code>char</code> array in your program
+to hold this “currently edited string”. At the start of editing, you copy whatever string the user
+is editing into this array so that the text box can use it. When editing finishes, you create a new
+immutable string from the content of the array and then <em>rename</em> the original object to this new
+string.</p>
+<p>Building up a string from parts is a good use case for temporary memory. In The Machinery, we have
+an <code>sprintf()</code> implementation that uses a temporary memory allocator, rather than a fixed-size
+buffer, so it can be used to build arbitrarily large strings. Once you are done constructing the
+string, you either use it (print the debug message, etc) or if you need to save it for later,
+convert it into an immutable string.</p>
+<p>Reused strings can pop up in things like JSON parsing, where the same object key (e.g.
+<code>&quot;properties&quot;</code>) can show up hundreds or thousands of times. Storing a separate copy of the
+string each time it appears can be really wasteful.</p>
+<p>If we treat strings as immutable, we don’t need separate copies, we can just make all the string
+pointers point to the same data:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Immutable strings." src="../../images/ds3-immutable-strings.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Immutable strings.</h4>
+    </figcaption>
+  </figure>
+<p>It doesn’t matter how many <code>&quot;properties&quot;</code> strings we need. Using this technique, we can create
+as many strings as we like and still have only one copy in memory. Since the string data will never
+change (strings are immutable), sharing it is fine.</p>
+<p>This technique of letting all the strings with the same data share the same pointer is called
+<a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/String_interning">string interning</a> and it has some interesting
+consequences. For one, we don’t have to compare strings with <code>strcmp()</code> or hashing anymore. Since we
+know that identical strings will use the same pointer, we can just compare the <code>const char *</code>
+pointers. <tt>s1 == s2</tt> if and only if the pointers are equal.</p>
+<p>Note that some programming languages, such as <a href="http://web.archive.org/web/20220430023903/https://www.lua.org/">Lua</a>, use interning for all
+their strings. Others, such as <a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Ruby_(programming_language)">Ruby</a> and
+<a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Common_Lisp">Lisp</a>, have a separate
+<a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Symbol_(programming)">symbol</a> data type which represents an interned
+string.</p>
+<p>To implement string interning in C, I use a big buffer to hold the string data and a hash table to
+look up strings in the buffer. The buffer can be reserved from virtual memory or allocated using one
+of the other techniques described in part 1 of this series. The buffer just stores all the strings
+consecutively and the hash table holds indices or pointers to these strings:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="String interning." src="../../images/ds3-string-interning.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>String interning.</h4>
+    </figcaption>
+  </figure>
+<p>The hash table is needed when strings enter the string interning system. For example, suppose you
+read a string from a file. After you’ve read it, it will be in some temporary memory array <code>char *</code>.
+To <em>intern</em> this string you need to check if you have a copy of it in your buffer already. If you
+do, you can just return a pointer to that string. If not, you should allocate a new string at the
+end of the buffer and return a pointer to <em>that</em>.</p>
+<p>Here’s what the code might look like in practice:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Commit VM memory in 4K chunks.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">enum</span> {CHUNK <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>};
+
+<span style="color:#66d9ef">struct</span> string_repository {
+    uint32_t buffer_size;
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buffer;
+    hash32_t lookup;
+};
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">intern</span>(<span style="color:#66d9ef">struct</span> string_repository <span style="color:#f92672">*</span>sr, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s)
+{
+    <span style="color:#66d9ef">const</span> uint64_t h <span style="color:#f92672">=</span> murmurhash_string(s);
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> hash32_get(<span style="color:#f92672">&amp;</span>sr<span style="color:#f92672">-&gt;</span>lookup, h, UINT32_MAX);
+    <span style="color:#66d9ef">if</span> (idx <span style="color:#f92672">&lt;</span> UINT32_MAX)
+        <span style="color:#66d9ef">return</span> sr<span style="color:#f92672">-&gt;</span>buffer <span style="color:#f92672">+</span> idx;
+
+    <span style="color:#75715e">// Commit VM memory. (Assumes we&#39;re using the VM method for storing
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// the buffer.) Note: This is only needed on Windows which makes a
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// distinction between reserving and committing virtual memory.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> uint32_t n <span style="color:#f92672">=</span> (uint32_t)strlen(s);
+    <span style="color:#66d9ef">const</span> uint32_t size <span style="color:#f92672">=</span> sr<span style="color:#f92672">-&gt;</span>buffer_size;
+    <span style="color:#66d9ef">const</span> uint32_t new_size <span style="color:#f92672">=</span> size <span style="color:#f92672">+</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+    <span style="color:#66d9ef">const</span> uint32_t chunks <span style="color:#f92672">=</span> div_round_up(sr<span style="color:#f92672">-&gt;</span>buffer_size, CHUNK);
+    <span style="color:#66d9ef">const</span> uint32_t new_chunks <span style="color:#f92672">=</span> div_round_up(new_size, CHUNK);
+    <span style="color:#66d9ef">if</span> (new_chunks <span style="color:#f92672">!=</span> chunks)
+        vm<span style="color:#f92672">-&gt;</span>commit(sr<span style="color:#f92672">-&gt;</span>buffer <span style="color:#f92672">+</span> chunks <span style="color:#f92672">*</span> CHUNK, (new_chunks <span style="color:#f92672">-</span> chunks) <span style="color:#f92672">*</span> CHUNK);
+
+    <span style="color:#75715e">// Copy string data into buffer and update hash table
+</span><span style="color:#75715e"></span>    memcpy(sr<span style="color:#f92672">-&gt;</span>buffer <span style="color:#f92672">+</span> sr<span style="color:#f92672">-&gt;</span>buffer_size, s, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+    hash32_add(<span style="color:#f92672">&amp;</span>sr<span style="color:#f92672">-&gt;</span>lookup, h, sr<span style="color:#f92672">-&gt;</span>buffer_size);
+}
+</code></pre></div><p>Note that if you want to do tricks like comparing strings by pointers, you have to make sure that
+both the strings are interned. If one of the strings is a string literal or has just been read from
+a file into a dynamic buffer, it won’t work. It’s only when strings have entered the interning
+system that strings with the same value have the same pointer.</p>
+<p>When programming languages use string interning, they typically have one single string repository
+where all the strings in the program go. However, when you’re managing your own string repository I
+find it more useful to have separate per-system or per-object string repositories. For example, when
+parsing a JSON file, I would assign it it’s own string repository. This way, when you’re done with
+the parsing, you can just throw away the whole repository and free the memory.</p>
+<p>Note that this again means that you need to be careful. If you try to compare strings by pointers
+and the strings are not from the <em>same</em> string repository, it won’t work.</p>
+<p>So far, we haven’t described any mechanism for <em>removing</em> strings from the string repository. If we
+want to be able to do that, we first need to add reference counts to the string buffer. Since the
+same buffer data can be shared by multiple strings, we need to count how many times that happens, so
+that we can know when the data is no longer used and is safe to be deleted or reused.</p>
+<p>Second, when strings are deleted, it will leave holes in our big string buffer:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="String buffer holes." src="../../images/ds3-string-buffer-holes.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>String buffer holes.</h4>
+    </figcaption>
+  </figure>
+<p>To reuse this memory for other strings we must keep track of where all the holes are. We also
+probably want a mechanism for merging small neighboring holes into bigger holes, because otherwise,
+we’ll end up with smaller and smaller holes, that won’t be useful for anything but the shortest
+strings.</p>
+<p>Note that this is exactly the same problem that a heap memory allocator has to solve, and we can
+address it using the same techniques. For example, we can link holes together in linked lists based
+on their sizes to make it possible to find them. We can also add preambles and postambles to all
+string allocations so that we can find neighboring allocations as targets for merging. Note that
+these preambles and postambles will add some overhead to every allocation. Also, we must round up
+the allocations to some minimum size, so that we are sure that the linked list pointers will fit in
+the “hole” that the allocation leaves when we free it.</p>
+<p>Of course, we could also make use of all the other little tricks that memory allocators do. For
+example, we could have “pools” of allocators for strings of fixed sizes, etc, etc. It starts getting
+complicated.</p>
+<p>Another thing you could do is to represent the strings as handles instead of pointers. I.e. you let
+the <code>intern()</code> function return an <code>uint32_t</code> string ID instead of an actual <code>char *</code> and then you
+have another function that looks up from the ID to the actual string data. Now, since nobody is
+pointing directly to the string, you can move the strings in memory and get rid of holes that way.
+This is the “compacting heap” approach.</p>
+<p>In practice, I do it like this: I allocate the strings in blocks of 4 K. For each block, I keep
+track of how much “string” data and how much “hole” data it contains. When the block is &gt; 50 %
+empty, I “defragment” the block by packing the strings tightly. The memory that’s left at the end of
+the block can then be used for new strings.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="String buffer defragmentation." src="../../images/ds3-defragment.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>String buffer defragmentation.</h4>
+    </figcaption>
+  </figure>
+<p>The third option is to not bother with removing strings and reclaiming memory at all. This the
+absolutely simplest option and in many cases a perfectly valid one. Remember that our typical use
+case for this is to store object names and it is unlikely that objects will be renamed so much that
+the memory leaks become a problem. Another use case was for JSON parsing. Here, by using a
+designated string repository that we throw away at the end of the parse, there is no memory wasted
+at all. Any system that produced a large number of unique strings, such as logging, wouldn’t use
+this system anyway, but instead, just use temporary memory for the strings.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Together, the techniques outlined in this series: bulk data arrays, indices and arrays of arrays,
+cover almost all the data structure needs we have in <em>The Machinery</em>. Is there something that seems
+to be missing? Tweet me at <a href="http://web.archive.org/web/20220430023903/https://twitter.com/niklasfrykholm">@niklasfrykholm</a>.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220430023903/https://twitter.com/share?text=Data%20Structures%20Part%203%3a%20Arrays%20of%20arrays - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-3-arrays-of-arrays%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220430023903/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-3-arrays-of-arrays%2f&amp;description=Data%20Structures%20Part%203%3a%20Arrays%20of%20arrays" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/wasabi-part-1/">We are Starting a Business, ideally -- Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-09-05T00:00:00Z">
+                      5 Sep 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Ever since we started Our Machinery, we&rsquo;ve explored different avenues to figure out what direction
+we want to go …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/wasabi-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/data-structures-part-2-indices/" class="text-decoration-none"><img src="../../images/ds2-index.jpg" class="card-img-top" alt="Data Structures Part 2: Indices"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/data-structures-part-2-indices/">Data Structures Part 2: Indices</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-08-14T00:00:00Z">
+                      14 Aug 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In my <a href=" ../../post/data-structures-part-1-bulk-data/">last post</a>, I concluded that
+the best way to store <em>most</em> things is to use a large unsorted array. I sneakily avoided …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/data-structures-part-2-indices/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">22 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/data-structures-part-1-bulk-data/" class="text-decoration-none"><img src="../../images/dsp1-bulk-data.jpg" class="card-img-top" alt=" Data Structures Part 1: Bulk Data "></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/data-structures-part-1-bulk-data/"> Data Structures Part 1: Bulk Data </a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-07-23T00:00:00Z">
+                      23 Jul 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Any programmer can benefit from some understanding of different <a href="http://web.archive.org/web/20220430023903/https://en.wikipedia.org/wiki/Data_structure">data
+structures</a> and how to analyze their performance. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/data-structures-part-1-bulk-data/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">25 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/data-structures-part-3-arrays-of-arrays/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220430023903/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220430023903/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220430023903/https://ourmachinery.com/cdn-cgi/l/email-protection#6010090e07200f15120d010308090e0512194e030f0d" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 02:39:03 Apr 30, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:33 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 268.084
+  exclusion.robots: 0.118
+  exclusion.robots.policy: 0.108
+  cdx.remote: 0.076
+  esindex: 0.009
+  LoadShardBlock: 227.862 (3)
+  PetaboxLoader3.datanode: 246.169 (4)
+  CDXLines.iter: 15.364 (3)
+  load_resource: 169.618
+  PetaboxLoader3.resolve: 64.557
+-->

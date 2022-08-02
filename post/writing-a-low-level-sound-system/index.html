@@ -1,0 +1,1276 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Describes how to write a low-level sound system."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="images/low_level_sound__basic_mixer.png"/>
+  
+  <meta name="twitter:title" content="Writing a Low-Level Sound System — You Can Do It!">
+  <meta name="twitter:description" content="Describes how to write a low-level sound system."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Writing a Low-Level Sound System — You Can Do It! · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content="../writing-a-low-level-sound-system/"/>
+  
+  <meta property="og:image" content="images/low_level_sound__basic_mixer.png"/>
+  
+  
+  <meta property="og:description" content="Describes how to write a low-level sound system."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-03-17T00:00:00Z"/>
+  
+
+  <title>Writing a Low-Level Sound System — You Can Do It! &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220212193327/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220212193327\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220212193327\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Writing a Low-Level Sound System — You Can Do It!",
+    "name": "Writing a Low-Level Sound System — You Can Do It!",
+    "wordCount":  8069 ,
+    "timeRequired": "PT38M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "../writing-a-low-level-sound-system/",
+    "datePublished": "2020-03-17T00:00Z",
+    "dateModified": "2020-03-17T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220212193327/https://ourmachinery.com/low_level_sound__basic_mixer.png"
+    },
+    
+    
+    "description": "Describes how to write a low-level sound system."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Community
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="../" aria-label="Link Blog">Blog</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220212193327/https://discord.gg/SHHSZaH" aria-label="Link Discord" target="_blank">Discord</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220212193327/https://github.com/OurMachinery/themachinery-public/discussions" aria-label="Link Forum" target="_blank">Forum</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220212193327/https://anchor.fm/ourmachinery" aria-label="Link Podcast" target="_blank">Podcast</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="../">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220212193327/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Writing a Low-Level Sound System — You Can Do It!</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-03-17T00:00:00Z">
+          Mar 17, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In this post, I’ll take a look at what it takes to write a low-level sound system. I.e., one where
+you do all the sampling, mixing, effects, etc by yourself. Though this may seem like a daunting task
+it is in fact pretty straightforward, depending on what features you want to add.</p>
+<h2 id="why">Why?</h2>
+<p>Why would you want to do this? Well, if you have been following the Our Machinery blog for a while
+you know that we like to have control of as much as the tech stack as possible. It is nice to be
+able to step into and debug anything, to have full control of performance and be able to implement
+whatever crazy algorithms we can think of. But there are other reasons too.</p>
+<p>If the only thing we offered in The Machinery was bindings to a high-level sound system, such as
+<a href="http://web.archive.org/web/20220212193327/https://www.fmod.com/">FMOD</a>, <a href="http://web.archive.org/web/20220212193327/https://www.audiokinetic.com/products/wwise/">Wwise</a> or
+<a href="http://web.archive.org/web/20220212193327/https://www.eliassoftware.com/">Elias</a> we would force anyone who wanted to play sounds in The
+Machinery to license that software. No doubt, these are good products that have been used
+successfully in a lot of different games, but that doesn’t mean that licensing them is the right
+choice for <em>all</em> of our users.</p>
+<p>The Machinery is a flexible game engine platform with many different potential uses: it can be used
+to build games, but also other kinds of interactive experiences, visualizations, simulations, tools,
+and applications. For some of our users, licensing a sound system will be the right choice, but a
+lot of others will probably just want to play a few sounds, and we don’t want to force those users
+to pay additional license fees. So we need a built-in sound system that works everywhere without any
+need to buy additional software.</p>
+<p>Note that this doesn’t mean that we will never provide bindings to any commercial high-level sound
+system. On the contrary, we probably will. That way, our users can make an informed choice between
+licensing that or using our built-in sound system.</p>
+<p>Once we’ve figured out that we need to build our own sound system, the next question is how to do
+it. One option would be to build on top of an existing audio library such as
+<a href="http://web.archive.org/web/20220212193327/https://www.openal.org/">OpenAL</a>,
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-introduction">XAudio2</a>, etc. The
+advantage of this is that these libraries provide a lot of the functionality we need “for free”.</p>
+<p>The disadvantage is that we don’t have full control of the implementation and that we might have to
+use different libraries on different platforms. For example, on Windows and Xbox, it would make
+sense to use XAudio2, but that’s not available on iOS, Android, OS X or Sony.</p>
+<p>In the Bitsquid/Stingray engine, we had a single high-level sound API built on top of different
+platform-specific backends, just as you would build an abstract rendering API on top of Vulkan,
+Metal, DirectX12, etc. On Windows, we used XAudio2, on OS X OpenAL on OS X, on Android
+<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/OpenSL_ES">OpenSL</a>, etc.</p>
+<p>This turned out to be a pretty horrible approach. We were forced to deal with all the bugs and
+quirks of all the different backends. Since they are all implemented differently it’s really tricky
+to get a game to sound exactly the same on all the different platforms. Also, the feature set of
+each library is slightly different, which means the abstraction is forced to code to the lowest
+common denominator.</p>
+<p>In the end, I spent so much time learning about and dealing with all these different sound libraries
+that I swore it would have been easier just to do everything myself.</p>
+<p>The cost/benefit equation has also changed in recent years. When OpenAL was introduced in 2000, the
+big impetus was to take advantage of the hardware mixing capabilities of sound cards. Just as OpenGL
+is a common API for talking to various GPUs, OpenAL was meant to be a common API for talking to
+various sound cards. However, these days, CPUs are a lot faster and computers have a lot more cores.
+Sound mixing isn’t <em>that</em> expensive — there is very little reason to not just do it in software. And
+if you want to play a really large number of sounds, you are more likely to be limited by memory
+bandwidth than CPU.</p>
+<p>One other option, instead of writing everything from scratch, would be to start with an open-source
+cross-platform library such as <a href="http://web.archive.org/web/20220212193327/https://kcat.strangesoft.net/openal.html">OpenAL Soft</a>. This would
+get us up and running faster while still having code that works cross-platform, can be debugged,
+changed, etc. This wasn’t the right approach for us, for two reasons. First, OpenAL Soft is LGPL,
+which we don’t want in our engine. Second, we feel that the OpenAL Soft API is hamstrung by being
+designed as an API for interacting with hardware. For example, a lot of the functionality is
+provided as <em>extensions</em>. This makes sense for a hardware platform where you need to be able to
+query for what the hardware supports, but it is a bit clumsy for a software platform that will
+always support everything.</p>
+<p>Since we will be doing all the mixing computations ourselves, all we need from the system is a way
+to output our final mixed streams to the system speakers. More about that later.</p>
+<h2 id="introduction-to-audio">Introduction to audio</h2>
+<p>To understand how to implement your own sound mixer you first need a little bit of understanding
+about what <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Sound">sound</a> is. I won’t go into too much detail here,
+just give a quick introduction.</p>
+<p>Essentially, sound is an air pressure wave. In the “real world” these pressure waves can travel in
+all directions which is complicated to model, but for audio playback, we don’t really have to worry
+about that. We only have to care about pressure waves produced by <em>speakers.</em> A speaker has a cone
+that can move in and out to produce sound waves. We can represent the cone’s position over time with
+a simple graph:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Cone position of a speaker over time." src="images/low_level_sound__cone_position.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Cone position of a speaker over time.</h4>
+    </figcaption>
+  </figure>
+<p>I’ve normalized this graph so that +1 represents the furthest out the speaker can move and -1 the
+furthest in. This is how “sound waves” are normally represented, and this is what you will see if
+you open an audio file in a program such as <a href="http://web.archive.org/web/20220212193327/https://www.audacityteam.org/">Audacity</a>.</p>
+<p>Note that in the “real world”, the air pressure can be arbitrarily large — for example, the air
+pressure wave from a bomb can level buildings — but a speaker always has a maximum extent that the
+cone can move, so there is always a maximum volume. We typically call this maximum volume 0 dB.
+Volumes lower than the maximum are represented by negative decibels: -10 dB, -20 dB, etc.</p>
+<p>This may seem confusing. Why don’t we just let “no sound” be 0 dB and then the volume would go up
+from there: 10 dB, 20 dB, etc? Well, since the <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Decibel">decibel
+scale</a> is logarithmic, “no sound” would actually be -∞ dB, so
+that doesn’t work. The dB scale is always <em>relative</em> to some reference point. When people say things
+like “an airplane engine is 150 dB” that is relative to a reference point where 0 dB represents the
+threshold of human hearing. That reference point doesn’t make much sense for a speaker though, since
+it depends on the power of the speaker, how far away the listener is, etc. Using the maximum volume
+of the speaker as our 0 dB reference point works better.</p>
+<p>A tone can be represented as a sine wave of a specific frequency. For example, A above middle C is
+represented as by a 440 Hz sine wave:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="440 Hz sine wave." src="images/low_level_sound__sine_wave.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>440 Hz sine wave.</h4>
+    </figcaption>
+  </figure>
+<p>Note that the wave doesn’t actually have to be sine shaped, a sawtooth-shaped or a square-shaped
+wave with the same frequency will still produce the same note, but with slightly different
+characteristics (overtones).</p>
+<p>In a system with more than one speaker, we can send a different sound wave to each speaker. This can
+be used to produce stereo effects. For example, if we play a guitar sound at a higher volume in the
+right ear than in the left ear, the sound will be perceived as coming from the right of the
+listener.</p>
+<p>Now that we know a little bit about how sound works, we can think about how to represent it in a
+computer. Computers work with digital information so instead of a continuous curve, we represent the
+sound wave by samples taken at discrete points in time. We call the number of samples we take per
+second the <em>sample rate</em>. The higher the sample rate is, the more accurately we can represent the
+analog sound curve. The drawback is that we need more memory to hold all the sample data:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Sampling a sound wave at two different sample rates." src="images/low_level_sound__sample_rate.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Sampling a sound wave at two different sample rates.</h4>
+    </figcaption>
+  </figure>
+<p><a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Compact_Disc_Digital_Audio">CDs</a> use a sample rate of 44.1 kHz, while
+<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/DVD-Video">DVD-video</a> uses 48 kHz. Higher sample rates are possible,
+for example, <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/DVD-Audio">DVD-audio</a> can use 96 kHz. Whether you can
+actually hear any difference between 48 and 96 kHz depends on how much <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Audiophile">gold
+plating</a> you have put on your speaker cables.</p>
+<p>In addition to the sample rate, to digitize the sound we also need to decide how many bits to use to
+represent each sample in the (-1 … 1) range. Again, the more bits we use, the more accurately we can
+represent the curve. CDs use 16 bits, DVD-audio uses 24 bits.</p>
+<p>Sound files (<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Audiophile">WAV</a>,
+<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Audio_Interchange_File_Format">AIFF</a>, etc) can have different sample
+rates and bit rates. It ends up being a trade-off between quality and memory use. For example, when
+uncompressed, a 44.1 kHz file will use twice the memory of a 22.05 kHz one. Lossy compression
+formats such as <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/MP3">MP3</a>,
+<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Advanced_Audio_Coding">M4A</a>, or
+<a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Vorbis">Vorbis</a> can significantly reduce the memory use at the cost
+of some quality and the CPU time needed to decompress.</p>
+<p>Sound files can also be mono, stereo or <a href="http://web.archive.org/web/20220212193327/https://en.wikipedia.org/wiki/Surround_sound">multichannel</a>
+(for example, have separate tracks for each speaker in a 5.1 or 7.1 system).</p>
+<h2 id="system-overview">System overview</h2>
+<p>Now that we know a little bit more about how sound works we can start to think about what our system
+should do. We want it to manage a number of playing sounds and mix together their sound waves to
+produce output for the speakers:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Basic operation of the mixer." src="images/low_level_sound__basic_mixer.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Basic operation of the mixer.</h4>
+    </figcaption>
+  </figure>
+<p>Thinking about it in a bit more detail, we probably want the system to work on a fixed number of <em>N</em>
+samples at a time. The system should get the next <em>N</em> samples from each of the playing sounds, and
+determine how much of that sound should be sent to each speaker. Then add all the sounds for each
+speaker together and send that to our speaker output backend.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Mixing samples." src="images/low_level_sound__mixing_samples.jpeg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Mixing samples.</h4>
+    </figcaption>
+  </figure>
+<p>Note that the playing sounds might all have different <em>sample rates</em> and <em>bit rates</em>, but we want
+the mixer to work at a single fixed <em>sample</em> and <em>bit</em> rate so that we can just add everything
+together without worrying about conversions. We’ll convert the playing sounds to this sample rate
+when we get the samples from them, and we will convert from the mixer format to whatever format the
+speakers want just before sound output.</p>
+<p>For the internal mixer format, I’m using a 44.1 kHz sample rate and 32-bit floats to represent each
+sample. 44.1 kHz gives us CD quality and allows us to upsample easily from 22 kHz and 11 kHz which
+are common WAV file sample rates. 32-bit floats have 23 bits of mantissa, so the quality is similar
+to what you would get with 24-bit integers, but floats have the advantage of being able to represent
+numbers outside the [-1, 1] range. If you add two full volume [-1, 1] sounds, the result will be in
+the [-2, 2] range. There is no way of representing this using 24-bit fixed-point numbers. Thus, if
+you are using fixed-point for your mixing, you have to be really careful about overflows.</p>
+<h2 id="implementation-strategy">Implementation strategy</h2>
+<p>Whenever I implement a new feature, a new system, or anything really — I always try to break it up
+into incremental steps that are as small as possible. I find it pretty hard to visualize how to go
+from nothing to a big system with all the bells and whistles that we want. But it is pretty easy to
+visualize how to take <em>one step</em> in the right direction. And after writing software for many many
+years, I have developed the trust that if I keep walking, one step in the right direction, one step
+at a time, I will eventually arrive at the destination. I’ve come to realize that this trust is
+something very valuable. Since I don’t have to worry or fret too much, I can stay productive and
+focused.</p>
+<p>In fact, I think this approach of taking small steps in the right direction and trust that it will
+lead you right in the end, is the best way to tackle any problem in life, whether it’s about your
+career, your health, or a skill that you want to acquire.</p>
+<p>I’m also a big believer in push-early, push-often and trunk-based development, so I make sure that
+after each step I have code that can be pushed to our source repository and improve the engine in
+some small way. That way, even if I have to take a break to go work on a more pressing issue (which
+happens all the time) I will still have delivered some value. It is not just two months of work with
+nothing to show for it. Plus, sharing my work with others makes it a lot easier to see if things are
+going the right way or if something needs to be changed.</p>
+<p>For some very hairy problems, it might be necessary to “go into a cave” to figure them out. But in
+most cases, I think you are much better off doing incremental updates and sharing your progress with
+your colleagues.</p>
+<p>For the sound system, the first thing I did was to make sure that I could get some sound — any sound
+— out of the speakers. Just as when you are doing graphics coding — things get a lot easier once you
+have your first triangle on-screen. When you don’t have any feedback at all, you can’t tell if
+you’re breaking things and it’s easy to get into the weeds.</p>
+<p>To test the output, I wrote some code to generate a sine wave into a buffer and made sure I could
+play that through the speakers, then pushed that code — one little step taken. After that, I wrote
+the code for parsing a simple WAV-file (mono, 16-bit, 44.1 kHz only) and made sure I could play
+that. I knew that I eventually would want the mixer to run on its own thread, but I started with
+just running everything on the main thread to make things simpler.</p>
+<p>In short, I make the simplest possible thing work first. Once I have something working, I start
+iterating over it and add more features — stereo support, more WAV formats, threading, etc.</p>
+<p>Even now, there are still a lot of improvements that I could make to the system — there always is
+(and I’ll talk some more about them later). But since I always keep everything in a workable state,
+the system can be used as-is and any further improvements can be left to a future quality pass.</p>
+<h2 id="picking-a-sound-backend">Picking a sound backend</h2>
+<p>Since we are going to do all the sound sampling and mixing ourselves in software, the only thing we
+need from the system is a way to output our final mixed results to the speakers.</p>
+<p>You would <em>think</em> that this would a pretty easy and straightforward task — you have some data and
+you want to send it to the speakers — but unfortunately, it’s not. It’s almost like it’s too
+low-level and the system APIs don’t want to make it easy for you.</p>
+<p>Windows offers a bewildering jungle of sound systems:
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows/win32/directshow/audio-renderer--waveout--filter">waveOut</a>,
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/previous-versions/windows/desktop/bb318665(v%3Dvs.85)">DirectSound</a>,
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/kernel-streaming-topology-to-audio-mixer-api-translation">KMixer</a>,
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/kernel-streaming-topology-to-audio-mixer-api-translation">Kernel
+Streaming,</a>
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows/win32/coreaudio/wasapi">WASAPI</a>,
+<a href="http://web.archive.org/web/20220212193327/https://docs.microsoft.com/en-us/windows/win32/xaudio2/xaudio2-introduction">XAudio2</a>, etc. Many of
+these are considered “legacy” and “deprecated”, though they still work perfectly fine. It&rsquo;s not easy
+to suss out which one you should use.</p>
+<p>Dennis Gustafsson did a rundown of the options in an old blog post of his:
+<a href="http://web.archive.org/web/20220212193327/http://blog.tuxedolabs.com/2013/06/26/low-level-audio.html">http://blog.tuxedolabs.com/2013/06/26/low-level-audio.html</a></p>
+<p>In short — DirectSound and XAudio2 are too high level and include a bunch of stuff that we don&rsquo;t
+really need. KMixer and Kernel Streaming are both deprecated and complicated, which is a bad
+combination.</p>
+<p>That leaves WASAPI and waveOut. Of these two, waveOut seems to be significantly simpler and in
+accordance with my philosophy of doing the simplest thing first, I started with implementing a
+waveOut backend. waveOut is pretty old and supposedly “deprecated”,  but still works fine (a
+testament to Microsoft’s commitment to backward compatibility).</p>
+<p>From what I can tell, the main advantage of switching to WASAPI over waveOut would be lower latency.
+It’s unclear to me whether this is because of latency in the waveOut system itself or if it’s just
+that waveOut needs bigger buffers to avoid starvation — I’ll talk more about that later. I’ll
+probably add a WASAPI backend in the near future to take advantage of this.</p>
+<p>Interestingly, after I investigated this I noticed that the Chromium project seems to have come to
+the same conclusion. Chromium has two sound backends for Windows:
+<a href="http://web.archive.org/web/20220212193327/https://chromium.googlesource.com/chromium/src/media/+/master/audio/win/waveout_output_win.cc">waveout_output_win.cc</a>
+which uses wave out and
+<a href="http://web.archive.org/web/20220212193327/https://chromium.googlesource.com/chromium/src/media/+/master/audio/win/audio_low_latency_output_win.cc">audio_low_latency_output_win.cc</a>
+which uses WASAPI. These source files are a great reference for sound backend implementations.</p>
+<h2 id="using-waveout">Using waveOut</h2>
+<p>Using waveOut is pretty straightforward. You use <code>waveOutOpen()</code> to create a <code>HWAVEOUT</code>  handle and
+then you write buffer samples to that handle using <code>waveOutWrite()</code>.</p>
+<p>When you call <code>waveOutOpen()</code> you can specify which output device to use (if you have more than one
+sound card). You can also use the constant <code>WAVE_MAPPER</code> to play on the user’s default device, which
+is usually preferable. You specify the sample rate and the number of bits you want to use for the
+output using a <code>WAVEFORMATEX</code> structure. (This is the same structure used to specify the format of
+<code>WAV</code> files, so if you’ve worked with those, it should be familiar.) If you specify a sample rate or
+bit rate not supported by your output device, <code>WAVE_MAPPER</code> will automatically convert the data for
+you. I use 16-bit and 44.1 kHz (CD quality).</p>
+<p>If you read the documentation for <code>waveOutOpen()</code>, it only talks about stereo devices, but, somewhat
+surprisingly, waveOut can be used to play surround sound too. To do that, you pass it a
+<code>WAVEFORMATEXTENSIBLE</code> struct instead of <code>WAVEFORMATEX</code> — the same way that surround sound is
+specified in a WAV file.</p>
+<p>Here is how I set it up to for an arbitrary number of channels:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> uint32_t bits_per_sample <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>;
+<span style="color:#66d9ef">const</span> uint32_t frequency <span style="color:#f92672">=</span> <span style="color:#ae81ff">44100</span>;
+<span style="color:#66d9ef">const</span> WAVEFORMATEX format <span style="color:#f92672">=</span> {
+    .wFormatTag <span style="color:#f92672">=</span> WAVE_FORMAT_EXTENSIBLE,
+    .nChannels <span style="color:#f92672">=</span> (WORD)num_channels,
+    .nSamplesPerSec <span style="color:#f92672">=</span> frequency,
+    .nAvgBytesPerSec <span style="color:#f92672">=</span> frequency <span style="color:#f92672">*</span> num_channels <span style="color:#f92672">*</span> bits_per_sample <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>,
+    .nBlockAlign <span style="color:#f92672">=</span> (WORD)(num_channels <span style="color:#f92672">*</span> bits_per_sample <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>),
+    .wBitsPerSample <span style="color:#f92672">=</span> (WORD)bits_per_sample,
+    .cbSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(WAVEFORMATEXTENSIBLE) <span style="color:#f92672">-</span> <span style="color:#66d9ef">sizeof</span>(WAVEFORMATEX),
+};
+GUID subformat_guid;
+memcpy(<span style="color:#f92672">&amp;</span>subformat_guid, SUBTYPE_PCM, <span style="color:#66d9ef">sizeof</span>(subformat_guid));
+<span style="color:#66d9ef">const</span> WAVEFORMATEXTENSIBLE format_ex <span style="color:#f92672">=</span> {
+    .Format <span style="color:#f92672">=</span> format,
+    .Samples.wValidBitsPerSample <span style="color:#f92672">=</span> (WORD)bits_per_sample,
+    .dwChannelMask <span style="color:#f92672">=</span> channel_mask,
+    .SubFormat <span style="color:#f92672">=</span> KSDATAFORMAT_SUBTYPE_PCM,
+};
+MMRESULT res <span style="color:#f92672">=</span> waveOutOpen(<span style="color:#f92672">&amp;</span>sound_backend<span style="color:#f92672">-&gt;</span>waveout, WAVE_MAPPER, <span style="color:#f92672">&amp;</span>format_ex.Format, (DWORD_PTR)sound_backend<span style="color:#f92672">-&gt;</span>event, <span style="color:#ae81ff">0</span>, CALLBACK_EVENT);
+</code></pre></div><p>Here, <code>num_channels</code> is the number of channels and <code>channel_mask</code> is a bitmask specifying which
+speakers those channels represent. This is important because just <code>num_channels</code> alone doesn’t give
+us enough information about the speaker setup. For example, <code>num_channels = 3</code> might either refer to
+a 2.1 system (LEFT, RIGHT, LFE) or a 3.0 system (LEFT, RIGHT, CENTER). For a description of the bit
+fields in the <code>channel_mask</code>, see the WAV file specification. In practice, you are probably unlikely
+to encounter any other speaker configurations than stereo, quadraphonic, 5.1 or 7.1 — but it’s still
+nice to support other setups.</p>
+<p>Given that waveOut can output surround sound, you would think that it also had an interface for
+querying whether the user <em>has</em> a surround sound setup or not. But as far as I can tell, it does
+not. If you call <code>waveOutGetDevCaps()</code> it always returns the number of channels as 2, even on
+surround sound systems. Presumably, this is for backward compatibility reasons. waveOut originally
+only had stereo support and surround was added later. There is still old software around that calls
+<code>waveOutGetDevCaps()</code>and wouldn’t know what to do if it returned &gt;2 channels. Supposedly, Microsoft
+could have fixed this with a <code>waveOutGetDevCapsEx()</code> function. But I guess, since <code>waveOut</code> is
+considered “legacy”, they didn’t bother.</p>
+<p>Note that in contrast, extending <code>waveOutOpen()</code> to support surround sound does not cause any
+backward compatibility problems, because old software will never call it with &gt;2 channels.</p>
+<p>Oh, by the way, another thing I tried was to call <code>waveOutOpen()</code>  asking for 5.1 channels on a
+stereo system, hoping that it would give me an error message. If it had, I would have been able to
+determine the user’s setup by just trying 7.1, 5.1, quadraphonic, etc and seeing what worked.
+Unfortunately, <code>waveOutOpen()</code> seems to succeed even when I ask for more channels than what is
+physically available. I guess in this case it will just downmix internally.</p>
+<p>In the end, I couldn’t find any way to check for surround sound setups using the waveOut interface,
+so I had to go to CoreAudio/WASAPI for that. It’s not too complicated, but I can’t say I’m a fan of
+this style of programming:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> uint32_t <span style="color:#a6e22e">private__get_channel_mask</span>()
+{
+    uint32_t channel_mask <span style="color:#f92672">=</span> TM_SPEAKERS__STEREO;
+    HRESULT hr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    hr <span style="color:#f92672">=</span> CoInitializeEx(NULL, COINIT_MULTITHREADED);
+    IMMDeviceEnumerator <span style="color:#f92672">*</span>enumerator <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    IMMDevice <span style="color:#f92672">*</span>endpoint <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    IPropertyStore <span style="color:#f92672">*</span>props <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    PROPVARIANT physical_speakers <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span> };
+    hr <span style="color:#f92672">=</span> CoCreateInstance(<span style="color:#f92672">&amp;</span>tm_CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL, <span style="color:#f92672">&amp;</span>tm_IID_IMMDeviceEnumerator, (<span style="color:#66d9ef">void</span> <span style="color:#f92672">**</span>)<span style="color:#f92672">&amp;</span>enumerator);
+    EXIT_ON_ERROR(hr);
+    hr <span style="color:#f92672">=</span> enumerator<span style="color:#f92672">-&gt;</span>lpVtbl<span style="color:#f92672">-&gt;</span>GetDefaultAudioEndpoint(enumerator, eRender, eConsole, <span style="color:#f92672">&amp;</span>endpoint);
+    EXIT_ON_ERROR(hr);
+    hr <span style="color:#f92672">=</span> endpoint<span style="color:#f92672">-&gt;</span>lpVtbl<span style="color:#f92672">-&gt;</span>OpenPropertyStore(endpoint, STGM_READ, <span style="color:#f92672">&amp;</span>props);
+    EXIT_ON_ERROR(hr);
+    hr <span style="color:#f92672">=</span> props<span style="color:#f92672">-&gt;</span>lpVtbl<span style="color:#f92672">-&gt;</span>GetValue(props, <span style="color:#f92672">&amp;</span>tm_PKEY_AudioEndpoint_PhysicalSpeakers, <span style="color:#f92672">&amp;</span>physical_speakers);
+    EXIT_ON_ERROR(hr);
+
+exit:
+    SAFE_RELEASE(props);
+    SAFE_RELEASE(endpoint);
+    SAFE_RELEASE(enumerator);
+    CoUninitialize();
+    <span style="color:#66d9ef">return</span> channel_mask;
+}
+</code></pre></div><p>You feed samples to the waveOut backend using <code>waveOutWrite()</code>. <code>waveOutWrite()</code> essentially takes a
+buffer, which should use the same sample rate and bit depth as we specified to <code>waveOutOpen()</code>. The
+sample data for the different channels is interleaved, same as in WAV files.</p>
+<p>The only annoying thing is that it’s not enough to just call <code>waveOutWrite()</code>, we first have to call
+<code>waveOutPrepareHeader()</code> to “prepare” the data and then when the sound is done playing, we need to
+call <code>waveOutUnprepareHeader()</code> to “unprepare” the data. I’m not sure exactly what these functions
+do or why this is needed. Seems like it would have been a lot simpler if <code>waveOutWrite()</code> just took
+care of “preparing” and “unpreparing” the data too.</p>
+<p>Calling <code>waveOutPrepareHeader()</code> is not too bad — we can just do that just before the call to
+<code>waveOutWrite()</code>, but <code>waveOutUnprepareHeader()</code> is a different beast. We can only call that once
+waveOut is done with playing the data, but how are we supposed to know when that happens?</p>
+<p>We could try to use waveOuts synchronization mechanism (in our case, an <em>event</em>), but it gets kind
+of hairy, so I decided to do something much simpler. I store all the buffer headers that I queue to
+the backend in a ring buffer and when the ring buffer has enough entries that it starts to wrap
+around, I just call <code>waveOutUnprepareHeader()</code> on the previous entry before storing a new entry in
+that slot. Since I will never queue more than a few buffers at a time (that would create horrible
+sound latency) I can use a small fixed-size ring buffer to hold the headers.</p>
+<p>I use the same technique for storing the actual playback buffer data as this data must be kept alive
+while the sound playing. I simply use a fixed size ring buffer — big enough to hold all the buffer
+data I may possibly want to queue ahead — and store the data there.</p>
+<h2 id="feeding-the-beast">Feeding the beast</h2>
+<p>If waveOut ever runs out of data to play, the sound will abruptly stop, which is a horrible user
+experience, so we must be super careful about feeding this beast. If we have sent a buffer that
+contains enough data for 10 ms of play, we must send a new buffer with more data within those 10 ms
+or waveOut will run dry.</p>
+<p>At the same time, we can’t send more data than waveOut uses. Suppose that every 10 ms, we send
+waveOut 20 ms of sound data. That would mean that we would build up a longer and longer queue of
+sounds to play and the sound latency would get worse and worse. I.e., if you fire a gun, but have
+already queued up 5 seconds of other sounds to play, it will take 5 seconds before you hear that gun
+getting fired.</p>
+<p>So we need some form of synchronization between the backend and the mixer, to make sure we feed
+waveOut the right amount of data at the right time.</p>
+<p>The main mechanism I use for this is <code>waveOutGetPosition()</code>. This is a callback function that tells
+us how many samples the backend has played. I keep track of how many samples I submit to the backend
+and by subtracting <code>waveOutGetPosition()</code> from that number, I know how many samples are remaining in
+the queue. By dividing that with the sample rate I can compute how many milliseconds of sound are
+remaining.</p>
+<p>Suppose that we do the audio rendering on the main thread and that we’re targeting 60 Hz. That means
+that we can expect a call to the audio mixer every 16.6 ms. If we check the backend and see that we
+have 3.3 ms of sound remaining, we need to add 13.3 ms of sound to make it to the next update
+without running out of data.</p>
+<p>Of course, adding <em>exactly</em> 13.3 ms of sound data would be very risky. What if the next frame is a
+little late? In that case, we will run out of data and the sound will stop — disaster.</p>
+<p>So how much more should we add to be safe? That depends. If you want to be sure that the sound never
+stalls you must generate as much sound data as the longest possible frame. If you might drop down to
+30 Hz you need to queue 33 ms of data. But is that enough? What if you are unlucky and physics
+stalls or you have to wait for memory to be paged in from the hard drive or Windows swaps you out.
+Maybe you need 100 ms to feel safe?</p>
+<p>The drawback of queuing a lot of data is that it increases the sound latency. If you queue 100 ms of
+sound data, all your sounds will be delayed by 100 ms. That&rsquo;s 6 full frames at 60 Hz which starts to
+be noticeable.</p>
+<p>It can be really tricky to find a value that gives you both acceptable latency and a near-zero
+chance of sound starvation.</p>
+<p>The alternative approach is to use a separate thread for mixing. If this thread gets woken up often
+enough by the OS, it doesn&rsquo;t matter if the game is dropping frames. The sound mixing thread will
+happily chug along in the background, still pushing audio to the speakers. In fact, you might have
+already seen this happen — when a game freezes up, but the sound keeps playing.</p>
+<p>When we use a custom sound mixing thread, what matters is no longer the frame time. It&rsquo;s the time it
+takes for the sound mixer thread to get rescheduled by the OS. Unfortunately, OS scheduling can be
+pretty unpredictable too, so again it&rsquo;s hard to know how many ms of sound we need to render. To make
+the scheduling work better I&rsquo;ve increased the priority of the sound mixing thread and made it wait
+on the waveOut synchronization <em>event</em>. This way the thread should spend most of its time waiting
+and whenever the event gets triggered — because the backend has retired another sound buffer — it
+should be ready to run.</p>
+<p>I don’t know any way of determining what is a reasonable amount of sound to queue, other than trying
+different values to see what seems to work. Currently, I’m queuing about 45 ms of sound ahead. I
+initially had it at half of that, but when I got a new USB sound card I had to up it to avoid
+starvation. This is a bit disconcerting as it means the amount of buffering needed depends on the
+sound card and its drivers. Whatever value works for me might not work for everybody else. 45 ms is
+also higher than the latency you would get if you were able to consistently hit 30 Hz. So if you are
+confident that your game can do that, you might be better of just running everything on the main
+thread.</p>
+<p>If you <em>do</em> end up using a background thread, you must take care to synchronize the background
+thread and the main thread, so that they’re not accessing the same data at the same time. But you
+also want to minimize locking, to reduce the risk that the OS swaps out your thread and causes
+starvation. I solved this by double buffering all the data and using a single lock to copy the data
+between the buffers.</p>
+<p>It is possible that switching to a WASAPI backend would allow us to use a much smaller buffer —
+achieving better latency.</p>
+<h2 id="sampling-sound-sources">Sampling sound sources</h2>
+<p>To have some sound samples to mix, we first need to get them from the sound sources. We use a
+unified interface for this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> uint32_t <span style="color:#a6e22e">mixer_sampler_f</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ud, <span style="color:#66d9ef">double</span> offset, <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>buffer,
+    uint32_t num_samples, <span style="color:#66d9ef">float</span> sample_frequency);
+</code></pre></div><p>Here, <code>ud</code> is some user data specific to this type of sound source. <code>offset</code> is the time in seconds
+where we begin sampling. <code>buffer</code> is a buffer allocated by the mixer that will hold the samples.
+<code>num_samples</code> is the number of samples we want and <code>sample_frequency</code> is the rate of sampling.  The
+timestamp for sample <code>i</code> is <code>t = offset + i/sample_frequency</code>.</p>
+<p>While our sound sources will mostly be WAV files, note that this approach works with other kinds of
+sound sources too, such as tone generators, synthesizers, and procedural sounds.</p>
+<p>For WAV-files, if the sample rate of the WAV data doesn’t match our sample frequency (44.1 kHz), we
+have to resample the data.</p>
+<p>Again, keeping with the strategy of doing the simplest possible thing, I decided to use linear
+interpolation for the resampling. This means that to find the sample at time <code>t</code>, I find the sample
+points before and after <code>t</code> and linearly interpolate between them. This is the same as approximating
+the continuous “real” sound curve with straight lines between the sample points:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Linear interpolation of a sound wave." src="images/low_level_sound__linear_interpolation.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Linear interpolation of a sound wave.</h4>
+    </figcaption>
+  </figure>
+<p>Linear sampling does not necessarily give the best result in terms of faithfully reproducing the
+“real” sound wave. For example, we know that the real curve is “smooth” and doesn’t have the sharp
+corners that our approximation does. However, as with all of these things, it is not clear to me
+exactly how audible the difference is. And to be honest, I don’t have the best ear for these things.
+In the future, I will probably spend some time investigating alternative interpolation algorithms,
+such as Hermite interpolation.</p>
+<p>An interesting thing to note is that we can support changing the pitch of the sampled sounds by just
+changing the sampling frequency. For example, if we sample at half of our mixing frequency (22.05
+kHz) the time step between each of our samples will be twice as big, so the WAV file will play at
+twice the speed and one octave higher. So it’s easy for us to add an option for the user to control
+the pitch of the sound.</p>
+<h2 id="mixing">Mixing</h2>
+<p>Once we have sampled all our sound sources, the next step is mixing. For each sound source, we have
+a matrix <code>m[input_channel][output_channel]</code> that describes how much each input channel of that
+sound source should contribute to each of our output channels. (More about how we calculate that
+matrix later.)</p>
+<p>To compute the output for each speaker, we simply add together the contributions of every sound
+source:</p>
+<p>for each sound source <strong>s</strong>:<br>
+    for each input channel <strong>ic</strong> in <strong>s</strong>:<br>
+        for each output channel <strong>oc</strong>:<br>
+            for <strong>i</strong> = 0 … <strong>num_samples</strong><br>
+                output[oc][i]  = output[oc][i] + s.sample[ic][i] * m[ic][oc]</p>
+<p>Here, <strong>num_samples</strong> is the total number of samples that we’re rendering.</p>
+<p>If we naively write the C code for the inner loop, it might look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mul_add</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>res, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>a, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span>b, 
+        <span style="color:#66d9ef">float</span> m, uint32_t num_samples)
+{
+    <span style="color:#66d9ef">for</span> (uint32_t i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>num_samples; <span style="color:#f92672">++</span>i)
+        res[i] <span style="color:#f92672">=</span> a[i] <span style="color:#f92672">+</span> b[i] <span style="color:#f92672">*</span> m;
+}
+</code></pre></div><p>And we would call it like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">mul_add(output[oc], output[oc], s.sample[ic], m[ic][oc]);
+</code></pre></div><p>However, as this is an inner loop that will be called a lot — twice for each sample of each playing
+sound (with mono sources and stereo output) — it makes sense to try to optimize it. There are three
+important improvements we can do:</p>
+<ul>
+<li>
+<p>We can use AVX. That allows us to process 8 floating-point operations at a time. (If AVX is not
+available, we could use SSE.)</p>
+</li>
+<li>
+<p>AVX has a “fused multiply and add” instruction that performs the whole <code>a + b * m</code> computation as
+a single instruction.</p>
+</li>
+<li>
+<p>We can add <code>restrict</code> to the <code>res</code>, <code>a</code> and <code>b</code> pointers so that the compiler can generate more efficient code.</p>
+</li>
+</ul>
+<p>The last point is a bit subtle and perhaps warrants a more detailed explanation. The way <code>mul_add()</code>
+is written now, the compiler cannot assume that the <code>res</code>, <code>a</code> and <code>b</code> pointers are unrelated. I.e.,
+what the compiler writes to <code>res</code> could affect what it sees when it reads <code>a</code>. For example, we could
+call <code>mul_add()</code> like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">mul_add(p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, p, s, m);
+</code></pre></div><p>With this setup <code>res + i == a + i + 1</code>, so whatever we write to <code>res[i]</code> will be the next value read
+from <code>a[i]</code>. In situations like this, the compiler has to be very careful with how it does its loads
+and stores. It can’t, for example, read <code>a[i+1]</code> from memory into a register before it has written
+out <code>res[i]</code>, because those could be the same memory locations.</p>
+<p>By using the <code>restrict</code> keyword we tell the compiler that <code>res</code>, <code>a</code> and <code>b</code> are all independent
+memory locations and what is written to one cannot affect what is being read from the other. This
+gives the compiler more freedom in rearranging its loads and stores.</p>
+<p>Here’s what the final function looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mul_add</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">restrict</span> res,
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">restrict</span> a, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">restrict</span> b, 
+    <span style="color:#66d9ef">float</span> m, uint32_t num_samples)
+{
+    __m256 v_m <span style="color:#f92672">=</span> _mm256_broadcast_ss(<span style="color:#f92672">&amp;</span>m);
+    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> num_samples; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">8</span>) {
+        __m256 v_a <span style="color:#f92672">=</span> _mm256_load_ps(a <span style="color:#f92672">+</span> i);
+        __m256 v_b <span style="color:#f92672">=</span> _mm256_load_ps(b <span style="color:#f92672">+</span> i);
+        __m256 v_res <span style="color:#f92672">=</span> _mm256_fmadd_ps(v_b, v_amplitude, v_a);
+        _mm256_store_ps(res <span style="color:#f92672">+</span> i, v_res);
+    }
+}
+</code></pre></div><p>But note that this means that we can no longer call the function like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">mul_add(output[oc], output[oc], s.sample[ic], m[ic][oc]);
+</code></pre></div><p>With the restrict keyword, we promised that <code>res</code> and <code>a</code> would be independent, but we just passed
+in the same pointer for both <code>res</code> and <code>a</code>.</p>
+<p>We can solve this by double buffering the output. We can allocate two separate buffers. One to read
+from (<code>output_read</code>) and one to write to (<code>output_write</code>). Then, after each call to <code>mul_add()</code>, we
+swap the two buffers, so that the last buffer written to, now becomes the buffer to read from:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">mul_add(output_write[oc], output_read[oc], s.sample[ic], m[ic][oc]);
+swap(output_write[oc], output_read[oc]);
+</code></pre></div><p>I run the mixer on a dedicated sound rendering thread. The thread always generates the same number
+of samples (I call this the <code>RENDER_QUANTUM</code>) and uses the backend event and <code>remaining_samples()</code>
+to determine if it needs to render more samples:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">while</span> (true)
+{
+    <span style="color:#66d9ef">if</span> (backend<span style="color:#f92672">-&gt;</span>remaining_samples() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> RENDER_QUANTUM <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) {
+        tm_sound_backend_api<span style="color:#f92672">-&gt;</span>wait(<span style="color:#ae81ff">0.1f</span>);
+        <span style="color:#66d9ef">continue</span>;
+    }
+    samples_t samples <span style="color:#f92672">=</span> render(mixer, RENDER_QUANTUM, channel_mask);
+    backend<span style="color:#f92672">-&gt;</span>feed(samples);
+}
+</code></pre></div><p>Basically, if the backend has more than 1.5 x <code>RENDER_QUANTUM</code> of samples we consider that it has
+“enough” and wait for the event to signal that one of the <code>RENDER_QUANTUM</code> sized buffers has been
+processed before proceeding.</p>
+<p>As discussed above,  <code>RENDER_QUANTUM</code> needs to be set high enough that the sound backend doesn’t
+starve, but otherwise as low as possible so that we minimize sound latency. I found a value around
+2048, or 46.4 ms seems to work for me on waveOut.</p>
+<p>But we don’t actually want to use 2048 as our <code>RENDER_QUANTUM</code>.</p>
+<p>Why? This is another subtle issue that has to do with how we allocate buffers. We use a single <a href="../data-structures-part-1-bulk-data/">big
+VM allocation</a> for all the sound
+memory and then allocate buffers from it by simple pointer bumping. The size of a buffer is
+<code>RENDER_QUANTUM * sizeof(float)</code> so if one buffer is at <code>p</code>, the next buffer will be at <code>p + 8192</code>.</p>
+<p>The problem with this is that it will lead to <a href="http://web.archive.org/web/20220212193327/https://tech.labs.oliverwyman.com/blog/2013/10/08/cpu-cache-collisions-in-the-context-of-performance/">cache line
+collisions</a>.
+Caches typically have sizes that are powers of two, so there is a high risk that <code>p</code> and <code>p + 8192</code>
+will map to the exact same cache line. This means that in our inner loop function above, <code>res</code>, <code>a</code>
+and <code>b</code> will all end up on the same cache line and so will <code>res[i]</code>, <code>a[i]</code> and <code>b[i]</code>. With all
+these values mapped to the same cache line, they can’t be in the cache simultaneously which is bad.</p>
+<p>There are multiple ways you could avoid this. You could bump the pointer a little bit between each
+buffer allocation to make sure they’re not on the same cache line, or you can choose a
+<code>RENDER_QUANTUM</code> that’s not a power of 2. I choose the latter option and set <code>enum { RENDER_QUANTUM= 257 * 8 }</code>. Note that the render quantum still needs to be a multiple of 8, because we want our
+floats to be aligned for AVX.</p>
+<p>Note that I haven’t actually tested all these optimizations to see what kind of an improvement they
+make. That would be an interesting experiment.</p>
+<h2 id="snap-crackle-and-pop">Snap, crackle, and pop</h2>
+<p>In addition to sound starvation, there are a few other situations that can give you audible sound
+artifacts. One is changing the sound volume. If you change the volume (amplitude) of a sound wave
+from one same to the next you will create a discontinuity in the sound wave:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Instant volume changes cause discontinuities." src="images/low_level_sound__discontinuities.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Instant volume changes cause discontinuities.</h4>
+    </figcaption>
+  </figure>
+<p>It might not be immediately obvious, but discontinuities like this in the sound wave lead to audible
+snaps, crackles, and pops in the sound. To get rid of the crackles we have to change the volume
+slowly, over a number of samples instead of doing it instantly:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="If we change the volume gradually, continuity is preserved." src="images/low_level_sound__ramping.jpeg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>If we change the volume gradually, continuity is preserved.</h4>
+    </figcaption>
+  </figure>
+<p>In my tests, to completely get rid of clicks and pops I could only change the gain by 1/3072th per
+44.1 kHz sample. This is equivalent to a full gain change 0 → 1 in 70 ms. It probably would be
+possible to change the gain faster by doing it non-linearly, i.e. make small changes when the gain
+is close to 0 and bigger changes when the volume is close to 1, but I haven’t investigated this in
+any great detail.</p>
+<p>One important thing to note is that it is not just changing the volume of a sound that can cause
+these artifacts. <em>Anything</em> that affects the gain of a sound can cause popping and clicking.</p>
+<p>For example, suppose that a sound is positioned in the 3D world and that the user turns her head
+quickly so that the sound moves from her left ear to her right ear over the cause of a frame. This
+means that the gain of the sound in the left speaker goes from 0 → 1 and the gain in the right
+speaker goes from 1 → 0, causing the same sound artifacts as if the volume of the sound had been
+changed directly.</p>
+<p>I handle all these gain changes in a uniform way by applying the ramping, not to individual volume
+and position changes, but to the whole gain matrix <code>m[ic][oc]</code> that describes the gain from each
+of the sound’s input channels to each output speaker channel.</p>
+<p>Pops can also happen if we stop a sound while it’s in the middle of playing, since stopping a sound
+is equivalent to a 0 → 1 gain change. To make sure that a sound stops smoothly we can’t just stop it
+immediately, instead, we have to set a target gain matrix of <code>m = {0}</code> and then ramp towards this
+value. Once all matrix entries have reached zero it is safe to stop the sound.</p>
+<p>Another problem that can occur is <em>clipping</em>. If we add together five sounds, each in the [-1, 1]
+range we end up with a buffer in the [-5, 5] range. But there is no way for our speaker to play
+that! Our speaker cone has a maximum range of [-1, 1]. The best we can do is to clamp all values &gt; 5
+to 1 and all values &lt; -5 to -1. This process is called <em>clipping</em> and it will lead to sound
+artifacts, though not as bad as the clicking and popping artifacts.</p>
+<p>One way of handling this is to avoid playing sounds at full volume to leave some headroom for adding
+sounds together. For example, if we keep each of our sounds are in the [-0.2, 0.2] range, when we
+add them together we can never go outside the [-1, 1] range.</p>
+<p>However, there is a limit to how far you can take this. If you want to be able to have hundreds of
+sounds playing, you would have to clamp each one to 0.01 to absolutely avoid overflow, but at that
+gain, they&rsquo;ll be barely audible. It&rsquo;s better to allow each individual sound to be louder and have a
+strategy for dealing with overflows.</p>
+<p>The problem is similar to that of tone-mapping in physically-based (HDR) rendering. We’re trying to
+map a potentially infinite range of physical energy values (in the case of HDR — the amount of
+lighting, for sound — air pressure) to the limited range of an output device (in the case of HDR —
+the screen, for sound — the speaker).</p>
+<p>So to fix it, we can employ a similar solution. Exactly how we do that depends on what we want to
+achieve. Do we want the loud sounds to “drown out” the quieter sounds so that they become inaudible.
+In that case, we can just scale all the volumes down until we’re back in the [-1, 1] range. Or do we
+want the quieter sounds to still be audible? In that case, we have to apply some kind of dynamic
+range compression — making the louder sounds quieter without affecting the quieter sounds.</p>
+<p>I decided to go with the first option since again, it was the simpler one. I’m not sure exactly what
+is “right” here. I think it’s partly a matter of psychoacoustics and partly an artistic choice. For
+example, another option might be to apply a filter to make everything sound muffled, after the
+player has been “deafened” by a particularly loud sound. Ambitious games may decide to implement
+their own tone-mapping model</p>
+<h2 id="3d-positioning">3D Positioning</h2>
+<p>The mixer performs 3D positioning of sounds. It does this by considering the position of the sound
+source in the virtual world and the position of the “listener” (player). From this, it computes how
+much of each sound should be sent to each output channel — our matrix <code>m[ic][oc]</code>. For example, if
+the sound is to the right of the player, we play it with higher volume in the right speaker and
+lower volume in the left speaker.</p>
+<p>3D positioning is actually two pretty distinct problems depending on whether the player is using
+headphones or speakers.</p>
+<p>In the real world, humans use multiple cues to locate the direction that a sound is coming from:</p>
+<ul>
+<li>The volume of the sound that is heard by each ear.</li>
+<li>When, in time, the sound arrives at each ear.</li>
+<li>How the sound is affected by the head and the shape of the outer ears.</li>
+</ul>
+<p>The last point is called the head-related transfer formula (HRTF) and it affects different
+frequencies of the sound differently, depending on the direction. Actually, each one of us has a
+slightly different HRTF, since the shape of our heads and ears differ, but it can be pretty decently
+approximated by an “average” head.</p>
+<p>The difference between using speakers and headphones is that when we are using headphones we are
+delivering the sound straight into the player’s inner ears, bypassing the head and the outer ears.
+So to give the user accurate position cues, <em>we</em> should compute the HRTF and the sound delays and
+apply them <em>before</em> we send the output data to the headphones.</p>
+<p>In contrast, when we’re playing sounds through the speakers, the sound will be modulated by the
+player’s head and outer ears before reaching the inner ears. So in this case, the engine should
+<em>not</em> be applying an HRTF to the sound before playing it. If we did, the HRTF would be applied
+twice. First, as a “virtual” HRTF in the engine, and then as a physical HRTF in the “real world”.</p>
+<p>So playing through speakers and headphones are very different things.</p>
+<p>So far, however, I haven’t implemented a true HRTF for The Machinery. For now, I’m just using simple
+gain based positioning, which ends up being the same for speakers and headphones.</p>
+<p>To compute the gain for each channel, I compute the angle from the listener to the sound and compare
+that with the angle to each speaker. I find the two speakers that the sound is closest to and fade
+between them. Then we multiply that with a distance-based attenuation model:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Positioning a 3D sound onto a speaker setup." src="images/low_level_sound__positioning.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Positioning a 3D sound onto a speaker setup.</h4>
+    </figcaption>
+  </figure>
+<p>Of course, I don’t know the <em>actual</em> angles to the speakers, since that depends on where the user
+has positioned them in their living room — information that I’m not privy too. Instead, I use
+standard angles defined for Dolby 5.1 and 7.1 setups.</p>
+<p>Note too that I’m performing the calculation in 2D. If the user has, for example, a 7.1.4 setup,
+there will be <code>TOP</code> speakers that are elevated. I.e. in addition to the planar angle to the sound
+and the speakers we also have to take into account the azimuth angle and perform the blend in 3D.
+Currently, though, we don’t support 7.1.4 speaker configurations.</p>
+<p>There is a common problem with 3D positioning that happens when sounds are treated as point sources.
+If the player gets very close to a point sound source, it will jump quickly between the left and
+right ear based on very small player movements. This tends to sound very unnatural, because “real
+world” sounds aren’t point sources, our head is not a “point listener” and we can’t put our head
+straight through a sound source anyway.</p>
+<p>We address this by giving sound sources a <code>spread</code> parameter that essentially specifies the “size”
+of the sound source. When the user is inside the <em>spread</em> distance, we play the sound as an
+unpositioned sound — equal volume on all channels. As the user moves away from the spread distance,
+we blend between this unpositioned sound and a 3D positioned sound computed using the calculations
+above. Note that we can perform this blend simply by blending the coefficients of <code>m[ic][oc]</code>.</p>
+<p>Incidentally, this also gives us a way to position multichannel sounds, such as stereo or 5.1
+recordings. This is normally tricky because if we position such a sound as a point source, all the
+channels downmix to mono since they’re all coming from the same position in space. This means that
+the “expanse” of the sound is lost. However, if we just apply the <code>spread</code> algorithm from above,
+everything works nicely. We use the spread to blend between an unpositioned sound (plays as a normal
+stereo or 5.1 sound) and a 3D positioned sound (plays as a mono point source). When the player is
+within the spread distance she will hear a normal stereo recording, but as she moves out of it, it
+will smoothly transition to a positioned source with directionality.</p>
+<h2 id="future-features">Future features</h2>
+<p>As you can see, we’ve only just gotten started with our sound system. In addition to the stuff
+already mentioned in this post there is a lot of other stuff missing that we would like to add in
+the future:</p>
+<ul>
+<li>Reverb.</li>
+<li>Other DSP effects.</li>
+<li>React dynamically to changes in the speaker set up (plug headphones in/out).</li>
+<li>Streaming support.</li>
+<li>Support for compressed formats: ADPCM, Vorbis, MP3, M4A.</li>
+<li>Directional sound sources.</li>
+<li>Doppler effects.</li>
+<li>High-level sound features
+<ul>
+<li>Randomization</li>
+<li>Looping ranges</li>
+<li>Sequences</li>
+</ul>
+</li>
+</ul>
+<p>But with our ship-early, ship-often strategy we already have a functional sound system that is “good
+enough” for many games and other applications.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220212193327/https://twitter.com/share?text=Writing%20a%20Low-Level%20Sound%20System%20%e2%80%94%20You%20Can%20Do%20It%21 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fwriting-a-low-level-sound-system%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220212193327/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fwriting-a-low-level-sound-system%2f&amp;description=Writing%20a%20Low-Level%20Sound%20System%20%e2%80%94%20You%20Can%20Do%20It%21" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../gdc-2020/">GDC 2020</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-02-03T00:00:00Z">
+                      3 Feb 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I am lagging behind my WaSaBis! I will be back on track with them next time, but I wanted to go
+through our GDC 2020 …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../gdc-2020/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">2 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../time-tracking-in-2020/">Time Tracking In 2020</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-01-20T00:00:00Z">
+                      20 Jan 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>As 2019 was wrapping up I found myself wanting to get some kind of high-level picture of what I’ve
+spent the year doing. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../time-tracking-in-2020/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../see-ya-later-2019/">See Ya Later 2019!</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-12-25T00:00:00Z">
+                      25 Dec 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>This is our end of the year well wishes as we are closing out for Holiday Break!</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../see-ya-later-2019/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src="post/writing-a-low-level-sound-system/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220212193327/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220212193327/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220212193327/https://ourmachinery.com/cdn-cgi/l/email-protection#e191888f86a18e94938c808289888f849398cf828e8c" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:33:27 Feb 12, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:26 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 202.358
+  exclusion.robots: 0.1
+  exclusion.robots.policy: 0.093
+  cdx.remote: 0.072
+  esindex: 0.01
+  LoadShardBlock: 166.46 (3)
+  PetaboxLoader3.datanode: 159.853 (4)
+  CDXLines.iter: 14.546 (3)
+  load_resource: 258.227
+  PetaboxLoader3.resolve: 168.372
+-->

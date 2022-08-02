@@ -1,0 +1,668 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content=""/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="DLL Hot Reloading in Theory and Practice">
+  <meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="DLL Hot Reloading in Theory and Practice · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/dll-hot-reloading-in-theory-and-practice/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-08-14T00:00:00Z"/>
+  
+
+  <title>DLL Hot Reloading in Theory and Practice &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220705103427/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220705103427\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220705103427\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "DLL Hot Reloading in Theory and Practice",
+    "name": "DLL Hot Reloading in Theory and Practice",
+    "wordCount":  2281 ,
+    "timeRequired": "PT11M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/dll-hot-reloading-in-theory-and-practice/",
+    "datePublished": "2017-08-14T00:00Z",
+    "dateModified": "2017-08-14T00:00Z",
+    
+    
+    "description": ""
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220705103427/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>DLL Hot Reloading in Theory and Practice</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-08-14T00:00:00Z">
+          Aug 14, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>I have <a href=" ../../post/little-machines-working-together-part-2/">before</a> about how our plugin system enables in-place hot-reloading of plugin DLLs. Here is a little screen capture of it in action, using hot reloading to change the color and style of UI items:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="DLL Hot Reloading" src="../../images/dll-hot-reloading.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>DLL Hot Reloading</h4>
+    </figcaption>
+  </figure>
+<p>To see the effects of my code changes, I simply press <code>Ctrl-Shift-B</code> in Visual Studio Code to build the project. This rebuilds the DLL, The Machinery sees the new DLL and hot reloads it into the application.</p>
+<p>But hot-reloading goes way beyond simple tweaks like this. While working on the asset browser I was able to add whole new features, all using hot reloading. For example, for the file tree, I started by adding a splitter between the file tree and the main pane — hot reloaded to see that working. Then drew some dummy folders into that pane — hot reloaded again. Drew the whole file tree expanded — hot reloaded again. Added the UI code for expanding and closing folders — hot reloaded again. Of course, during the process, there were various minor and not-so minor bugs, that I also fixed with hot reloading.</p>
+<p>Working like this is a real eye-opener. You get the power and performance of a statically compiled, highly optimized language, together with the dynamic and interactive workflows of a scripting language. If you haven’t tried it already you should really give it a go.</p>
+<p>I think there are great benefits to having a hot-reload environment as your main workflow. And it makes me wonder a bit why there aren’t more people doing it. In theory, hot reloading is not that complicated. Just look at the documentation for <a href="http://web.archive.org/web/20220705103427/https://msdn.microsoft.com/en-us/library/windows/desktop/ms684175(v=vs.85).aspx">LoadLibrary</a> and <a href="http://web.archive.org/web/20220705103427/https://msdn.microsoft.com/en-us/library/windows/desktop/ms683212(v=vs.85).aspx">GetProcAddress</a> for how to load a DLL (or a new version of an old DLL) and get the function pointers from it.</p>
+<p>In practice, it can be trickier.  For this post I wanted to look at some of the things that make people shy away from hot reloading and how we address them at Our Machinery. Our solutions might not work for everybody, but hopefully our ideas can inspire others to make DLL hot reloading a more common development practice.</p>
+<p>Some of the things that stop people from using DLL reloading are:</p>
+<ul>
+<li>
+<p><strong>Complicated Architectures.</strong> DLL reloading is pretty straightforward in a straight C executable — just get the new function pointers and replace the old ones in some shared table. In a more complicated C++ setup with classes and inheritance, things are not as simple. Function pointers are hidden in vtables. Some functions may be inlined, which means you can’t really replace them. (But you could of course recompile the DLL that inlined them and reload that DLL too.) Hot reload is still doable in this scenario, but more complicated.</p>
+</li>
+<li>
+<p><strong>Long Build Times.</strong> If the build time for an incremental build is long, hot reloading won’t give you that feeling of immediately interacting with the executable that you get from a scripting language. This immediacy is one of the main reasons why we want hot reloading.</p>
+</li>
+<li>
+<p><strong>Bad Tooling.</strong> The Visual Studio Debugger is pretty painful to use with hot reloading. Probably because not enough people use hot reloading to make it worthwhile to make the workflows better. So this is kind of a chicken and egg problem. More people need to start using hot reloading to make the Visual Studio team see the importance of supporting hot reloading. Which is one of the reasons why I’m writing this article.</p>
+</li>
+<li>
+<p><strong>State Transfer.</strong> When a DLL is hot reloaded, any data that is “owned” by the DLL, including global variables, needs to be transferred from the old DLL instance to the new one. This is extra code that needs to be written just to support hot reloading. The amount of work depends on how you implement it.</p>
+</li>
+<li>
+<p><strong>Instability.</strong> Hot reloading exercises some code paths that are not used in the “regular” running of the application (for example state transfer). So there will be bugs during hot-reloading that are not seen during “regular” runs. If the whole development team uses hot-reloading, these bugs will be discovered and fixed quickly. But if only a small part of the team uses hot-reloading there is a risk that they will constantly run into bugs created by the rest of the team (because they are not testing the hot-reload path).</p>
+</li>
+</ul>
+<p>Let’s look at how we tackle each of these issues.</p>
+<h2 id="complicated-architectures">Complicated architectures</h2>
+<p>We are kind of drastic here and use C interfaces for all of our code. (The implementation can use C++, but the headers are all pure C.)</p>
+<p>Our APIs are structs with function pointers. We put all the function pointers for an API in a struct to get a “namespace” and to make it easier to switch out the whole API on DLL reload:</p>
+<pre><code>struct tm_some_api {
+    void (*an_api_function)(...);
+    ...
+};
+</code></pre>
+<p>In addition to APIs (global functions, essentially), we also support “objects”. An object is a struct with function pointers (methods) and an opaque pointer to the instance data for the object. This instance data is passed to the methods when we call them. (It is essentially <code>this</code> in C++.)</p>
+<pre><code>struct tm_some_object_i {
+    struct tm_some_object_o *instance;
+    
+    void (*a_method)(struct tm_some_object_o *instance, ...);
+    ...
+};
+</code></pre>
+<p>Patching the APIs for a DLL reload is easy. All the APIs are stored in a global lookup table. To patch an API we just replace all the function pointers in the API with the function pointers from the new DLL.</p>
+<p>For objects we can do the same thing. The only tricky thing is that since the method pointers are stored in the objects themselves we need a list of all objects, so that we can go through them all and update the function pointers. So our plugins have to keep track of all the objects as they are created and destroyed, so we can go through them later, which is a bit painful.</p>
+<p>It might make sense to switch to a more vtable-like approach. I.e. instead of keeping the function pointers in the objects themselves, we put them in a shared table (much as we do with the API). The objects themselves would point to this table, as well as the instance data. In other words, it would look something like this:</p>
+<pre><code>struct tm_some_object_vtable {
+    void (*a_method)(struct tm_some_object_o *instance, ...);
+    ...
+};
+
+struct tm_some_object_i {
+    struct tm_some_object_o *instance;
+    struct tm_some_object_vtable *vtable;
+};
+</code></pre>
+<p>Now, to reload the functions from the new DLL, we can just replace the function pointers in the shared vtable, and we don’t need to keep track of all object instances. We can even add new methods if we leave some empty slots at the end of the table. This is nicer, but it leads to slightly more complicated code for calling methods on the object:</p>
+<pre><code>// Without vtable:
+obj-&gt;a_method(obj-&gt;instance, ...);
+
+// With vtable:
+obj-&gt;vtable-&gt;a_method(obj-&gt;instance, ...);
+</code></pre>
+<p>Might still be worth it… I need to think about this some more.</p>
+<p>If you are using C++, and you are not using complicated things like multiple inheritance, etc, this approach might work for you too, since this vtable setup is essentially what C++ is doing. However you will need to write some OS/system specific code to access the vtable, since it is not exposed in C++. Also, I think you might run into trouble, because the vtable would be allocated in the memory space of the DLL, which is freed when you unload it. You may have to do some hackery in the constructor to patch your objects to use a globally allocated vtable that you can pointer-patch on reload. I haven’t really investigated this path, since it is not the road we took, so someone else is probably better qualified to write about how to solve these issues.</p>
+<p>Another approach you could do with C++ is to hold all objects through handles instead of straight pointers. Then during reload you could serialize the object in the old DLL and deserialize it in the new one — essentially creating a new object and then update the handle to point to the new object. I will talk more about serialization later.</p>
+<h2 id="long-build-times">Long build times</h2>
+<p>We use a physical design where <a href=" ../../post/physical-design/">header files are not allowed to include other header files</a>. This keeps build times down, both for total rebuilds and incremental builds. We also minimize the use of C++ templates which tend to have a big effect on build times.</p>
+<h2 id="bad-tooling">Bad tooling</h2>
+<p>The main problem with Visual Studio is the file locks that you run into while debugging. These locks prevent DLLs from being rebuilt and consequently from being reloaded. The <code>plugin.dll</code> file is locked as the program is running and the <code>plugin.pdb</code> file is locked during debugging. Both of these problems <a href=" ../../post/little-machines-working-together-part-2/">can be dealt with</a>, but unfortunately, as I discovered recently, this is not enough. The Visual Studio Debugger will also sometimes lock another file called <code>vc141.pdb</code> and this blocks rebuilding too.  I don’t know exactly why this file is getting used and I haven’t been able to find any information about it. I don’t think the renaming tricks that we use for the regular DLLs and PDBs will work for this file, since it is not created by us. So far I haven’t been able to fix this and get reloads to work while the debugger is running.</p>
+<p>Side note: <a href="http://web.archive.org/web/20220705103427/https://twitter.com/zeuxcg">@zeuxcg</a> suggested to me to use the <code>/Z7</code> flag. In theory, this should embed all the debugging data inside the executables and DLLs. So no PDB files should be created and PDB locking should not be a problem. Indeed, when I used the <code>/Z7</code> flag no PDB files were created. But instead, Visual Studio created a 4 MB file called <code>NONE</code> and locked <em>that</em> instead. So back to square zero.</p>
+<p>Another issue with reloading with the debugger is that even when it <em>does</em> work, any breakpoints set will not be set in the new instance of the DLL, so it is still painful to work with. Especially when trying to use the hot reload workflow to fix bugs. Of course the REALLY annoying thing is to try to fix bugs in the hot reload code itself — such as state transfer bugs.</p>
+<p>For now, I’ve resigned to use detach/attach to work with the debugger while hot reloading DLLs. I’ll attach to look at something in the debugger, then detach to rebuild the DLL and hot reload it. Not ideal, but seems to be the best I can do for now.</p>
+<h2 id="state-transfer">State transfer</h2>
+<p>State transfer can be done with complete serialization — i.e., serialize all the objects from the old DLL and deserialize them in the new one. This is arguably “the right way to do it”, since in theory it will work for any kind of change — even changing the memory layout of objects.</p>
+<p>If you already have a reflection system, then maybe you can do serialization almost for free (provided all your internal objects are also a part of the reflection system) and then this could be the right path to take. Note though that you also need a handle system for accessing objects, since when you deserialize them their memory location will be different.</p>
+<p>In our case, we don’t use reflection and implementing serialization of everything would be a lot of work. We also use direct pointers to objects and data, which means they cannot be relocated. But fortunately, it is not that often that we actually change the memory layout and size of objects, so we’re ok with hot reload breaking for those cases.</p>
+<p>Instead of full serialization, we do something a lot simpler. Objects are just left in memory as-is. They were allocated by the old DLL, but will be freed by the new DLL. Since both DLLs use the same allocator, this works without problems.</p>
+<p>Global static data for the plugin (which includes the list of all active objects — remember, we need the list to patch the method pointers) are stored in a single struct:</p>
+<pre><code>struct state_t {
+    int32_t some_data;
+    ...
+};
+
+static struct state_t state;
+</code></pre>
+<p>A pointer to this data is stored in the plugin API.</p>
+<p>When we reload the plugin, we simply <code>memcpy()</code> the data from the old state to the new state:</p>
+<pre><code>void transfer_state(struct tm_some_api *new_api, struct tm_some_api *old_api)
+{
+    struct state_t *old_state = old_api-&gt;state;
+    struct state_t *new_state = new_api-&gt;state;
+    memcpy(new_state, old_state, sizeof(struct state_t));
+}
+</code></pre>
+<p>Note that this works well even if the state contains pointers to heap allocated objects. Those objects will continue to live in the heap, and we will eventually free them when the new DLL shuts down.</p>
+<p>Contrast this with a serialization solution. Full serialization would require us to serialize, not only the object itself, but also all the other objects that it references, the objects that those objects reference, etc.</p>
+<p>Note that in order to do the state transfer this way we need to have both the old DLL and the new DLL loaded in memory simultaneously so that we can copy data between them. Thus, we  need to do DLL reload in this order:</p>
+<ul>
+<li>Load new DLL</li>
+<li>Copy data from old DLL to new DLL</li>
+<li>Unload old DLL</li>
+</ul>
+<h2 id="instability">Instability</h2>
+<p>We are not a big team at Our Machinery and all of us are committed to hot reloading, so stability of that path is not a big concern for us. If that is not the case for you, maybe you can add hot reloading to your test suite, to make sure the path gets exercised.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope I’ve encouraged you to give DLL hot reloading a try, if not in your main application, maybe in some small side project. It can really be a game changer and we need a lot of people pushing for it to make it truly awesome.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220705103427/https://twitter.com/share?text=DLL%20Hot%20Reloading%20in%20Theory%20and%20Practice - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdll-hot-reloading-in-theory-and-practice%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220705103427/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdll-hot-reloading-in-theory-and-practice%2f&amp;description=DLL%20Hot%20Reloading%20in%20Theory%20and%20Practice" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/interviewing-part-2-the-interviewer/">Interviewing Part 2: The Interviewer</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-24T00:00:00Z">
+                      24 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>After looking at the interview process from the perspective of the interviewee, this post is going to look at things …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/interviewing-part-2-the-interviewer/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/one-draw-call-ui/">One Draw Call UI</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-17T00:00:00Z">
+                      17 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Tobias wrote a nice post about <a href=" ../../post/ui-rendering-using-primitive-buffers/">the low level rendering of our UI</a>. If you haven&rsquo;t checked it out already, go ahead …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/one-draw-call-ui/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">16 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/interviewing-part-1-the-interviewee/">Interviewing Part 1: The Interviewee</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-05T00:00:00Z">
+                      5 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Full disclosure: I can sometimes be a bit of a glutton for punishment.</p>
+<p>This trait has allowed me to endure and sometimes …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/interviewing-part-1-the-interviewee/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/dll-hot-reloading-in-theory-and-practice/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220705103427/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220705103427/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220705103427/https://ourmachinery.com/cdn-cgi/l/email-protection#780811161f38170d0a15191b1011161d0a01561b1715" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 10:34:27 Jul 05, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:37 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 71.609
+  exclusion.robots: 0.082
+  exclusion.robots.policy: 0.074
+  RedisCDXSource: 0.602
+  esindex: 0.008
+  LoadShardBlock: 54.185 (3)
+  PetaboxLoader3.datanode: 79.478 (4)
+  CDXLines.iter: 13.957 (3)
+  load_resource: 165.587
+  PetaboxLoader3.resolve: 126.56
+-->

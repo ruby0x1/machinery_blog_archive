@@ -1,0 +1,951 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="In this part we look into adding some graphics to our Emscripten project built in The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/emscripten2__simple_draw.png"/>
+  
+  <meta name="twitter:title" content="Compiling The Machinery with Emscripten: Part 2 — Graphics">
+  <meta name="twitter:description" content="In this part we look into adding some graphics to our Emscripten project built in The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Compiling The Machinery with Emscripten: Part 2 — Graphics · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/compiling-the-machinery-with-emscripten-part-2/"/>
+  
+  <meta property="og:image" content="../../images/emscripten2__simple_draw.png"/>
+  
+  
+  <meta property="og:description" content="In this part we look into adding some graphics to our Emscripten project built in The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-12-06T00:00:00Z"/>
+  
+
+  <title>Compiling The Machinery with Emscripten: Part 2 — Graphics &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20211206235914/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20211206235914\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20211206235914\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Compiling The Machinery with Emscripten: Part 2 — Graphics",
+    "name": "Compiling The Machinery with Emscripten: Part 2 — Graphics",
+    "wordCount":  3392 ,
+    "timeRequired": "PT16M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/compiling-the-machinery-with-emscripten-part-2/",
+    "datePublished": "2021-12-06T00:00Z",
+    "dateModified": "2021-12-06T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20211206235914/https://ourmachinery.com/emscripten2__simple_draw.png"
+    },
+    
+    
+    "description": "In this part we look into adding some graphics to our Emscripten project built in The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211206235914/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Compiling The Machinery with Emscripten: Part 2 — Graphics</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-12-06T00:00:00Z">
+          Dec 6, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>This blog series is about getting <a href="../../">The Machinery</a> to run in the web
+browser using <a href="http://web.archive.org/web/20211206235914/https://emscripten.org/">Emscripten</a>. I spent two <a href="http://web.archive.org/web/20211206235914/https://en.wikipedia.org/wiki/Hackathon">Hack
+Days</a> working on this.</p>
+<p>On the <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/">first day</a>,
+I got some basic command-line programs to run and print their output in a browser window.</p>
+<p>In this part, I’ll make it more interesting by adding graphics and interactivity:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="2D graphics and UI." src="../../images/emscripten2__simple_draw.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>2D graphics and UI.</h4>
+    </figcaption>
+  </figure>
+<p>Web browsers use <a href="http://web.archive.org/web/20211206235914/https://www.khronos.org/webgl/">WebGL</a> for 3D drawing — a variant of
+<a href="http://web.archive.org/web/20211206235914/https://www.opengl.org/">OpenGL</a>. This creates some problems because The Machinery does not
+currently have an OpenGL backend. Instead, we use <a href="http://web.archive.org/web/20211206235914/https://www.vulkan.org/">Vulkan</a>, and we make
+heavy use of advanced Vulkan features that can’t be easily emulated in OpenGL.</p>
+<p>While it is would be possible to add a new OpenGL-based rendering backend to The Machinery, it’s
+a pretty big task, well beyond the scope of what can be achieved in a single Hack Day. The
+Machinery is also geared towards &ldquo;modern&rdquo; rendering backends
+(<a href="http://web.archive.org/web/20211206235914/https://www.vulkan.org/">Vulkan</a>, <a href="http://web.archive.org/web/20211206235914/https://en.wikipedia.org/wiki/DirectX">DX12</a>,
+<a href="http://web.archive.org/web/20211206235914/https://developer.apple.com/metal/">Metal</a>). Adding support for a &ldquo;legacy&rdquo; backend such as
+OpenGL would mean even more work.</p>
+<p>So how can we get some graphics in the web browser?</p>
+<p>Well if we don’t need to render <em>everything</em>, we don’t necessarily need a complete render
+backend. For my Hack Day project, I decided to just focus on getting 2D drawing to work. Since 2D
+drawing also powers the UI, if I could just get 2D drawing to work I should in theory be able to
+run any 2D/UI program built using The Machinery in the browser.</p>
+<p>I like to have a concrete and focused goal to work against, so I decided to try to make <em>Simple
+Draw</em> work in the browser. <em>Simple Draw</em> is a simple 2D drawing program built in <em>The Machinery</em>.
+We ship it as a sample to show how The Machinery can be used as a framework to build all kinds of
+tools and applications (not just for game development):</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Simple Draw." src="../../images/emscripten2__simple_draw.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Simple Draw.</h4>
+    </figcaption>
+  </figure>
+<p>There are many possible ways of implementing 2D drawing. For example, we could take all the 2D
+drawing commands that are exposed in <code>tm_draw2d_api</code> such as <code>tm_draw2d_api-&gt;fill_rect()</code> and
+implement them using OpenGL. But let’s try to do something a little bit more clever that takes
+advantage of how 2D drawing works in The Machinery.</p>
+<p>The blog post <a href=" ../../post/one-draw-call-ui/">One Draw Call UI</a> explains this in
+depth, but basically, everything that is drawn in The Machinery’s UI is gathered up into a single
+pair of vertex/index buffers and then drawn using a single draw call. (Actually, the vertex buffer
+is more like a &ldquo;primitive buffer&rdquo; — it doesn’t store vertices per se, it stores a
+representation of the primitives we want to draw that is unpacked by the vertex shader.)</p>
+<p>For our purposes, this is kind of great, because it means we don’t have to figure out how to draw
+lines, rectangles, curves, etc using OpenGL. All we need to do is to figure out how to draw the
+vertex/index buffer pair. Unfortunately, we can’t just send them to OpenGL, because they use a
+bunch of Vulkan techniques that don’t work in OpenGL (e.g., non-uniform buffers and dependent
+reads). But it should be possible to fix that with a conversion step — code on the CPU that
+converts the Vulkan buffers to something that OpenGL can draw.</p>
+<p>So here’s our plan:</p>
+<ul>
+<li>Draw the UI using normal <code>tm_ui_api</code> and <code>tm_draw2d_api</code> calls.</li>
+<li>Get the vertex and index buffers from the UI.</li>
+<li>Convert them into OpenGL-friendly buffers.</li>
+<li>Render them using OpenGL.</li>
+</ul>
+<p>But before we get started on that, let’s make sure that we’re able to render <em>anything</em>.</p>
+<h2 id="first-triangle">First Triangle</h2>
+<p>Whenever I’m working on graphics (which isn’t too often), I always start by downloading some
+sample code to get the first triangle up. It’s always tricky to know exactly what you need to do
+to get to that point — do you need to set up surfaces, cameras, viewports, etc — so it’s a lot
+easier to get started by iterating over something that’s already working. (That’s true for The
+Machinery too — if you want to make something with The Machinery, do yourself a favor and start
+with a sample instead of building from scratch.)</p>
+<p>After a bit more Googling than I expected, I settled on
+<a href="http://web.archive.org/web/20211206235914/https://github.com/emscripten-core/emscripten/blob/main/tests/webgl_draw_triangle.c">webgl_draw_triangle.c</a></p>
+<p>Here’s what it looks like when I compiled it and ran it in the browser:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="OpenGL triangle from Emscripten." src="../../images/emscripten2__triangle.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>OpenGL triangle from Emscripten.</h4>
+    </figcaption>
+  </figure>
+<p>All good, we have something drawing. Now let’s try to draw something using The Machinery.</p>
+<h2 id="static-linking">Static Linking</h2>
+<p>The command-line programs from <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/">the first blog
+post</a> only needed
+the <code>foundation</code> library to run. For our UI programs, we also need the <code>ui</code> library which has the
+<code>tm_draw2d_api</code> and <code>tm_ui_api</code> APIs.</p>
+<p>This presents a bit of a problem because, in our regular build setup, the <code>ui</code> library is
+dynamically linked and loaded as a plugin, but our web application is a static executable.
+(<code>foundation</code> doesn’t have this issue, because it’s always linked statically.)</p>
+<p>It doesn’t seem to be that widely used, but Emscripten actually supports dynamic linking through
+<code>dlopen()</code> so we have two choices:</p>
+<ol>
+<li>Figure out how to get <code>dlopen()</code> and dynamic linking to work in Emscripten so that we can link
+the <code>ui</code> plugin dynamically.</li>
+<li>Change the build configuration so that <code>ui</code> is linked statically into the web application.</li>
+</ol>
+<p>Since I couldn’t find a lot of tutorials or documentation about dynamic linking in Emscripten, I
+decided to go with the second option. (This was perhaps a mistake, I’ll get back to this later.)</p>
+<p>Changing the linking options for the UI library is pretty straightforward, we can just tell Premake
+to use static linking when we compile for the <code>web</code> target:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">filter { <span style="color:#e6db74">&#34;platforms:web&#34;</span> }
+    kind <span style="color:#e6db74">&#34;StaticLib&#34;</span>
+filter { <span style="color:#e6db74">&#34;not platforms:web&#34;</span> }
+    kind <span style="color:#e6db74">&#34;SharedLib&#34;</span>
+</code></pre></div><p>The problem is that when we change the linking like this, we get a bunch of compile errors.</p>
+<p>Dynamically linked libraries have their own &ldquo;namespaces&rdquo; for exported symbols. I. e., you can
+have two dynamically linked libraries loaded that both have the symbol <code>foobar()</code> without running
+into any trouble. You can retrieve the address of the exported <code>foobar()</code> symbol in a particular
+library by calling <code>dlsym(lib, &quot;foobar&quot;)</code> (or <code>GetProcAddress(module, &quot;foobar&quot;)</code> on Windows).</p>
+<p>In contrast, when you link statically, all global symbols end up in the same namespace. If you try
+to statically link two libraries that both define <code>foobar()</code> you will get a linker error about
+trying to define the symbol twice.</p>
+<p>In some applications, this might not be a big deal, because there is only a small chance that you
+would use the same global symbol in two different libraries. Unfortunately for our purposes today,
+the coding conventions we use in The Machinery actually <em>encourage</em> the reuse of symbol names.</p>
+<p>For example, all plugins in The Machinery use an exported function called <code>tm_load_plugin()</code>  as
+their entry point (this is the function called by the plugin system to initialize the plugin). This
+works great with dynamic linking, but when linking statically, all those function names will
+collide.</p>
+<p>Another common pattern is to store API pointers in global variables:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_draw2d_api <span style="color:#f92672">*</span>tm_draw2d_api;
+
+tm_draw2d_api <span style="color:#f92672">=</span> tm_get_api(reg, tm_draw2d_api);
+</code></pre></div><p>This pattern will also cause name collisions when linking statically.</p>
+<p>Maybe it would be a good idea to make our code a bit more statically-linking friendly so that users
+who wanted to build statically linked binaries could more easily do so.</p>
+<p>But for now I just brute force hacked around the problem (it’s called a Hack Day after all). I
+just sprinkled a bunch of <code>#ifdef defined(TM_OS_WEB)</code> all over the code to get rid of all the
+duplicated symbols. I got everything compiling, but it’s not really a viable long-term solution.
+In retrospect, it might have been better to try to get dynamic linking to work, though it’s hard
+to know if there would have been any hidden dragons down that path.</p>
+<h2 id="drawing-the-ui">Drawing the UI</h2>
+<p>Now that we have a triangle on the screen and access to the UI and Draw2D libraries, the next step
+is to get some drawing from The Machinery into the web browser. The functions in the
+<code>tm_draw2d_api</code> take an explicit <code>vbuffer</code> and <code>ibuffer</code> as arguments, so we can achieve this by:</p>
+<ol>
+<li>Create a <code>vbuffer</code> and an <code>ibuffer</code>.</li>
+<li>Use <code>tm_draw2d_api-&gt;fill_rect()</code> etc to draw something into the buffers.</li>
+<li>Convert the buffers to an OpenGL-friendly format.</li>
+<li>Draw the OpenGL buffers using <code>glDrawArrays()</code>.</li>
+</ol>
+<p>The trickiest part here is the conversion step, so let’s dig into this in a little more detail.</p>
+<p>The UI vertex buffer in The Machinery uses a compressed vertex format (actually a compressed
+<em>primitive</em> format). For example, when we draw a rect, we don’t put each vertex of the rect in
+the buffer. Instead, we just put the rect coordinates into the buffer as four floats <code>{x, y, w, h}</code>. The indices in the index buffer all point to this same rect struct. In addition, some bits in
+the index are used to indicate what kind of primitive we are drawing (untextured rect) and others
+indicate which corner of the rect each index represents. The vertex shader will then use the corner
+bit flags together with the rect struct to compute the actual position of the vertex. This saves a
+lot of vertex buffer memory compared to using regular vertices. And on modern platforms, memory
+bandwidth rather than ALU performance is often the bottleneck.</p>
+<p>Clipping is handled with a similar approach. If clipping is enabled for a rect, the rect’s struct
+in the vertex buffer will store a reference to the clipping rect. The reference, in this case, is
+actually an index to another location in the vertex buffer where we store the coordinates of the
+clipping rect. Note that this lets us reuse the clipping rect for multiple primitives. The vertex
+shader reads the clipping rect data using a dependent read and supplies it to the pixel shader.</p>
+<p>The rect compression is not the only compression we have in the vertex buffer. We have similar
+approaches for other commonly drawn things. The text drawing is perhaps the most complicated one.
+In this case, an entire string of up to 32 characters is represented by a single entry in the
+vertex buffer.</p>
+<p>To draw this using OpenGL, we loop over all the primitives (all the indices in the index buffer)
+and expand them from the compressed format to uniform &ldquo;fat&rdquo; vertices that we can then draw
+using a traditional <code>glDrawArrays()</code> call. The &ldquo;fat&rdquo; vertex format looks something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> vertex {
+    tm_vec2_t pos;
+    tm_vec4_t col;
+    tm_rect_t clip;
+    tm_vec2_t uv;
+};
+</code></pre></div><p>I.e., instead of being clever and referencing data in different locations, we just put all the crap
+we need into the vertex struct.</p>
+<p>Our conversion function on the CPU will look pretty similar to the vertex shader function running
+on the GPU in the Vulkan version. It will compute the vertex position and the clip rect using the
+index data and dependent reads from the vertex buffer and use it to set up the fat vertex.</p>
+<p>Note that this is pretty inefficient compared to what the Vulkan renderer does. Not only are we
+spending time on the conversion itself, but we also end up with <em>a lot</em> more data in the vertex buffer.
+But we’re not terribly concerned about performance right now, we just want to get it running.</p>
+<p>The code for the conversion ends up looking something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add_rect</span>(<span style="color:#66d9ef">struct</span> vertex buffer,
+  tm_rect_t r_in, tm_color_srgb_t c, tm_rect_t clip,
+  tm_allocator_i <span style="color:#f92672">*</span>ta)
+{
+    <span style="color:#66d9ef">struct</span> vertex <span style="color:#f92672">*</span>vs <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>buffer;
+    <span style="color:#66d9ef">const</span> tm_vec4_t col <span style="color:#f92672">=</span> { c.r <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0f</span>, c.g <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0f</span>,
+        c.b <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0f</span>, c.a <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0f</span> };
+    <span style="color:#66d9ef">const</span> tm_rect_t r <span style="color:#f92672">=</span> rect_to_open_gl(r_in);
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> vertex v[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> {
+        { tm_rect_bottom_left(r), col, clip },
+        { tm_rect_top_left(r), col, clip },
+        { tm_rect_top_right(r), col, clip },
+        { tm_rect_top_right(r), col, clip },
+        { tm_rect_bottom_right(r), col, clip },
+        { tm_rect_bottom_left(r), col, clip },
+    };
+    tm_carray_push_array(vs, v, <span style="color:#ae81ff">6</span>, ta);
+    <span style="color:#f92672">*</span>buffer <span style="color:#f92672">=</span> vs;
+}
+
+uint32_t <span style="color:#f92672">*</span>i <span style="color:#f92672">=</span> ibuffer<span style="color:#f92672">-&gt;</span>ibuffer;
+uint32_t <span style="color:#f92672">*</span>end <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> ibuffer<span style="color:#f92672">-&gt;</span>in;
+<span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> end) {
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>i;
+    <span style="color:#66d9ef">const</span> uint32_t primitive <span style="color:#f92672">=</span> idx <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xfc000000</span>;
+    <span style="color:#66d9ef">const</span> uint32_t word_offset <span style="color:#f92672">=</span> idx <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x00ffffff</span>;
+    <span style="color:#66d9ef">const</span> uint32_t byte_offset <span style="color:#f92672">=</span> word_offset <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>;
+
+    <span style="color:#66d9ef">if</span> (primitive <span style="color:#f92672">==</span> TM_DRAW2D_PRIMITIVE_RECT) {
+        tm_draw2d_rect_vertex_t <span style="color:#f92672">*</span>r <span style="color:#f92672">=</span> (tm_draw2d_rect_vertex_t <span style="color:#f92672">*</span>)(vbuffer<span style="color:#f92672">-&gt;</span>vbuffer <span style="color:#f92672">+</span> byte_offset);
+        <span style="color:#66d9ef">const</span> uint32_t clip <span style="color:#f92672">=</span> r<span style="color:#f92672">-&gt;</span>clip <span style="color:#f92672">?</span> byte_offset <span style="color:#f92672">-</span> r<span style="color:#f92672">-&gt;</span>clip : <span style="color:#ae81ff">0</span>;
+        add_rect(buffer, r<span style="color:#f92672">-&gt;</span>rect, r<span style="color:#f92672">-&gt;</span>color, get_clip_rect(vbuffer, clip), a);
+        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">6</span>;
+    }
+}
+</code></pre></div><p>This example shows the code for an untextured <code>RECT</code> primitive. I added similar code for all the
+other primitive formats supported by <code>tm_draw2d_api</code>, verifying along the way that everything was
+drawing correctly.</p>
+<p>The GL shaders to draw the fat vertices are pretty straightforward:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> vertex_shader[] <span style="color:#f92672">=</span>
+    <span style="color:#e6db74">&#34;attribute vec4 apos;&#34;</span>
+    <span style="color:#e6db74">&#34;attribute vec4 acolor;&#34;</span>
+    <span style="color:#e6db74">&#34;attribute vec4 aclip;&#34;</span>
+    <span style="color:#e6db74">&#34;attribute vec2 auv;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec4 color;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec4 clip;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec2 texCoord;&#34;</span>
+    <span style="color:#e6db74">&#34;void main() {&#34;</span>
+    <span style="color:#e6db74">&#34;    color = acolor;&#34;</span>
+    <span style="color:#e6db74">&#34;    clip = aclip;&#34;</span>
+    <span style="color:#e6db74">&#34;    texCoord = auv;&#34;</span>
+    <span style="color:#e6db74">&#34;    gl_Position = apos;&#34;</span>
+    <span style="color:#e6db74">&#34;}&#34;</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> fragment_shader[] <span style="color:#f92672">=</span>
+    <span style="color:#e6db74">&#34;precision lowp float;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec4 color;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec4 clip;&#34;</span>
+    <span style="color:#e6db74">&#34;varying vec2 texCoord;&#34;</span>
+    <span style="color:#e6db74">&#34;uniform sampler2D texSampler;&#34;</span>
+    <span style="color:#e6db74">&#34;void main() {&#34;</span>
+    <span style="color:#e6db74">&#34;    if (gl_FragCoord.x &lt; clip.x || gl_FragCoord.x &gt; clip.x + clip.z&#34;</span>
+    <span style="color:#e6db74">&#34;        || gl_FragCoord.y &lt; clip.y || gl_FragCoord.y &gt; clip.y + clip.w)&#34;</span>
+    <span style="color:#e6db74">&#34;        discard;&#34;</span>
+    <span style="color:#e6db74">&#34;    if (texCoord.x != 0.0 || texCoord.y != 0.0) {&#34;</span>
+    <span style="color:#e6db74">&#34;        gl_FragColor = texture2D(texSampler, texCoord);&#34;</span>
+    <span style="color:#e6db74">&#34;        gl_FragColor.rgb = color.rgb;&#34;</span>
+    <span style="color:#e6db74">&#34;    } else&#34;</span>
+    <span style="color:#e6db74">&#34;        gl_FragColor = color;&#34;</span>
+    <span style="color:#e6db74">&#34;}&#34;</span>;
+</code></pre></div><h2 id="text-rendering">Text Rendering</h2>
+<p>The most complicated part of rendering was to implement font rendering. First, because the text
+rendering uses the most complicated compression format in the primitive buffer. Second, because it
+needed texture support.</p>
+<p>As I like to do, I approached this incrementally:</p>
+<ol>
+<li>Added support for rendering of textured rectangles. (Using an in-memory checkered texture that I
+generated with a couple of for-loops.)</li>
+<li>Changed the code to use a texture loaded from a file instead.</li>
+<li>Implemented text rendering using a simple texture where each ASCII letter was represented by a
+16x16 pixel square. (You can find a bunch of such fonts with a quick google search.) Our text
+rendering system requires a font texture together with a description of where in the texture each
+character can be found, but this is pretty easy to do set up manually when the characters are all
+square.</li>
+<li>Implement support for our regular font generation system that loads TTF files and renders them
+as bitmaps using <code>[stb_truetype.h](https://github.com/nothings/stb/blob/master/stb_truetype.h)</code>.</li>
+</ol>
+<p>The trickiest part of this was actually the decoding of the compressed format. I won’t go into
+more detail on that since it depends a lot on the specific way we encode our fonts.</p>
+<p>In addition, I also needed to add support for loading files in Emscripten so I could load the
+texture and font files.</p>
+<p>Since Emscripten runs in the browser, it cannot access the local file system. Instead, Emscripten
+uses a <a href="http://web.archive.org/web/20211206235914/https://emscripten.org/docs/porting/files/file_systems_overview.html">Virtual File System</a>,
+basically a file system hosted in memory. To make files available to this file system we need to
+tell Emscripten to package the files and preload them into the Virtual File System before the
+program starts running. We can do this with the following link option:</p>
+<pre><code>--preload-file utils/webgltest/<a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d0d5c0d5f4">[email&#160;protected]</a>/data
+</code></pre><p>This tells Emscripten to take the folder <code>utils/webgltest/data</code> and make it available in the
+Virtual File System under the path <code>/data</code>. If we put our font file in
+<code>utils/webgltest/data/font.ttf</code> we can then load it from the program with <code>fopen(&quot;data/font.ttf&quot;, &quot;rb&quot;)</code>.</p>
+<h2 id="input">Input</h2>
+<p>To support input, we need to connect the Emscripten input events to The Machinery’s input
+abstraction layer.</p>
+<p>Receiving input events from Emscripten is pretty straightforward. You use functions such as
+<code>emscripten_set_mousemove_callback()</code> to set callback functions that get called whenever an event
+occurs. The callback functions convert these to <code>tm_input_event_t</code> events for The Machinery and
+store them in a buffer that The Machinery’s input system can query.</p>
+<p>This looks like something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add_mouse_event</span>(<span style="color:#66d9ef">const</span> tm_input_event_t <span style="color:#f92672">*</span>e)
+{
+    mouse_events[mouse_events_n <span style="color:#f92672">%</span> MOUSE_EVENTS_BUFFER_SIZE] <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>e;
+    <span style="color:#f92672">++</span>mouse_events_n;
+    mouse_state[<span style="color:#ae81ff">0</span>][e<span style="color:#f92672">-&gt;</span>item_id] <span style="color:#f92672">=</span> e<span style="color:#f92672">-&gt;</span>data;
+}
+
+EM_BOOL <span style="color:#a6e22e">mouse_event</span>(<span style="color:#66d9ef">int</span> event_type, <span style="color:#66d9ef">const</span> EmscriptenMouseEvent <span style="color:#f92672">*</span>e, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>userdata)
+{
+    tm_input_event_t ev <span style="color:#f92672">=</span> {
+        .time <span style="color:#f92672">=</span> tm_os_api<span style="color:#f92672">-&gt;</span>time<span style="color:#f92672">-&gt;</span>now().opaque,
+        .controller_id <span style="color:#f92672">=</span> mice[<span style="color:#ae81ff">0</span>],
+        .source <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>mouse_input_source,
+        .type <span style="color:#f92672">=</span> TM_INPUT_EVENT_TYPE_DATA_CHANGE,
+    };
+
+    <span style="color:#66d9ef">if</span> (event_type <span style="color:#f92672">==</span> EMSCRIPTEN_EVENT_MOUSEMOVE) {
+        ev.item_id <span style="color:#f92672">=</span> TM_INPUT_MOUSE_ITEM_MOVE;
+        ev.data.f <span style="color:#f92672">=</span> (tm_vec4_t){ e<span style="color:#f92672">-&gt;</span>movementX, e<span style="color:#f92672">-&gt;</span>movementY, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span> };
+        add_mouse_event(<span style="color:#f92672">&amp;</span>ev);
+
+        ev.item_id <span style="color:#f92672">=</span> TM_INPUT_MOUSE_ITEM_POSITION;
+        ev.data.f <span style="color:#f92672">=</span> (tm_vec4_t){ e<span style="color:#f92672">-&gt;</span>targetX, e<span style="color:#f92672">-&gt;</span>targetY, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span> };
+        add_mouse_event(<span style="color:#f92672">&amp;</span>ev);
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (event_type <span style="color:#f92672">==</span> EMSCRIPTEN_EVENT_MOUSEDOWN <span style="color:#f92672">||</span> event_type <span style="color:#f92672">==</span> EMSCRIPTEN_EVENT_MOUSEUP) {
+        ev.item_id <span style="color:#f92672">=</span> e<span style="color:#f92672">-&gt;</span>button <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> TM_INPUT_MOUSE_ITEM_BUTTON_LEFT : e<span style="color:#f92672">-&gt;</span>button <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> TM_INPUT_MOUSE_ITEM_BUTTON_MIDDLE : TM_INPUT_MOUSE_ITEM_BUTTON_RIGHT;
+        ev.data.f.x <span style="color:#f92672">=</span> event_type <span style="color:#f92672">==</span> EMSCRIPTEN_EVENT_MOUSEDOWN <span style="color:#f92672">?</span> <span style="color:#ae81ff">1.0f</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">0.0f</span>;
+        add_mouse_event(<span style="color:#f92672">&amp;</span>ev);
+    }
+
+    <span style="color:#66d9ef">return</span> true;
+}
+</code></pre></div><p>There is a little more to it because we need to set up the Emscripten keyboard and mouse as new
+input controllers in The Machinery, but this is the gist of it.</p>
+<p>I wanted to add support for touch events too so that Simple Draw would work on iPad. However, here
+I ran into trouble. Calling <code>emscripten_set_touchstart_callback()</code> gave me link errors when testing
+my program in Safari. Not exactly sure what was up with that and didn’t have time to investigate
+it during this short Hack Day.</p>
+<h2 id="simple-draw">Simple Draw</h2>
+<p>With both drawing and input working, I was ready to start porting Simple Draw. Rather than filling
+the existing Simple Draw code with a bunch of <code>#ifdef</code> I decided to just copy-paste it into my web
+code.</p>
+<p>Getting Simple Draw to work was pretty straightforward at this point, I only ran into a few minor
+snags, both related to memory.</p>
+<p>First, I needed to add <code>-s ALLOW_MEMORY_GROWTH=1</code> to the linker arguments to allow the memory use
+to be dynamically sized. Without this, Emscripten will use a fixed amount of memory for the web
+application.</p>
+<p>Second, The Machinery uses some tricks from the <a href=" ../../post/virtual-memory-tricks/">Virtual Memory Tricks blog
+post,</a> such as reserving very large areas of
+address space without committing it. This doesn’t really work under Emscripten since it doesn’t
+have a full virtual memory manager. All memory you request is automatically committed. So I needed
+some <code>#ifdef</code> to make sure that the memory allocations in Emscripten didn’t end up being
+obscenely large and causing the program to run out of memory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#if defined(TM_OS_WEB)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> uint64_t max_objects <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024ULL</span>;
+    tt<span style="color:#f92672">-&gt;</span>immutable_allocator <span style="color:#f92672">=</span> tm_allocator_api<span style="color:#f92672">-&gt;</span>create_fixed_vm(<span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>, a<span style="color:#f92672">-&gt;</span>mem_scope);
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> uint64_t max_objects <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024ULL</span>;
+    tt<span style="color:#f92672">-&gt;</span>immutable_allocator <span style="color:#f92672">=</span> tm_allocator_api<span style="color:#f92672">-&gt;</span>create_fixed_vm(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>, a<span style="color:#f92672">-&gt;</span>mem_scope);
+<span style="color:#75715e">#endif
+</span></code></pre></div><p>With this, Simple Draw was up and running in the browser:</p>
+<figure class="figure d-block">
+    <iframe class="figure-img rounded d-block mx-auto om-yt-sm om-yt-md" src="http://web.archive.org/web/20211206235914if_/https://www.youtube.com/embed/xEJInV-AJCE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption class="figure-caption fs-5">
+        <h4>SimpleDraw running in Safari on OS X.</h4>
+    </figcaption>
+</figure>
+<p>You can try it yourself using the link below:</p>
+<ul>
+<li><a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/test/wasm/webgltest2.html">Simple Draw in the Browser</a></li>
+</ul>
+<p>And here’s the full source code:</p>
+<ul>
+<li><a href="http://web.archive.org/web/20211206235914/https://gist.github.com/niklas-ourmachinery/4c1e089fe04ea86e8553cf7bea073c7b">webgltest.c · GitHub</a></li>
+</ul>
+<h2 id="conclusions-and-future-ideas">Conclusions and Future Ideas</h2>
+<p>All in all, I’m pretty excited that I was able to get a UI application written in The Machinery
+up and running on the web in a single day, but there are a lot of things I would like to spend more
+time looking at in the future:</p>
+<h3 id="os-xios-support">OS X/iOS Support</h3>
+<p>It should be possible to use the same approach as outlined in this post to run on other platforms
+where we don’t currently have a rendering backend. For example, this would let us run The
+Machinery on OS X or iOS without needing a full Metal2 backend.</p>
+<h3 id="dynamic-loading">Dynamic Loading</h3>
+<p>I’d like to investigate how dynamic loading works under Emscripten so that we can load more of
+our plugins without resorting to sprinkling the code with <code>#if defined(TM_OS_WEB)</code> to avoid
+duplicate symbol errors.</p>
+<h3 id="run-the-full-editor">Run the Full Editor</h3>
+<p>If we can load all the plugins, nothing should prevent us from running the full The Machinery
+editor instead of just the Simple Draw sample. We should be able to run everything except the 3D
+viewports (they would just be black). This would let us test most of the engine’s functionality
+on a large number of platforms.</p>
+<h3 id="viewport-streaming">Viewport Streaming</h3>
+<p>To bring the full editor experience to the browser we would also need some kind of solution for the
+3D viewports. One approach would be to provide an actual OpenGL rendering backend supported by
+Emscripten. The problem with this is that even if we did this, the engine is unlikely to run well
+inside the web browser on a low-power handheld device unless we have a completely separate
+rendering pipeline using cheaper algorithms.</p>
+<p>Another approach would be to render the viewports on a high-powered machine in the cloud and just
+stream the content to the client device. This would let us run our normal rendering algorithms and
+render everything in full fidelity. And since the UI would still be rendered locally, it would be
+crisp and snappy, without compression artifacts or rendering lag. That could be an interesting
+combination.</p>
+<p>I hope I’ll be able to explore some of these approaches in the future.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20211206235914/https://twitter.com/share?text=Compiling%20The%20Machinery%20with%20Emscripten%3a%20Part%202%20%e2%80%94%20Graphics - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fcompiling-the-machinery-with-emscripten-part-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20211206235914/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fcompiling-the-machinery-with-emscripten-part-2%2f&amp;description=Compiling%20The%20Machinery%20with%20Emscripten%3a%20Part%202%20%e2%80%94%20Graphics" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/" class="text-decoration-none"><img src="../../images/emscripten__simple_draw.png" class="card-img-top" alt="Compiling The Machinery with Emscripten: Part 1"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/compiling-the-machinery-with-emscripten-part-1/">Compiling The Machinery with Emscripten: Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-11-11T00:00:00Z">
+                      11 Nov 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">At Our Machinery, the last Friday of every month is Hack Day. This means that you can work on whatever you like and try …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/release-2021-10/" class="text-decoration-none"><img src="../../images/release_21_10__multiplayer.png" class="card-img-top" alt="The Machinery — October 2021 (version 2021.10)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/release-2021-10/">The Machinery — October 2021 (version 2021.10)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-10-28T00:00:00Z">
+                      28 Oct 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">Things are getting darker and colder in Seattle and Stockholm, where we have our main offices. What a perfect time to …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/release-2021-10/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-machinery-network-frontier-part-1/">The (Machinery) Network Frontier -- Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-10-25T00:00:00Z">
+                      25 Oct 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">One of our goals for 2021 is to let users create multiplayer games with The Machinery. The systems I’m going to describe …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-machinery-network-frontier-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/compiling-the-machinery-with-emscripten-part-2/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20211206235914/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211206235914/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/cdn-cgi/l/email-protection#1b6b72757c5b746e69767a787372757e696235787476" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20211206235914/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 23:59:14 Dec 06, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:24 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 113.268
+  exclusion.robots: 0.092
+  exclusion.robots.policy: 0.084
+  RedisCDXSource: 1.648
+  esindex: 0.008
+  LoadShardBlock: 93.766 (3)
+  PetaboxLoader3.datanode: 43.957 (5)
+  CDXLines.iter: 15.015 (3)
+  PetaboxLoader3.resolve: 57.567 (2)
+  load_resource: 75.26
+  loaddict: 39.481
+-->

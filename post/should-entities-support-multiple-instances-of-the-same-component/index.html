@@ -1,0 +1,709 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Discusses an important design decision when creating an entity-component system. Should the system allow for an entity having multiple instances of the same component type."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/entity-context.png"/>
+  
+  <meta name="twitter:title" content="Should entities support multiple instances of the same component?">
+  <meta name="twitter:description" content="Discusses an important design decision when creating an entity-component system. Should the system allow for an entity having multiple instances of the same component type."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Should entities support multiple instances of the same component? · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/should-entities-support-multiple-instances-of-the-same-component/"/>
+  
+  <meta property="og:image" content="../../images/entity-context.png"/>
+  
+  
+  <meta property="og:description" content="Discusses an important design decision when creating an entity-component system. Should the system allow for an entity having multiple instances of the same component type."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-11-27T00:00:00Z"/>
+  
+
+  <title>Should entities support multiple instances of the same component? &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210802204247/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210802204247\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210802204247\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Should entities support multiple instances of the same component?",
+    "name": "Should entities support multiple instances of the same component?",
+    "wordCount":  2208 ,
+    "timeRequired": "PT11M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/should-entities-support-multiple-instances-of-the-same-component/",
+    "datePublished": "2017-11-27T00:00Z",
+    "dateModified": "2017-11-27T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210802204247/https://ourmachinery.com/entity-context.png"
+    },
+    
+    
+    "description": "Discusses an important design decision when creating an entity-component system. Should the system allow for an entity having multiple instances of the same component type."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210802204247/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210802204247/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Should entities support multiple instances of the same component?</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-11-27T00:00:00Z">
+          Nov 27, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>The <a href="http://web.archive.org/web/20210802204247/https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system">entity-component pattern</a> has been around for a long time. By now I would say that it is widely considered to be the preferred way to write gameplay code. However, there is less consensus on <em>how to actually implement</em> an entity-component system and when you sit down to write it you face some interesting choices.</p>
+<p>In this post I&rsquo;ll look at these choices from the point of a single question:</p>
+<blockquote>
+<p>Should entities support multiple instances of the same component?</p>
+</blockquote>
+<p>and investigate how this choice influences the design of other parts of the system.</p>
+<p>Side note: Strictly speaking, I shouldn&rsquo;t really talk about <em>entity-component systems.</em> In the original formulation, <em>Systems</em> are a part of the <em>Entity/Component</em> pattern. so I should really say <em>entity-component-system systems</em>. But since that is a horrible mouthful, I&rsquo;ll stick to the slightly incorrect nomenclature.</p>
+<h2 id="entity-component-recap">Entity-component recap</h2>
+<p>I&rsquo;m sure a lot of you are already familiar with entity-component systems, but let&rsquo;s do a quick recap to make sure we&rsquo;re all on the same page.</p>
+<blockquote>
+<p>The purpose of the entity-component system is to provide a model for simulating objects, that allows us to compose complex objects from simpler components in a flexible and performant way.</p>
+</blockquote>
+<p>In particular, the entity architecture stands in contrast to traditional object-oriented modeling where objects are composed through inheritance. We want to avoid inheritance-based modeling, since it tends to lead to rigid, tightly-coupled structures.</p>
+<p>I&rsquo;ve included performance as part of the purpose, because if we want to use an entity system as our main simulation tool it needs to run efficiently.</p>
+<p>The entity-component model is based on three concepts: <em>Entities</em>, <em>Components</em> and <em>Systems</em>.</p>
+<p>An <em>Entity</em> is a distinct simulation object that lives in some kind of simulation <em>Context</em> or <em>World</em>.</p>
+<p>A <em>Component</em> is a piece of data of a certain type that is asscoiated with an entity. What component types exist depend on what we want to simulate in our world. For example, a combat simulation may have components related to ammo, health, etc. A physics simulation may have components related to mass, electric charge, etc.</p>
+<p>Note that I will somewhat sloppily use the word &ldquo;component&rdquo; to refer both to a <em>type</em> of component (i.e., health, mass, …) and to a specific <em>instance</em> of a component type that is owned by a specific entity (i.e., the health of a particular entity).</p>
+<p>A <em>System</em> is some kind of simulation or update process that runs in our world. For example, a system could simulate forces on objects moving in an electrical field or how a person’s health is affected by poison.</p>
+<p>Note: I sometimes find the word &ldquo;system&rdquo; to be a bit too vague and ambiguous, so I will alternately refer to these processes as <em>Simulations</em>.</p>
+<p>In the traditional entity-component setup, a system runs on all entities that have a certain set of components and the system update reads and/or modifies the values of those components. For example, a physics system might run on entities with <em>mass</em>, <em>position</em> and <em>velocity</em> component.</p>
+<p>One thing that I haven&rsquo;t seen discussed a lot is that simulations sometimes need to store data that doesn&rsquo;t fit in the components. For example, a physics simulation typically need to store some sort of <em>broadphase representation</em> in order to quickly find pairs of colliding objects. This is a hierarchical data structure that cannot be represented well by individual component pieces. We can achieve this by adding <em>state</em> to the simulations as well as callbacks for when components are added and removed, so that the state can be updated accordingly.</p>
+<p>Another thing that is not often discussed is that some simulations need to consider interactions between objects. For examples — physics simulation needs to check object pairs for collisions. The simulation therefore needs to run as a single call, with access to all objects.</p>
+<p>All the individual simulation updates, when taken together, create the full simulation that we want to achieve in the world. The nice thing about the enity-component formulation is that it lets us break this total simulation up into smaller isolated pieces that are easier to understand, write and debug.</p>
+<p>Here is an illustration, showing some entities with components living in a context with two running simulations: <em>Rendering</em> and <em>Physics:</em></p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Entities, components and systems." src="../../images/entity-context.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Entities, components and systems.</h4>
+    </figcaption>
+  </figure>
+<p>Regarding performance, the most important thing is that the simulations can run as fast as possible, since that is typically where we will be spending the most of our time. In addition, it should be reasonably fast to create, destroy and search for entities.</p>
+<h2 id="multiple-vs-single-components"><strong>Multiple vs single components</strong></h2>
+<p>With this in mind, let&rsquo;s get back to the initial question — when we design an entity system should we allow for entities to have multiple components of the same type?</p>
+<p>In the original formulation of the ECS model, an entity can only have a single component of each type. This makes sense for things like <em>position</em> and <em>mass</em> — we don’t expect an object to have two different positions or two different masses. But for other cases it seems too restrictive. Consider a <em>light</em> component for instance — it seems weird and artificial to limit an entity to only having a single light. The same could be argued for sound sources, meshes to render, collision shapes, etc.</p>
+<p>Without support for multiple components if we want to represent an entity with multiple lights we have two choices. Either we have to create child entities to the original entity and put the lights on these child entities. Or, we have to change the <em>light</em> component to a <em>lights</em> component — i.e. a component that holds a list of lights rather than a single individual light. Both approaches seem more complicated.</p>
+<p>But supporting multiple components comes with its own set of complications. When we only have single components, we can uniquely identify a component by <em>entity</em> and <em>component type</em>. With multiple components, this is no longer enough, because we can have multiple components of the same type. To disambiguate, we need to add something like an ID to specify which particular component we are talking about. So a component instance is now identified by (<em>entity</em>, <em>component type</em>, <em>id</em>).</p>
+<p>This may seem like a small inconvenience, but it has far reaching consequences. For example, we can no longer talk about the <em>position</em> of an entity, since there might be multiple <em>position</em> components. We can only talk about the position of component with a certain ID. So an entity has no “true” position.</p>
+<p>To an extent, we can fix this by forcing the <em>position</em> to be a singleton component — i.e. even though we allow <em>some</em> components to have multiple instances, some components can only have a single instance. But this further complicates the system — now we have two different kinds of components to deal with — singletons and non-singletons. Also, it might not even be what we want. What&rsquo;s the point of supporting multiple light sources if they are all in the same position? Maybe we <em>do</em> want multiple position components and a way of associating a certain light component with a certain position component.</p>
+<p>Implementing simulations that operate on multiple components also becomes tricky. For example, consider a simulation that operates on (<em>mass</em>, <em>position</em>, <em>velocity</em>). How should that work if an entity has say two mass components and three position components? We probably don&rsquo;t want the simulation to run on all possible combinations of components, so we nee a way to specify how components can be combined for system updates.</p>
+<p>One approach would be to store the position component ID in the light component, but note that in order to do that we need to create a tighter coupling between components and systems. I.e. we add the reference to the position component in the light component based on the knowledge that an update needs to run on the light that needs access to the position. When we design the light component we thus need to know all possible simulations that will run on this component and what other components they might need access to.</p>
+<p>Thinking about it, I don’t think there is a way of matching and pairing components in a multiple component scenario without creating this tighter coupling. Consider the tricky case of pairing components when we have two mass and three position components.</p>
+<p>To make multiple components work I think each system or simulation needs to have a tightly coupled associated component. This component can stores the data for that particular system update as well as references (with IDs) to other components that might be needed.</p>
+<p>This solves our (2 x <em>mass, 3 x position, velocity)</em> problem. To disambiguate we create a <em>physics</em> component to go with the <em>physics</em> update. In this component we store references (IDs) to the different mass, position and velocity components used for this particular update. Now we can form any combination of these components we like by just adding corresponding physics components. If we want to simulate all possible combinations, we just add all six of them.</p>
+<p>But note how this approach creates a much tighter bond between the simulation and its matching component then what we have in the original ECS formulation, where components are just free floating data that simulations can do whatever they like with.</p>
+<p>This is not necessarily a huge drawback. This tighter coupling matches well how we normally write systems. We have a physics system that operates on physics actors (components). A particle system that operates on particle components. A rendering system that operates on renderables. Etc. Free form combinations of different pieces of data is not as common.</p>
+<p>The interesting thing is to see how the choice between multiple and single components leads to a need to tightly couple component data to a system.</p>
+<p>The tight coupling of a system and its component data in turn means two things:</p>
+<ul>
+<li>The system can freely choose how to store the component data.</li>
+<li>Accessing data from other components will necessarily be inefficient.</li>
+</ul>
+<p>Since the system specific data is only accessed by that system, the system can choose whatever layout it wants. It can use array-of-structures, structure-of-arrays or even store part of the data on the GPU. Whatever is more efficient.</p>
+<p>In contrast, with a looser coupling, the component data must be stored in a more generic format so that it can be efficiently accessed by any simulation that wants to use it. No single simulation can dictate how the data should be stored.</p>
+<p>With the tight coupling, accessing data from another component necessarily requires an indirection step. Given the ID of another component we need to perform some kind of lookup to get to the data of that component.</p>
+<p>In the loose case, since there can only be one instance of each component, we can make sure they are co-located and already matched up in memory. That way, no additional lookup is needed.</p>
+<p>In practice, one way of making it work is like this: We define an <em>entity type</em> by the components the entity has. Since in the single component case there can only be one component of each type, we can identify the entity type with a bit mask. We store the data for all entities of a certain type together (in either array-of-structure or structure-of-arrays form).</p>
+<p>When we want to perform a particular simulation, we loop over each entity type and check whether its bitmask matches the components needed for this particular simulation.  If it does, we run the simulation, passing it pointers to the component data arrays. The entries in these arrays already correspond to components from the same entity and thus, no additional lookup is needed.</p>
+<p>In theory, there could be a huge number of different entity types (two to the power of the number of components), which would make this method inefficient. In practice, we expect that only a small number of entity types will be used.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Summarizing, here is a table showing the consequences of going with a multiple or single component approach:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Multiple components</strong></th>
+<th><strong>Single components</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multiple things represented naturally.</td>
+<td>List components or child entities needed.</td>
+</tr>
+<tr>
+<td>ID needed to identify a specific component instance.</td>
+<td>Entity and component type is enough.</td>
+</tr>
+<tr>
+<td>No “true” position.</td>
+<td>Less ambiguity.</td>
+</tr>
+<tr>
+<td>May need special code to manage “singleton” components.</td>
+<td>Simpler. Everything is a “singleton” component.</td>
+</tr>
+<tr>
+<td>Simulation specific components needed.</td>
+<td>Loose coupling between simulations and component data. Data is just data. Simulations are just functions.</td>
+</tr>
+<tr>
+<td>A simulation can fully control how its component data is stored.</td>
+<td>Component data needs to be stored in a “general” format that is quick to access from any simulation.</td>
+</tr>
+<tr>
+<td>Accessing data from other components than the simulation component is slow.</td>
+<td>Any component data can be accessed quickly.</td>
+</tr>
+</tbody>
+</table>
+<p>In Stingray, I used the multiple component approach. The ability of each system to be in full control of how its data was stored and being able to optimize that data for fastest possible access was appealing to me.</p>
+<p>In The Machinery, I’ve instead chosen to go with the single component approach. I like it’s simpler, more decoupled approach and that you can access any component without a need for a lookup. Also, we can still use custom data layouts when needed, by just storing an index in the “public” component data and using that as a reference to an internal data structure whose layout we control.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210802204247/https://twitter.com/share?text=Should%20entities%20support%20multiple%20instances%20of%20the%20same%20component%3f - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fshould-entities-support-multiple-instances-of-the-same-component%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210802204247/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fshould-entities-support-multiple-instances-of-the-same-component%2f&amp;description=Should%20entities%20support%20multiple%20instances%20of%20the%20same%20component%3f" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/marketing-mini-series-part-3-branding/" class="text-decoration-none"><img src="../../images/branding.png" class="card-img-top" alt="Marketing Mini Series Part 3: Branding"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-mini-series-part-3-branding/">Marketing Mini Series Part 3: Branding</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-11-13T00:00:00Z">
+                      13 Nov 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In general, branding is one of the first things you tackle when creating a product, game, or company. In my opinion, …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-mini-series-part-3-branding/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/virtual-memory-tricks/" class="text-decoration-none"><img src="../../images/virtual-memory-fragmentation.png" class="card-img-top" alt="Virtual Memory Tricks"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/virtual-memory-tricks/">Virtual Memory Tricks</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-11-06T00:00:00Z">
+                      6 Nov 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I’ve been planning for some time to make a post about things you can do with <a href="http://web.archive.org/web/20210802204247/https://en.wikipedia.org/wiki/Virtual_memory">virtual memory</a>, so when <a href="http://web.archive.org/web/20210802204247/https://twitter.com/jimsagevid">@jimsagevid</a> <a href="http://web.archive.org/web/20210802204247/https://twitter.com/jimsagevid/status/920351713529344003">tweeted …</a></p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/virtual-memory-tricks/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">17 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/vulkan-descriptor-sets-management/">Vulkan: Descriptor Sets Management</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-10-30T00:00:00Z">
+                      30 Oct 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I could easily spend an entire post just writing about my love-hate-relationship with Vulkan. Over the last six months …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/vulkan-descriptor-sets-management/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/should-entities-support-multiple-instances-of-the-same-component/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210802204247/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210802204247/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/cdn-cgi/l/email-protection#9aeaf3f4fddaf5efe8f7fbf9f2f3f4ffe8e3b4f9f5f7" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210802204247/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:42:47 Aug 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:17 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 122.655
+  exclusion.robots: 0.097
+  exclusion.robots.policy: 0.089
+  cdx.remote: 0.072
+  esindex: 0.01
+  LoadShardBlock: 89.628 (3)
+  PetaboxLoader3.datanode: 94.728 (5)
+  CDXLines.iter: 16.553 (3)
+  load_resource: 150.209
+  PetaboxLoader3.resolve: 102.155
+  loaddict: 40.581
+-->

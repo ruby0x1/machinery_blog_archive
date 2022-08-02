@@ -1,0 +1,858 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Takes you through the thought process of fixing an issue with our gizmos."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/linalg__result.gif"/>
+  
+  <meta name="twitter:title" content="Linear Algebra Shenanigans: Gizmo Repair">
+  <meta name="twitter:description" content="Takes you through the thought process of fixing an issue with our gizmos."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Linear Algebra Shenanigans: Gizmo Repair · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/linear-algebra-shenanigans-gizmo-repair/"/>
+  
+  <meta property="og:image" content="../../images/linalg__result.gif"/>
+  
+  
+  <meta property="og:description" content="Takes you through the thought process of fixing an issue with our gizmos."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-11-02T00:00:00Z"/>
+  
+
+  <title>Linear Algebra Shenanigans: Gizmo Repair &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804184939/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804184939\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Karl Zylinski",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804184939\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Linear Algebra Shenanigans: Gizmo Repair",
+    "name": "Linear Algebra Shenanigans: Gizmo Repair",
+    "wordCount":  2287 ,
+    "timeRequired": "PT11M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/linear-algebra-shenanigans-gizmo-repair/",
+    "datePublished": "2020-11-02T00:00Z",
+    "dateModified": "2020-11-02T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804184939/https://ourmachinery.com/linalg__result.gif"
+    },
+    
+    
+    "description": "Takes you through the thought process of fixing an issue with our gizmos."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804184939/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804184939/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Linear Algebra Shenanigans: Gizmo Repair</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-11-02T00:00:00Z">
+          Nov 2, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>This post will take you through the thought process of realizing something being wrong with our
+gizmos, going through the code, adding some debug drawing to help with the diagnosis, and what I did
+to fix it. Since it is such a narrow deep dive, source code for most non-trivial functions used is
+included, either in the text or as appendices.</p>
+<p>Gizmos are the three-axes things in the editor viewport that let you move, rotate, and scale
+objects. One day I noticed something was off with our move gizmo. In the animation below you see me
+use it to move an object. Everything seems to work fine, including dragging while having the cursor
+away from the axis.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Moving an object viewed from the side, seems to work fine!" src="../../images/linalg__move_side_to_side.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Moving an object viewed from the side, seems to work fine!</h4>
+    </figcaption>
+  </figure>
+<p>Now, if we instead of rotating the view so that the blue gizmo axis points down the screen at a
+steep angle and try again, the following happens:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Moving an object viewed at a steep camera angle, going off-axis makes it all bonkers!" src="../../images/linalg__move_angle.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Moving an object viewed at a steep camera angle, going off-axis makes it all bonkers!</h4>
+    </figcaption>
+  </figure>
+<p>As long as the cursor remains near the gizmo axis, everything is fine. But the user should be able
+to initiate a move operation by clicking the axis and, while holding the mouse button down, move
+away from the axis and still be able to drag the object as if the cursor was on the axis. This does
+not work properly, the object starts moving backward instead! I expect my cursor position to somehow
+<em>project</em> onto the axis which I used to initiate the move operation. A projection is just a fancy
+word for finding the point on a line or surface that is closest to some other point.</p>
+<p>Let’s have a look at the code of the move gizmo. Here the code that initiates the move operation,
+i.e. the code that is run once when the user initially clicks on the gizmo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> tm_vec3_t cursor[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {
+    { mouse_pos.x, mouse_pos.y, <span style="color:#ae81ff">0</span> },
+    { mouse_pos.x, mouse_pos.y, <span style="color:#ae81ff">1</span> }
+};
+tm_vec3_t cursor_world[<span style="color:#ae81ff">2</span>];
+tm_camera_api<span style="color:#f92672">-&gt;</span>screen_to_world(camera, TM_CAMERA_TRANSFORM_DEFAULT, viewport, cursor, cursor_world, <span style="color:#ae81ff">2</span>);
+<span style="color:#66d9ef">const</span> tm_vec3_t cursor_pos <span style="color:#f92672">=</span> cursor_world[<span style="color:#ae81ff">0</span>];
+<span style="color:#66d9ef">const</span> tm_vec3_t cursor_dir <span style="color:#f92672">=</span> tm_vec3_normalize(tm_vec3_sub(cursor_world[<span style="color:#ae81ff">1</span>], cursor_world[<span style="color:#ae81ff">0</span>]));
+a<span style="color:#f92672">-&gt;</span>st <span style="color:#f92672">=</span> tm_line_line_intersection(a<span style="color:#f92672">-&gt;</span>world_pos, a<span style="color:#f92672">-&gt;</span>axis, cursor_pos, cursor_dir);
+</code></pre></div><p>First, we get the world position of the cursor, this is done using our <code>screen_to_world</code> function
+(<a href="index.html#appendix-a-screen-to-world">Appendix A</a>). We also get the world “direction” of the cursor. We
+define this as the world-space vector that points into the screen at the cursor position. Finally,
+we make a line-line “intersection” (<a href="index.html#appendix-b-tm-line-line-intersection">Appendix B</a>) between the
+gizmo-axis line and the world-space cursor line. It’s not really an intersection; it finds the
+points along the two lines at which the distance between the lines is minimal. The return value of
+<code>tm_line_line_intersection</code> is a <code>tm_vec2_t</code>, where the <code>x</code> component is the minimizing point along
+the axis line, and the <code>y</code> component is the point along the cursor line (actually, it’s not really
+points, it’s the parameters <code>s</code> and <code>t</code> of the lines <code>A + sU</code> and <code>B + tV</code>). Again, this is just the
+code that initiates the move operation, so we cache the result in <code>a-&gt;st</code> for later use.</p>
+<p>During each subsequent frame (for as long as the mouse button is held) we do the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_vec2_t st <span style="color:#f92672">=</span> tm_line_line_intersection(a<span style="color:#f92672">-&gt;</span>world_pos, a<span style="color:#f92672">-&gt;</span>axis, cursor_pos, cursor_dir);
+<span style="color:#66d9ef">float</span> ds <span style="color:#f92672">=</span> st.x <span style="color:#f92672">-</span> a<span style="color:#f92672">-&gt;</span>st.x;
+<span style="color:#66d9ef">const</span> tm_vec3_t world_delta <span style="color:#f92672">=</span> tm_vec3_mul(a<span style="color:#f92672">-&gt;</span>axis, ds);
+<span style="color:#66d9ef">const</span> tm_vec3_t local_delta <span style="color:#f92672">=</span> tm_quaternion_rotate_vec3(parent_rot_inv, world_delta);
+local<span style="color:#f92672">-&gt;</span>pos <span style="color:#f92672">=</span> tm_vec3_add(a<span style="color:#f92672">-&gt;</span>local_pos, local_delta);
+</code></pre></div><p>Here <code>cursor_pos</code> and <code>cursor_dir</code> are found as in the above, but now they change as the user moves
+the mouse. Again, we get the line-line intersection, which in turn is used to calculate a “delta”
+along the axis line by subtracting our starting position from the current position. This <code>ds</code> value
+is then multiplied with the axis along which we are moving, <code>a-&gt;axis</code>. We then transform this
+<code>world_delta</code> into coordinates local for the object and add the <code>local_delta</code> to the position of the
+local transform.</p>
+<p>That’s the gist of it. But what goes wrong? Let’s add some debug rendering right after the code
+above:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_vec3_t debug_draw[<span style="color:#ae81ff">2</span>];
+debug_draw[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> tm_vec3_add(cursor_pos, tm_vec3_mul(cursor_dir, st.y));
+debug_draw[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> tm_vec3_add(a<span style="color:#f92672">-&gt;</span>world_pos, tm_vec3_mul(a<span style="color:#f92672">-&gt;</span>axis, st.x));
+tm_primitive_drawer_api<span style="color:#f92672">-&gt;</span>stroke_lines(pbuf, vbuf, tm_mat44_identity(), debug_draw, <span style="color:#ae81ff">1</span>, (tm_color_srgb_t){ <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">255</span> }, <span style="color:#ae81ff">2.0f</span>);
+</code></pre></div><p>This shows up as a white line with endpoints at the points which <code>tm_line_line_intersection</code> finds
+as the points at which the two lines are at a minimum distance from each other:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Moving the object at a steep camera angle with a white debug line." src="../../images/linalg__move_debug_line.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Moving the object at a steep camera angle with a white debug line.</h4>
+    </figcaption>
+  </figure>
+<p>With the debug rendering we can see what goes wrong: As the user moves the cursor far away from the
+axis, the closest point on the gizmo axis that <code>tm_line_line_intersection</code> finds gets closer and
+closer to the screen as we move further from the axis.</p>
+<p>At this point I realize the big error: We can’t just intersect these two lines, where one is a line
+that points into the screen at the cursor position. The whole concept of this world-space cursor
+line felt very fishy to me. Why are we putting the 2D cursor position into the 3D world, and giving
+it some arbitrary direction? How is that supposed to give us the closest point on the gizmo-axis
+line? At this point, I tried to come up with alternate solutions, such as using the vector from the
+cursor’s world position to the object’s current position as the “direction” of the cursor. I also
+thought of doing a 3D projection of the cursor’s world position onto the gizmo line. But what is a
+reasonable value for the cursor’s world position? It felt like I was missing a piece of information.</p>
+<p>But then I thought, if it’s weird to take the 2D cursor position into the 3D space, what can I do
+instead? While thinking of how the imaginary gizmo-axis line goes across the screen it came to me:
+<em>The screen! Pull the axis of the gizmo into screen space and project the mouse position onto that!
+Since I’m then in 2D-land, I don’t even need the weird “mouse direction” to figure out where on the
+gizmo line I am, I can just do the classic 2D point-on-line projection of the cursor position and
+the screen-space gizmo line!</em> Below is an illustration of this. The pink line is the screen-space
+gizmo line and the light blue line shows us how the cursor should project onto the line:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="What we want instead: Bring the line of the gizmo axis into screen space and project the screen-space mouse position onto the screen-space gizmo line." src="../../images/linalg__what_we_want.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>What we want instead: Bring the line of the gizmo axis into screen space and project the screen-space mouse position onto the screen-space gizmo line.</h4>
+    </figcaption>
+  </figure>
+<p>It’s funny that it took me a while to get this insight since I even thought of the earlier code as
+“doing a projection” of the cursor position onto a line. But it didn’t really, it just found the
+shortest distance between two 3D lines. The whole projection was missing!</p>
+<p>Here’s the new code I cooked up, when we initiate the gizmo move operation we now do this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">a<span style="color:#f92672">-&gt;</span>axis_start_pos <span style="color:#f92672">=</span> private__gizmo_axis_intersection(a<span style="color:#f92672">-&gt;</span>world_pos, a<span style="color:#f92672">-&gt;</span>axis, (tm_vec2_t){ mouse_pos.x, mouse_pos.y }, camera, viewport).x;
+</code></pre></div><p>Where <code>private__gizmo_axis_intersection</code> looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_vec2_t <span style="color:#a6e22e">private__gizmo_axis_intersection</span>(tm_vec3_t gizmo_world_pos, tm_vec3_t gizmo_axis, tm_vec2_t mouse_pos, <span style="color:#66d9ef">const</span> tm_camera_t <span style="color:#f92672">*</span>camera, tm_rect_t viewport)
+{
+    <span style="color:#66d9ef">const</span> tm_vec3_t gizmo_world[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> { gizmo_world_pos, tm_vec3_add(gizmo_world_pos, gizmo_axis) };
+    tm_vec3_t gizmo_screen[<span style="color:#ae81ff">2</span>];
+    tm_camera_api<span style="color:#f92672">-&gt;</span>world_to_screen(camera, TM_CAMERA_TRANSFORM_DEFAULT, viewport, gizmo_world, gizmo_screen, <span style="color:#ae81ff">2</span>);
+    <span style="color:#66d9ef">const</span> tm_vec2_t gizmo_screen_pos <span style="color:#f92672">=</span> { gizmo_screen[<span style="color:#ae81ff">0</span>].x, gizmo_screen[<span style="color:#ae81ff">0</span>].y };
+    <span style="color:#66d9ef">const</span> tm_vec2_t gizmo_screen_dir <span style="color:#f92672">=</span> { gizmo_screen[<span style="color:#ae81ff">1</span>].x <span style="color:#f92672">-</span> gizmo_screen_pos.x, gizmo_screen[<span style="color:#ae81ff">1</span>].y <span style="color:#f92672">-</span> gizmo_screen_pos.y };
+    <span style="color:#66d9ef">const</span> tm_vec2_t mouse_on_gizmo <span style="color:#f92672">=</span> tm_point_on_line_projection_2d(gizmo_screen_pos, gizmo_screen_dir, mouse_pos);
+    <span style="color:#66d9ef">const</span> tm_vec3_t mouse_on_gizmo_screen[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> { { mouse_on_gizmo.x, mouse_on_gizmo.y, <span style="color:#ae81ff">0</span> }, { mouse_on_gizmo.x, mouse_on_gizmo.y, <span style="color:#ae81ff">1</span> } };
+    tm_vec3_t mouse_on_gizmo_world[<span style="color:#ae81ff">2</span>];
+    tm_camera_api<span style="color:#f92672">-&gt;</span>screen_to_world(camera, TM_CAMERA_TRANSFORM_DEFAULT, viewport, mouse_on_gizmo_screen, mouse_on_gizmo_world, <span style="color:#ae81ff">2</span>);
+    <span style="color:#66d9ef">return</span> tm_line_line_intersection(gizmo_world_pos, gizmo_axis, mouse_on_gizmo_world[<span style="color:#ae81ff">0</span>], tm_vec3_normalize(tm_vec3_sub(mouse_on_gizmo_world[<span style="color:#ae81ff">1</span>], mouse_on_gizmo_world[<span style="color:#ae81ff">0</span>])));
+}
+</code></pre></div><p>Here we use <code>world_to_screen</code> (<a href="index.html#appendix-c-world-to-screen">Appendix C</a>) instead of
+<code>screen_to_world</code> to get the screen-space coordinates of two points on the gizmo line, we need two
+points so we can construct a 2D line for the gizmo axis. This gives us <code>gizmo_screen_pos</code> and
+<code>gizmo_screen_dir</code>. Now we use the aforementioned linear algebra classic:
+<code>tm_point_on_line_projection_2d</code> (<a href="index.html#appendix-d-tm-point-on-line-projection-2d">Appendix D</a>). This
+gives us the point <code>mouse_on_gizmo</code>: the screen-space point on the gizmo line that is closest to our
+mouse cursor. Finally, we do sort of what the old code did: We use <code>mouse_on_gizmo</code> to create a
+world-space line into the screen at that point, and we intersect it with the world-space gizmo line.
+The difference is that a line pointing inward at <code>mouse_on_gizmo</code> will go right through the gizmo
+axis, so none of the strangeness from before will happen.</p>
+<p>For every frame we continue to hold the mouse button, we do this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> tm_vec2_t st <span style="color:#f92672">=</span> private__gizmo_axis_intersection(a<span style="color:#f92672">-&gt;</span>world_pos, a<span style="color:#f92672">-&gt;</span>axis, (tm_vec2_t){ mouse_pos.x, mouse_pos.y }, camera, viewport);
+<span style="color:#66d9ef">float</span> ds <span style="color:#f92672">=</span> st.x <span style="color:#f92672">-</span> a<span style="color:#f92672">-&gt;</span>axis_start_pos;
+tm_vec3_t world_delta <span style="color:#f92672">=</span> tm_vec3_mul(a<span style="color:#f92672">-&gt;</span>axis, ds);
+<span style="color:#66d9ef">const</span> tm_vec3_t local_delta <span style="color:#f92672">=</span> tm_quaternion_rotate_vec3(parent_rot_inv, world_delta);
+local<span style="color:#f92672">-&gt;</span>pos <span style="color:#f92672">=</span> tm_vec3_add(a<span style="color:#f92672">-&gt;</span>local_pos, local_delta);
+</code></pre></div><p>Here we run the same function, <code>private__gizmo_axis_intersection</code> again, but feeding it the current
+mouse position. We can then calculate a delta, <code>ds</code>, along the line and find the world delta along
+the axis, transform it into local space, and then add it to the local transform’s position.</p>
+<p>Does it work? Yes:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The result of the new code, with added debug lines analogous to how the earlier illustration looked." src="../../images/linalg__result.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The result of the new code, with added debug lines analogous to how the earlier illustration looked.</h4>
+    </figcaption>
+  </figure>
+<p>Again, I’ve put in some debug lines to illustrate what’s going on (also, it’s fun to add debugging
+graphics that makes it look like your sketches), for completeness, here’s the debug drawing code I
+added to <code>private__gizmo_axis_intersection</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">style<span style="color:#f92672">-&gt;</span>line_width <span style="color:#f92672">=</span> <span style="color:#ae81ff">2.0f</span>;
+style<span style="color:#f92672">-&gt;</span>color <span style="color:#f92672">=</span> (tm_color_srgb_t){<span style="color:#ae81ff">230</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">255</span>};
+tm_draw2d_api<span style="color:#f92672">-&gt;</span>stroke_polyline(uib.vbuffer, uib.ibuffers[TM_UI_BUFFER_MAIN], style, (tm_vec2_t[<span style="color:#ae81ff">2</span>]){ tm_vec2_add(gizmo_screen_pos, tm_vec2_mul(gizmo_screen_dir, <span style="color:#f92672">-</span><span style="color:#ae81ff">1000.0f</span>)), tm_vec2_add(gizmo_screen_pos, tm_vec2_mul(gizmo_screen_dir, <span style="color:#ae81ff">1000.0f</span>)) }, <span style="color:#ae81ff">2</span>, false);
+style<span style="color:#f92672">-&gt;</span>color <span style="color:#f92672">=</span> (tm_color_srgb_t){<span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">206</span>, <span style="color:#ae81ff">230</span>, <span style="color:#ae81ff">255</span>};
+tm_draw2d_api<span style="color:#f92672">-&gt;</span>stroke_polyline(uib.vbuffer, uib.ibuffers[TM_UI_BUFFER_MAIN], style, (tm_vec2_t[<span style="color:#ae81ff">2</span>]){ mouse_pos, mouse_on_gizmo }, <span style="color:#ae81ff">2</span>, false);
+</code></pre></div><p>This time we use <code>tm_draw2d_api</code> since we are drawing screen space lines.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>After fixing the move gizmo, I realized that the scale gizmo had similar problems. I could then fix
+it quickly by reusing <code>private__gizmo_axis_intersection</code> to fix both the single-axis scale as well
+as the two-axis scale.</p>
+<p>It’s always a good idea to question the code that is already there, especially if it does something
+rather strange. It can be hard to question code that you haven’t written yourself, maybe you’re
+thinking that the person who wrote this surely knew what they were doing, it must just be a tiny bug
+somewhere! So you sit there and wrestle with the current code. But no, we all make mistakes, and I
+think it’s an important insight for every programmer to have: that everyone, not just junior people,
+makes mistakes, sometimes big ones!</p>
+<p>It’s when we sit down and really think something through, draw some sketches and really get our head
+into the problem we can start feeling sure about what may be wrong and what we’re doing, otherwise,
+I feel that I’m merely guessing.</p>
+<h2 id="appendix-a-screen_to_world">Appendix A: <code>screen_to_world</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Does the opposite of world to screen -- i.e. converts from screen coordinates back to world
+</span><span style="color:#75715e">// coordinates. Returns a pointer to the `world` array.
+</span><span style="color:#75715e">// Note: `screen.z` should is clip space Z with near plane mapped to 0.f and far plane at 1.f regardless
+</span><span style="color:#75715e">// if engine is setup to run with reversed Z or not.
+</span><span style="color:#75715e"></span>tm_vec3_t <span style="color:#f92672">*</span><span style="color:#a6e22e">screen_to_world</span>(<span style="color:#66d9ef">const</span> tm_camera_t <span style="color:#f92672">*</span>camera, tm_camera_transform transform, tm_rect_t viewport, <span style="color:#66d9ef">const</span> tm_vec3_t <span style="color:#f92672">*</span>screen, tm_vec3_t <span style="color:#f92672">*</span>world, uint32_t n)
+{
+    tm_mat44_t view_inv, proj_inv;
+    tm_mat44_inverse(<span style="color:#f92672">&amp;</span>view_inv, <span style="color:#f92672">&amp;</span>camera<span style="color:#f92672">-&gt;</span>view[transform]);
+    tm_mat44_inverse(<span style="color:#f92672">&amp;</span>proj_inv, <span style="color:#f92672">&amp;</span>camera<span style="color:#f92672">-&gt;</span>projection[transform]);
+
+    tm_vec3_t <span style="color:#f92672">*</span>w <span style="color:#f92672">=</span> world;
+    <span style="color:#66d9ef">const</span> tm_vec3_t <span style="color:#f92672">*</span>s <span style="color:#f92672">=</span> screen;
+    <span style="color:#66d9ef">for</span> (uint32_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i, <span style="color:#f92672">++</span>w, <span style="color:#f92672">++</span>s) {
+        tm_vec4_t p <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span> };
+<span style="color:#75715e">#if defined(TM_PROJECTION_USE_REVERSED_Z)
+</span><span style="color:#75715e"></span>        p.z <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> s<span style="color:#f92672">-&gt;</span>z;
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>        p.z <span style="color:#f92672">=</span> s<span style="color:#f92672">-&gt;</span>z;
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>        p.y <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (s<span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">-</span> viewport.y) <span style="color:#f92672">/</span> viewport.h;
+        p.x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (s<span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">-</span> viewport.x) <span style="color:#f92672">/</span> viewport.w <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+        tm_vec4_t unprojected <span style="color:#f92672">=</span> tm_mat44_transform_vec4(<span style="color:#f92672">&amp;</span>proj_inv, p);
+        tm_vec4_t w4 <span style="color:#f92672">=</span> tm_mat44_transform_vec4(<span style="color:#f92672">&amp;</span>view_inv, unprojected);
+        w<span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> w4.x <span style="color:#f92672">/</span> w4.w;
+        w<span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> w4.y <span style="color:#f92672">/</span> w4.w;
+        w<span style="color:#f92672">-&gt;</span>z <span style="color:#f92672">=</span> w4.z <span style="color:#f92672">/</span> w4.w;
+    }
+    <span style="color:#66d9ef">return</span> world;
+}
+</code></pre></div><h2 id="appendix-b-tm_line_line_intersection">Appendix B: <code>tm_line_line_intersection</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Finds the parameters (s,t) that minimizes the distance between A + sU and B + tV. If the lines
+</span><span style="color:#75715e">// are parallel, the function returns {0,0}.
+</span><span style="color:#75715e"></span>tm_vec2_t <span style="color:#a6e22e">tm_line_line_intersection</span>(tm_vec3_t a, tm_vec3_t u, tm_vec3_t b, tm_vec3_t v)
+{
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> au <span style="color:#f92672">=</span> tm_vec3_dot(a, u), av <span style="color:#f92672">=</span> tm_vec3_dot(a, v), bu <span style="color:#f92672">=</span> tm_vec3_dot(b, u), bv <span style="color:#f92672">=</span> tm_vec3_dot(b, v), uv <span style="color:#f92672">=</span> tm_vec3_dot(u, v);
+    <span style="color:#66d9ef">if</span> (uv <span style="color:#f92672">*</span> uv <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1e-5</span>f) {
+        <span style="color:#66d9ef">const</span> tm_vec2_t res <span style="color:#f92672">=</span> { <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span> };
+        <span style="color:#66d9ef">return</span> res;
+    }
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> s <span style="color:#f92672">=</span> (bu <span style="color:#f92672">+</span> av <span style="color:#f92672">*</span> uv <span style="color:#f92672">-</span> bv <span style="color:#f92672">*</span> uv <span style="color:#f92672">-</span> au) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> uv <span style="color:#f92672">*</span> uv);
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> t <span style="color:#f92672">=</span> (av <span style="color:#f92672">+</span> bu <span style="color:#f92672">*</span> uv <span style="color:#f92672">-</span> au <span style="color:#f92672">*</span> uv <span style="color:#f92672">-</span> bv) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> uv <span style="color:#f92672">*</span> uv);
+    <span style="color:#66d9ef">const</span> tm_vec2_t res <span style="color:#f92672">=</span> { s, t };
+    <span style="color:#66d9ef">return</span> res;
+}
+</code></pre></div><h2 id="appendix-c-world_to_screen">Appendix C: <code>world_to_screen</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Converts from world coordinates to screen coordinates as seen by a camera. `transform`
+</span><span style="color:#75715e">// specifies which view and projection transform to use. Returns a pointer to the `screen`
+</span><span style="color:#75715e">// array.
+</span><span style="color:#75715e">// Note: `screen.z` is clip space Z with near plane at 0.f and far plane at 1.f regardless
+</span><span style="color:#75715e">// if engine is setup to run with reversed Z or not.
+</span><span style="color:#75715e"></span>tm_vec3_t <span style="color:#f92672">*</span><span style="color:#a6e22e">world_to_screen</span>(<span style="color:#66d9ef">const</span> tm_camera_t <span style="color:#f92672">*</span>camera, tm_camera_transform transform, tm_rect_t viewport, <span style="color:#66d9ef">const</span> tm_vec3_t <span style="color:#f92672">*</span>world, tm_vec3_t <span style="color:#f92672">*</span>screen, uint32_t n)
+{
+    <span style="color:#66d9ef">const</span> tm_mat44_t view <span style="color:#f92672">=</span> camera<span style="color:#f92672">-&gt;</span>view[transform];
+    <span style="color:#66d9ef">const</span> tm_mat44_t proj <span style="color:#f92672">=</span> camera<span style="color:#f92672">-&gt;</span>projection[transform];
+
+    <span style="color:#66d9ef">const</span> tm_vec3_t <span style="color:#f92672">*</span>w <span style="color:#f92672">=</span> world;
+    tm_vec3_t <span style="color:#f92672">*</span>s <span style="color:#f92672">=</span> screen;
+    <span style="color:#66d9ef">for</span> (uint32_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i, <span style="color:#f92672">++</span>w, <span style="color:#f92672">++</span>s) {
+        <span style="color:#66d9ef">const</span> tm_vec4_t unprojected <span style="color:#f92672">=</span> tm_mat44_transform_vec4(<span style="color:#f92672">&amp;</span>view, (tm_vec4_t){ w<span style="color:#f92672">-&gt;</span>x, w<span style="color:#f92672">-&gt;</span>y, w<span style="color:#f92672">-&gt;</span>z, <span style="color:#ae81ff">1.0f</span> });
+        tm_vec4_t p <span style="color:#f92672">=</span> tm_mat44_transform_vec4(<span style="color:#f92672">&amp;</span>proj, unprojected);
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> wabs <span style="color:#f92672">=</span> fabsf(p.w);
+        p.x <span style="color:#f92672">/=</span> wabs, p.y <span style="color:#f92672">/=</span> wabs, p.z <span style="color:#f92672">/=</span> wabs;
+        s<span style="color:#f92672">-&gt;</span>x <span style="color:#f92672">=</span> viewport.x <span style="color:#f92672">+</span> (<span style="color:#ae81ff">0.5f</span> <span style="color:#f92672">+</span> p.x <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> viewport.w;
+        s<span style="color:#f92672">-&gt;</span>y <span style="color:#f92672">=</span> viewport.y <span style="color:#f92672">+</span> (<span style="color:#ae81ff">0.5f</span> <span style="color:#f92672">-</span> p.y <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> viewport.h;
+<span style="color:#75715e">#if defined(TM_PROJECTION_USE_REVERSED_Z)
+</span><span style="color:#75715e"></span>        s<span style="color:#f92672">-&gt;</span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> p.z;
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>        s<span style="color:#f92672">-&gt;</span>z <span style="color:#f92672">=</span> p.z;
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">return</span> screen;
+}
+</code></pre></div><h2 id="appendix-d-tm_point_on_line_projection_2d">Appendix D: <code>tm_point_on_line_projection_2d</code></h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Projects the point `p` onto the line `A + tU`.
+</span><span style="color:#75715e"></span>tm_vec2_t <span style="color:#a6e22e">tm_point_on_line_projection_2d</span>(tm_vec2_t a, tm_vec2_t u, tm_vec2_t p)
+{
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> uu <span style="color:#f92672">=</span> tm_vec2_dot(u, u);
+
+    <span style="color:#75715e">// The direction is very short, return the line origin;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (uu <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.00001f</span>)
+        <span style="color:#66d9ef">return</span> a;
+
+    <span style="color:#66d9ef">return</span> tm_vec2_add(a, tm_vec2_mul(u, (tm_vec2_dot(u, tm_vec2_sub(p, a)) <span style="color:#f92672">/</span> uu)));
+}
+</code></pre></div>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/authors/karl" class="text-decoration-none">Karl Zylinski</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804184939/https://twitter.com/share?text=Linear%20Algebra%20Shenanigans%3a%20Gizmo%20Repair - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2flinear-algebra-shenanigans-gizmo-repair%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804184939/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2flinear-algebra-shenanigans-gizmo-repair%2f&amp;description=Linear%20Algebra%20Shenanigans%3a%20Gizmo%20Repair" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/step-by-step-programming-incrementally/" class="text-decoration-none"><img src="../../images/step__trunk-based-development.png" class="card-img-top" alt="Step-by-step: Programming incrementally"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/step-by-step-programming-incrementally/">Step-by-step: Programming incrementally</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-10-07T00:00:00Z">
+                      7 Oct 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>One thing that has really benefited my productivity (and also my general sanity), has been learning
+how to take a big …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/step-by-step-programming-incrementally/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">22 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2020-9/" class="text-decoration-none"><img src="../../images/beta_20_9__downloads.png" class="card-img-top" alt="The Machinery Beta — September 2020 (version 2020.9)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2020-9/">The Machinery Beta — September 2020 (version 2020.9)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-09-30T00:00:00Z">
+                      30 Sep 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Just as mushrooms are popping up in the forest, it’s time for another The Machinery beta release. We
+are getting back in …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2020-9/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/borderland-part-3-selection-highlighting/" class="text-decoration-none"><img src="../../images/selection__outline.gif" class="card-img-top" alt="Borderland between Rendering and Editor — Part 3: Selection Highlighting"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/borderland-part-3-selection-highlighting/">Borderland between Rendering and Editor — Part 3: Selection Highlighting</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-09-22T00:00:00Z">
+                      22 Sep 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>We’ve reached the third post in this series about often overlooked rendering features typically
+needed when building …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/borderland-part-3-selection-highlighting/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/linear-algebra-shenanigans-gizmo-repair/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804184939/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184939/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/cdn-cgi/l/email-protection#3f4f5651587f504a4d525e5c5756515a4d46115c5052" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804184939/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 18:49:39 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:08 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 1471.115
+  exclusion.robots: 0.099
+  exclusion.robots.policy: 0.092
+  RedisCDXSource: 146.776
+  esindex: 0.011
+  LoadShardBlock: 1306.758 (3)
+  PetaboxLoader3.datanode: 1083.96 (4)
+  CDXLines.iter: 14.547 (3)
+  PetaboxLoader3.resolve: 368.134 (2)
+  load_resource: 278.642
+-->

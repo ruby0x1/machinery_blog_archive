@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  __wm.wombat("http://ourmachinery.com:80/post/vulkan-pipelines-and-render-states/","20180909163517","http://web.archive.org/","web"../../_static/",
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/images/machinery-logo.png"/>
+    
+    <meta name="twitter:title" content="Vulkan: Pipelines and Render States">
+    <meta name="twitter:description" content="How we handle Vulkan pipelines and render states at Our Machinery."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Vulkan: Pipelines and Render States · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content="http://web.archive.org/web/20180909163517/http://ourmachinery.com/post/vulkan-pipelines-and-render-states/"/>
+    
+        <meta property="og:image" content="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/images/machinery-logo.png"/>
+    
+
+    
+    <meta property="og:description" content="How we handle Vulkan pipelines and render states at Our Machinery."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2017-12-11T00:00:00Z"/>
+
+    
+    
+
+    <title>Vulkan: Pipelines and Render States &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="How we handle Vulkan pipelines and render states at Our Machinery."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20180909163517cs_/http://ourmachinery.com/css/screen.css?v=1.0.0"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20180909163517cs_/http://ourmachinery.com/css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20180909163517cs_/http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.37.1"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20180909163517/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Vulkan: Pipelines and Render States,
+    "name": Vulkan: Pipelines and Render States,
+    "wordCount": 1107,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": http://ourmachinery.com/post/vulkan-pipelines-and-render-states/,
+    "datePublished": 2017-12-11T00:00Z,
+    "dateModified": 2017-12-11T00:00Z,
+    
+    "keywords": ,
+    "description": How we handle Vulkan pipelines and render states at Our Machinery.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": http://ourmachinery.com/post/vulkan-pipelines-and-render-states/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20180909163517/http://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="http://web.archive.org/web/20180909163517cs_/http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="http://web.archive.org/web/20180909163517js_/http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+ <div class="site-wrapper">
+
+    <header class="main-header">
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/"><img src="http://web.archive.org/web/20180909163517im_/http://ourmachinery.com/images/full-logo.png"/></a>
+    
+           
+            <a class="menu-button" href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/post/">Blog</a>
+        </nav>
+    </header>
+
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Vulkan: Pipelines and Render States</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2017-12-11T00:00:00Z">
+            Dec 11, 2017
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>This will be the last post in my mini-series of posts covering some of the performance critical aspects of our Vulkan render backend. In my previous two posts I covered management of <a href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/post/vulkan-descriptor-sets-management/">Descriptor Sets</a> and <a href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/post/vulkan-command-buffer-management/">Command Buffers</a>. In today’s post I will describe how we deal with the creation and look up of <code>VkPipelines</code>, and also touch on our system for dynamically changing render states.</p>
+
+<p></p>
+
+<p>I will be using the DX9-terminology “<em>render states”</em> when referring to any pipeline states controlling fixed function hardware, such as: rasterization, blending, depth and stencil operations, input assembler, etc.</p>
+
+<h2 id="pipeline-management">Pipeline Management</h2>
+
+<p>A <a href="http://web.archive.org/web/20180909163517/https://www.khronos.org/registry/vulkan/specs/1.0/man/html/VkGraphicsPipelineCreateInfo.html">VkPipeline</a> is Vulkan’s equivalent to D3D12’s Pipeline State Object (PSO), basically a monolithic object describing the entire graphics (or compute) pipeline, that can be bound using single command — <code>vkCmdBindPipeline()</code>. A <code>VkPipeline</code> for graphics work is constructed from a bunch of render states, active shader stages and the output render pass (specifying the format of the render targets the pixel/fragment shader will be writing to).</p>
+
+<p>If your data is static and well-known you can get away with pre-creating all needed pipelines before submitting any draw calls or compute dispatches. In my experience though it can be hard, and rather inconvenient to take it that far. While typically most render states can be determined already at shader authoring time it’s still fairly common that you won’t know the full state of the pipeline (e.g. what render pass you are targeting) until right before submitting the draw call.</p>
+
+<p>So in <em>The Machinery</em>, I’ve made the decision that we still need to support “last minute” pipeline creation for convenience, but actively striving to keep the frequency of dynamic state changes to a minimum.</p>
+
+<p>This is currently implemented by letting each device own a <em>pipeline lookup.</em> A hash map where the value is the <code>VkPipeline</code> and the key is the murmur hash of:</p>
+
+<ul>
+<li><p>The currently bound <code>VkRenderPass</code> — i.e. the render target setup (null for compute pipelines).</p></li>
+
+<li><p>The shader handle — identifying an object containing all of the active shader stages and default render states.</p></li>
+
+<li><p>An (optional, and null for compute pipelines) short array of handles identifying render state override blocks associated with the draw call (more on this later).</p></li>
+</ul>
+
+<p>For each draw call we generate the hash and check if it’s identical to the hash for the already bound pipeline. If so, everything is already setup for us and we can move on. If they differ, we try to lookup the pipeline in the <em>pipeline lookup</em>. If found, the pipeline has already been created and we simply bind it and move on. If not, we need to create it, bind it, and insert it into the lookup.</p>
+
+<p>This is where things becomes a bit tricky. Depending on workload we might currently be running in a worker thread, building command lists in parallel with other worker threads. Since all worker threads are peeking at the <em>pipeline lookup</em>, we rely on it being immutable. So we can’t just insert the newly created pipeline into the lookup.</p>
+
+<p>To handle this we let each worker thread carry an array of worker-thread-created pipelines. Since we expect the number of worker-thread-created pipelines per frame to be very low (typically zero), there’s no point in using a hash map for the lookup. Instead we simply iterate over the array to see if the requested pipeline already has been created by the worker thread.</p>
+
+<p>So the final, worker-thread-friendly, algorithm boils down to something like this:</p>
+
+<pre><code class="language-c">key = mumur_hash(pass, shader_handle, state_override_blocks)
+if (key == most_recently_bound_pipeline_key)
+    return
+
+pipeline = global_pipeline_lookup.get(key)
+if (!pipeline)
+    pipeline = worker_thread_created_pipelines.find(key)
+if (!pipeline) {
+    pipeline = create_pipeline()
+    worker_thread_created_pipelines.push({key, pipeline})
+}
+
+bind(pipeline)
+</code></pre>
+
+<p>When all worker threads are done, we merge the arrays of worker-thread-created pipelines into the pipeline lookup owned by the device.</p>
+
+<p>This way we can avoid having to introduce some kind of locking mechanism when accessing the pipeline lookup. In general I’ve found this approach of sharing a global data structure and using worker thread local memory to queue up any changes to the global data structure, being something that scales nicely to lots of worker threads. It is also super trivial to implement, makes for code that is easy to follow, and works without having to resort to use locks or atomics.</p>
+
+<h2 id="render-state-override-blocks">Render State Override Blocks</h2>
+
+<p>While I said that most of the render states tends to be static and typically known already at shader authoring time, it can still be needed to support changing some of them dynamically. A few examples:</p>
+
+<ul>
+<li><p>Flipping back face culling between clockwise and counter-clockwise, to correctly support mirrored object transforms.</p></li>
+
+<li><p>Flipping between rendering polygons as filled and lines, to support wireframe views in an editor.</p></li>
+
+<li><p>Dynamically changing blend states.</p></li>
+
+<li><p>Adjusting depth biasing when rendering shadow maps depending on resolution, format, projection, etc.</p></li>
+</ul>
+
+<p>In <em>The Machinery</em>, the shader author is responsible for providing well-defined default values for all render states. On top of that we allow the user to create <em>Render State Override Blocks</em>, a minimalistic render backend resource that only contains the states that the user wants to override from their default values. These blocks can be stacked on top of each other, similar to photoshop layers, to provide a form of override mechanism. This stacking is specified as a (typically very short) array of resource handles identifying the override blocks attached to every draw call.</p>
+
+<p>As mentioned earlier, this array of resource handles is factored into the pipeline lookup key. So when creating a new <code>VkPipeline</code>, we first grab the default values for all render states from the shader, we then overwrite the values of any states referenced by the override blocks. If the same state is touched by more than one override block, the last block in the array touching the state takes precedence.</p>
+
+<p>In Vulkan there’s a mechanism that allows specifying some render states as <em>dynamic</em>, and supply their values after the pipeline has been created and bound. These are render states that have a tendency to need more frequent changing than others, such as scissor rectangles, viewports, depth biasing, and others. By separating the state override blocks that only reference states that support this type of <em>dynamic</em> updating, we can handle all state overrides using the same system without having to make some special code path for those.</p>
+
+<p>So far this feels like a decent compromise between performance and flexibility when it comes to management of pipelines and render states.</p>
+
+<hr/>
+
+<p>This was my last post for 2017 and I’d like to take the opportunity to thank all of you for taking the time to read my posts, and for all encouragement and valuable feedback that you’ve provided.</p>
+
+<p>Merry Christmas &amp; Happy New Year! You are awesome! ❤️</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/">Tobias Persson</a></h4>
+  
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20180909163517/https://twitter.com/share?text=Vulkan%3a%20Pipelines%20and%20Render%20States - Our%20Machinery&amp;url=http%3a%2f%2fourmachinery.com%2fpost%2fvulkan-pipelines-and-render-states%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20180909163517/https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fourmachinery.com%2fpost%2fvulkan-pipelines-and-render-states%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20180909163517/http://pinterest.com/pin/create/button/?url=http%3a%2f%2fourmachinery.com%2fpost%2fvulkan-pipelines-and-render-states%2f&amp;description=Vulkan%3a%20Pipelines%20and%20Render%20States" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.2em" href="http://web.archive.org/web/20180909163517/https://plus.google.com/share?url=http%3a%2f%2fourmachinery.com%2fpost%2fvulkan-pipelines-and-render-states%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a> 2018</section>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20180909163517/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20180909163517/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="bloglogo" href="http://web.archive.org/web/20180909163517/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20180909163517/http://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20180909163517/mailto:ping@ourmachinery.com" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://web.archive.org/web/20180909163517js_/http://ourmachinery.com/js/jquery.js"></script>
+    <script type="text/javascript" src="http://web.archive.org/web/20180909163517js_/http://ourmachinery.com/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://web.archive.org/web/20180909163517js_/http://ourmachinery.com/js/index.js"></script>
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 16:35:17 Sep 09, 2018 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:15 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 100.848
+  exclusion.robots: 0.137
+  exclusion.robots.policy: 0.125
+  RedisCDXSource: 0.728
+  esindex: 0.012
+  LoadShardBlock: 78.371 (3)
+  PetaboxLoader3.datanode: 132.822 (5)
+  CDXLines.iter: 18.894 (3)
+  load_resource: 126.703 (2)
+  PetaboxLoader3.resolve: 35.164
+-->

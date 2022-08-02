@@ -1,0 +1,884 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Discusses the implementation of subgraphs in The Machinery's graph editor."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/subgraph__simple_subgraph.png"/>
+  
+  <meta name="twitter:title" content="Subgraphs and Function Graphs">
+  <meta name="twitter:description" content="Discusses the implementation of subgraphs in The Machinery's graph editor."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Subgraphs and Function Graphs · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/subgraphs-and-function-graphs/"/>
+  
+  <meta property="og:image" content="../../images/subgraph__simple_subgraph.png"/>
+  
+  
+  <meta property="og:description" content="Discusses the implementation of subgraphs in The Machinery's graph editor."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-06-15T00:00:00Z"/>
+  
+
+  <title>Subgraphs and Function Graphs &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804191831/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804191831\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Karl Zylinski",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804191831\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Subgraphs and Function Graphs",
+    "name": "Subgraphs and Function Graphs",
+    "wordCount":  2587 ,
+    "timeRequired": "PT13M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/subgraphs-and-function-graphs/",
+    "datePublished": "2020-06-15T00:00Z",
+    "dateModified": "2020-06-15T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804191831/https://ourmachinery.com/subgraph__simple_subgraph.png"
+    },
+    
+    
+    "description": "Discusses the implementation of subgraphs in The Machinery's graph editor."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191831/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191831/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Subgraphs and Function Graphs</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-06-15T00:00:00Z">
+          Jun 15, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In this post, I will discuss how we went about adding support for <em>Subgraphs</em> to our graph editor
+and <em>Graph Interpreters</em>. We’ll look at what <em>Subgraphs</em> are, why we need them, how we added them,
+how <em>Subgraphs</em> may be promoted to <em>Function Graphs</em>, and what room for improvement we currently
+see.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The end result: Creating a Subgraph, opening it and adding an Input and an Output." src="../../images/subgraph__creating_a_subgraph.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The end result: Creating a Subgraph, opening it and adding an Input and an Output.</h4>
+    </figcaption>
+  </figure>
+<h2 id="whats-a-subgraph-what-are-they-good-for">What’s a Subgraph? What are they good for?</h2>
+<p>A <em>Subgraph</em> is a graph contained within another graph. Analogous to code, you may think of a graph
+as a function that in turn calls another function: the <em>Subgraph</em>. We tend to denote the graph that
+calls the Subgraph as the <em>Parent Graph</em>. Many game engines and content authoring tools support
+Subgraphs, but there are lots of variations. Some just use Subgraphs as a simple grouping mechanism,
+in which a set of nodes can be collapsed into a single <em>Subgraph Node</em>. Others support Subgraphs
+through a full-on <em>Function</em> <em>Graph</em> concept, in which any piece of a graph may be exported as a
+<em>reusable</em> function. Common to both these approaches is that there exists a graph node, the
+<em>Subgraph Node</em>, that either contains a Subgraph or references a Function Graph.</p>
+<p>As I see it, there are two main reasons for supporting Subgraphs:</p>
+<ul>
+<li>
+<p><strong>Grouping.</strong> Graphs tend to become messy monsters, and grouping pieces of it using Subgraphs is
+one way to create order. One other way of creating order I have been thinking about is adding
+support for creating colored, named background regions, but that’s for another time.</p>
+</li>
+<li>
+<p><strong>Re-usability.</strong> Any Subgraph concept is a good stepping stone towards support for Function
+Graphs. Our goal was to first add support for Subgraphs where the actual Subgraph is contained
+within the Subgraph Node — i.e. the contained Subgraph can only be shared with copy-paste and
+modifications do not propagate between copy-pasted copies — and then, once we got that working,
+make it possible to export the Subgraph to a reusable <em>Asset</em>, which gives us something analogous
+to Function Graphs. Splitting work up into manageable chunks like this makes it more fun, since
+you see results more readily, and you <a href=" ../../post/moving-away-from-git-flow/">don’t have to sit on a big branch for too
+long</a>.</p>
+</li>
+</ul>
+<h2 id="inputs-and-outputs">Inputs and Outputs</h2>
+<p>A Subgraph doesn’t do much unless it defines a set of <em>Inputs</em> and <em>Outputs</em>. We decided to add the
+definition of these Inputs and Outputs to all our graphs instead of having a separate type for
+Subgraphs. Here are all the properties that a graph object has in <a href=" ../../post/the-story-behind-the-truth-designing-a-data-model/">The
+Truth</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {
+    TM_TT_PROP__GRAPH__NODES <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// subobject_set(GRAPH_NODE)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH__CONNECTIONS, <span style="color:#75715e">// subobject_set(GRAPH_CONNECTION)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH__DATA, <span style="color:#75715e">// subobject_set(GRAPH_DATA)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH__COMMENTS, <span style="color:#75715e">// subobject_set(GRAPH_COMMENT)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH__INTERFACE, <span style="color:#75715e">// subobject(GRAPH_INTERFACE)
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p>You can see the nodes, connections, data, and comments, which were all there before — the new thing is the <em>Interface</em>. It is represented by a separate Truth type, with these properties:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {
+    TM_TT_PROP__GRAPH_INTERFACE__INPUTS <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// subobject_set(GRAPH_INPUT)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH_INTERFACE__OUTPUTS, <span style="color:#75715e">// subobject_set(GRAPH_OUTPUT)
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p>Each Input is an object with these properties (Outputs have the same properties):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {
+    TM_TT_PROP__GRAPH_INPUT__DISPLAY_NAME <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// string
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH_INPUT__ID, <span style="color:#75715e">// string
+</span><span style="color:#75715e"></span>    TM_TT_PROP__GRAPH_INPUT__TYPE_HASH, <span style="color:#75715e">// uint64_t
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p>The <em>Display Name</em> is for representing these Inputs and Outputs in the UI. The <em>ID</em> is a unique
+identifier, so we can be sure to which Input or Output a connection goes. The <em>Type Hash</em> is the
+hash of the type name that the Input or Output expects.</p>
+<p>There’s a good reason for adding this Interface directly to the graph instead of to some object
+specific for Subgraphs: Down the road, this approach will make it very easy to promote a Subgraph to
+an Asset (a Function Graph), but we’ll get back to that near the end of this post.</p>
+<p>We also need two new graph node types: the <em>Input Node</em> and the <em>Output Node</em>. Below is a tiny
+example graph below with these two nodes present. These two nodes are used <em>within</em> the Subgraph, to
+make it possible to connect stuff to the Inputs and Outputs defined in the Interface.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="A simple subgraph with an Input Node and an Output node." src="../../images/subgraph__simple_subgraph.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>A simple subgraph with an Input Node and an Output node.</h4>
+    </figcaption>
+  </figure>
+<p>The Input Node and Output Node dynamically create their connectors based on the set of Inputs and
+Outputs defined in the Interface of the graph they belong to. When designing this, we had to choose
+between having a separate node for each Input or coalescing all Inputs in a single Input Node. We
+chose to go with the latter, but for the convenience of the user, it is possible to spawn multiple
+Input nodes.</p>
+<p>In the image above, you may have noticed the <strong>+</strong> at the bottom of the Input and Output Nodes. When
+connecting to it, it looks at the other end of the connection and uses that name and type to create
+a new Input or Output. This is currently the main way to add new Inputs and Outputs. In addition,
+there is a panel where you can rename and delete them. This is another reason for displaying all
+Inputs or Outputs instead of having separate nodes for each; with separate nodes, it would make no
+sense to have a <strong>+</strong> connector.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Adding a new Vector3 Input to to a Subgraph." src="../../images/subraph__adding_input.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Adding a new Vector3 Input to to a Subgraph.</h4>
+    </figcaption>
+  </figure>
+<h2 id="the-subgraph-node-a-node-with-a-graph-inside">The Subgraph Node: A Node with a Graph Inside</h2>
+<p>The third, and final, new node type required is the <em>Subgraph Node</em>. We have an optional generic
+data blob associated with all nodes. In the case of the Subgraph Node, this data blob contains a
+graph object; the Subgraph.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="A Subgraph Node with connectors generated from the Interface’s Inputs &amp; Outputs." src="../../images/subgraph__node.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>A Subgraph Node with connectors generated from the Interface’s Inputs &amp; Outputs.</h4>
+    </figcaption>
+  </figure>
+<p>The Subgraph Node looks at the Interface of the graph it contains and, similarly to the Input and
+Output nodes, dynamically creates connectors for all the Inputs and Outputs. It also has the handy
+<strong>+</strong> connector for creating new Inputs and Outputs. Double-clicking the Subgraph Node opens the
+Subgraph it contains,  switching current graph view to view that graph.</p>
+<h2 id="actually-creating-subgraphs">Actually creating Subgraphs</h2>
+<p>Now that we have all the nodes required we should ask ourselves: How do we actually create the
+Subgraph? One way is to just create a Subgraph Node and open the empty Subgraph (double-click the
+node) and add stuff to it. But the user probably wants something more powerful, such as selecting a
+bunch of nodes and turning those into a Subgraph. Here we could re-use the code we already had for
+copying nodes between graphs: copy-paste.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Selecting a bunch of nodes and turning them into a subgraph." src="../../images/subgraph__selecting_nodes.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Selecting a bunch of nodes and turning them into a subgraph.</h4>
+    </figcaption>
+  </figure>
+<p>In the image above I have selected a bunch of nodes. Selecting Create Subgraph will do the following:</p>
+<ul>
+<li>
+<p>Create a Subgraph Node at the center of the area that the selected nodes occupy.</p>
+</li>
+<li>
+<p>“Cut &amp; Paste” all selected nodes and all connections between the selected nodes to the Subgraph
+contained inside the new Subgraph Node.</p>
+</li>
+<li>
+<p>Use the dangling connections — i.e. those connections that have one node <em>in</em> and one node
+<em>outside</em> the selection — to figure out sensible Inputs and Outputs.</p>
+</li>
+<li>
+<p>Replace all dangling connections: In the Parent Graph, we replace them with connections to the Subgraph Node. In the Subgraph, we spawn Input Nodes and Output Nodes and replace the dangling connections with connections to those nodes. See the two images below.</p>
+</li>
+</ul>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The Subgraph node that replaces the selected nodes, with automatic Inputs and Outputs." src="../../images/subraph__new_node.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The Subgraph node that replaces the selected nodes, with automatic Inputs and Outputs.</h4>
+    </figcaption>
+  </figure>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Inside the subgraph: Input and Output nodes have been automatically spawned and connected." src="../../images/subgraph__inside.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Inside the subgraph: Input and Output nodes have been automatically spawned and connected.</h4>
+    </figcaption>
+  </figure>
+<h2 id="interpreting-it">Interpreting it</h2>
+<p>The Machinery has one <em>Interpreter</em> for each of the two graph types in the engine: The <em>Entity
+Graph</em> and the <em>Creation Graph</em>. The Entity Graph is for gameplay scripting, while the Creation
+Graph is for managing resources in the CPU-GPU borderland. Tobias has blogged about the Creation
+Graph <a href=" ../../post/creation-graphs/">here</a> and
+<a href=" ../../post/more-on-creation-graphs/">here</a>. It’s the Interpreter’s job to
+actually <em>run the graph</em>: Each node type has code associated with it that takes some inputs, does
+some computations, and sends out the result to any nodes down the line. At first, adding Subgraphs
+into this mix sounded a bit hard. The Interpreter does a lot of pre-calculations based on the nodes
+and connections, and only after that runs the actual node-specific code. Throwing another graph into
+the middle of the interpretation processes was begging for trouble, so we settled for a simpler
+approach: <em>Flattening the graph.</em></p>
+<p>What this means is that instead of recursively handling Subgraphs during interpretation, we do a
+pre-pass where all the Subgraphs are expanded. The first thing the Graph Interpreter does is that it
+imports the graphs from The Truth into some acceleration structs, using the <code>tm_graph_importer_api</code>.
+This API used to have only a single function: <code>import</code>, but now it has two:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_graph_importer_api
+{
+    tm_graph_import_result_t (<span style="color:#f92672">*</span>import_shallow)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_the_truth_o <span style="color:#f92672">*</span>tt, uint64_t graph_id, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_graph_node_type_i <span style="color:#f92672">*</span>types, uint32_t num_types, <span style="color:#66d9ef">struct</span> tm_temp_allocator_i <span style="color:#f92672">*</span>ta);
+    tm_graph_import_result_t (<span style="color:#f92672">*</span>import_flattened)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_the_truth_o <span style="color:#f92672">*</span>tt, uint64_t graph_id, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_graph_node_type_i <span style="color:#f92672">*</span>types, uint32_t num_types, <span style="color:#66d9ef">struct</span> tm_temp_allocator_i <span style="color:#f92672">*</span>ta);
+};
+</code></pre></div><p><code>import_shallow</code> does not expand Subgraphs, it does exactly what the importer did before: It goes
+through the Truth object of the graph and creates acceleration structures for performantly reasoning
+about the graph. This is the function that the graph editor uses since it just wants to show the
+Subgraph Node, but not it’s contents, with the possibility of double-clicking it, opening the
+contained Subgraph.</p>
+<p><code>import_flattened</code> adds a pre-pass to the import process. Internally, it starts off by calling a
+function named <code>flatten_graph</code>, which adds all the nodes, connections, etc to lists, except for
+Subgraph Nodes, Input Nodes, and Output Nodes. If it stumbles upon a Subgraph Node it will instead
+recursively call <code>flatten_graph</code>, which will continue to add all nodes, connections, etc to the same
+lists. Whenever it finds an Input Node or Output Node inside a Subgraph, it will ignore the node.
+But it won’t ignore the connections to it, it will patch them to the matching connections on the
+Parent Graph’s Subgraph Node. When this is done it continues the import in the same manner as
+<code>import_shallow</code>.</p>
+<p>The two Graph Interpreters now use <code>import_flattened</code>. Switching them to use this function is the
+only change I needed to do inside the Graph Interpreter when adding support for Subgraphs — the
+Interpreters have no clue what Subgraph is.</p>
+<h2 id="function-graphs-reusable-graph-assets">Function Graphs: Reusable graph assets</h2>
+<p>I promised early on that our strategy should allow us to easily move from only supporting Subgraphs
+(the Subgraph is contained inside the Subgraph Node and can only be used once) to Function Graphs.
+Function Graphs are reusable Subgraphs that have been promoted to an <em>Asset</em> instead of living
+inside the node.</p>
+<p>In The Machinery, an <em>Asset</em> is a thing that can be displayed by the <em>Asset Browser</em>. Each Asset has
+these properties in The Truth:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">enum</span> {
+    TM_TT_PROP__ASSET__NAME <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#75715e">// string
+</span><span style="color:#75715e"></span>    TM_TT_PROP__ASSET__DIRECTORY, <span style="color:#75715e">// reference(ASSET_DIRECTORY)
+</span><span style="color:#75715e"></span>    TM_TT_PROP__ASSET__OBJECT, <span style="color:#75715e">// subobject(*)
+</span><span style="color:#75715e"></span>};
+</code></pre></div><p><em>Name</em> is the filename to be displayed in the Asset Browser. <em>Directory</em> is a reference to a Truth
+object representing a directory. <em>Object</em> is the actual thing that the Asset contains, it can be of
+any type. The Object also dictates the file extension to be displayed after the filename, by the use
+of a <em>File Extension Aspect,</em> essentially a piece of data that may be associated with any The Truth
+type. If the Object implements the File Extension Aspect, then that aspect will tell the Asset
+Browser which extension the Asset should have.</p>
+<p>Back to the problem at hand: Function Graphs. In the image below we see a Subgraph Node (named
+<em>Check Direction</em>, you can name the Subgraph Nodes using the label field available on all nodes).
+We’ve added a context menu item to it called <em>Create Subgraph Prototype.</em> When chosen, it will clone
+the Subgraph contained inside the Subgraph Node and then wrap it inside one of those Assets
+described above. This is done by creating a new Asset object in The Truth and setting the Object
+property to the Subgraph just cloned. The Name of the Asset is taken from the label of the Subgraph
+Node. The Directory is set to be  the one currently viewed in the Asset Browser. The new Asset is
+then added to the Asset Browser so that it shows up properly.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Creating a Subgraph Prototype Asset." src="../../images/subgraph__create_asset.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Creating a Subgraph Prototype Asset.</h4>
+    </figcaption>
+  </figure>
+<p>The new Asset is shown below, it has the extension <em>entity_graph</em> because this Subgraph came from an
+Entity Graph. A Subgraph Prototype from the Creation Graph would have the extension
+<em>creation_graph,</em> as dictated by the File Extension Aspect **on the Asset’s Object.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The new Graph Prototype Asset." src="../../images/subgraph__asset.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The new Graph Prototype Asset.</h4>
+    </figcaption>
+  </figure>
+<p>The only thing that remains is to make the Subgraph Node somehow use this Asset. We do this using
+our prototyping system. We <em>create an Instance</em> of the Object contained inside the Asset and assign
+it as the Subgraph Node’s Subgraph. Double-clicking the Subgraph Node will now open this Instance.
+Any changes to the Asset will be reflected in the Instance, but the user may also create overrides
+inside the Instance, changing, moving, or removing any node or connection.</p>
+<p>We now have functionality equal to that of Function Graphs, the user can create additional Subgraph
+Nodes that use the same Asset as Prototype. This is done using the Prototype picker that is visible
+while the node is selected, as shown in the gif below. Choosing a Prototype in this picker will
+replace the node’s current Subgraph with an Instance of that Prototype.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The user choses an already existing Graph Asset at the prototype for their Subgraph." src="../../images/subgraph__pick_prototype.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The user choses an already existing Graph Asset at the prototype for their Subgraph.</h4>
+    </figcaption>
+  </figure>
+<h2 id="future-improvements">Future improvements</h2>
+<p>I am quite pleased with how all this turned out, but there are some issues that I would like to
+address at some point:</p>
+<ul>
+<li>
+<p>It is currently only possible to add Inputs and Outputs using the <strong>+</strong> connector. There exists
+disabled code for manually adding them, but we currently have no good way of figuring out which
+types to make available to the user — i.e. we have no central point where we store a list of
+‘blessed types’ that may be used within a graph, the node’s themselves may use any type on their
+connectors. One idea I had as I was writing this sentence is to iterate over all the registered
+node types, look at all the connectors and assemble a list of those types.</p>
+</li>
+<li>
+<p>The Creation Graph currently has it’s own concept of inputs and outputs, used for parameterization
+of the Creation Graphs and making it possible for one Creation Graph to reference another. There
+are some striking similarities to the stuff I built for Subgraphs, such as input nodes, etc. But
+there are some differences. We are still on the fence about combining these two concepts.</p>
+</li>
+<li>
+<p>It would be nice to have a way to quickly spawn Subgraph Nodes with a prototype already set,
+avoiding a two-step. We could do this by enumerating all Assets that contain a graph, and show
+those in the node-spawning menu.</p>
+</li>
+<li>
+<p>The flattening of the graph that we do for the interpreter is a simple approach. But it has two
+problems, the first is that it does not support recursion, allowing it would cause a stack
+overflow while expanding the graphs. The second is performance. We may want to add some ‘caching’
+of the graphs down the line, making sure that any graph only has to be imported from The Truth
+once. It may even store the result of the compiled graph — although that would require us to
+reason about what values the Inputs had during compilation, as this affects the result. Both these
+problems probably mean that we have to stop flattening the graph in the future, and instead move
+the expansion of Subgraphs to the interpreter. However, I’m certain that the current way was a
+good idea, just to get this big ball rolling.</p>
+</li>
+</ul>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/authors/karl" class="text-decoration-none">Karl Zylinski</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804191831/https://twitter.com/share?text=Subgraphs%20and%20Function%20Graphs - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fsubgraphs-and-function-graphs%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804191831/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fsubgraphs-and-function-graphs%2f&amp;description=Subgraphs%20and%20Function%20Graphs" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2020-5/" class="text-decoration-none"><img src="../../images/beta_20_5__multiedit.png" class="card-img-top" alt="The Machinery Beta — May 2020 (version 2020.5)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2020-5/">The Machinery Beta — May 2020 (version 2020.5)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-05-15T00:00:00Z">
+                      15 May 2020
+                    </time>
+                  </h6>
+                  <p class="card-text">Welcome to the May 2020 release of The Machinery Beta (2020.5). Hope you all are staying healthy and sane. We have a …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2020-5/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/wasabi-part-4-working-from-home/">WaSaBi Part 4: Working From Home</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-05-07T00:00:00Z">
+                      7 May 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I was going to save this topic for later on down the road, but it seems apropos in our current
+situation.</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/wasabi-part-4-working-from-home/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/recording-statistics/" class="text-decoration-none"><img src="../../images/recstat__graph.png" class="card-img-top" alt="Recording Statistics — An Exercise in Minimalism"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/recording-statistics/">Recording Statistics — An Exercise in Minimalism</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-04-27T00:00:00Z">
+                      27 Apr 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I recently added a <em>Statistics</em> view to The Machinery. It can be used to display various real-time
+statistics from the …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/recording-statistics/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/subgraphs-and-function-graphs/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804191831/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191831/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/cdn-cgi/l/email-protection#cfbfa6a1a88fa0babda2aeaca7a6a1aabdb6e1aca0a2" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804191831/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:18:31 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:18 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 82.917
+  exclusion.robots: 0.106
+  exclusion.robots.policy: 0.098
+  RedisCDXSource: 0.635
+  esindex: 0.008
+  LoadShardBlock: 59.304 (3)
+  PetaboxLoader3.datanode: 59.423 (4)
+  CDXLines.iter: 20.109 (3)
+  load_resource: 229.674
+  PetaboxLoader3.resolve: 191.08
+-->

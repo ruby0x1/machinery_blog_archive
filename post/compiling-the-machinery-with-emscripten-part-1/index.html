@@ -1,0 +1,757 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Describes what we needed to do to make The Machinery compile under Emscripten."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/emscripten__simple_draw.png"/>
+  
+  <meta name="twitter:title" content="Compiling The Machinery with Emscripten: Part 1">
+  <meta name="twitter:description" content="Describes what we needed to do to make The Machinery compile under Emscripten."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Compiling The Machinery with Emscripten: Part 1 · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/compiling-the-machinery-with-emscripten-part-1/"/>
+  
+  <meta property="og:image" content="../../images/emscripten__simple_draw.png"/>
+  
+  
+  <meta property="og:description" content="Describes what we needed to do to make The Machinery compile under Emscripten."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-11-11T00:00:00Z"/>
+  
+
+  <title>Compiling The Machinery with Emscripten: Part 1 &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20211112112733/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20211112112733\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20211112112733\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Compiling The Machinery with Emscripten: Part 1",
+    "name": "Compiling The Machinery with Emscripten: Part 1",
+    "wordCount":  1853 ,
+    "timeRequired": "PT9M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/compiling-the-machinery-with-emscripten-part-1/",
+    "datePublished": "2021-11-11T00:00Z",
+    "dateModified": "2021-11-11T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20211112112733/https://ourmachinery.com/emscripten__simple_draw.png"
+    },
+    
+    
+    "description": "Describes what we needed to do to make The Machinery compile under Emscripten."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20211112112733/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Compiling The Machinery with Emscripten: Part 1</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-11-11T00:00:00Z">
+          Nov 11, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>At Our Machinery, the last Friday of every month is Hack Day. This means that you can work on
+whatever you like and try wild ideas without any expectation of being productive, useful, or sane.</p>
+<!-- more -->
+<p>For my Hack Days, I like to pick projects that let me explore something new <em>and</em> have some sort of
+tangible end goal. It’s just more fun when you have something to show off in the end. That’s
+what steered me towards game development in the first place.</p>
+<p>For the last two Hack Days, I’ve been working on compiling The Machinery with
+<a href="http://web.archive.org/web/20211112112733/https://emscripten.org/">Emscripten</a> so that it can run in a web browser. I had never used
+Emscripten before so it definitely fits the bill of trying something new. As for goals, for the
+first day, my goal was to get our command-line tools to run and print some output in the JavaScript
+console. For the second day, I wanted to tackle <em>Simple Draw</em> — a small drawing program built in
+our UI — and see if I could get it to run in the browser:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Simple Draw" src="../../images/emscripten__simple_draw.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Simple Draw</h4>
+    </figcaption>
+  </figure>
+<p>In this post, I’ll go through the first part — getting a basic command-line program up and
+running. In the next post, we’ll work on the UI.</p>
+<h2 id="setting-up-emscripten">Setting up Emscripten</h2>
+<p>The first step was to install and set up Emscripten on my computer (an M1 MacBook). This was very
+straightforward. I just followed the <a href="http://web.archive.org/web/20211112112733/https://emscripten.org/docs/getting_started/downloads.html">Getting
+Started</a> instructions from the
+Emscripten web site.</p>
+<p>After downloading, you use Emscripten by running <code>source emsdk_env.sh</code> in a command shell. This
+sets up the <code>PATH</code> environment variable so that you have access to the Emscripten compiler commands
+(<code>emcc</code>, <code>emmake</code>, etc). I verified the setup by compiling a simple *Hello World-*program.</p>
+<p>When you compile a program using Emscripten, you end up with three files: a <code>.wasm</code> file that
+contains the compiled code in WASM format, a <code>.js</code> file that loads the WASM code and interfaces
+with it, and a <code>.html</code> file for running the program in the browser. However, if just open this HTML
+file, you will be greeted by this disappointing progress spinner:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Something went wrong…" src="../../images/emscripten__preparing.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Something went wrong…</h4>
+    </figcaption>
+  </figure>
+<p>This happens because, for security reasons, most browsers don’t let you load WASM from the file
+system. If you open the browser’s JavaScript developer console, you will see a detailed error
+message about this. (It’s a good idea to always have the console open when you’re working with
+Emscripten.)</p>
+<p>To get by the security checks, you have to load the file from a real web server. You could upload
+it to a remote web server somewhere, but for faster iterations, you’ll want to run a local web
+server. There are many ways of doing this, I usually use Python’s <code>http.server</code> module, because I
+already have Python installed and it’s just a one-line command:</p>
+<pre><code>$ python3 -m http.server
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+</code></pre><p>This starts a local web server on port 8000, serving the files from the directory where the command
+is run. We can go to <a href="http://web.archive.org/web/20211112112733/http://localhost:8000/">http://localhost:8000/</a> in the web browser and click on the <code>.html</code> file to run
+it. This is what we will see:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Hello, world!" src="../../images/emscripten__hello_world.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Hello, world!</h4>
+    </figcaption>
+  </figure>
+<p>The layout here is a bit confusing, but at the top is a small
+<a href="http://web.archive.org/web/20211112112733/https://www.w3schools.com/html/html5_canvas.asp">Canvas</a> where our program can draw stuff (we’ll
+look into that in the next part) and below is a big
+<a href="http://web.archive.org/web/20211112112733/https://www.w3schools.com/tags/tag_textarea.asp">Textarea</a> where anything we print to <code>stdout</code>
+will appear. The <em>Fullscreen</em> button doesn’t actually work for me in any browser where I tried
+it. (Not sure if I just happened to pull a bad version of Emscripten or if something else is going
+on. Again, this was just a single Hack Day, so not much time to investigate.)</p>
+<p>If you’re working with graphics, the small canvas in this view is pretty annoying. Luckily,
+it’s pretty easy to change. You can just open the HTML file and change the size of the canvas. Or
+you can create a copy of the HTML file with different layout. The advantage of that is that the
+copy won’t be overwritten the next time you compile.</p>
+<h2 id="build-system">Build system</h2>
+<p>So I got <em>some</em> code to compile. The next step was to get some of The Machinery’s code to
+compile. For that, I needed to get the Emscripten build integrated into our build system.</p>
+<p>Our <a href=" ../../post/one-button-source-code-builds/">build system</a> has two main
+parts. We use <a href="http://web.archive.org/web/20211112112733/https://premake.github.io/">Premake</a> to generate build files for make, Visual Studio,
+etc and then we have a custom in-house tool called <code>tmbuild</code> that downloads dependencies (including
+Premake), generates projects (using Premake), builds, and runs unit tests.</p>
+<p>For Premake we need to add Emscripten as a new <code>platform</code>. The <em>platforms</em> in Premake don’t
+really <em>mean</em> anything. They’re just tags to group settings under. We can add a new platform like
+this:</p>
+<pre><code>filter { &quot;system:macosx&quot; }
+    platforms { &quot;MacOSX-x64&quot;, &quot;MacOSX-ARM&quot;, &quot;web&quot; }
+</code></pre><p>This specifies that when Premake is running on OS X, in addition to the two target platforms
+<code>MacOSX-x64</code> and <code>MacOSX-ARM</code>, there will be an additional one, called <code>web</code>. This is our
+Emscripten target platform.</p>
+<p>With the platform defined, we can proceed to configure it:</p>
+<pre><code>filter { &quot;platforms:web&quot; }
+    defines { &quot;TM_OS_WEB&quot;, &quot;TM_OS_POSIX&quot;, &quot;TM_NO_MAIN_FIBER&quot; }
+    targetextension &quot;.html&quot;
+</code></pre><p>This sets up some defines that we can check for in the code. It also says that we want to produce
+HTML files as output. (I’m only showing some of the settings here, we also have settings for
+warnings, etc.)</p>
+<p>Core functionality in The Machinery (OS access, math, arrays, etc) is provided by the <code>foundation</code>
+library. To get the command-line tools running, we need to compile this library, as well as the
+tools themselves.</p>
+<p>By default, Premake compiles all the projects listed in the <code>premake5.lua</code> file. So instead, of
+turning web compilation <em>on</em> for the projects we won’t, we have to turn it <em>off</em> for the projects
+we don’t want. We can do it by adding this line to the project definition:</p>
+<pre><code>removeplatforms { “web” }
+</code></pre><p>This prevents the project from being compiled for the <code>web</code> platform.</p>
+<p>With Premake fixed, the next step is to add support for <code>web</code> compiles to <code>tmbuild</code>. <code>tmbuild</code>
+already had basic support for cross-platform builds, it just needed an option to activate it, so I
+added  <code>--platform web</code>.</p>
+<p>I also needed to tell <code>tmbuild</code> how to build <code>web</code> projects, which was just a single line of code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_temp_allocator_api<span style="color:#f92672">-&gt;</span>printf(ta, <span style="color:#e6db74">&#34;emmake make %s config=%s_%s -j %u&#34;</span>, project, clower, platform_name, num_threads)
+</code></pre></div><p>Now we can build for Emscripten with <code>tmbuild --platform web</code>. Somewhat predictably, this gives us
+a bunch of build errors.</p>
+<h2 id="build-errors">Build errors</h2>
+<p>Emscripten is a bit picker than our regular Clang builds. Kind of weird, because Emscripten is
+based on Clang and we’re using the same build flags. The main things I noticed were:</p>
+<ul>
+<li>
+<p>Emscripten seems to use stronger analysis of unused variables. It found some unused variables that didn’t trigger errors before.</p>
+</li>
+<li>
+<p>Emscripten warns about <code>void f()</code> declarations. In C, <code>void f()</code> is not a function without arguments, it’s a function that takes an <em>unspecified</em> number of arguments. A function without arguments has to be written as <code>void f(void)</code> This is an easy mistake to make, especially since C++ changed this — in C++ <code>void f()</code> <em>is</em> a function without arguments.</p>
+</li>
+</ul>
+<p>Fixing these things was pretty straightforward and I’m actually glad that Emscripten generated
+these warnings. I’d like to see if I can enable them for our regular builds too.</p>
+<p>A more problematic bunch of errors came from Emscripten using 32-bit pointers. Going into this
+port, I already knew that Emscripten only supported 4 GB of addressable memory, but I figured that
+wouldn’t be a big deal, since our small test programs wouldn’t need much (though we might have
+to rethink some of our <a href=" ../../post/virtual-memory-tricks/">Virtual Memory
+Tricks</a>). However, I didn’t realize that
+this also meant that Emscripten was using 32-bit pointers. (It would be possible to have one
+without the other. For example, many 64-bit systems do not actually support a full 64-bit address
+range.)</p>
+<p>This creates some issues because The Machinery doesn’t have a 32-bit path. By now, even <a href="http://web.archive.org/web/20211112112733/https://www.androidauthority.com/arm-32-vs-64-bit-explained-1232065/">cheap
+phones have 64 bits</a> and we
+didn’t think maintaining a 32-bit build was worth it (or a
+<a href="http://web.archive.org/web/20211112112733/https://en.wikipedia.org/wiki/Endianness">big-endian</a> build for that matter).</p>
+<p>Luckily, we’re not <em>that</em> dependent on pointer sizes and so far, this has mainly shown up in two
+ways:</p>
+<ol>
+<li>We explicitly <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com//apidoc/foundation/api_types.h.html#tm_pad()">pad
+structs</a> in The Machinery to
+ensure all padding bytes are zero-initialized. Changing the pointer size changes the amount of
+padding that’s needed and this generates a lot of warnings.</li>
+<li>Our hash table implementation only works with 64-bit keys. Using 32-bit pointers as hash keys
+generates an error.</li>
+</ol>
+<p>For (1), I simply turned off the padding warning for <code>web</code> builds. This is not the <em>correct</em> fix,
+mind you, because the whole reason we do explicit padding is to ensure the padding bytes get zeroed
+by designated initializers so that we can do <code>memcmp()</code> and hashing with predictable results. But
+hey, this is a Hack Day project and there is only so much I can get done in one day.</p>
+<p>Handling (2) is trickier. I spent quite some time looking for an Emscripten flag that would force
+pointer sizes to 64-bits (while still only actually <em>using</em> the lower 32-bits). It seems to me that
+a flag like that would be <em>really helpful</em> in porting 64-bit projects. It also seems like something
+that would be <em>pretty easy</em> to implement in the compiler (not that I would now, I haven’t dived
+into the Clang codebase). But my hopes were smashed, there is no such flag and I’d have to do the
+hard work myself.</p>
+<p>I could have implemented support for 32-bit keys in our hash table implementation. That would
+probably be the right thing to do, but hey, this is a Hack Day, gotta make something happen in 8
+hours. So instead, I used a union to force the key types to 64-bits.</p>
+<p>So code like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TM_HASH_T</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>, uint64_t) ptr_to_bytes
+
+bytes <span style="color:#f92672">=</span> tm_hash_get(<span style="color:#f92672">&amp;</span>mt<span style="color:#f92672">-&gt;</span>ptr_to_bytes, ptr);
+</code></pre></div><p>Had to be rewritten to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">union</span>
+{
+    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ptr;
+    uint64_t u64;
+} void_ptr_t;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TM_HASH_T</span>(void_ptr_t, uint64_t) ptr_to_bytes;
+
+bytes <span style="color:#f92672">=</span> tm_hash_get(<span style="color:#f92672">&amp;</span>mt<span style="color:#f92672">-&gt;</span>ptr_to_bytes, (void_ptr_t){ptr});
+</code></pre></div><p>Pretty tedious — but luckily there weren’t too many instances of this in the codebase.</p>
+<h2 id="osh">os.h</h2>
+<p>The final thing I needed to do was to implement the OS backend code for accessing files, managing
+threads, etc.</p>
+<p>In The Machinery, almost all OS-specific code (except for rendering and windowing) is exposed
+through a single header: <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com//apidoc/foundation/os.h.html#os.h"><code>os.h</code></a>. It
+has a platform-independent interface that gets implemented by platform-specific implementation
+files: <code>os.win32.c</code>, <code>os.linux.c</code>, <code>os.osx.c</code>. To support a new platform, we need to add an
+implementation file for that platform.
+Luckily, Emscripten supports mostly the same interfaces as Linux, so I was able to just copy
+<code>os.linux.c</code> to <code>os.web.c</code>.</p>
+<h2 id="result">Result</h2>
+<p>And there we go. Our foundation library now compiles and so do all of our command-line tools:
+<code>tmbuild</code>, <code>docgen</code>, <code>hash</code>, etc.</p>
+<p>Let’s have a look:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="hash.exe help output in the web browser." src="../../images/emscripten__hash.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>hash.exe help output in the web browser.</h4>
+    </figcaption>
+  </figure>
+<p>Here, I’ve hardcoded <code>hash</code> to run with <code>--help</code> to print the help text to stdout.</p>
+<p>Not terribly exciting, but pretty cool. We have a basic part of The Machinery running in the web
+browser. In the next part, we’ll spice it up with some interactivity.</p>
+
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20211112112733/https://twitter.com/share?text=Compiling%20The%20Machinery%20with%20Emscripten%3a%20Part%201 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fcompiling-the-machinery-with-emscripten-part-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20211112112733/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fcompiling-the-machinery-with-emscripten-part-1%2f&amp;description=Compiling%20The%20Machinery%20with%20Emscripten%3a%20Part%201" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-machinery-network-frontier-part-1/">The (Machinery) Network Frontier -- Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-10-25T00:00:00Z">
+                      25 Oct 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">One of our goals for 2021 is to let users create multiplayer games with The Machinery. The systems I’m going to describe …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-machinery-network-frontier-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/release-2021-9/" class="text-decoration-none"><img src="../../images/release_21_9__ssr.png" class="card-img-top" alt="The Machinery — September 2021 (version 2021.9)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/release-2021-9/">The Machinery — September 2021 (version 2021.9)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-09-30T00:00:00Z">
+                      30 Sep 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">A new month and as usual, we have a new release for you with new features and bug fixes. If you want to know what we are …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/release-2021-9/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/api-versioning/" class="text-decoration-none"><img src="../../images/apiver__dependencies.png" class="card-img-top" alt="API Versioning"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/api-versioning/">API Versioning</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-09-22T00:00:00Z">
+                      22 Sep 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">The plugin API system is one of the central pieces of technology in The Machinery. Plugins can use it to call APIs …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/api-versioning/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">29 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/compiling-the-machinery-with-emscripten-part-1/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20211112112733/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211112112733/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/cdn-cgi/l/email-protection#2a5a43444d6a455f58474b494243444f585304494547" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20211112112733/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 11:27:33 Nov 12, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:27 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 108.643
+  exclusion.robots: 0.079
+  exclusion.robots.policy: 0.073
+  cdx.remote: 0.06
+  esindex: 0.007
+  LoadShardBlock: 84.671 (3)
+  PetaboxLoader3.datanode: 90.368 (5)
+  CDXLines.iter: 14.495 (3)
+  PetaboxLoader3.resolve: 122.551 (2)
+  load_resource: 182.9
+  loaddict: 53.3
+-->

@@ -1,0 +1,667 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="How to implement a minimalist library of container types in C."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/stretchy-buffer.png"/>
+  
+  <meta name="twitter:title" content="Minimalist container library in C (part 1)">
+  <meta name="twitter:description" content="How to implement a minimalist library of container types in C."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Minimalist container library in C (part 1) · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/minimalist-container-library-in-c-part-1/"/>
+  
+  <meta property="og:image" content="../../images/stretchy-buffer.png"/>
+  
+  
+  <meta property="og:description" content="How to implement a minimalist library of container types in C."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2018-01-08T00:00:00Z"/>
+  
+
+  <title>Minimalist container library in C (part 1) &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220504024654/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220504024654\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220504024654\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Minimalist container library in C (part 1)",
+    "name": "Minimalist container library in C (part 1)",
+    "wordCount":  2057 ,
+    "timeRequired": "PT10M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/minimalist-container-library-in-c-part-1/",
+    "datePublished": "2018-01-08T00:00Z",
+    "dateModified": "2018-01-08T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220504024654/https://ourmachinery.com/stretchy-buffer.png"
+    },
+    
+    
+    "description": "How to implement a minimalist library of container types in C."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024654/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Minimalist container library in C (part 1)</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2018-01-08T00:00:00Z">
+          Jan 8, 2018
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>At <em>Our Machinery</em>, we’re strong believers in <em>minimalism —</em> we’re always trying to make things simpler and smaller. The more code you have in a project, the more you have to worry about. There is more to understand, optimize, debug, refactor, port, modernize, document, etc, etc. More code, more problems!</p>
+<p>We also try to minimize the use of external libraries. This is perhaps more controversial. There are a lot of people that will tell you to not “reinvent the wheel”. And in some developer communities (looking at you, node.js) programmers will think nothing of adding a package dependency to pull in a three-line function.</p>
+<p>Why are we reluctant to add external dependencies? Two reasons.</p>
+<p>First, as developers of something that is more in the platform/engine/middleware space I think our perspective is different than that of an application developer. When you are developing an application — all you really need to care about is to make it work. If it is responsive enough and passes your tests, you are good to go. If you can drop in a big library to quickly add a new feature, that’s a fast win.</p>
+<p>In our case, our end users are <em>developers</em>. We can’t predict in what ways they will use our code, nor would we want to limit them in any way. This means that they might run into performance problems or bugs that we have never thought about. So <em>“it just works”</em> is not good enough. Instead it must behave reasonably in a wide variety of different scenarios. Not only can’t we fully predict what the users will do — we also can’t fully predict what they will care about: is it application size, performance, compile time, running on an esoteric platform, etc? Making that kind of guarantee about a third-party library is tricky.</p>
+<p>Second, even though an external library doesn’t add any code to <em>our</em> repository, it still adds code to the product. The code is still <em>there,</em> just in binary form — which makes things <em>worse</em>, because that makes it <em>harder</em> to know what is going on in that code.</p>
+<p>The whole purpose of keeping the codebase small is to make it <em>easy to change</em>, which is the ultimate quality measure of any software endeavor. And the main problem with external libraries is that they are hard to change. First you have to understand the external codebase, which can be daunting. Then you either have to fork — which means you now own the maintenance burden of keeping the library running — or deal with the politics of pushing the changes upstream.</p>
+<p>Of course, this doesn’t mean an absolute no to external libraries. We like small <a href="http://web.archive.org/web/20220504024654/https://github.com/nothings/stb">single-file source libraries</a> with a well-defined purpose. We dislike <a href="http://web.archive.org/web/20220504024654/https://www.boost.org/">big sprawling libraries with huge ambitions</a>.</p>
+<h2 id="container-types">Container types</h2>
+<p>Today, I want to focus on a specific aspect of minimalism — our container types. By container types I mean common data structures such as queues, lists, stacks, arrays, etc. I.e. types used to collect and index objects in various ways.</p>
+<p>As a fundamental building block, container types tend to have a big influence on the rest of the code. They can set the tone for the whole project. Also, changing your container types requires rewriting large parts of your code — in a large project it might be nearly impossible.</p>
+<p>In earlier projects I’ve noticed that we had a lot of specialized collection types in our foundation library that were only used once or twice in our (pretty big) codebase. And even in those few cases, the benefits of using a special container were small — we could replace it with a more commonly used one and get rid of some code.</p>
+<p>At Our Machinery, in the spirit of minimalism, we’ve taken this further and our foundation library only defines two container types:</p>
+<ul>
+<li>Arrays (or “stretchy buffers”)</li>
+<li>Hash tables</li>
+</ul>
+<p>No lists, no trees, no strings, no queues, no sets, etc.</p>
+<p>We found that arrays and hash tables are the only thing we only absolutely need. Arrays for general storage and hash tables for fast lookups. I’ll discuss how we handle strings and lists in a future blog post.</p>
+<p>One important thing to note is that we use C, not C++ as our main programming language. This means that we can’t have generic container types, such as <code>vector&lt;T&gt;</code>.</p>
+<p>I’m not a big fan of C++ templates in general. They bloat header files with implementation details. They often dramatically increase build times and code size. The error messages are incomprehensible. The abstractions are often not “zero-cost” (even if advertised to be). They encourage over-abstraction monsters like <code>vector&lt;T, allocation_policy, storage_policy, threading_policy, ...&gt;</code>. And template meta-programming requires really complicated code for seemingly simple things, such as a compile-time if-statement.</p>
+<p>But they sure are nice for generic collection types, such as <code>vector&lt;T&gt;</code>!</p>
+<p>The options for implementing container types without generics support are certainly lackluster:</p>
+<ul>
+<li>We could implement separate collection types for everything we want to store: <code>char_array</code>, <code>int_array</code>, <code>float_array</code>, etc… ugh!</li>
+<li>We could use a big <code>union</code> as a variant type and store an array of that… ugh!</li>
+<li>We could do what <code>qsort()</code> and <code>bsearch()</code> does and obliterate all type information, forcing the user to cast <code>void *</code> to the right types… ugh!</li>
+</ul>
+<p>Fortunately, we don’t just have C, we also have the magic (ahem) of the preprocessor!</p>
+<h2 id="arrays-stretchy-buffers">Arrays (“stretchy buffers”)</h2>
+<p>Our array implementation is based on the <a href="http://web.archive.org/web/20220504024654/https://github.com/nothings/stb/blob/master/stretchy_buffer.h">“stretchy buffer”</a> technique, popularized by <a href="http://web.archive.org/web/20220504024654/https://nothings.org/">Sean Barrett</a>.</p>
+<p>The basic idea behind the technique is to represent an array by a regular C pointer to the elements:</p>
+<pre><code>my_type_t *a = NULL;
+</code></pre>
+<p>A <code>NULL</code> pointer represents an empty array. If the array is not empty <code>a</code> will point to the elements of the array. However, and here’s the trick, just before the elements, we place a little header struct with the data that <code>std::vector</code> would normally keep track of:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Memory layout of a stretchy buffer." src="../../images/stretchy-buffer.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Memory layout of a stretchy buffer.</h4>
+    </figcaption>
+  </figure>
+<p>When we grow the array, we allocate data for both the header and the elements and then we update the pointer to point where the elements start.</p>
+<pre><code>struct array_header_t
+{
+    uint32_t size;
+    uint32_t capacity;
+};
+</code></pre>
+<p>Since the header is always located right before the array data in memory, we can get to it by just subtracting the size of the header from the data pointer. For example, here is a macro that gets the header from the pointer:</p>
+<pre><code>#define array_header(a) \
+    ((array_header_t *)((char *)(a) - sizeof(array_header_t)))
+</code></pre>
+<p>Using this we can easily write a macro to get the size of the array:</p>
+<pre><code>#define array_size(a) ((a) ? array_header(a)-&gt;size : 0)
+</code></pre>
+<p>Note that we need to take some extra care to deal with the case where <code>a == NULL</code>.</p>
+<p>Adding elements to the array will look something like this (parentheses removed for readability):</p>
+<pre><code>#define array_push(a, item) \
+    array_full(a) ? a = array_grow(a, sizeof(*a)) : 0, \
+    a[array_header(a)-&gt;size++] = item
+</code></pre>
+<p>Here <code>array_full()</code> is a macro that tests if <code>size == capacity</code> and <code>void * array_grow(void *, uint32_t)</code> is a regular C function that allocates new memory for the array. Note that it needs to be passed the size of the elements, since it has no type information. We use the comma operator to get multiple expressions in a single statement, and also take advantage of the fact that assignments are expressions in C. See the <a href="http://web.archive.org/web/20220504024654/https://github.com/nothings/stb/blob/master/stretchy_buffer.h">stretchy buffer implementation</a> for more details.</p>
+<p>The nice thing about this approach is that we get variables with the right type (<code>my_type_t *a</code>) without any need for generics. It is also really  nice that a <code>NULL</code> pointer is a valid (empty) array. This means that default initialization <code>x = {0}</code> is enough to initialize a struct with arrays in it.</p>
+<p>A drawback is that we need to use preprocessor macros instead of functions, which makes it a bit harder to debug and see what is going on. However, this is a necessity in C, since we don’t have generic functions.</p>
+<p>Another drawback is that the stretchy buffer pointers are indistinguishable from regular pointers. I.e. we cannot tell if <code>char *x</code> points to a stretchy buffer or not. For now, I’ve taken to mark the buffer pointers with a comment, like this:</p>
+<pre><code>/* array */ char *x;
+</code></pre>
+<p>But it doesn’t feel like the best solution. It would be nice to find some way of doing this that also worked with debugger visualization, so we could see the size of the array in the watch window.</p>
+<h2 id="hashes">Hashes</h2>
+<p>In STL a hash table is implemented by <code>std::unordered_map&lt;K, T&gt;</code>. To make something similar in C, we could try to follow the stretchy buffer approach and define our hash table as:</p>
+<pre><code>key_t *keys;
+value_t *values;
+</code></pre>
+<p>A header stored either in front of the keys or the values could store the size and capacity as well as pointers to any additional data we might need and we could define the appropriate macros we need to use these data structures, just as we did for the array.</p>
+<p>However, I don’t think this is the best approach. In fact, we can simplify things a lot further.</p>
+<p>In the most common use cases, the keys will be strings. This means that the key list is a variable length list of objects that are themselves of variable length. This is a pretty complicated setup that no matter how we do it will result in lots of heap allocation and pointer chasing.</p>
+<p>And it is all for nothing, because typically (in the most common use cases) we never need to retrieve the keys themselves from the hash table — we are only ever interested in using the keys to lookup values.</p>
+<p>We can get rid of all this by hashing the keys <em>before</em> we put them in the hash table. I.e. we just apply a hash function <em>hash(key) → k</em> and then use <em>k</em> instead of <em>key</em> as the key to the hash table.</p>
+<p>The only caveat here is that we must hash they key into a large enough key space to be (statistically) sure that we don’t have any collisions, because if <em>hash(key_1) = hash(key_2)</em> we won’t be able to store both <em>key_1</em> and <em>key_2</em> in the hash table. Our hash tables tend to be reasonably sized, so a 64 bit hash is enough, but you could go to 128 bit if needed.</p>
+<p>We can apply the same trick to the values. There is no need for the values to be stored in the hash table itself (in fact, that can be kind of expensive if the values are large — since hash tables have holes). We already have a perfectly good way of storing a collection of objects of an arbitrary type — the array! So instead of putting the values in the hash table, we can just store them in an array and put their <em>indices</em> in the hash table.</p>
+<p>Note that if you need to delete keys from the hash table, you probably want to keep a freelist for the array to mark empty slots that can be reused. Alternatively, you could move the last element to the deleted slot to keep the array packed, but then you need to update its index in the hash table, so you need to keep track of its key.</p>
+<p>We have now gotten rid of both the key type and the value type which means we don’t need generics or preprocessor tricks to implement our hash table, instead we can just define it as:</p>
+<pre><code>struct hash_t
+{
+    uint32_t num_buckets;
+    uint64_t *keys;
+    uint64_t *values;
+};
+</code></pre>
+<p>And then we define functions to operation on this, such as:</p>
+<pre><code>uint64_t hash_lookup(const struct hash_t *hash, uint64_t k, uint64_t default_value);
+</code></pre>
+<p>Note that if the keys or values are smaller than 64 bits we can take a shortcut and store them directly in the hash table, we don’t need the hash function or the extra array.</p>
+<p>(We actually have two versions of the hash table in our code, to save some memory: <code>hash64_t</code> which uses 64-bit values as above and <code>hash32_t</code> which uses 32-bit values.)</p>
+<p>Adding a value to the hash table looks something like this:</p>
+<pre><code>hash_t info_lookup;
+/* array */ info_t *info;
+
+array_push(info, my_info);
+hash_add(&amp;info_lookup, hash_string(&quot;my name&quot;), array_size(info) - 1);
+</code></pre>
+<p>Note that since the hash structure just contains an array of <code>uint64_t</code> it can be searched and copied really quickly.</p>
+<h2 id="follow-up">Follow-up</h2>
+<p>In the next post I will show how these two simple container types can be used to build more complicated data structures.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220504024654/https://twitter.com/share?text=Minimalist%20container%20library%20in%20C%20%28part%201%29 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fminimalist-container-library-in-c-part-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220504024654/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fminimalist-container-library-in-c-part-1%2f&amp;description=Minimalist%20container%20library%20in%20C%20%28part%201%29" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/vulkan-pipelines-and-render-states/">Vulkan: Pipelines and Render States</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-12-11T00:00:00Z">
+                      11 Dec 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>This will be the last post in my mini-series of posts covering some of the performance critical aspects of our Vulkan …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/vulkan-pipelines-and-render-states/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">6 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-mini-series-part-4-pr-public-relations/">Marketing Mini Series Part 4: PR (Public Relations)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-12-04T00:00:00Z">
+                      4 Dec 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>A question I’m often asked by developers is, “Do I <em>really</em> need PR?” Another one I get a lot is, “Should I hire a PR …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-mini-series-part-4-pr-public-relations/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/should-entities-support-multiple-instances-of-the-same-component/" class="text-decoration-none"><img src="../../images/entity-context.png" class="card-img-top" alt="Should entities support multiple instances of the same component?"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/should-entities-support-multiple-instances-of-the-same-component/">Should entities support multiple instances of the same component?</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-11-27T00:00:00Z">
+                      27 Nov 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>The <a href="http://web.archive.org/web/20220504024654/https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system">entity-component pattern</a> has been around for a long time. By now I would say that it is widely considered to be the …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/should-entities-support-multiple-instances-of-the-same-component/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/minimalist-container-library-in-c-part-1/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220504024654/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024654/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024654/https://ourmachinery.com/cdn-cgi/l/email-protection#8cfce5e2ebcce3f9fee1edefe4e5e2e9fef5a2efe3e1" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 02:46:54 May 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:12 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 84.895
+  exclusion.robots: 0.108
+  exclusion.robots.policy: 0.098
+  RedisCDXSource: 0.624
+  esindex: 0.008
+  LoadShardBlock: 63.111 (3)
+  PetaboxLoader3.datanode: 102.763 (4)
+  CDXLines.iter: 17.546 (3)
+  load_resource: 79.846
+  PetaboxLoader3.resolve: 32.752
+-->

@@ -1,0 +1,618 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Tips on how to structure your cross-platform rendering APIs to make it easier to achieve data parallelism when building command buffers for various graphics APISs."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/its-all-about-the-data.png"/>
+  
+  <meta name="twitter:title" content="It’s All About The Data">
+  <meta name="twitter:description" content="Tips on how to structure your cross-platform rendering APIs to make it easier to achieve data parallelism when building command buffers for various graphics APISs."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="It’s All About The Data · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/its-all-about-the-data/"/>
+  
+  <meta property="og:image" content="../../images/its-all-about-the-data.png"/>
+  
+  
+  <meta property="og:description" content="Tips on how to structure your cross-platform rendering APIs to make it easier to achieve data parallelism when building command buffers for various graphics APISs."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-10-09T00:00:00Z"/>
+  
+
+  <title>It’s All About The Data &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220316014145/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220316014145\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220316014145\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "It’s All About The Data",
+    "name": "It’s All About The Data",
+    "wordCount":  1455 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/its-all-about-the-data/",
+    "datePublished": "2017-10-09T00:00Z",
+    "dateModified": "2017-10-09T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220316014145/https://ourmachinery.com/its-all-about-the-data.png"
+    },
+    
+    
+    "description": "Tips on how to structure your cross-platform rendering APIs to make it easier to achieve data parallelism when building command buffers for various graphics APISs."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014145/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>It’s All About The Data</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-10-09T00:00:00Z">
+          Oct 9, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In today’s post I will try to give a few tips on how to structure your cross-platform rendering APIs to make it easier to achieve data parallelism when building command buffers for various graphics APIs.</p>
+<p>This post will assume the input to the render backend (i.e. the system that is responsible for generating the final graphics API specific command buffers) will be some kind of graphics API agnostic command buffers, similar to what I described in <a href=" ../../post/a-modern-rendering-architecture/">“A modern rendering architecture”</a>.</p>
+<p>A big hurdle to overcome when trying to parallelize translating these graphics API agnostic command buffers into actual graphics API command buffers often arises from not having enough state knowledge about the graphics pipeline state at the job split points. Here’s a simple illustration of the problem:</p>
+<pre><code>[state][draw][draw][draw][draw][state][draw][draw][draw][state][draw][draw][draw]
+^                  ^                  ^                 ^                  ^
+|                  |                  |                 |                  |
+job0               job1               job2              job3               job4
+</code></pre>
+<p>In the above much over-simplified example we have a total of 13 commands in our graphics API agnostic command buffer and we’d like to go wide and let each job translate 3 commands each into graphics API calls. For <code>job0</code> everything is fine as we start with a clean slate and know the state of the graphics pipeline (i.e what render targets, shaders, etc. that are bound). But for <code>job1</code> we somehow need to inherit the accumulated state changes from <code>job0</code> before we can translate any commands, and for <code>job2</code> we need to inherit the accumulated state changes from both <code>job0</code> and <code>job1</code>, and so on.</p>
+<p>This typically leads to having to do a serial scanning pass over all commands to accumulate pipeline state changes and record the starting pipeline state for each job before we can launch the jobs. While this won’t be a problem if you only have a handful of commands it might start to hurt performance when you’re dealing with tens of thousands of commands.</p>
+<p>While I don’t have an elegant solution to this problem I do have a few tips and tricks for how to make this serial scanning pass fairly efficient and less cumbersome to implement.</p>
+<h2 id="1-separate-command-header-from-command-data">1. Separate command header from command data</h2>
+<p>Keep the command header as lightweight as possible, separated from the command data. Here’s an example of what that might look like*:*</p>
+<pre><code>struct tm_renderer_command_t
+{
+    uint64_t sort_key;
+    uint32_t type;
+    void *data;
+};
+</code></pre>
+<p>The <code>sort_key</code> is used for ordering commands across one or multiple graphics API agnostic command buffers. <code>type</code> is an enum describing the command type and defines how to interpret <code>data</code>.</p>
+<p>By decoupling the header from the actual data for the command we can significantly reduce the amount of memory that we’ll have to touch during the state scanning pass. Our current data structure for representing a draw call is 60 bytes, and while that is a somewhat beefy command it’s uncommon to have command data smaller than 8 bytes. If that still happens there’s nothing stopping us from just shoving the command data directly into <code>void *data</code>.</p>
+<p>An important observation is that the number of commands that affects pipeline state will typically be much fewer than e.g. draw commands — so our goal is mainly to find them as quickly as possible. Practically what that means is to loop over a huge number of <code>tm_render_command_t</code> and look at each <code>type</code> enum and decide if its a command that will affect the pipeline state or not, most of the time the answer will be no. So with that in mind, can we do better?</p>
+<p>An obvious improvement to the above suggested command header layout is to move from an AoS (Array of Structures) memory layout to SoA (Structure of Arrays) memory layout:</p>
+<pre><code>struct tm_renderer_commands_t
+{
+    uint64_t *sort_keys;
+    uint32_t *types;
+    void **data;
+};
+</code></pre>
+<p>Data oriented design 101 — since we are only interested in the <code>type</code> enum to decide if the command is relevant or not this rewrite will significantly speed up the loop as we will drastically decrease the number of cache misses.</p>
+<p>To improve on this even further we record a separate bit array only describing if the command is relevant for pipeline state tracking or not. By doing that we can also move to scan 64 commands each iteration of the loop.</p>
+<p>As an example, let’s say we have <em>20,000</em> commands that we need to scan. Using the bit array approach we only have to look at <em>2,500</em> bytes. This should be compared to <em>80,000</em> bytes looking at the full type (<code>uint32_t</code>) in the above SoA layout, or <em>480,000</em> bytes (!) for the original AoS memory layout.</p>
+<p>Point being — think very carefully about your memory layouts!</p>
+<h2 id="2-keep-state-commands-as-few-and-as-monolithic-as-possible">2. Keep state commands as few and as monolithic as possible</h2>
+<p>As mentioned earlier, the bulk of your commands will most likely be draw commands. By keeping the number of different pipeline state commands low and monolithic we can further speed up the state scanning pass and simplify our code. A couple of concrete examples,</p>
+<ol>
+<li>
+<p>Avoid binding render targets slot-by-slot using separate commands. Instead bind the full MRT-chain and depth stencil target in one command. Or move even further and do what I’m currently doing in <em>The Machinery</em> — bind a full <em>“Render Pass”</em>.</p>
+<p>A <em>“Render Pass”</em> in this context is, the full MRT-chain and depth stencil target but also in addition to that, the user has to provide the initial and final resource state of each render target and how to deal with loading and storing the contents of each target.</p>
+<p>While some might argue that this puts too much burden on the user having to provide all this information to bind a simple render target, I would argue that its better to build a high-level “convenience system” on top of the rendering API to assist with this than going down the state tracking rabbit hole. (See my post on <a href=" ../../post/high-level-rendering-using-render-graphs/">“High-Level Rendering Using Render Graphs”</a>.)</p>
+</li>
+<li>
+<p>Make the smallest representation of a “shader” something that groups not only all active shader stages, but also as much render state as possible. Try to map your graphics API agnostic representation of a shader decently close to a full “Pipeline State Object” (See: <a href="http://web.archive.org/web/20220316014145/https://www.khronos.org/registry/vulkan/specs/1.0/man/html/vkCreateGraphicsPipelines.html">Vulkan</a>, <a href="http://web.archive.org/web/20220316014145/https://msdn.microsoft.com/en-us/library/windows/desktop/dn788663(v=vs.85).aspx">DX12</a>). This can be a somewhat tricky balance to get right though, if you move too far into PSO-land you will end up forcing your users writing a bunch of boilerplate code to do even the simplest of things..</p>
+</li>
+<li>
+<p>Whatever you do, do <em>not</em> under any circumstances subdivide a state into multiple commands that might be changed with varying frequency. I.e. don’t mimic DX9-style <a href="http://web.archive.org/web/20220316014145/https://msdn.microsoft.com/en-us/library/windows/desktop/bb174454(v=vs.85).aspx"><code>SetRenderState()</code></a> as a command. It’s definitely going to complicate your life. If you have lightweight states that that might vary frequently you are much better of coupling those with your draw commands and not spend more time than necessary in the state tracking rabbit hole.</p>
+</li>
+</ol>
+<h2 id="3-explicit-tracking-of-resource-barriers">3. Explicit tracking of resource barriers</h2>
+<p>While our render backends can scan through the graphics API agnostic command buffers to figure out all places where we need to inject various types of resource barriers, doing so is far from trivial and rather time consuming as we need to analyze exactly how each writable GPU resource is bound to all draw-/dispatch- calls.</p>
+<p>We could build some additional structures when building our graphics API agnostic command buffers to help accelerate the process, but even then it is likely that you’ll end up being over-conservative, injecting more resource barriers than you actually need.</p>
+<p>There’s a perfectly good reason why resource state tracking moved out of the GPU driver and was handed over to user of the graphics APIs instead — it’s a fucking PITA to do it efficiently. And that is exactly why our low-level render backend shouldn’t try to handle it either. While we might be in a somewhat better position to make assumptions about our input than the GPU driver, we will still end up having do to significant book keeping to sort out all barriers.</p>
+<p>A better approach is to expose a resource barrier command in our rendering API and force the user of the API to explicitly specify and schedule all barriers. While it might sound like we are shuffling a lot of low-level responsibility over to the user of the API, keep in mind that most programmers wouldn’t need to worry about this as they will likely be building features on top of a more high-level system like the <a href=" ../../post/high-level-rendering-using-render-graphs/">Render Graph system</a> that I’ve talked about a couple of posts ago.</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>That’s it really. Right now I don’t think I have more stuff to say on this topic. If you follow the above advice and think carefully about when and how to schedule resource updates (see my <a href=" ../../post/simple-parallel-rendering/">last post</a>), you should be in a good state when it comes to parallelizing your renderer without making your code overly complex.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220316014145/https://twitter.com/share?text=It%e2%80%99s%20All%20About%20The%20Data - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fits-all-about-the-data%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220316014145/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fits-all-about-the-data%2f&amp;description=It%e2%80%99s%20All%20About%20The%20Data" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/simple-parallel-rendering/">Simple Parallel Rendering</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-18T00:00:00Z">
+                      18 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Working on implementing the Render Graph system that I talked about in my <a href=" ../../post/high-level-rendering-using-render-graphs/">last post</a> got me thinking more about how to …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/simple-parallel-rendering/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/how-to-marketing-events/">How to Marketing (A 10-Part Mini Series)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-11T00:00:00Z">
+                      11 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p><em>For the next 10 blog posts, I’m going to share some of my thoughts based on my varied experiences in the world of …</em></p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/how-to-marketing-events/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">4 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/moving-away-from-git-flow/">Moving away from GitFlow</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-05T00:00:00Z">
+                      5 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In the last few months working on the source code for <em>Our Machinery</em>, I’ve found myself drifting further and further away …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/moving-away-from-git-flow/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/its-all-about-the-data/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220316014145/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014145/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014145/https://ourmachinery.com/cdn-cgi/l/email-protection#53233a3d34133c26213e32303b3a3d36212a7d303c3e" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 01:41:45 Mar 16, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:28 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 143.797
+  exclusion.robots: 0.103
+  exclusion.robots.policy: 0.092
+  RedisCDXSource: 80.423
+  esindex: 0.026
+  LoadShardBlock: 37.629 (3)
+  PetaboxLoader3.datanode: 99.381 (4)
+  CDXLines.iter: 20.534 (3)
+  load_resource: 97.156
+  PetaboxLoader3.resolve: 30.875
+-->

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20190604095647/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/drag-and-drop-fast.gif"/>
+    
+    <meta name="twitter:title" content="Implementing drag-and-drop in an IMGUI">
+    <meta name="twitter:description" content="Shows how we've implemented drag-and-drop in our IMGUI system."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Implementing drag-and-drop in an IMGUI · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/implementing-drag-and-drop-in-an-imgui/"/>
+    
+       <meta property="og:image" content="../../images/drag-and-drop-fast.gif"/>
+    
+
+    
+    <meta property="og:description" content="Shows how we've implemented drag-and-drop in our IMGUI system."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2018-05-01T00:00:00Z"/>
+
+    
+    
+
+    <title>Implementing drag-and-drop in an IMGUI &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="Shows how we've implemented drag-and-drop in our IMGUI system."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.0.3"/>
+    <link rel="stylesheet" type="text/css" href="../../css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20190604095647cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20190604095647/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.19"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20190604095647/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Implementing drag-and-drop in an IMGUI,
+    "name": Implementing drag-and-drop in an IMGUI,
+    "wordCount": 1277,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://ourmachinery.com/post/implementing-drag-and-drop-in-an-imgui/,
+    "datePublished": 2018-05-01T00:00Z,
+    "dateModified": 2018-05-01T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://ourmachinery.com/drag-and-drop-fast.gif,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": ,
+    "description": Shows how we&#39;ve implemented drag-and-drop in our IMGUI system.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://ourmachinery.com/post/implementing-drag-and-drop-in-an-imgui/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20190604095647/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+ <div class="site-wrapper">
+
+    <header class="main-header">
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="../../"><img src="../../images/full-logo.png"/></a>
+    
+           
+            <a class="menu-button" href=" ../../post/">Blog</a>
+        </nav>
+    </header>
+
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Implementing drag-and-drop in an IMGUI</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2018-05-01T00:00:00Z">
+            May 1, 2018
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Drag-and-drop is often mentioned as one of the things that are “tricky” to implement in an <a href=" ../../post/one-draw-call-ui/">immediate mode GUI</a>. In this post I’ll describe how we do it in <em>The</em> <em>Machinery.</em></p>
+
+<p>Our goal is to create a generic drag-and-drop system that works well for all possible kinds of dragged data and drop targets.</p>
+
+<p></p>
+
+
+<figure>
+    
+        <img src="../../images/drag-and-drop-fast.gif"/>
+    
+    
+    <figcaption>
+        <h4>Dragging between tabs and windows.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="representing-dragged-objects-in-data">Representing dragged objects in data</h2>
+
+<p>When designing a new system or feature I always find it helpful to start from a data perspective. Once we know how we want to represent the feature in data it is relatively easy to add an API for manipulating that data and UI that interacts with the API. Focusing on just the data representation prevents the task from feeling too overwhelming.</p>
+
+<p>For a drag-and-drop operation we need to know whether a drag operation is in progress or not and what objects are being dragged. Since “no drag operation” can be represented as an empty list of dragged objects, we only really need a single thing:</p>
+
+<ul>
+<li>A list of the object(s) that are currently being dragged.</li>
+</ul>
+
+<p>That’s all well and good, but what is an “object” in this case? We want to support dragging for lots of different “things”, so our “object” has to be something pretty generic. There are a lot of different ways of representing such arbitrary things, some of the more popular ones are:</p>
+
+<ol>
+<li>An object inheriting from a global <em>DraggableObject</em> class. The <em>DraggableObject</em> class has methods for inspecting exactly what kind of object it is.</li>
+<li>A type identifier and a <code>void *</code> that we can cast to the right pointer type.</li>
+<li>A type identifier and a raw data blob that could be a struct, a pointer or something else — how to interpret the content is determined by the type identifier.</li>
+<li>Serialized object data — for example in JSON format.</li>
+</ol>
+
+<p>Any of these approaches can work well, depending on the architecture of your application. Personally, I’m partial to (3) — it is simple, flexible and easy to extend. It can also encompass both option (2) — by storing a pointer in the blob and option (4) — by storing the serialized data in the blob. I don’t like (1) since it tends to create tight coupling between unrelated classes that all have to inherit from <em>DraggableObject</em>.</p>
+
+<p>In <em>The Machinery</em> we have a unified data model that we call <a href=" ../../post/multi-threading-the-truth/"><em>The Truth</em></a>. All the data managed by the application is stored in The Truth and we can reference individual Truth objects by their ID. The Truth keeps track of the object types and manages their data. This means that we don’t have to use any of the options above, we can just represent objects by their ID in The Truth.</p>
+
+<p>In fact, we can go one step further. Since objects in The Truth can contain sets of references to other objects we can represent the whole set of dragged objects as a single object in The Truth. So all we need to know is the ID of that object.</p>
+
+<p>When dragging from an external source, such as the file system, we can create an object in The Truth to represent the dragged items. It could for example contain the paths to all the files.</p>
+
+<p>So we only need a single ID variable to represent the data. Where should this variable be stored? In our IMGUI system each window is its own separate UI context, but we want to support dragging objects <em>between</em> different UI windows. This means that the dragged object must be stored outside the UI context. Since the dragged object can be dropped anywhere in the application, it makes sense to treat it as a <em>global</em> property.</p>
+
+<p>So our representation is a global ID that references the dragged objects in The Truth. In other words, this is our data model:</p>
+
+<pre><code class="language-c">uint64_t dragged_objects;
+</code></pre>
+
+<p>And here is our API:</p>
+
+<pre><code class="language-c">void start_dragging(uint64_t objects)
+{
+    dragged_objects = objects;
+}
+
+void stop_dragging()
+{
+    dragged_objects = 0;
+}
+
+uint64_t get_dragged_objects()
+{
+    return dragged_objects;
+}
+</code></pre>
+
+<p>The case where no objects are being dragged is represented by the NULL reference, which is just the zero ID.</p>
+
+<p>We can see here how the shared data model we implemented with <em>The Truth</em> really pays off. It allows us to use a super simple representation for the dragged data.</p>
+
+<p>We can also see that starting with the data representation indeed was a smart move. Since the data model turned out so simple, we are pretty confident that its easy to build on top of.</p>
+
+<h2 id="initiating-a-drag-operation">Initiating a drag operation</h2>
+
+<p>A drag operation is typically initiated by clicking on a draggable object and then, while keeping the mouse pressed, dragging outside its boundary. Nothing prevents us from also supporting other ways of initiating drag, but let’s focus on this typical case.</p>
+
+<p>Here is some pseudocode, showing how we implement this in the IMGUI code for a draggable UI item with ID  <code>item_id</code>, representing a truth object with ID <code>object_id</code>.</p>
+
+<pre><code class="language-c">// If the mouse is pressed on the item, prepare it for dragging.
+if (ui-&gt;hover == item_id &amp;&amp; ui-&gt;left_mouse_pressed)
+    ui-&gt;prepare_drag = item_id;
+    
+// If the mouse button is lifted, abort dragging.
+if (!ui-&gt;left_mouse_is_down)
+    ui-&gt;prepare_drag = 0;
+    
+// If this item was clicked on (prepared for dragging), but the mouse is now
+// outside the item -- start dragging.
+if (ui-&gt;prepare_drag == item_id &amp;&amp; ui-&gt;hover != item_id) {
+    tm_drag_api-&gt;start_dragging(object_id);
+    ui-&gt;prepare_drag = 0;
+}
+</code></pre>
+
+<p>Here,  <code>ui-&gt;hover</code> is a variable in the UI that keeps track of which item the mouse is currently hovering over.</p>
+
+<h2 id="detecting-drops">Detecting drops</h2>
+
+<p>The code for an IMGUI drop target is similar. We check if we are hovering over the item and if we are currently dragging an object of the right type. If we are, we draw the appropriate highlighting to indicate that the item is a valid drop target.</p>
+
+<pre><code class="language-c">const uint64_t dragged = tm_drag_api-&gt;dragged_objects();
+if (dragged &amp;&amp; ui-&gt;hover == item_id) {
+    const uint64_t type = tm_the_truth_api-&gt;object_type(tt, dragged);
+    if (type == ACCEPTED_TYPE) {
+        // INSERT CODE: Draw drop target highlight
+        
+        if (ui-&gt;left_mouse_released) {
+            // INSERT CODE: Handle drag and drop
+
+            tm_drag_api-&gt;stop_dragging();
+        }
+    }
+}
+</code></pre>
+
+<p>If the mouse button is released over the target we implement the drop action. Exactly what happens depends on what is dropped where, but it is typically an operation that only involves the data model.  The UI will simply reflect the changes made to the data. Since we use an immediate model this happens automatically with no need for state synchronization.</p>
+
+<p>We also need to handle the case when the mouse is released over an invalid target. In this case we want to stop the dragging without any data change.</p>
+
+<p>It is a bit unclear who should handle this. Since the dragged state is a global property it has to be a part of the global update loop. We simply have this at the end of the main update loop:</p>
+
+<pre><code class="language-c">if (!left_mouse_button_down)
+        tm_ui_drag_api-&gt;stop_dragging();
+</code></pre>
+
+<p>This illustrates what I’ve found to be one of the trickier parts of IMGUI programming — processing events in the right order. For example, it is important that all the UIs get a chance to react to the mouse up event, so they can accept valid drops before we conclude that an invalid drop happened and discard the drag state.</p>
+
+<p>Another tricky ordering thing that can happen is that sometimes an input event causes a new UI object to be created (for example when expanding a tree control) and then that control reacts to the very event that created it. I’ve sometimes found the need to frame delay certain actions to prevent things like that from happening, which doesn’t feel very elegant. I might go into greater detail on this in a future blog post.</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="../../">Niklas Gray</a></h4>
+  
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20190604095647/https://twitter.com/share?text=Implementing%20drag-and-drop%20in%20an%20IMGUI - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fimplementing-drag-and-drop-in-an-imgui%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20190604095647/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fimplementing-drag-and-drop-in-an-imgui%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20190604095647/http://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fimplementing-drag-and-drop-in-an-imgui%2f&amp;description=Implementing%20drag-and-drop%20in%20an%20IMGUI" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.2em" href="http://web.archive.org/web/20190604095647/https://plus.google.com/share?url=https%3a%2f%2fourmachinery.com%2fpost%2fimplementing-drag-and-drop-in-an-imgui%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2019</section>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604095647/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604095647/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="bloglogo" href="http://web.archive.org/web/20190604095647/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604095647/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604095647/https://ourmachinery.com/cdn-cgi/l/email-protection#d2a2bbbcb592bda7a0bfb3b1babbbcb7a0abfcb1bdbf" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div>
+    <script data-cfasync="false" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="../../js/index.js"></script>
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 09:56:47 Jun 04, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:04 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 259.431
+  exclusion.robots: 0.078
+  exclusion.robots.policy: 0.071
+  cdx.remote: 0.062
+  esindex: 0.009
+  LoadShardBlock: 233.516 (3)
+  PetaboxLoader3.datanode: 238.443 (4)
+  CDXLines.iter: 13.613 (3)
+  load_resource: 40.585
+  PetaboxLoader3.resolve: 29.253
+-->

@@ -1,0 +1,808 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Describes how grid drawing is implemented in The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/borderland-1.png"/>
+  
+  <meta name="twitter:title" content="Borderland between Rendering and Editor - Part 1">
+  <meta name="twitter:description" content="Describes how grid drawing is implemented in The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Borderland between Rendering and Editor - Part 1 · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/borderland-between-rendering-and-editor-part-1/"/>
+  
+  <meta property="og:image" content="../../images/borderland-1.png"/>
+  
+  
+  <meta property="og:description" content="Describes how grid drawing is implemented in The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-03-06T00:00:00Z"/>
+  
+
+  <title>Borderland between Rendering and Editor - Part 1 &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804191922/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804191922\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804191922\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Borderland between Rendering and Editor - Part 1",
+    "name": "Borderland between Rendering and Editor - Part 1",
+    "wordCount":  1685 ,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/borderland-between-rendering-and-editor-part-1/",
+    "datePublished": "2020-03-06T00:00Z",
+    "dateModified": "2020-03-06T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804191922/https://ourmachinery.com/borderland-1.png"
+    },
+    
+    
+    "description": "Describes how grid drawing is implemented in The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804191922/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804191922/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Borderland between Rendering and Editor - Part 1</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-03-06T00:00:00Z">
+          Mar 6, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>We are pushing full steam ahead to take <em>The Machinery</em> from its current <em>alpha</em> state into <em>beta</em>.
+We’ll be writing more about going into <em>beta</em> and what that means in the near future. Today, I will
+instead share the first part of a mini-series of blog posts covering a few editor features that sit
+somewhere in the borderland between rendering and editor code, or more precisely:</p>
+<ul>
+<li>Grid rendering</li>
+<li>Mouse picking</li>
+<li>Selection highlighting</li>
+</ul>
+<p>I might add to this list if I end up working on something more in this area that feels interesting
+to write about.</p>
+<p>In common for all three of the topics above is that they have been itching for attention in the back
+of my head for quite some time now. While we’ve had some kind of half-assed solution for them in
+<em>The Machinery</em> editor, I’ve been painfully aware that they’ve definitely been in need of some love.
+Yet I’ve struggled with finding the motivation and time to replace the existing solutions with
+something better, but as we are getting ready to ship our beta we really want the first impression
+when starting to work with the editor to feel nice, so the time for procrastination is over.</p>
+<p>Ironically when I finally put aside some time to work on this, all three turned out much easier to
+significantly improve than I had anticipated.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Grid in different views" src="../../images/borderland-1.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Grid in different views</h4>
+    </figcaption>
+  </figure>
+<p>In this first part, we’ll be talking rendering of grids. To be honest I hadn’t really thought much
+about rendering a decent looking grid before we started Our Machinery. Instead, I’ve somewhat
+arrogantly just consider it being the problem for a tools programmer to solve. While they usually
+did an excellent job implementing various types of snapping tools and grids, they never got any
+attention or help visualize them nicely. Typically that meant they resolved to using some basic
+debug line drawing API. Not only was this bad from a performance point of view, it usually also
+meant the grid lines lacked any kind of anti-aliasing, because who cares about the visual quality of
+debug lines?</p>
+<p>Since one of our main objectives with Our Machinery is to figure out how to architect engine
+technology in a way that makes tools development faster and hopefully also bridge the knowledge gap
+between tools programmers and “runtime” programmers, at least to some extent, I figured it would
+make sense to share how I implemented the current grid renderer that we will roll out in the soon to
+be released beta of <em>The Machinery</em>.</p>
+<p>First, let’s take a look at our requirements for grid rendering:</p>
+<ul>
+<li>
+<p>We want a simple API to use from the editor code that allows rendering of one or multiple grids in
+one or many viewports.</p>
+</li>
+<li>
+<p>We want to be able to freely specify grid size, transform, cell size, as well and color without
+having to care too much about any potential performance impact.</p>
+</li>
+<li>
+<p>We want to be able to highlight every tenth line to increase the readability of the grid.</p>
+</li>
+<li>
+<p>We want the grid lines to be rendered with anti-aliasing.</p>
+</li>
+<li>
+<p>We want the grid to look pleasant from any viewpoint (i.e we want as little
+<a href="http://web.archive.org/web/20210804191922/https://en.wikipedia.org/wiki/Moir%C3%A9_pattern">moire</a> as possible).</p>
+</li>
+<li>
+<p>We want the grid to fade out as it reaches its extents.</p>
+</li>
+</ul>
+<p>So let’s take a look at the C-API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> tm_visual_grid_t
+{
+    <span style="color:#75715e">// World transform
+</span><span style="color:#75715e"></span>    tm_mat44_t tm;
+    <span style="color:#75715e">// Extent of grid in X,Z plane
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> grid_size;
+    <span style="color:#75715e">// Minimum size of one cell
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> cell_size;
+    <span style="color:#75715e">// sRGB color and alpha of thin lines
+</span><span style="color:#75715e"></span>    tm_color_srgb_t thin_lines_color;
+    <span style="color:#75715e">// sRGB color and alpha of thick lines (every tenth line)
+</span><span style="color:#75715e"></span>    tm_color_srgb_t thick_lines_color;
+} tm_visual_grid_t;
+
+<span style="color:#66d9ef">struct</span> tm_grid_renderer_api
+{
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>render)(<span style="color:#66d9ef">const</span> tm_visual_grid_t <span style="color:#f92672">*</span>grid,
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> tm_shader_system_context_o <span style="color:#f92672">*</span>context, 
+        <span style="color:#66d9ef">struct</span> tm_shader_o <span style="color:#f92672">*</span>grid_shader, 
+        <span style="color:#66d9ef">struct</span> tm_renderer_resource_command_buffer_o <span style="color:#f92672">*</span>res_buf, 
+        <span style="color:#66d9ef">struct</span> tm_renderer_command_buffer_o <span style="color:#f92672">*</span>cmd_buf);
+};
+</code></pre></div><p>From an editor point of view, we only have to care about <code>tm_visual_grid_t</code> which is a POD struct.
+Currently, we only support specifying quadratic grid extents and cell sizes, there’s nothing
+stopping us from handling nonsquare extents (or cell sizes) but I fail to see any case you ever want
+that so I opted for minimalism. As we render grids after post-processing and tone mapping, it makes
+the most sense to specify the colors in 8-bit sRGB color space, making the color space consistent
+with the rest of the UI code.</p>
+<p>When it’s time to render the viewport <code>tm_grid_renderer_api``-&gt;``render()</code> is called for each grid
+the editor wants to draw. Internally this API doesn’t do anything else than writing the contents of
+<code>tm_visual_grid_t</code> to a constant buffer owned by the <code>grid_shader</code> and issuing a draw call with 6
+vertices. The rest happens in the shader.</p>
+<p>In the vertex shader the 6 vertices are interpreted as the corners of two triangles spanning the
+extents of the grid in X,Z plane (we use a right-handed Y+ up coordinate system in <em>The Machinery</em>).
+Input to the pixel shader is the interpolated 2D grid coordinates going from { -extent, -extent } to
+{ extent, extent }.</p>
+<p>Let’s take a look at the code for the pixel shader:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// UV is grid space coordinate of pixel.
+</span><span style="color:#75715e"></span>float2 uv <span style="color:#f92672">=</span> input.grid_position;
+
+<span style="color:#75715e">// Find screen-space derivates of grid space. [1]
+</span><span style="color:#75715e"></span>float2 dudv <span style="color:#f92672">=</span> float2(length(float2(ddx(uv.x), ddy(uv.x))), 
+    length(float2(ddx(uv.y), ddy(uv.y))) );       
+
+<span style="color:#75715e">// Define minimum number of pixels between cell lines before LOD switch should occur. 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> min_pixels_between_cells <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span>;
+
+<span style="color:#75715e">// Load cell size from tm_visual_grid_t, minimum size of a grid cell in world units
+</span><span style="color:#75715e">// that will be visualized. 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> cs <span style="color:#f92672">=</span> load_cell_size();
+
+<span style="color:#75715e">// Calc lod-level [2].
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> lod_level <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0</span>, log10((length(dudv) <span style="color:#f92672">*</span> min_pixels_between_cells) <span style="color:#f92672">/</span> cs) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+<span style="color:#66d9ef">float</span> lod_fade <span style="color:#f92672">=</span> frac(lod_level);
+
+<span style="color:#75715e">// Calc cell sizes for lod0, lod1 and lod2. 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> lod0_cs <span style="color:#f92672">=</span> cs <span style="color:#f92672">*</span> pow(<span style="color:#ae81ff">10</span>, floor(lod_level));
+<span style="color:#66d9ef">float</span> lod1_cs <span style="color:#f92672">=</span> lod0_cs <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.f</span>;
+<span style="color:#66d9ef">float</span> lod2_cs <span style="color:#f92672">=</span> lod1_cs <span style="color:#f92672">*</span> <span style="color:#ae81ff">10.f</span>;
+
+<span style="color:#75715e">// Allow each anti-aliased line to cover up to 2 pixels. 
+</span><span style="color:#75715e"></span>dudv <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>;
+
+<span style="color:#75715e">// Calculate unsigned distance to cell line center for each lod [3]
+</span><span style="color:#75715e"></span>float2 lod0_cross_a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> abs(saturate(fmod(uv, lod0_cs) <span style="color:#f92672">/</span> dudv) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.f</span>);
+<span style="color:#75715e">// Pick max of x,y to get a coverage alpha value for lod
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> lod0_a <span style="color:#f92672">=</span> max(lod0_cross_a.x, lod0_cross_a.y);
+float2 lod1_cross_a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> abs(saturate(fmod(uv, lod1_cs) <span style="color:#f92672">/</span> dudv) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.f</span>);
+<span style="color:#66d9ef">float</span> lod1_a <span style="color:#f92672">=</span> max(lod1_cross_a.x, lod1_cross_a.y);
+float2 lod2_cross_a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> abs(saturate(fmod(uv, lod2_cs) <span style="color:#f92672">/</span> dudv) <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.f</span>);
+<span style="color:#66d9ef">float</span> lod2_a <span style="color:#f92672">=</span> max(lod2_cross_a.x, lod2_cross_a.y);
+
+<span style="color:#75715e">// Load sRGB colors from tm_visual_grid_t (converted into 0-1 range) 
+</span><span style="color:#75715e"></span>float4 thin_color <span style="color:#f92672">=</span> load_thin_lines_color();
+float4 thick_color <span style="color:#f92672">=</span> load_thick_lines_color();
+
+<span style="color:#75715e">// Blend between falloff colors to handle LOD transition [4]
+</span><span style="color:#75715e"></span>float4 c <span style="color:#f92672">=</span> lod2_a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> thick_color : lod1_a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> lerp(thick_color, thin_color, lod_fade) <span style="color:#f92672">:</span> thin_color;
+
+<span style="color:#75715e">// Calculate opacity falloff based on distance to grid extents and gracing angle. [5]
+</span><span style="color:#75715e"></span>float3 view_dir <span style="color:#f92672">=</span> normalize(input.view_dir);
+<span style="color:#66d9ef">float</span> op_gracing <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> pow(<span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> abs(dot(view_dir, load_tm()._m10_m11_m12)), <span style="color:#ae81ff">16</span>);
+<span style="color:#66d9ef">float</span> op_distance <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.f</span> <span style="color:#f92672">-</span> saturate(length(uv) <span style="color:#f92672">/</span> load_grid_size()));
+<span style="color:#66d9ef">float</span> op <span style="color:#f92672">=</span> op_gracing <span style="color:#f92672">*</span> op_distance;
+
+<span style="color:#75715e">// Blend between LOD level alphas and scale with opacity falloff. [6]
+</span><span style="color:#75715e"></span>c.a <span style="color:#f92672">*=</span> (lod2_a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> lod2_a : lod1_a <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> lod1_a : (lod0_a <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>lod_fade))) <span style="color:#f92672">*</span> op;
+
+output.color <span style="color:#f92672">=</span> c;  
+</code></pre></div><p>For the experienced shader programmer, this code is probably fairly self-explanatory (and I’m sure
+there might be better or more efficient ways to implement this, feel free to enlighten me). For the
+rest of you, I’ll do a walk-through:</p>
+<ol>
+<li>
+<p>We start by finding the length of the derivatives (ddx/ddy) of the current grid coordinate. This
+is essentially how much we move in grid space from one pixel to the next.</p>
+</li>
+<li>
+<p>Since we had a requirement of being able to specify any cell size (in world units, which in The
+Machinery is <em>meters</em>) without having to care about the location of the viewer we need some kind
+of automatic Level-Of-Detail (LOD) to avoid ending up in moire hell. We define the LOD
+transition metric to be the minimum allowed distance in pixels between two cell lines
+(<code>min_pixels_between_cells</code>) before the line has completely faded out and the transition to the
+next LOD-step has fully occurred. Since we highlight the gridline between every tenth cell it
+makes sense to use that to define a LOD-step. This is where the <code>log10()</code> and <code>pow(10, lod_level)</code> comes from, for each LOD level we will cover <em>10^lod_level x</em> more cells of the
+smallest size (<code>cell_size</code> in <code>tm_visual_grid_t</code>).</p>
+</li>
+<li>
+<p>Since we want to blend between the LOD-steps we’ll calculate grid line coverage for the three
+different cell sizes (<code>lod0_cs</code>, <code>lod1_cs</code>, <code>lod2_cs</code>) calculated in (2). The cell size is
+essentially the frequency at which a new line should be visible. It’s easier to show graphically
+exactly what’s going on when calculating the coverage value, therefor eI’ve created a small
+<a href="http://web.archive.org/web/20210804191922/https://www.desmos.com/calculator/hy8n1oqy6v">demos graph</a>.</p>
+<p>In the graph <em>w</em> is the line width (<code>dudv</code> in the code above) and <em>c</em> is the line frequency
+(<code>lod0_cs, lod1_cs, lod2_cs</code>). The demos graph works in 1D but we are working on the grid plane
+in 2D with grid lines crossing each other, so we simply take the maximum coverage of X,Y and use
+that as out <em>alpha mask</em> value for each LOD-step (<code>lod0_a, lod1_a, lod2_a</code>).</p>
+</li>
+<li>
+<p>This is fairly handwavy, but essentially here we simply calculate the fade between the thin and
+thick line colors based on the <code>lod_fade</code> and how much we consider the current pixel belongs to a
+certain LOD-step using the coverage alpha values calculated in (3).</p>
+</li>
+<li>
+<p>Calculates opacity fade-out for all grid lines based on viewing angle and distance to the center
+of the graph. This is a bit temporary and will likely be tweaked further, some knobs might need
+to get exposed in <code>tm_visual_grid_t</code> .</p>
+</li>
+<li>
+<p>Lastly, we modulate the final alpha value of the pixel with another handwavy mix of the line
+coverage masks for the three LOD-steps and multiply the whole shebang with the opacity value
+calculated in (5).</p>
+</li>
+</ol>
+<p>That’s it. A nice looking grid. Implement one yourself or check it out in our beta release coming
+soon.</p>
+<p><em>Note:</em> In a future post I might follow up with some floating-point precision considerations to be
+aware of when using this technique, and maybe something about playing nicely with depth testing
+against your TAA-jittered depth buffer, but time is up and I need to get this posted and get back
+working on the beta. 🙂</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804191922/https://twitter.com/share?text=Borderland%20between%20Rendering%20and%20Editor%20-%20Part%201 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fborderland-between-rendering-and-editor-part-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804191922/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fborderland-between-rendering-and-editor-part-1%2f&amp;description=Borderland%20between%20Rendering%20and%20Editor%20-%20Part%201" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/time-tracking-in-2020/">Time Tracking In 2020</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-01-20T00:00:00Z">
+                      20 Jan 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>As 2019 was wrapping up I found myself wanting to get some kind of high-level picture of what I’ve
+spent the year doing. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/time-tracking-in-2020/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/see-ya-later-2019/">See Ya Later 2019!</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-12-25T00:00:00Z">
+                      25 Dec 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>This is our end of the year well wishes as we are closing out for Holiday Break!</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/see-ya-later-2019/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/alpha-update/">Alpha Update</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-12-19T00:00:00Z">
+                      19 Dec 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Just a short note to let you know that we just released a new update of our alpha release. In
+addition to numerous fixes …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/alpha-update/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">1 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/borderland-between-rendering-and-editor-part-1/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804191922/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191922/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/cdn-cgi/l/email-protection#f5859c9b92b59a80879894969d9c9b90878cdb969a98" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804191922/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:19:22 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:26 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 112.224
+  exclusion.robots: 0.086
+  exclusion.robots.policy: 0.078
+  cdx.remote: 0.065
+  esindex: 0.008
+  LoadShardBlock: 80.799 (3)
+  PetaboxLoader3.datanode: 80.688 (4)
+  CDXLines.iter: 14.17 (3)
+  load_resource: 70.861
+  PetaboxLoader3.resolve: 32.312
+-->

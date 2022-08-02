@@ -1,0 +1,716 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Things we did to port The Machinery to Linux."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Porting The Machinery to Linux">
+  <meta name="twitter:description" content="Things we did to port The Machinery to Linux."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Porting The Machinery to Linux · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/porting-the-machinery-to-linux/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="Things we did to port The Machinery to Linux."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-03-08T00:00:00Z"/>
+  
+
+  <title>Porting The Machinery to Linux &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804193630/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804193630\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "The Machinery Team",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804193630\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Porting The Machinery to Linux",
+    "name": "Porting The Machinery to Linux",
+    "wordCount":  1363 ,
+    "timeRequired": "PT7M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/porting-the-machinery-to-linux/",
+    "datePublished": "2021-03-08T00:00Z",
+    "dateModified": "2021-03-08T00:00Z",
+    
+    
+    "description": "Things we did to port The Machinery to Linux."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804193630/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804193630/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Porting The Machinery to Linux</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-03-08T00:00:00Z">
+          Mar 8, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Hi, my name is Raphael, and I&rsquo;m an intern at Our Machinery.</p>
+<p>I&rsquo;m a Linux user and passionate about Game Development, Computer Graphics, and Low-Level
+programming. In my opinion, developing a Game Engine is one of the most challenging missions, as it
+involves several areas of computer science, mathematics, and physics, in addition to real-time
+requirements. So I am very happy with the opportunity to work on this team and with everything that
+I have come to learn so far. My main task was initially to help with porting The Machinery to Linux
+and in this post, I will talk about this process, how I incrementally added the needed building
+blocks, and the main issues faced during this journey. This will not be a fully technical text, but
+I will touch on some technical details.</p>
+<h2 id="window-system">Window System</h2>
+<p>I think that it&rsquo;s easier to work when you can interact with software, so my first goal was to get
+something showing on the screen and implement a very basic version of
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/plugins/os_window/os_window.h.html#structtm_os_window_api">tm_os_window_api</a>.
+There are two options for a window system in Linux: X11 and Wayland. For The Machinery, I decided to
+go with the first one because it&rsquo;s the most used and has better support for Nvidia cards. Note that
+this is not an &ldquo;<em>X11 is better than Wayland</em>&quot;-decision and we plan to test with Wayland in the
+future.</p>
+<p>To see something on screen we only need a basic window and the ability to pass its surface to the
+render backend, so that was what I did first. Basically, I implemented the &ldquo;Hello World&rdquo; of <a href="http://web.archive.org/web/20210804193630/https://www.x.org/releases/current/doc/libxcb/tutorial/index.html">Basic
+Graphics Programming With The XCB
+Library</a> tutorial. The next step
+is to make it possible to interact with the application. The X server uses an event-driven approach,
+so the application needs to register the events it is interested in, to be able to receive them in
+the event loop and feed them to a
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/foundation/input.h.html#structtm_input_source_i">tm_input_source_i</a>
+interface. It is worth mentioning that since there is no event for relative movement of the mouse it
+was necessary to emulate it by keeping track of the last mouse position.</p>
+<p>Linux users have many options for GUI environments, from basic <a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/Window_manager">Window
+Managers</a> to fully-featured <a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/Desktop_environment">Desktop
+Environments</a>. It&rsquo;s important to note that window
+managers and desktop environments are free to decide what to do with windows. For example, an
+application may define a specific size for a window, but this doesn&rsquo;t mean that will be the real
+size of the created window. With so many possibilities, the challenge arises of how to create a
+graphic application that behaves uniformly in various environments.</p>
+<p>To achieve a predictable behavior, we adhere to the
+<a href="http://web.archive.org/web/20210804193630/https://www.x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html#id2550607">ICCCM</a> and <a href="http://web.archive.org/web/20210804193630/https://specifications.freedesktop.org/wm-spec/wm-spec-1.3.html">EWMH
+specifications</a> that provide
+conventions for the way applications interact with each other and the window manager. However, it is
+not always so clear how to best implement them, whether due to ambiguity or vague concepts.</p>
+<p>One of the features that I found most challenging to implement was the
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/plugins/os_window/os_window.h.html#structtm_os_clipboard_api">tm_os_clipboard_api</a>,
+as there is no central clipboard concept in Linux, and we must implement it using the selection
+mechanism as specified in the ICCCM. There are three main selections defined: <em>PRIMARY</em>, which is
+normally used to paste selected text using the middle button, <em>SECONDARY</em>, and <em>CLIPBOARD</em> for the
+conventional copy and paste with <code>Ctrl-C/Ctrl-V</code>. An application that wants to copy something must
+acquire the ownership of the selection and keep the copied data until another application asks for
+it or requests ownership of the selection. That is, it is the responsibility of each application to
+keep the data available and that is why normally we cannot paste a copied text after closing an
+application containing that text. Drag-and-drop support was achieved following the <a href="http://web.archive.org/web/20210804193630/https://www.freedesktop.org/wiki/Specifications/XDND/">XDND
+specification</a>, which works using the
+selection mechanism in a way very similar to the clipboard functionality.</p>
+<p>Usually, the borders and title bars of the windows are the responsibility of the window manager, and
+guess, in the X system, the title bar is a window too. However, with the
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/plugins/os_window/os_window.h.html#structtm_os_window_api">tm_os_window_api</a>,
+the user can choose to create windows with or without decorations and there is no a standardized way
+of doing this on the X server. The solution I found was to use <code>_MOTIF_WM_HINTS</code>, which provides a
+way to ask the manager to create windows without decorations. Although there is not much
+documentation on this, apparently a good number of window managers accept its use. The downside of
+this is that we may have an application with a double title bar, in case the request is not
+respected. Another issue is that with a custom title bar, we lose the ability to drag the window
+around. To get around this problem I used the message <code>_NET_WM_MOVERESIZE</code> according to the EWMH
+specification and, if the window manager does not support this message, I fallback to the
+conventional <code>xcb_configure_window</code> function. The interesting thing about implementing this feature
+was that, initially, the application did not move correctly, due to a wrong assumption about the
+window hierarchy. Normally, the coordinates are relative to the parent window, which are not the
+same for a window without a title bar. To correct this flaw I always translate the coordinates to
+the root window coordinate system.</p>
+<h2 id="os-layer">OS Layer</h2>
+<p>The operating system abstraction layer in The Machinery is provided by
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/foundation/os.h.html#os.h">tm_os_api</a> in the foundation library.
+Although it may seem out of order to speak of this layer only now, most of the necessary
+functionality was already implemented when I started working on the port. For example, the thread
+system uses <a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/POSIX_Threads">POSIX Threads</a> and fiber support was
+achieved using the <a href="http://web.archive.org/web/20210804193630/http://software.schmorp.de/pkg/libcoro.html">libcoro</a> library. With the window
+system in place, it became easier to program and test the missing parts of the OS API.</p>
+<p>The most complicated task in this step was the implementation of the file system watcher, using the
+<a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/Inotify">Inotify API</a>, which provides a simple and efficient way to
+monitor these type of events on Linux. A great resource to learn more about its use is the <a href="http://web.archive.org/web/20210804193630/https://developer.ibm.com/technologies/linux/tutorials/l-inotify/">Monitor
+Linux file system events with
+inotify</a> tutorial. To support
+native dialogs, the excellent <a href="http://web.archive.org/web/20210804193630/https://sourceforge.net/projects/tinyfiledialogs/">tiny file dialogs</a>
+library was used, which has all the necessary features and was easy to integrate.</p>
+<h2 id="audio-system">Audio system</h2>
+<p>The implementation of the audio system has been described in a <a href=" ../../post/writing-a-low-level-sound-system/">previous
+post</a>. Since all mixing is done in
+software, we only need to implement the
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com//apidoc/plugins/audio/sound_backend.h.html#structtm_sound_backend_api">tm_sound_backend_api</a>.
+For that, it was necessary to understand the options available for audio programming on Linux. Among
+those available we have <a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture">ALSA</a>,
+<a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/JACK_Audio_Connection_Kit">JACK</a>, and
+<a href="http://web.archive.org/web/20210804193630/https://en.wikipedia.org/wiki/PulseAudio">PulseAudio</a>.</p>
+<p>ALSA is the sound system used by the Linux kernel but also provides a user-space API. PulseAudio and
+JACK are sound servers. Applications that want to use audio connect themselves to the server that is
+responsible for mixing the sound. The PulseAudio server is present in most desktops and is easily
+configurable. However, it is not intended for professional use. On the opposite, JACK provides low
+latency and targets professional users, but its configuration is more complex.</p>
+<p>In The Machinery we chose to use the ALSA API, for more control and fewer dependencies. At first we
+would have the limitation that an application using audio would block the audio from another
+application. However, sound servers also behave as audio devices, to which ALSA can connect. Thus,
+multiple applications can operate at the same time. The use of the API is very straightforward, but
+apparently, when using the device provided by PulseAudio we do not have the correct information
+about the number of channels, and by the tests carried out we can request any number of channels,
+even if the actual device doesn’t support it. So at the moment we chose to support only two output
+audio channels until a more appropriate solution is found.</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>Working on porting The Machinery to Linux was a very rewarding experience. There is still a lot of
+work ahead, joystick, multiple mice and keyboard support are still missing, but at least we have a
+usable Linux version of the engine which will help improve it through testing in more than one
+platform. That&rsquo;s all for now, so if you have any doubts, or if you want to know how some specific
+system was implemented on Linux please ping me at
+<a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/cdn-cgi/l/email-protection#5e2c3f2e363f3b321e312b2c333f3d3637303b2c27703d3133"><span class="__cf_email__" data-cfemail="3a485b4a525b5f567a554f48575b595253545f484314595557">[email&#160;protected]</span></a>.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/authors/team" class="text-decoration-none">The Machinery Team</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804193630/https://twitter.com/share?text=Porting%20The%20Machinery%20to%20Linux - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fporting-the-machinery-to-linux%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804193630/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fporting-the-machinery-to-linux%2f&amp;description=Porting%20The%20Machinery%20to%20Linux" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/moving-the-machinery-to-bindless/">Moving The Machinery to Bindless</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-02-22T00:00:00Z">
+                      22 Feb 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>It’s been quite some time since I wrote anything about the low-level rendering architecture in <em>The
+Machinery</em>, but …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/moving-the-machinery-to-bindless/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/dino-dino/" class="text-decoration-none"><img src="../../images/dino_dino.png" class="card-img-top" alt="Dino! Dino!"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/dino-dino/">Dino! Dino!</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-02-03T00:00:00Z">
+                      3 Feb 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Y’all I made a game!</p>
+<p>Well it wasn’t just me, my two-year-old and 12-year-old helped too. Ok, yeah and Niklas did a lot …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/dino-dino/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2021-1/" class="text-decoration-none"><img src="../../images/beta_21_1__ubuntu.png" class="card-img-top" alt="The Machinery Beta — January 2021 (version 2021.1)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2021-1/">The Machinery Beta — January 2021 (version 2021.1)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-01-28T00:00:00Z">
+                      28 Jan 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Welcome to a new and hopefully better year than 2020! Let’s all be safe and put an end to this
+pandemic. Here at Our …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2021-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/porting-the-machinery-to-linux/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804193630/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804193630/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/cdn-cgi/l/email-protection#44342d2a23042b31362925272c2d2a21363d6a272b29" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804193630/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:36:30 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:55 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 152.515
+  exclusion.robots: 0.107
+  exclusion.robots.policy: 0.1
+  cdx.remote: 0.064
+  esindex: 0.009
+  LoadShardBlock: 128.386 (3)
+  PetaboxLoader3.datanode: 128.012 (4)
+  CDXLines.iter: 16.342 (3)
+  load_resource: 127.509
+  PetaboxLoader3.resolve: 72.965
+-->

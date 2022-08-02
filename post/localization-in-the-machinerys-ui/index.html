@@ -1,0 +1,796 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="How we do localization in The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Localization in The Machinery’s UI">
+  <meta name="twitter:description" content="How we do localization in The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Localization in The Machinery’s UI · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/localization-in-the-machinerys-ui/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="How we do localization in The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2019-01-14T00:00:00Z"/>
+  
+
+  <title>Localization in The Machinery’s UI &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+
+    ga('create', 'UA-96359368-1', 'auto');
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210506194857/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210506194857\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210506194857\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Localization in The Machinery’s UI",
+    "name": "Localization in The Machinery’s UI",
+    "wordCount":  2758 ,
+    "timeRequired": "PT13M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/localization-in-the-machinerys-ui/",
+    "datePublished": "2019-01-14T00:00Z",
+    "dateModified": "2019-01-14T00:00Z",
+    
+    
+    "description": "How we do localization in The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+              <a class="nav-link text-yellow fw-bold" href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/beta.html" aria-label="Link Download Now">Download Now</a>
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Community
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href=" ../../post/" aria-label="Link Blog">Blog</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://discord.gg/SHHSZaH" aria-label="Link Discord" target="_blank">Discord</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://forums.ourmachinery.com/" aria-label="Link Forum" target="_blank">Forum</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210506194857/https://anchor.fm/ourmachinery" aria-label="Link Podcast" target="_blank">Podcast</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="nav-link rounded-circle p-0 signed-in-only" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="om-gravatar d-none rounded-circle align-left mx-2" alt="gravatar of user" src="http://web.archive.org/web/20210506194857im_/https://www.gravatar.com/avatar/asdgasdhasd">
+            </a>
+
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id1">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id1" aria-expanded="false" aria-controls="#collapse-id1">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id1" class="accordion-collapse collapse" aria-labelledby="heading-id1" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://forums.ourmachinery.com/">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210506194857/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer">
+      <div class="d-flex justify-content-center text-dark text-center">
+        <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-primary m-1"><span class="icon icon-book align-middle"></span> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-primary m-1"><span class="icon icon-document align-middle"></span> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+      <div class="bg-yellow d-grid gap-2 text-light text-center">
+        <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/beta.html" aria-label="Opens Download Page" type="button" class="btn btn-outline-light m-2"><span class="icon icon-download align-middle"></span> <span class="align-middle text-uppercase font-monospace">Download Now</span></a>
+    </div>
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Localization in The Machinery’s UI</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2019-01-14T00:00:00Z">
+          Jan 14, 2019
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>One thing we never really addressed back when we were making the <a href="http://web.archive.org/web/20210506194857/https://en.wikipedia.org/wiki/Bitsquid">Bitsquid</a> engine was localization of the tools. We supported localization of the <em>games</em> made in the engine, of course, but the engine tools themselves were only available in English. As both the number of tools and the number of frameworks used for the tools (Winforms, WPF, HTML, …) grew, the localization task became more daunting. When you’re writing an engine, you’re never short of stuff to do, and there always seemed to be something more pressing than addressing localization.</p>
+<p>With <em>The Machinery</em>, we didn’t want to make the same sharp distinction between “tools” and “games” as we envision lots of use cases where the creative experience is taken all the way to the end user. So it was important to get this right from the start.</p>
+<h2 id="the-scope-of-the-problem">The scope of the problem</h2>
+<p>“Localization” in the context of game development can mean many different things. Localization of strings in the UI is probably what first comes to mind, but language can also be found in dialogue audio files and text baked into textures. Finally, there can be legal and cultural issues. For example, localization to Germany requires removing blood and gore. Plot or animation changes might also be necessary.</p>
+<p>In the Bitsquid engine, all these things were all handled in the same generalized localization framework. I.e., everything was a “resource” (string resource, audio resource, texture resource, script resource) and we could localize these resources for different targets.</p>
+<p>Treating everything the same has the advantage of being conceptually simple, but it also has disadvantages. Data-oriented design tells us to “look at the data” and the data for these different cases looks completely different. The UI text typically only amounts to a couple of KB for an entire game, whereas the audio dialogue can easily end up in the GB range. Solutions that work well in one case might not work well for the other.</p>
+<p>For example, we can easily keep the UI text for all the supported languages permanently in memory and provide instant switching between different languages. For dialogue sounds, on the other hand, switching language might require unloading and loading megabytes of data — a significantly slower and more complicated procedure. If we force everything in under the same “localization abstraction”, we might force the UI text localization to become as slow and complicated as the other kinds of localization, even though that is completely unnecessary.</p>
+<p>So in <em>The Machinery</em>, we treat these as separate problems and do not try to solve them all using the same mechanism. In this article, I will only look at the specific problem of localizing UI text.</p>
+<h2 id="basic-approach">Basic approach</h2>
+<p><em>The Machinery</em> uses an immediate mode GUI approach (IMGUI), where the UI is built in code rather than in a UI editor. The advantages and disadvantages of this could be the topic of a whole another post. What it means, though, is that since all the UI text is in the C code, what we need for localization is a way of localizing strings in C code.</p>
+<p>I.e. we need a function that given some key <code>key</code> that identifies a string in the UI, returns a translation of that string in the user’s currently selected interface language:</p>
+<p>localize(<em>key</em>) → <em>text</em></p>
+<p>In <em>The Machinery,</em> this function is actually implemented as a macro <code>TM_LOCALIZE(key)</code>, so I will use capital letters to refer to it from now on.</p>
+<p>I’ll go into details on how <code>TM_LOCALIZE</code> is implemented later, but for now, just think of it as having some kind of table that provides the interface text for each key in all the supported languages and using the <code>key</code> to do a lookup in that table:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>English</strong></th>
+<th><strong>French</strong></th>
+<th><strong>Swedish</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>key_file_menu</em></td>
+<td>File</td>
+<td>Fichier</td>
+<td>Arkiv</td>
+</tr>
+<tr>
+<td><em>key_save</em></td>
+<td>Save</td>
+<td>Enregistrer</td>
+<td>Spara</td>
+</tr>
+</tbody>
+</table>
+<p>So far, I’ve been deliberately vague about what the <em>key</em> that we use to index into this table actually is. One common option is to use an integer identifier for the <em>key</em> and have a big header file that enumerates all the possible key values. Something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define TM_STRING_ID__FILE_MENU 0x0001
+</span><span style="color:#75715e">#define TM_STRING_ID__SAVE 0x0002
+</span><span style="color:#75715e"></span>...
+</code></pre></div><p>However, I find that this approach has a number of problems:</p>
+<ul>
+<li>
+<p>It is a little bit painful to go in and edit this header file for every string in the UI, and the header can get pretty large.</p>
+</li>
+<li>
+<p><em>The Machinery</em> is built as a collection of DLLs. To use this approach we would have to make sure that the IDs did not collide across DLLs, for example by giving each DLL a unique numerical prefix for its IDs. But then we also need a mechanism to ensure that these prefixes never collide.</p>
+</li>
+<li>
+<p>Sequential numbering like this tends to cause a lot of merge conflicts in version control tools. Any programmer who wants to add new IDs needs to put them at the end of the list where they will conflict with new IDs from other programmers as soon as they merge.</p>
+</li>
+<li>
+<p>IDs that are no longer used will still remain in the index as “ghosts” or “holes” unless you reuse them for new strings, but then you have the problem that the IDs now has different meanings depending on the version of the software.</p>
+</li>
+<li>
+<p>Because it is a little bit painful to create new IDs, there is a temptation to keep the ID even if you change the UI text. For example, suppose you have a tool in your UI for moving objects around called <em>Relocate</em>. So you create a key <code>ID_RELOCATE</code> and associate it with the string <code>&quot;Relocate&quot;</code>. Later, you decide it is simpler and better to just call the tool <code>&quot;Move&quot;</code>. It is tempting to do this by just changing the text in the translation table and leaving the identifier as it is, but then you end up with the somewhat confusing situation where <code>ID_RELOCATE</code> actually refers to the string <code>&quot;Move&quot;</code> rather than <code>&quot;Relocate&quot;</code>.</p>
+</li>
+</ul>
+<p>What can we do instead? Whenever we need unique identifiers but sequential enumeration is problematic, hashing is a good approach. So instead of:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE(TM_STRING_ID__FILE_MENU)
+</code></pre></div><p>We could do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE(hash(<span style="color:#e6db74">&#34;TM_STRING_ID__FILE_MENU&#34;</span>))
+</code></pre></div><p>This gets rid of several of the pain points. We don’t need the big header file enumerating all the IDs. There is no risk of collision (if we hash into a big enough key space). And we don’t have any ghosts or holes any more (since we don’t have the big list anymore).</p>
+<p>Isn’t hashing expensive compared to using a sequential ID? True, hashing has an extra cost, but in this case, it doesn’t really matter. In an IMGUI you should only be drawing the things that end up on the screen (you can always do a quick rect intersection test to determine if your control is visible.) If we assume that the hash is only called for things that are actually drawn, the cost doesn’t really matter, because it will be dwarfed by the cost of drawing the glyphs on the screen.</p>
+<p>We can make the macro look a bit nicer too. We don’t really need the <code>TM_STRING_ID__</code> prefix anymore since these are no longer global defines that need to be unique, but just ordinary strings, and we can bake in the call to <code>hash()</code> into the <code>TM_LOCALIZE</code> macro itself, leaving us with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE(<span style="color:#e6db74">&#34;FILE_MENU&#34;</span>)
+</code></pre></div><p>There is still something I don’t like about this though: every time we want to add a new string to the UI we have to come up with a new identifier name for it, and <a href="http://web.archive.org/web/20210506194857/https://martinfowler.com/bliki/TwoHardThings.html">naming is one of the two hard things in Computer Science</a>. It is easy enough for things like the <em>File</em> menu, but what about a string like <code>&quot;Number of rendered triangles: %d&quot;</code>. You end up with something ridiculous like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE(<span style="color:#e6db74">&#34;NUMBER_OF_RENDERED_TRIANGLES_WITH_INTEGER_FORMATTER&#34;</span>)
+</code></pre></div><p>There is also a bad disconnect here. To know what the <code>NUMBER_OF_RENDERED_TRIANGLES_WITH_INTEGER_FORMATTER</code> actually resolves to, which is pretty important when you try to write your <code>sprintf()</code> call, you have to go and look in a completely different file — the file that contains the translation tables. It would be much better if I could just see the actual text of the string at the place where it is being used.</p>
+<p>This leads us to the galaxy brain solution: instead of coming up with a suitable ID and hashing that to get a unique number, we just hash the string we’re translating itself and use that as the key. Thus, we end up with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE(<span style="color:#e6db74">&#34;File&#34;</span>)
+TM_LOCALIZE(<span style="color:#e6db74">&#34;Save&#34;</span>)
+sprintf(buf, TM_LOCALIZE(<span style="color:#e6db74">&#34;Number of rendered triangles: %d&#34;</span>), ntri);
+</code></pre></div><p>Much better.</p>
+<p>Note that if the string changes the key will change too, so the old translations no longer work. But that is a <em>good</em> thing. If the string has changed it probably needs a new translation. For example, if we changed to using a double for <code>ntri</code> and printing it with <code>%g</code> we would want to be sure that all translations made this change too, or we would run into trouble.</p>
+<p>There is one problem with using the string itself as the key and that is homonyms — words with the same spelling but with different meanings. For example, <em>File</em> has at least <a href="http://web.archive.org/web/20210506194857/https://www.merriam-webster.com/dictionary/file">eight different meanings</a> and each of those meanings might have different translations. In fact, even words that have a single unambiguous meaning may have multiple translations. For example, the Swedish translation for the English word <em><a href="http://web.archive.org/web/20210506194857/https://en.wiktionary.org/wiki/sock">sock</a></em> could be either <em><a href="http://web.archive.org/web/20210506194857/https://sv.wiktionary.org/wiki/socka">socka</a></em> (thick sock) or <em><a href="http://web.archive.org/web/20210506194857/https://sv.wiktionary.org/wiki/strumpa">strumpa</a></em> (thin sock).</p>
+<p>We handle homonyms with an optional <em>context</em> parameter for the <code>TM_LOCALIZE</code> macro:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TM_LOCALIZE_WITH_CONTEXT(<span style="color:#e6db74">&#34;File&#34;</span>, <span style="color:#e6db74">&#34;menubar&#34;</span>)
+</code></pre></div><p>This specifies that we want the translation of <em>File</em> in the context of the <code>menubar</code> which disambiguates it from other potential uses of <em>File</em>. We use a hashed string to identify the context, to avoid the problems with numerical IDs listed above.</p>
+<p>Context only needs to be used where there is a possibility that the same string will be used multiple times for different purposes. Things like <code>&quot;Number of rendered triangles: %d&quot;</code> do not need context.</p>
+<p>You could perhaps argue that this approach is worse than using sequential IDs since there is a risk that we forget to add context where it’s needed. With IDs, you are more aware of reusing a string that has been used previously, whereas, with this approach, reuse can happen “accidentally”.</p>
+<p>I don’t think this is a big drawback though, as we can always go in and add context later as needed to disambiguate.</p>
+<h2 id="implementing-the-lookup">Implementing the lookup</h2>
+<p>Let’s look at the implementation of the <code>TM_LOCALIZE</code> macro:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_localizer_i
+{
+    tm_localizer_o <span style="color:#f92672">*</span>inst;
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>localize)(tm_localizer_o <span style="color:#f92672">*</span>inst, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s,
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>context);
+};
+
+<span style="color:#66d9ef">struct</span> tm_localizer_api
+{
+    <span style="color:#75715e">// Current default localizer.
+</span><span style="color:#75715e"></span>    tm_localizer_i <span style="color:#f92672">**</span>def;
+};
+
+<span style="color:#75715e">#define TM_LOCALIZE_WITH_CONTEXT(s, ctx) ((*tm_localizer_api-&gt;def)-&gt; \
+</span><span style="color:#75715e">    localize((*tm_localizer_api-&gt;def)-&gt;inst, s, ctx))
+</span><span style="color:#75715e">#define TM_LOCALIZE(s) TM_LOCALIZE_WITH_CONTEXT(s, &#34;&#34;)
+</span></code></pre></div><p>This defines an abstract interface for a <em>localizer</em> <code>tm_localizer_i</code> as having a single function <code>localize()</code> that given a string <code>s</code> and a context <code>context</code> returns the translation of that string in the current interface language. Then it defines an API <code>tm_localizer_api</code> for getting and setting the current default localizer. Note that we just use a variable for this, rather than getter and setter functions to keep things simple.</p>
+<p>Finally, the <code>TM_LOCALIZE()</code> macro calls on the current default localizer to localize the supplied string with an empty context.</p>
+<p>We use this indirection through an abstract interface rather than a hard-coded localization function so that end users can implement completely custom localizers if they want to. For example, you could implement a <em>Google Translate</em> based localizer (probably not a good idea).</p>
+<p>Our default localizer uses localizer tables defined in the C code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">{
+    { .english <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;File&#34;</span>, .swedish <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Arkiv&#34;</span> },
+    { .english <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Save&#34;</span>, .swedish <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Spara&#34;</span> },
+}
+</code></pre></div><p>to create hashmaps from English words to their translations in different languages. Localizer tables can be defined in any DLL and registered in a central registry for use by the localizer. Thus, if you wanted to localize <em>The Machinery</em> to Xhosa or any other language that we don’t currently support, you could do so by adding a plugin DLL with translator tables.</p>
+<h2 id="things-that-can-go-wrong-and-ways-to-fix-them">Things that can go wrong and ways to fix them</h2>
+<p>There are two main ways that localization can fail:</p>
+<ol>
+<li>
+<p>You have localized a string with <code>TM_LOCALIZE()</code> in the source code, but forgot to provide a translation for it in the translation table.</p>
+</li>
+<li>
+<p>You have a string in the UI that was <em>supposed</em> to be localized, but you forgot to wrap it with <code>TM_LOCALIZE()</code>.</p>
+</li>
+</ol>
+<p>To handle the first problem, we provide a tool <code>localize.exe</code> that scans the source code for <code>TM_LOCALIZE</code> macros and also parses the localization tables. If it finds <code>TM_LOCALIZE</code> macros that don’t have any corresponding translation table entries or vice versa, table entries that are unused, it will print out error messages, so that the problem can be fixed.</p>
+<p>Here is a sample run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&gt;</span> bin<span style="color:#f92672">/</span>Debug<span style="color:#f92672">/</span>localize
+plugins<span style="color:#f92672">/</span>editor_views<span style="color:#f92672">/</span>localizer_table.inl:
+Unused:
+
+        <span style="color:#e6db74">&#34;Test Sample Content&#34;</span>,
+
+the_machinery<span style="color:#f92672">/</span>localizer_table.inl:
+
+Missing:
+
+        { .english <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Created: %s&#34;</span>, .swedish <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> },
+        { .english <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Deleted: %s&#34;</span>, .swedish <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> },
+</code></pre></div><p>Since <code>localize</code> parses the source code, it depends on <code>TM_LOCALIZE</code> being used with <em>static</em> strings only. I.e. you can’t dynamically compose a string and then localize it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// This doesn&#39;t work, localize.exe can&#39;t figure out the strings that
+</span><span style="color:#75715e">// need to be localized.
+</span><span style="color:#75715e"></span>s <span style="color:#f92672">=</span> TM_LOCALIZE(sprintf(b, <span style="color:#e6db74">&#34;%s job!&#34;</span>, score <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Great&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Good&#34;</span>));
+
+<span style="color:#75715e">// Instead do this
+</span><span style="color:#75715e"></span>s <span style="color:#f92672">=</span> score <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">?</span> TM_LOCALIZE(<span style="color:#e6db74">&#34;Great job!&#34;</span>) <span style="color:#f92672">:</span> TM_LOCALIZE(<span style="color:#e6db74">&#34;Good job!&#34;</span>);
+</code></pre></div><p>In general, it is better to localize full sentences anyway, rather than to compose sentences out of individually localized pieces, because the former approach can better handle situations where word order differs between languages, etc.</p>
+<p>To diagnose the second problem — when the programmer has forgotten to add the <code>TM_LOCALIZE()</code> macro — we support setting the user interface language to <a href="http://web.archive.org/web/20210506194857/https://en.wikipedia.org/wiki/Gibberish"><em>Gibberish</em></a>.</p>
+<p>When the language is set to Gibberish*,* our <code>localize()</code> implementation algorithmically transforms the input string into nonsense text. E.g. *File → Hgryp*, *Save → Xcdan*. If you set the interface language to Gibberish **and still see proper English text somewhere in the UI, you know that part of the UI is missing a <code>TM_LOCALIZE()</code> call.</p>
+<p>The Gibberish translation serves another purpose too. We intentionally make the Gibberish strings ~40 % longer than their English counterparts to make sure the UI layout doesn’t break down if some strings end up longer after translation.</p>
+<h2 id="to-type-or-not-to-type">To type or not to type</h2>
+<p>The Gibberish approach to finding missing <code>TM_LOCALIZE()</code> macros is not perfect. It requires us to inspect the entire UI — all menus, dialogs, etc — to find any strings that are lacking translations.</p>
+<p>There is a different approach you could take — to define a separate type for strings that have been localized:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_localized_string_t {
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s;
+};
+
+tm_localized_string_t <span style="color:#a6e22e">localize</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>s);
+
+<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">button</span>(tm_localized_string_t text);
+</code></pre></div><p>This way, the UI <code>button()</code> function would only accept localized strings and the <code>localize()</code> function which is called by <code>TM_LOCALIZE()</code> would turn ordinary strings into localized strings. A missed <code>TM_LOCALIZE()</code> call would result in a compile error.</p>
+<p>The drawback of this approach is that it requires a little bit more type juggling. For example, say you want to line break a localized string <code>text</code>.  You can no longer get the next word of the string with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>w <span style="color:#f92672">=</span> strchr(text, <span style="color:#e6db74">&#39; &#39;</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</code></pre></div><p>Instead, you need to do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_localized_string_t w <span style="color:#f92672">=</span> {.s <span style="color:#f92672">=</span> strchr(text.s, <span style="color:#e6db74">&#39; &#39;</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>};
+</code></pre></div><p>This trade-off between type safety and type juggling is not unique to localized strings. I’ve found it shows up all the time in API design, forcing you to make a choice between a familiar generic type that is easier to understand and manipulate and a system specific one that provides better type safety.</p>
+<p>For example, suppose you have a sound system that identifies each playing sound with an ID that can be used to stop or otherwise moderate the sound. Which is better:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// ID is a plain integer
+</span><span style="color:#75715e"></span>uint64_t <span style="color:#a6e22e">play</span>(sound_resource_t <span style="color:#f92672">*</span>res);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span>(uint64_t id);
+
+<span style="color:#75715e">// ID is a custom type
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> playing_sound_id_t {
+    uint64_t id;
+} playing_sound_id_t;
+playing_sound_id_t <span style="color:#a6e22e">play</span>(sound_resource_t <span style="color:#f92672">*</span>res);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">stop</span>(playing_sound_id_t id);
+</code></pre></div><p>Is the extra type safety of making sure that the user doesn’t pass any old <code>uint64_t</code> to the <code>stop()</code> function worth the complexity of adding another type?</p>
+<p>I’m still a bit on the fence on this issue. Sometimes I think that having the extra types makes the interface clearer and plays an important role in preventing programmer errors. Sometimes I think it just complicates things and “hides” from the user what is actually going on. Instead of just dealing with the <code>uint64_t</code> that we know and love, the user now has to handle a plethora of mysterious types: <code>playing_sound_id_t</code>, <code>playing_particle_effect_id_t</code>, <code>undo_scope_id_t</code>, <code>object_id_t</code>, <code>entity_id_t</code>, etc. But I don’t know. What do you think?</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210506194857/https://twitter.com/share?text=Localization%20in%20The%20Machinery%e2%80%99s%20UI - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2flocalization-in-the-machinerys-ui%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210506194857/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2flocalization-in-the-machinerys-ui%2f&amp;description=Localization%20in%20The%20Machinery%e2%80%99s%20UI" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/vasa/" class="text-decoration-none"><img src="../../images/vasa.jpg" class="card-img-top" alt="Vasa"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/vasa/">Vasa</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-11-21T00:00:00Z">
+                      21 Nov 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>If you ever find yourself in Stockholm, go check out the <a href="http://web.archive.org/web/20210506194857/https://www.vasamuseet.se/en">Vasa Museum</a>. Guidebooks, other tourists, and even locals will …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/vasa/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">6 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/the-story-behind-the-truth-designing-a-data-model/" class="text-decoration-none"><img src="../../images/the-bitsquid-data-model.jpg" class="card-img-top" alt="The Story behind The Truth: Designing a Data Model"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-11-07T00:00:00Z">
+                      7 Nov 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I’ve <a href=" ../../post/multi-threading-the-truth/">talked a little bit before</a> about <em>The Truth</em> — the system we use for representing data in <em>The Machinery</em>. But I …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-story-behind-the-truth-designing-a-data-model/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">16 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/ecs-and-rendering/" class="text-decoration-none"><img src="../../images/ecs-2.png" class="card-img-top" alt="Entity-Component-Systems and Rendering"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/ecs-and-rendering/">Entity-Component-Systems and Rendering</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-10-23T00:00:00Z">
+                      23 Oct 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Scenes in The Machinery are built using an
+<a href=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/">Entity-Component-System</a>
+(ECS), where components are written as plugins. This …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/ecs-and-rendering/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/localization-in-the-machinerys-ui/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210506194857/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210506194857/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210506194857/https://ourmachinery.com/cdn-cgi/l/email-protection#c3b3aaada483acb6b1aea2a0abaaada6b1baeda0acae" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021</p>
+    </div>
+</footer>
+<script data-cfasync="false" src="http://web.archive.org/web/20210506194857js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (async ()=>{
+        initLogin();
+        let user = await backend.getUserProfile(localStorage.sessionToken);
+        var elements = document.querySelectorAll('.om-gravatar');
+        elements.forEach(e=>{
+            if(user.ok){
+                e.classList.remove("d-none");
+                e.setAttribute("src","http://web.archive.org/web/20210506194857/https://www.gravatar.com/avatar/"+md5(user.email)) 
+            }
+        });
+    })();
+</script>
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:48:57 May 06, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:53 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 1292.21
+  exclusion.robots: 0.236
+  exclusion.robots.policy: 0.218
+  RedisCDXSource: 124.589
+  esindex: 0.008
+  LoadShardBlock: 1150.871 (3)
+  PetaboxLoader3.datanode: 185.011 (5)
+  CDXLines.iter: 13.474 (3)
+  load_resource: 2039.646
+  PetaboxLoader3.resolve: 1917.484
+  loaddict: 107.426
+-->

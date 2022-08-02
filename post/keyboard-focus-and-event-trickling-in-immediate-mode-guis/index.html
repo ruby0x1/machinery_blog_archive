@@ -1,0 +1,738 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Thoughts on how to handle keyboard focus in immediate mode GUIS"/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/keyboard-focus.gif"/>
+  
+  <meta name="twitter:title" content="Keyboard Focus and Event Trickling in Immediate Mode GUIs">
+  <meta name="twitter:description" content="Thoughts on how to handle keyboard focus in immediate mode GUIS"/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Keyboard Focus and Event Trickling in Immediate Mode GUIs · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/"/>
+  
+  <meta property="og:image" content="../../images/keyboard-focus.gif"/>
+  
+  
+  <meta property="og:description" content="Thoughts on how to handle keyboard focus in immediate mode GUIS"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-09-25T00:00:00Z"/>
+  
+
+  <title>Keyboard Focus and Event Trickling in Immediate Mode GUIs &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210712203502/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210712203502\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210712203502\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Keyboard Focus and Event Trickling in Immediate Mode GUIs",
+    "name": "Keyboard Focus and Event Trickling in Immediate Mode GUIs",
+    "wordCount":  2356 ,
+    "timeRequired": "PT12M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/",
+    "datePublished": "2017-09-25T00:00Z",
+    "dateModified": "2017-09-25T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210712203502/https://ourmachinery.com/keyboard-focus.gif"
+    },
+    
+    
+    "description": "Thoughts on how to handle keyboard focus in immediate mode GUIS"
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210712203502/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210712203502/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Keyboard Focus and Event Trickling in Immediate Mode GUIs</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-09-25T00:00:00Z">
+          Sep 25, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>One thing I haven&rsquo;t seen addressed a lot in writings about immediate mode GUIs (IMGUIs) is keyboard focus and event trickling. Probably because it can be a tricky subject, and if you are just making a simple UI you can get away with not supporting it.</p>
+<p>What do I mean by event trickling?</p>
+<p>In a &ldquo;normal&rdquo; retained mode GUI (RMGUI) when you press a key on the keyboard, some control which has <em>input focus</em> first gets a chance to respond to the event. If the control doesn&rsquo;t handle the event, it gets passed to the controls <em>owner</em>, then to the owner&rsquo;s owner, and so on.</p>
+<p>As an example, suppose the focus is on a regular text box. If the user presses <code>A</code>, the text box takes the event and adds an <code>a</code> to the text. However, if the user presses <code>PgDn</code>, the control doesn&rsquo;t handle it (assuming it&rsquo;s a single line text box) and it gets passed to the owner, which may be a scrollable pane. The scrollable pane swallows the <code>PgDn</code> event and scrolls the pane. A <code>Ctrl+O</code> key press makes it all the way to the application window (the root owner), where it gets processed as the <code>Open...</code> menu accelerator.</p>
+<p>In UI parlance, the text box is called the <em>First Responder</em> and the sequence of owners that get to look at the event next is called the <em>Responder Chain</em>.</p>
+<p>Most UI texts talks about generic <em>events</em> travelling up the responder chain, but that seems to be an unnecessary abstraction to me. We already have a good solution for mouse interaction in our IMGUIs, which means the only thing we need the responder chain for is key presses. So instead of thinking of some generic events, we can just assume that we are dealing with key presses.</p>
+<p>Side note: Some UI systems allow user-defined events to travel the responder chain. In such a system a <code>Ctrl+V</code> event might travel all the way up to the top responder, which translates that to a user defined <code>Paste</code> event and then sends that event <em>back</em> to the first responder to travel all the way up the responder chain again. There are two points to this. First, it&rsquo;s nice to do the accelerator resolution in a single place, especially if you want to support things like user defined keyboard mappings. But more importantly, <code>Paste</code> is a command that has different meanings depending on context. What it should do depends on what has focus, and the simplest way of dealing with that is to send it through the responder chain.</p>
+<p>For this post, I&rsquo;ll ignore user defined events, but once we have a good solution for keyboard input, it is not complicated to add support for them. (You could just think of them as special keys.)</p>
+<p>The RMGUI <em>responder chain</em> is deeply steeped in object-oriented concepts. We have a bunch of permanently existing objects in different relationships to each other, sending messages back and forth. To make this work in an IMGUI we need to reformulate it without objects and messages.</p>
+<p>Specifically we have the following problems:</p>
+<ul>
+<li>How can we construct and represent a <em>responder chain</em> when we don&rsquo;t have any permanent objects?</li>
+<li>How can we handle trickling of events through the chain? The first responder will typically be drawn last. How can it &ldquo;pass&rdquo; the event to an earlier control that has already been drawn?</li>
+<li>How can we handle tabbing and shift-tabbing between controls for a fully keyboard operated UI?</li>
+</ul>
+<h2 id="constructing-a-responder-chain">Constructing a responder chain</h2>
+<p>As common in IMGUIs, we use unique IDs to identify our controls. This is used, among other things, for keeping track of which control the mouse is currently interacting with (the <em>active</em> control).</p>
+<p>Since controls are identified by IDs we can represent our responder chain as a sequence of IDs. We can use a fixed size array (32 or so) for this, since we never expect to have more than a few levels of control nesting.</p>
+<p>One way of building this array would be to let the function for each control check if it should be part of the responder chain, and in that case add itself. Something like this:</p>
+<pre><code>if (mouse_pressed &amp;&amp; in_rect(mouse_pos, my_rect))
+    add_to_responder_chain(my_id);
+</code></pre>
+<p>Since parent controls are called before child controls they would end up before their child in the array. So the <em>first responder</em> would actually be the <em>last</em> item in the array, but that doesn&rsquo;t really matter, we can just interpret the array in reverse order.</p>
+<p>This method actually works pretty well if all items in the responder chain are nested geometrically (which you typically expect). However it has two drawbacks:</p>
+<ul>
+<li>
+<p>It doesn&rsquo;t really work with overlapping controls — if two controls on the same level of the hierarchy overlap, they would both become part of the responder chain. We only want the topmost control in the responder chain.</p>
+</li>
+<li>
+<p>It is dependent on having a known mouse position when an item gets focus. If an item gets focus some other way (say by tabbing) we can&rsquo;t reconstruct the responder chain unless we do something hacky, such as simulating a click in the center of the item that got focus.</p>
+</li>
+</ul>
+<p>What we want instead is to know all the parent responders when a control function gets called, so we can do something like:</p>
+<pre><code>if (gained_focus)
+   set_responder_chain(parent_responders, my_id);
+</code></pre>
+<p>In order to know the parent responders we need to explicitly track them. We can do that with something like:</p>
+<pre><code>void owning_control(...)
+{
+     begin_responder_scope(my_id);
+     // Create child controls
+     end_responder_scope(my_id);
+}
+</code></pre>
+<p>Here, <code>begin_responder_scope()</code> pushes the control&rsquo;s ID to a stack that keeps track of the current responder scopes and <code>end_responder_scope()</code> pops it from the same stack. Just as the responder chain, this stack can be a fixed sized array, and when a control gets focus the current responder scope stack becomes the responder chain.</p>
+<p>Having to insert function calls to explicitly begin and end scopes for every control that can be a part of the responder chain is a bit annoying, but I can&rsquo;t think of any other way of making sure that we have the right responder chain.</p>
+<p>A bigger drawback is that this approach makes it harder to write generic container controls. With the need for responder scopes, we can no longer write code like this:</p>
+<pre><code>// Draws chrome for scroll view, handles interaction with scrollbars
+// and returns a scroll offset
+scrollview(..., &amp;offset);
+
+// Draws controls that should go in the scroll view
+button(..., button_pos - offset);
+checkbox(..., checkbox_pos - offset);
+</code></pre>
+<p>The problem here is that to get the scroll view in the responder chain — which we want for <code>PgUp</code>, <code>PgDn</code> events — we need calls to <code>begin_responder_scope()</code> and <code>end_responder_scope()</code>. However, we can&rsquo;t put these calls inside the <code>scrollview()</code> function because <code>end_responder_scope()</code> needs to be called after all child controls have been drawn.
+Possible ways of solving this:</p>
+<ol>
+<li>Have <code>scrollview()</code> return its ID and make the <em>caller</em> responsible for calling <code>begin/end</code> around the child controls.</li>
+<li>Make <code>scrollview()</code> take a callback function for drawing the child controls. <code>scrollview()</code> will place appropriate <code>begin/end</code> calls around the call to the callback function.</li>
+<li>Split the call to <code>scrollview()</code> into separate <code>begin_scrollview()</code> and <code>end_scrollview()</code> calls so that the right responder scope tracking functions can be added.</li>
+</ol>
+<p>Neither option is super attractive to me, but out of these I think I prefer 3. Callbacks get too verbose and between 1 and 3, 3 is one less function call and puts less responsibility on the caller.</p>
+<h2 id="trickling-events">Trickling events</h2>
+<p>Having built the responder chain we need to figure out how to send events along the chain.
+In the RMGUI this was done by having controls explicitly send events to their owners. Something like:</p>
+<ul>
+<li>Text Edit Box → Scroll View → Tab</li>
+</ul>
+<p>In our IMGUI this is tricky, because we don&rsquo;t have any permanently existing objects and the call order is the opposite of the way the messages need to go. I.e., when we are processing the call to <code>window()</code> we can&rsquo;t know whether or not there will be a later call to <code>textedit()</code> that will consume the event we are interested in.</p>
+<p>But here the solution to our previous problem comes to rescue us. With explicit scopes, the call order for the example above will in fact look something like:</p>
+<pre><code>begin_tab();
+begin_scrollview();
+textedit();
+end_scrollview();
+end_tab();
+</code></pre>
+<p>If we process keyboard events in the <code>end_*</code> functions, the items before us in the responder chain will already have had a chance to look at the events, and if they processed the events we can ignore them in the <code>end_*</code> function.</p>
+<p>So the only things we to check is if we are in the responder chain and if the controls before us processed the event or not. We could do this with a return value from the control functions, or with just a flag:</p>
+<pre><code>void end_scrollview(...)
+{
+    if (key_pressed[KEY_PGDN] &amp;&amp; in_responder_chain(my_id) &amp;&amp; !event_processed) {
+        // Handle scrolling...
+        event_processed = true;
+    }
+}
+</code></pre>
+<p>Or even simpler — just have the control functions clear out the events they &ldquo;eat&rdquo; so that later functions won&rsquo;t see them:</p>
+<pre><code>if (key_pressed[KEY_PGDN] &amp;&amp; in_responder_chain(my_id)) {
+    // Handle scrolling...
+    key_pressed[KEY_PGDN] = false;
+}
+</code></pre>
+<p>Another side note: You can get your head twisted around trying to figure out how to handle multiple events in a single IMGUI update loop. For example, what if the user pressed <code>KEY_PGDN</code> twice during the same frame? We cannot use a simple <code>key_pressed</code> array to represent that. What if there is a whole bunch of events? What if one of them is a <code>Shift-Tab</code> that will move the focus to a control that we already have processed? Etc, etc.</p>
+<p>The right solution, in my opinion, is to skip this whole mess. Instead of trying to deal with multiple events, just define that the IMGUI <code>update()</code> will only handle a single event per call. If there are more than one event in a frame, just call the <code>update()</code> function multiple times. This shouldn&rsquo;t be a performance problem, because it should only happen very rarely. Your UI should run at 60 Hz and the user shouldn&rsquo;t be able to produce events faster than that.</p>
+<h2 id="tabbing-and-shift-tabbing">Tabbing and Shift-Tabbing</h2>
+<p>For our final challenge, we want to add support for tabbing and shift-tabbing between all controls in the interface, so that the user can operate it using just the keyboard.</p>
+<p>Again, this requires us to define a relationship between the controls. For each control, we need to know which one is the previous and the next control in the tab order. Luckily, we already have a good order for tabbing — the order in which the controls are rendered. We can just reuse that.</p>
+<p>Pressing Tab should focus on the next control that can receive keyboard focus, while Shift-Tab should focus on the previous one. Two problems here. First, when rendering the previous control we don&rsquo;t <em>know</em> that we are at the &ldquo;previous control&rdquo;, since we don&rsquo;t know what will be rendered after us. Second, when rendering the current control, we don&rsquo;t know the ID of the next control, since it hasn&rsquo;t been rendered yet.</p>
+<p>But all this can be solved with judicious use of state variables in the UI. Here is one way:</p>
+<pre><code>void acquire_tab_status(uint64_t my_id)
+{
+    if (tab_focus_on_id == my_id || focus on_next) {
+        set_responder_chain(parent_responders, my_id);
+        tab_focus_on_id = 0;
+        focus_on_next = false;
+    }
+
+    if (in_focus(my_id) &amp;&amp; is_pressed(KEY_TAB)) {
+        if (is_down(KEY_SHIFT))
+            tab_focus_on_id = last_id;
+        else
+            focus_on_next = true;
+    }
+
+    last_id = my_id;
+}
+</code></pre>
+<p>This function should be called by every control function that can get focus from tabbing.
+Note that on Shift-Tab, there is a frame delay. The focus won&rsquo;t actually be set until next frame, when the previous control calls <code>acquire_tab_status()</code>. We can&rsquo;t call <code>set_responder_chain(parent_responders, last_id)</code> immediately, because we need the <code>parent_responders</code> stack from the control we are shift-tabbing <em>to</em>, not the current control.</p>
+<p>Another side note: With introducing the responder chain, we now have two ways of representing the control the user is interacting with — the <em>first responder</em>, i.e. the last item in the responder chain array, but also the traditional IMGUI <code>active</code> item, which is the item the user is using the mouse to interact with. This is kind of messy, since they have similar meanings and we typically want to change them together.</p>
+<p>I&rsquo;ve decided to keep them separate for now and use the distinction for highlighting. If a user tabs to a radio button, it becomes active <em>and</em> first responder and I draw a blue highlight around it to show that it can receive keyboard input. However, if the user just clicks on the button, I don&rsquo;t want the focus highlight, so I just make it <em>active</em> without making it <em>first responder</em>. But maybe it would be better to merge these concepts and use a separate flag for highlighting.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Working with this has reassured my beliefs that IMGUIs can be used for rich and full user experiences, just as RMGUIs.</p>
+<p>There is definitely some mental gymnastics needed to make things work. Most problems can be solved by introducing appropriate state variables and frame delaying some transitions. But thinking about how those state variables mutate can be complicated. Multiple times I&rsquo;ve been tripped up by doing things in the wrong order. For example, in the last code example above, it is important that the test for <code>focus_on_next</code> comes before the setting of <code>focus_on_next</code> or the control will just set focus to itself. This is easy enough to see in a simple example like this, but with more controls and more variables involved it is easy to mess up.</p>
+<p>I&rsquo;m wondering if maybe all mutable state should be broken out into its own struct and only applied at the end of the frame as a single transition (forcing a frame delay for all mutations). Immutable code is simpler to reason about and it would also make it possible to multithread the UI.</p>
+<p>Despite the complexities, IMGUIs still feel simpler and more straightforward than RMGUIs. There are no long complicated inheritance chains, everything hot-reloads, it is easy to put a breakpoint anywhere for debugging, and the whole UI system, including the drawing library, is only about 5 K lines.</p>
+<p>Here is a screen cap of the focus system in action:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Focus changes, keyboard navigation and input." src="../../images/keyboard-focus.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Focus changes, keyboard navigation and input.</h4>
+    </figcaption>
+  </figure>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210712203502/https://twitter.com/share?text=Keyboard%20Focus%20and%20Event%20Trickling%20in%20Immediate%20Mode%20GUIs - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fkeyboard-focus-and-event-trickling-in-immediate-mode-guis%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210712203502/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fkeyboard-focus-and-event-trickling-in-immediate-mode-guis%2f&amp;description=Keyboard%20Focus%20and%20Event%20Trickling%20in%20Immediate%20Mode%20GUIs" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/how-to-marketing-events/">How to Marketing (A 10-Part Mini Series)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-11T00:00:00Z">
+                      11 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p><em>For the next 10 blog posts, I’m going to share some of my thoughts based on my varied experiences in the world of …</em></p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/how-to-marketing-events/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">4 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/moving-away-from-git-flow/">Moving away from GitFlow</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-05T00:00:00Z">
+                      5 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In the last few months working on the source code for <em>Our Machinery</em>, I’ve found myself drifting further and further away …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/moving-away-from-git-flow/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/high-level-rendering-using-render-graphs/">High-Level Rendering Using Render Graphs</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-08-28T00:00:00Z">
+                      28 Aug 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I’ve hyped and talked a lot about data-driven rendering architectures before, where the full flow of a rendered frame is …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/high-level-rendering-using-render-graphs/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210712203502/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210712203502/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/cdn-cgi/l/email-protection#84f4edeae3c4ebf1f6e9e5e7ecedeae1f6fdaae7ebe9" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210712203502/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:35:02 Jul 12, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:29 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 862.852
+  exclusion.robots: 0.077
+  exclusion.robots.policy: 0.071
+  cdx.remote: 0.062
+  esindex: 0.009
+  LoadShardBlock: 176.711 (3)
+  PetaboxLoader3.datanode: 163.368 (5)
+  CDXLines.iter: 13.805 (3)
+  load_resource: 146.058
+  PetaboxLoader3.resolve: 108.6
+  loaddict: 33.058
+-->

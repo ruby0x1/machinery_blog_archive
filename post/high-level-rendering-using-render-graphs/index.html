@@ -1,0 +1,645 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content=""/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="High-Level Rendering Using Render Graphs">
+  <meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="High-Level Rendering Using Render Graphs · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/high-level-rendering-using-render-graphs/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-08-28T00:00:00Z"/>
+  
+
+  <title>High-Level Rendering Using Render Graphs &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220612121421/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220612121421\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220612121421\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "High-Level Rendering Using Render Graphs",
+    "name": "High-Level Rendering Using Render Graphs",
+    "wordCount":  2489 ,
+    "timeRequired": "PT12M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/high-level-rendering-using-render-graphs/",
+    "datePublished": "2017-08-28T00:00Z",
+    "dateModified": "2017-08-28T00:00Z",
+    
+    
+    "description": ""
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220612121421/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>High-Level Rendering Using Render Graphs</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-08-28T00:00:00Z">
+          Aug 28, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>I’ve hyped and talked a lot about data-driven rendering architectures before, where the full flow of a rendered frame is defined in some kind of human readable data-format (see: <a href="http://web.archive.org/web/20220612121421/https://bitsquid.blogspot.se/2017/03/stingray-renderer-walkthrough-7-data.html">“Stingray Renderer Walkthrough #7: Data-driven rendering”</a> for an overview how this worked in Bitsquid/Stingray).</p>
+<p>In my opinion one of the main benefits is the flexibility it gives developers to easily tweak and adjust the rendering pipe to better suit their projects and target platforms, as well as how accessible and encouraging it becomes to experiment with new rendering techniques. Tweak the configuration file, hot-reload it and get instant visual feedback. Rinse and repeat. Having a short iteration cycle in any creative process is golden, and is just as important for programmers as it is for artists.</p>
+<p>Over the last five years a lot has happened within real-time rendering that really challenges the level of configurability required from a modern engine; here are a few examples:</p>
+<ul>
+<li>
+<p>Introduction of asynchronous compute and new graphic APIs that supports explicit multi-GPU programming. This forces us away from thinking about graphics workloads as something that can be scheduled serially through a single command queue.</p>
+</li>
+<li>
+<p>Insane hardware scalability requirements. From phones to high-end PCs with multiple GPUs, from 720p to 4K HDR, from mono- to low-latency stereo-rendering (for XR).</p>
+</li>
+<li>
+<p>Increased interest in new high-level pipeline algorithms that drastically change how the final rendered frame is built, e.g: forward and clustered techniques, GPU-based scene traversal and culling systems, etc.</p>
+</li>
+<li>
+<p>New types of none-game content. Up until recently it was mainly the games industry that had an interest in high-fidelity real-time rendering. Today there are a lot of industries interested, but often with the perception that it will be trivial to get their (usually highly unoptimized) content rendering efficiently on a broad variety of hardware. In VR&hellip; Looking photorealistic&hellip; <em>Automagically!</em></p>
+</li>
+</ul>
+<p>And while having a data-driven rendering architecture can help tremendously to combat at least some of these challenges it still boils down to a lot of hard work.</p>
+<p>I’m currently experimenting with a new high-level rendering API for The Machinery that I call <em>Render Graphs</em> which I hope will simplify authoring of very complicated rendering pipelines by providing high modularity, resource management and some kind of sensible semi-automatic multi-GPU/async compute scheduling. It builds on top of our platform agnostic rendering API that I blogged about in early May: <a href=" ../../post/a-modern-rendering-architecture/">&ldquo;A Modern Rendering Architecture”</a>, and the core idea is heavily inspired by Yuriy O’Donnell’s excellent GDC 2017 presentation: <a href="http://web.archive.org/web/20220612121421/https://www.ea.com/frostbite/news/framegraph-extensible-rendering-architecture-in-frostbite">“FrameGraph: Extensible Rendering Architecture In Frostbite”</a>.</p>
+<p>In today’s post I will do a high-level pitch of this system. While I have most of the API in place today I still haven’t reached a point where I feel comfortable that it all makes sense. Later on when the system has matured a bit and been battle tested I will follow up with a more in-depth post on the actual implementation details.</p>
+<h2 id="render-graphs">Render Graphs</h2>
+<p>I opted to use the name “Render Graph” instead of mimicking Frostbite’s terminology “Frame Graph” as I imagine we will execute multiple of these graphs within a frame. I anticipate most stuff that relates to any kind of graphics workload (e.g., cubemap convolutions, procedural scattering of objects, various paint tools, etc.) will execute as Render Graphs. The name “Frame Graph” feels more like a “global” concept, something that runs once per frame. Most of the core concepts are the very similar though.</p>
+<p>The system is built around three main building blocks: <em>Passes, Modules</em> and the <em>Graph Builder.</em> I will walk you through them one by one.</p>
+<h3 id="passes">Passes</h3>
+<p>The user authors <em>Render Graph Passes,</em> a pass implements two functions:</p>
+<pre><code>struct tm_render_graph_pass_api
+{
+    void (*setup_pass)(void *inst,
+        struct tm_render_graph_builder_o *graph_builder);
+    void (*execute_pass)(void *inst, uint64_t sort_key,
+        struct tm_renderer_command_buffer_i *commands,
+        struct tm_render_graph_o *graph);
+};
+</code></pre>
+<p><strong>Setup pass</strong></p>
+<p>In <code>setup_pass()</code> the user defines named resources it wants to <em>create</em>, <em>read</em> from and <em>write</em> to. For <em>reads</em> the user specifies the resource and which shader stages the resource will be accessed from. For <em>writes</em> the user specifies the resource, if it will be bound as a render target or a UAV and if the current content of the resource matters for this pass (load, discard or clear).</p>
+<p>In addition to GPU resources the user can also <em>create</em>, <em>read</em> and <em>write</em> to CPU buffers. This allows us to encapsulate pure CPU work (such as view frustum culling or scene traversal) within the same graph. By implicitly guaranteeing that <code>execute_pass()</code> won’t touch any CPU data not listed for <em>reads/writes</em> during the <code>setup_pass()</code> we can later use the <em>read/write</em> dependency information to automatically derive scheduling for parallel execution of the render passes. More on this later.</p>
+<p><strong>Multi-queue scheduling</strong></p>
+<p>In <code>setup_pass()</code> the user also specifies if the pass desires to run on the async-compute queue (if present). This is indicated by setting a boolean to true, by doing so the user guarantees that the pass will only do compute work.</p>
+<p>On top of that the user can also specify if the pass feels comfortable getting its GPU workload scheduled to be executed on another GPU. Note that doing so requires copying all resources that the pass <em>reads</em> from and <em>writes</em> to to the executing GPU, i.e there might be a significant overhead in just shuffling data between GPUs.</p>
+<p>Theoretically we could expose a hooking mechanism that can flip both the async compute bool as well as the <code>mGPU</code> scheduling flag from the outside world and run experiments to determine the optimal scheduling of passes. While that might not be what you want to ship to end customers I think it could be very cool during development.</p>
+<p><strong>Scheduling the pass</strong></p>
+<p>The last thing the user has to do before exiting <code>setup_pass()</code> is adding itself to the <em>Graph Builder</em>. By keeping this as an explicit step we get support for doing lazy opt-out of a pass if it determines it doesn’t need to run during <code>setup_pass()</code>.</p>
+<p>When registering the pass to the <em>Graph Builder</em> the user can also choose to expose the pass as a rendering <em>layer</em> to the material system. This allows shaders assigned to various scene primitives (meshes, vfxs, etc.) to be targeted to render into the render targets bound by the pass.</p>
+<p><strong>Execute Pass</strong></p>
+<p>In <code>execute_pass()</code> the user creates any graphics commands needed and adds them to the <code>tm_render_command_buffer_i</code>. As discussed in <a href=" ../../post/a-modern-rendering-architecture/">&ldquo;A Modern Rendering Architecture”</a> this command buffer holds graphic API agnostic rendering commands paired with a sort key. Final ordering of the graphics API commands is not determined until all <code>tm_render_command_buffer_i</code> have been collected and their sort key arrays have been merged and sorted.</p>
+<p>This separation completely decouples the execution order of <code>execute_pass()</code> from the scheduling of GPU commands. This is a nice and powerful feature of the render graph system as CPU and GPU workloads can be expressed together in a self-contained way but still become scheduled completely differently.</p>
+<p>Before entering <code>execute_pass()</code> any resource barriers, synchronization primitives, and resource copies across different GPUs have been taken care of by the system. The user does not have to worry about that and can focus on more fun high-level stuff.</p>
+<h3 id="modules-and-sub-modules">Modules and Sub-Modules</h3>
+<p>One <em>Pass</em> in itself is usually not enough to express something interesting. Typically you want to chain multiple passes together (like e.g multiple full screen passes). The way to do that is to add multiple passes to a <em>Render Graph Module.</em></p>
+<p>The order you add passes to a <em>Module</em> acts as the main ordering mechanism for the final GPU command submission order. A pass added prior to another pass will typically get a lower sort key passed to its <code>execute_pass()</code> function. There are exception to this though, if the user adds passes that depends on reading data from passes not already added to the <em>Module</em> the passes will get reordered by the <em>Graph Builder.</em></p>
+<p><em>Modules</em> can also be embedded into each other. Either by simply appending a <em>Module</em> to another <em>Module</em> in which case the passes in the appended module will behave as if they were added individually to the destination <em>Module.</em> Or by inserting a module to be executed at a particular e<em>xtension point</em>.</p>
+<p><em>Extension points</em> are added in the same way as passes but are simply named labels where other <em>Modules</em> can be appended. This provides a way for the author of a <em>Module</em> to expose carefully scheduled points where users can choose to inject custom GPU workloads as a form of extension mechanism to the <em>Module.</em> The extension in itself is simply another <em>Module (w</em>hich in turn can expose more extension points, and so on).</p>
+<p><strong>Sub-Modules</strong></p>
+<p>When rendering regular scene geometry such as meshes there are occasions where you need to <em>read</em> from the same render target you are currently <em>writing</em> to. A typical example of this is for doing refraction-style effects. In those scenarios you need to copy the whole or a portion of the currently bound render target to an another buffer that can be bound as input to the pixel shader. But how do you schedule that in a system like this?</p>
+<p>Well, you might get away with just doing this copy once as a “prepass” to the layer rendering the mesh with the refraction shader. But then you won’t be able to see multiple refracting surfaces through each other. To support that we need to ad hoc insert the copy operation right before the mesh is rendered. It is also not uncommon that a simple copy operation won’t do, nowadays people often want to support things like frosted glass which typically requires running some convolution filter after the copy operation. Things gets hairy very quickly.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Frosted glass (courtesy of Imgur" src="../../images/frosted-glass.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Frosted glass (courtesy of Imgur</h4>
+    </figcaption>
+  </figure>
+<p>So my current idea how to solve this is to support adding something I call <em>Sub-Modules.</em> Basically they are the same regular <em>Modules</em> except that they are unscheduled when the graph is executed. Instead these <em>Sub-Modules</em> can be dynamically scheduled and executed on demand by the material system. They rely on the knowledge that they are executing embedded “within” another layer (i.e a pass exposed to the material system) and therefore has all the resource state information needed for the system to inject the correct resource barriers.</p>
+<h3 id="graph-builder">Graph Builder</h3>
+<p>The final piece to the puzzle is the <em>Graph Builder.</em> Roughly speaking you could say its responsibility is to look at all dependencies between the passes in a <em>Module</em> and from that figure out the optimal execution order for them, both on the CPU and GPU.</p>
+<p>Before it can do that we need to register all passes to the <em>Graph Builder</em>. This is done by calling <code>setup_passes()</code> on the <em>Module</em> passing in the <em>Graph Builder</em> as a parameter. <code>setup_passes()</code>loops over all passes in the order they were added to the <em>Module</em> and in turn call the <code>setup_pass()</code> function for each pass. This is a serial process and the idea is that no heavy-lifting tasks should be done within <code>setup_pass()</code>, it should pretty much only list the pass’s read/write resource dependencies and potentially register a few new resources for creation. As mentioned earlier, if the pass determines it wants to run it has to register itself to the <em>Graph Builder.</em> When doing so it can also be flagged to become a <em>root pass.</em> This indicates that the pass will output something that is requested from outside the render graph system and hence must never be culled, even if no other pass consumes its output.</p>
+<p>With all active passes registered we can call <code>validate_and_build()</code> on the <em>Graph Builder</em>. This will start by doing some basic sanity checking (resource name collisions and similar) and if everything looks peachy we are ready to build the graphs; one for CPU and one for GPU.</p>
+<p>First thing we do is to find all root passes and from there we follow the resource dependencies for each root pass to figure out the execution order. It is important to remember that the GPU execution order will be determined by the values of the sort keys for each rendering command the pass produces in its <code>execute_pass()</code> function. Hence we have completely decouple the CPU execution order of the passes from the GPU execution order. We do this by traversing the passes in two stages, first we look at all the read/write dependencies for the GPU and then we repeat the process again to look at the read/write dependencies for the CPU.</p>
+<p>We can from this extract a lot of useful information, such as:</p>
+<ul>
+<li>Passes that can execute in parallel on CPU.</li>
+<li>Passes that potentially can execute in parallel on GPU.
+<ul>
+<li>Automatic scheduling of these passes across one or many GPUs.</li>
+<li>Automatic scheduling of passes running async compute.</li>
+</ul>
+</li>
+<li>Life scope of transient resources (i.e resources created in <code>setup_pass()</code>).</li>
+<li>Passes that can be culled due to no other pass consuming their output.</li>
+<li>All needed resources barriers, synchronization primitives and GPU to GPU copies.</li>
+</ul>
+<p>I won’t go into how this is implemented as I’m still in the process of testing out a few different approaches trying to reach something that feels clean and simple. I will share more details when I’ve settled on something that I like. In the mean time I encourage you to go check out Hans-Kristian’s recent blog post about <a href="http://web.archive.org/web/20220612121421/http://themaister.net/blog/2017/08/15/render-graphs-and-vulkan-a-deep-dive/">“Render graphs and Vulkan — a deep dive”</a>. Hans describes a similar system and while our graphics API abstraction level is very different it still covers a lot of highly related and relevant stuff (pass reordering among other things).</p>
+<p><strong>Execute</strong></p>
+<p>The final step is to run <code>execute()</code> on the <em>Graph Builder.</em> This will run <code>execute_pass()</code> on each pass using the job system trying to go as wide as possible. Each pass can in turn spawn more jobs and creating more <code>tm_render_command_buffer_i</code> as needed. Typical use case for going wide within a pass is for more heavy-weight tasks such as view frustum culling or traversing renderable objects that survived view frustum culling.</p>
+<h1 id="wrap-up">Wrap up</h1>
+<p>That’s it. I hope that a system like this will make it easier to build advanced, flexible and scalable rendering pipelines. Using <em>Modules</em> it becomes simple to piece together advanced rendering pipes in a “Lego”-style fashion.</p>
+<p>But how is this data-driven you say? Well, while the system described above is a pure C API for setting up a Render Graph there’s nothing stopping us from adding a data-driven layer on top of it. With that said, I’m not sure it is a smart thing to do as we would then loose the ability to describe more complex behaviors (such as e.g. loops) in a clean way. We can still achieve really fast iteration times by building our rendering pipe as a plugin, and since we have a really nice plugin architecture that supports hot-reloading (see Niklas’s post: <a href=" ../../post/dll-hot-reloading-in-theory-and-practice/">&ldquo;DLL Hot Reloading in Theory and Practice”</a>) this gives us the same benefits as a data-driven architecture but much more powerful.</p>
+<p>As a proof of concept I’m building a somewhat advanced rendering pipe in parallel with the development of the <em>Render Graphs</em> system. As soon this work has matured a bit I will share more in-depth implementation details.</p>
+<p>Stay tuned.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220612121421/https://twitter.com/share?text=High-Level%20Rendering%20Using%20Render%20Graphs - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fhigh-level-rendering-using-render-graphs%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220612121421/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fhigh-level-rendering-using-render-graphs%2f&amp;description=High-Level%20Rendering%20Using%20Render%20Graphs" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/dll-hot-reloading-in-theory-and-practice/">DLL Hot Reloading in Theory and Practice</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-08-14T00:00:00Z">
+                      14 Aug 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I have <a href=" ../../post/little-machines-working-together-part-2/">before</a> about how our plugin system enables in-place hot-reloading of plugin DLLs. Here is a little screen …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/dll-hot-reloading-in-theory-and-practice/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/dpi-aware-imgui/">DPI-aware IMGUI</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-08-07T00:00:00Z">
+                      7 Aug 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Today’s topic might not be the most exotic, but nonetheless it is something that is very important to get right if …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/dpi-aware-imgui/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/interviewing-part-2-the-interviewer/">Interviewing Part 2: The Interviewer</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-07-24T00:00:00Z">
+                      24 Jul 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>After looking at the interview process from the perspective of the interviewee, this post is going to look at things …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/interviewing-part-2-the-interviewer/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/high-level-rendering-using-render-graphs/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220612121421/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220612121421/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220612121421/https://ourmachinery.com/cdn-cgi/l/email-protection#5c2c35323b1c33292e313d3f343532392e25723f3331" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 12:14:21 Jun 12, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:33 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 678.02
+  exclusion.robots: 0.115
+  exclusion.robots.policy: 0.108
+  RedisCDXSource: 0.639
+  esindex: 0.009
+  LoadShardBlock: 654.462 (3)
+  PetaboxLoader3.datanode: 572.189 (4)
+  CDXLines.iter: 17.509 (3)
+  PetaboxLoader3.resolve: 310.53 (2)
+  load_resource: 343.713
+-->

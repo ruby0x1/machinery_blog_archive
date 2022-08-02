@@ -1,0 +1,1086 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Shows how we can add an index to bulk data to accelerate queries."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/ds2-index.jpg"/>
+  
+  <meta name="twitter:title" content="Data Structures Part 2: Indices">
+  <meta name="twitter:description" content="Shows how we can add an index to bulk data to accelerate queries."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Data Structures Part 2: Indices · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/data-structures-part-2-indices/"/>
+  
+  <meta property="og:image" content="../../images/ds2-index.jpg"/>
+  
+  
+  <meta property="og:description" content="Shows how we can add an index to bulk data to accelerate queries."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2019-08-14T00:00:00Z"/>
+  
+
+  <title>Data Structures Part 2: Indices &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220314011542/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220314011542\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220314011542\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Data Structures Part 2: Indices",
+    "name": "Data Structures Part 2: Indices",
+    "wordCount":  4578 ,
+    "timeRequired": "PT22M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/data-structures-part-2-indices/",
+    "datePublished": "2019-08-14T00:00Z",
+    "dateModified": "2019-08-14T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220314011542/https://ourmachinery.com/ds2-index.jpg"
+    },
+    
+    
+    "description": "Shows how we can add an index to bulk data to accelerate queries."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220314011542/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Data Structures Part 2: Indices</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2019-08-14T00:00:00Z">
+          Aug 14, 2019
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In my <a href=" ../../post/data-structures-part-1-bulk-data/">last post</a>, I concluded that
+the best way to store <em>most</em> things is to use a large unsorted array. I sneakily avoided mentioning
+that there is one thing that large unsorted arrays are <em>exceptionally bad</em> at &ndash; finding things!
+But maybe emphasizing that it was a <em>large</em>, <em>unsorted</em> array gave you a hint?</p>
+<p>In this post, I&rsquo;ll try to remedy that.</p>
+<h2 id="finding-things">Finding things</h2>
+<p>&ldquo;Finding things&rdquo; is pretty vague, but it might mean things like:</p>
+<ul>
+<li>
+<p>Find all the sounds that are playing from a certain sound source (so that we can move the sounds
+when the sound source moves).</p>
+</li>
+<li>
+<p>Find all the sounds that are playing a certain sound resource (so that we can stop them before
+unloading the resource).</p>
+</li>
+<li>
+<p>Find all effects that are being applied to a certain playing sound (so that we can cancel the
+effects when the sound stops playing).</p>
+</li>
+<li>
+<p>Etc.</p>
+</li>
+</ul>
+<p>In traditional object-oriented design, we typically do this by keeping explicit lists. I.e., a sound
+source may have an <code>std::vector</code> of all the sounds playing from it. A playing sound may have an
+<code>std::vector</code> of all the effects being applied to it, etc, etc.</p>
+<p>This can work, but it spreads the data out in lots and lots of small arrays. As I wrote in the previous
+post, I prefer to have a few large arrays that hold all the data in the system.</p>
+<p>Let&rsquo;s look at a concrete example that we&rsquo;ll use throughout the rest of this article.</p>
+<p>Suppose we want a system that implements the <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Observer_pattern">observer
+pattern</a> for entities. The system lets an entity
+&ldquo;subscribe&rdquo; to events from one or more other entities. When an entity is modified, all the
+subscribers are notified. We call the subscribers &ldquo;observers&rdquo; and we call the entities they are
+watching &ldquo;observeds&rdquo;.</p>
+<p>Again, the traditional object-oriented approach would be to let the observed entity have a list of
+all the entities that are observing it. When the entity is changed it goes through this list to
+notify them.  In addition to creating lots of small arrays, this also has another problem &ndash; when an
+object dies, how does it get removed from the lists of all the objects it is observing? Maybe we can
+use weak references, so we don&rsquo;t <em>have to</em> remove it, but that will still waste memory. Or maybe all
+the <em>observing</em> objects also need a list, a list of all the objects they are <em>observing</em>. It&rsquo;s
+starting to get messy.</p>
+<p>What would the data-oriented approach be? Well, we want everything in a big array, so why not simply
+make a big array of &ldquo;observations&rdquo;, where each observation connects an observed entity to its
+observer entity:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    entity_t <span style="color:#f92672">*</span>observed;
+    entity_t <span style="color:#f92672">*</span>observer;
+} observation_t;
+
+uint32_t num_observations;
+observation_t <span style="color:#f92672">*</span>observations;
+</code></pre></div><p>I&rsquo;ve shown the data as an array here, just because it is simplest, but we could use any of the
+methods described in the previous post for storing bulk data. I assume too that whatever method we
+use for storing entities gives us permanent pointers, so we can use an <code>entity_t *</code> to permanently
+refer to an entity. If that is not the case, we would have to use something else that would give us
+a permanent reference instead, such as an index or an ID.</p>
+<p>An entity might appear several times in the <code>observations</code> array if it is watching multiple
+entities, or being watched by multiple entities. Note that this way of organizing the data is a lot
+more similar to a <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Relational_database">relational database</a> than to
+a traditional object-oriented model.</p>
+<p>Assuming this data layout, what are the kind of &ldquo;searches&rdquo; we will need to do? Two typical
+situations are:</p>
+<ul>
+<li>
+<p>Entity <em>A</em> has changed, notify all its observers:<br>
+<code>SELECT * WHERE (observed == A)</code></p>
+</li>
+<li>
+<p>Entity <em>B</em> has been deleted, remove it from the system:<br>
+<code>SELECT * WHERE (observed == B OR observer == B)</code></p>
+</li>
+</ul>
+<p>The most straightforward way of resolving queries like these would be with a brute force loop:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">for</span> (observation_t <span style="color:#f92672">*</span>o <span style="color:#f92672">=</span> observations; o <span style="color:#f92672">!=</span> observations <span style="color:#f92672">+</span> num_observations; <span style="color:#f92672">++</span>o) {
+    <span style="color:#66d9ef">if</span> (o<span style="color:#f92672">-&gt;</span>observed <span style="color:#f92672">==</span> a) {
+        <span style="color:#75715e">// notify(...)
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>The cost here is <em>O(n)</em> in the number of observations. This might be alright for very small
+datasets, but we want to find something better.</p>
+<p>To improve the performance, we can add additional data structures that let us find things and
+resolve queries faster. Since this already looks a lot like a database, we will borrow from that
+terminology and call these accelerating data structures
+<a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Database_index">indices</a>.</p>
+<h2 id="indices">Indices</h2>
+<p>A <em>database index</em> is usually a list of references to database records, sorted by one of the fields.
+This can be used to answer range queries (<code>salary &gt; 50 AND salary &lt; 100</code>) or find items using binary
+search (which is <em>O(log n)</em>).</p>
+<p>In game development, we usually don&rsquo;t need to perform range queries. Typically, we&rsquo;re only looking
+for items with a specific value. For example, we may look for all observations with <code>observed == A</code>.
+This is nice because it means we can use hash tables instead of sorted arrays as our lookup structure
+and accelerate the performance from <em>O(log n) → O(1)</em>.</p>
+<p>(As an exception, range queries on positions are often useful, e.g., &ldquo;find all enemies within
+50 m of the player&rdquo;. I&rsquo;ll talk a little bit later about how those can be implemented.)</p>
+<p>So basically, what we want from our acceleration index, is that given an entity <code>A</code> it should
+quickly give us a list of all the observations where <code>observed == A</code>. I.e., something like this:</p>
+<ul>
+<li>A → (o1, o2, o3, &hellip;)</li>
+</ul>
+<p>Before we get into this, let&rsquo;s start with a simpler case. Let&rsquo;s assume, just for the sake of
+simplicity, that, for the property we&rsquo;re interested in, all the objects have unique values, so
+our query will at most return a single item:</p>
+<ul>
+<li>A → o1</li>
+</ul>
+<p>We will go back in a little bit and look at the more complex case, once we&rsquo;ve sorted this out.</p>
+<p>If we only need a single value, all we need is a lookup table from one object to another. We
+can do this with a regular hash table. It could look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">chash32_t observation_by_observed;
+
+observation_t <span style="color:#f92672">*</span><span style="color:#a6e22e">find_by_observed</span>(entity_t <span style="color:#f92672">*</span>e)
+{
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)e;
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>observation_by_observed, key, UINT32_MAX);
+    <span style="color:#66d9ef">return</span> idx <span style="color:#f92672">==</span> UINT32_MAX <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> observations <span style="color:#f92672">+</span> idx;
+}
+</code></pre></div><p>Here, <code>observation_by_observed</code> is our <em>index</em>. It stores a lookup from an <em>entity</em>
+(represented by a pointer) to the <em>observation</em> that has that entity in its <code>observed</code> field
+(represented by an index into the <code>observations</code> array).</p>
+<p>It&rsquo;s a little bit arbitrary that we&rsquo;re referencing entities by pointers and observations by indices
+in this example, we could just as easily do it the other way around &ndash; assuming we are using the bulk
+data strategy laid out in the previous post, where both object pointers and indices are permanent.</p>
+<p>Note that the way I&rsquo;m using hash tables is a bit unusual. Typically, in C++, you would define a
+hash table as a template <code>hash&lt;K,V&gt;</code> and the hash table would call an overloaded <code>hash()</code> function
+on the key objects <code>K</code> to compute numerical keys.</p>
+<p>In my approach, the hash table does not use templates, but instead just performs a lookup from
+<code>uint64_t</code> → <code>uint32_t</code>. If we need to hash the key, we do that <em>before</em> we perform the lookup.
+And instead of storing our values directly in the hash table, we just store indices into an array of
+values. Since we like to store or our bulk data in big arrays anyway, this works out perfectly. I&rsquo;ve
+written a bit more about this approach
+<a href=" ../../post/minimalist-container-library-in-c-part-1/">before</a>.</p>
+<p>Note that in the entity case, we don&rsquo;t need to hash the key, we can just cast the pointer (or index)
+directly to an <code>uint64_t</code>. This gives us a unique <code>uint64_t</code> value that we can use as our hash
+table key.</p>
+<p>If the property we want to use for our lookup key doesn&rsquo;t fit in an <code>uint64_t</code>, we have to hash it.
+Say we want to look up players by name, for example. It could look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> {
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>} player_t;
+
+uint32_t num_players;
+player_t <span style="color:#f92672">*</span>players;
+
+chash32_t player_by_name;
+
+player_t <span style="color:#f92672">*</span><span style="color:#a6e22e">find_by_name</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name)
+{
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> murmurhash_cstring(name);
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>player_by_name, key, UINT32_MAX);
+    <span style="color:#66d9ef">return</span> idx <span style="color:#f92672">==</span> UINT32_MAX <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> players <span style="color:#f92672">+</span> idx;
+}
+</code></pre></div><p>For indices to be useful, they must be kept up to date. This means that whenever items are added to,
+removed from, or modified in the array, the index must be updated accordingly so that it still
+reflects the contents of the array. The index is thus a tradeoff &ndash; we spend a little more time when
+modifying the array so that we can spend less time when searching the array. Usually, this pays
+off, because it only adds a small constant <em>O(1)</em> cost to modifications and it greatly accelerates
+the searches <em>O(n) → O(1)</em>.</p>
+<p>Updating the index could look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add_observation</span>(<span style="color:#66d9ef">const</span> observation_t <span style="color:#f92672">*</span>o)
+{
+    <span style="color:#75715e">// Commit VM memory if needed, see previous post...
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> num_observations<span style="color:#f92672">++</span>;
+    observations[idx] <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>o;
+
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)o<span style="color:#f92672">-&gt;</span>observed;
+    chash32_add(<span style="color:#f92672">&amp;</span>observation_by_observed, key, idx);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove_observation</span>(<span style="color:#66d9ef">const</span> observation_t <span style="color:#f92672">*</span>o)
+{
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)o<span style="color:#f92672">-&gt;</span>observed;
+    chash32_remove(<span style="color:#f92672">&amp;</span>observation_by_observed, key);
+
+    <span style="color:#75715e">// Add o to free list, see previous post...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>If you are using the method I recommended in the <a href=" ../../post/data-structures-part-1-bulk-data/">previous
+post</a> to store your bulk data
+arrays, indices are permanent, so they&rsquo;re safe to use as both keys and values in the hash table.</p>
+<p>If you are using the &ldquo;tightly packed&rdquo; approach instead, the indices are <em>not</em> permanent, so you must
+be very careful with how you use them. In this case, I would recommend storing IDs instead, and
+using the <em>ID → index</em> lookup table to resolve the ID to an actual object index, after the hash
+table lookup.</p>
+<p>You <em>could</em> still store indices in your hash table in this case, but you would have to make sure
+that whenever you move items to pack the bulk data array, you update their indices in the hash
+table to reflect the move. This would save you the <em>ID → index</em> indirection step when searching,
+but I&rsquo;m not sure it&rsquo;s worth the extra complexity. Working with indices that can be invalidated at
+any point if an object is deleted can be very error-prone.</p>
+<h2 id="finding-multiple-items">Finding multiple items</h2>
+<p>Alright, now that we have solved the problem of finding <em>single</em> items, let&rsquo;s go back to the
+slightly more complicated case, where we need a map from a key to a <em>set</em> of values:</p>
+<ul>
+<li>A → (o1, o2, o3, &hellip;)</li>
+</ul>
+<p>On the face of it, this doesn&rsquo;t seem that different. Can&rsquo;t we just do what we did before, but let
+the hash table map to a set of values instead of to a single value?</p>
+<p>If we were using STL, maybe we could use something like <code>std::map&lt;entity_t *, std::vector&lt;uint32_t&gt; &gt;</code>? With my <code>chash32_t</code>, maybe the hashtable could map to an index into an
+array of arrays? Each array would store references to all the observations for one particular key
+<code>A</code>. Let&rsquo;s try it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">chash32_t observations_by_observed;
+std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>uint32_t<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> observations_by_observed_arr;
+
+<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>uint32_t<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>find_by_observed(entity_t <span style="color:#f92672">*</span>e)
+{
+    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>uint32_t<span style="color:#f92672">&gt;</span> empty;
+
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)e;
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>observations_by_observed, key, UINT32_MAX);
+    <span style="color:#66d9ef">return</span> idx <span style="color:#f92672">==</span> UINT32_MAX <span style="color:#f92672">?</span> empty : observations_by_observed_arr[idx] ;
+}
+</code></pre></div><p>I don&rsquo;t know about you, but this looks pretty bad to me. I program exclusively in C these days,
+so I don&rsquo;t use STL any more, but even back when I did, I was never a fan of nested STL containers,
+such as <code>std::map&lt;entity_t *, std::vector&lt;uint32_t&gt;</code> or  <code>std::vector&lt; std::vector&lt;uint32_t&gt; &gt;</code>.</p>
+<p>My main problem with STL is that it is kind of a <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Leaky_abstraction">leaky
+abstraction</a>. STL makes it hard to see what
+is going on beneath the surface, i.e., how the data is stored and accessed (if you&rsquo;ve tried
+debugging STL containers you know what I&rsquo;m talking about). On the other hand, you kind of <em>have to</em>
+know what&rsquo;s going on beneath the surface, or you will undoubtedly mess up and write some really
+inefficient code (such as erasing elements in the middle of an <code>std::vector</code>).</p>
+<p>Nested STL containers exacerbate this problem. When you have a vector inside a map inside a vector,
+it is even harder to know what&rsquo;s going on.</p>
+<p>Another issue with this approach is that we again get lots and lots of tiny arrays. As I said
+before, I prefer having data stored in a few large bulk data arrays rather than spread out all over
+the place in thousands of tiny arrays. It is nicer to the allocator, friendlier to the cache,
+reduces fragmentation and lets you get big chunks of memory straight from the VM. But the main
+advantage is that it is easier to <em>reason</em> about. It makes it a lot easier get a handle on how much
+memory you are using, how you can optimize it, how access patterns affect the performance, what
+SIMD could do to improve things, etc, etc.</p>
+<p>I&rsquo;ll revisit this topic in my next post and see if we can find better ways of storing lots of
+small arrays, but for now, let&rsquo;s try to find a better way to represent our one-to-many index.</p>
+<p>Another approach would be to use an <code>std::unordered_multimap&lt;K,V&gt;</code>. This is a hash-based STL
+container that allows lookups from a key to a set of values, which seems to be just what the doctor
+ordered. Note that <code>std::multimap</code> is not what we want &ndash; it&rsquo;s search-based, not hash-based, so
+lookups are <em>O(log n)</em>. In fact, you should probably almost always be using one of the
+<code>std::unordered_*</code> data structures instead of a regular <code>map</code>, <code>set</code>, <code>multimap</code> or <code>multiset</code>.</p>
+<p><code>std::unordered_multimap</code> is fast at looking up and inserting objects, but deleting objects
+can be expensive. In our observer example, our lookup table would look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">std<span style="color:#f92672">::</span>unordered_multimap<span style="color:#f92672">&lt;</span>entity_t <span style="color:#f92672">*</span>, observation_t <span style="color:#f92672">*&gt;</span> observation_by_observed;
+</code></pre></div><p>Now, suppose we want to <em>delete</em> a particular <code>observation_t *</code>. To do that, we also want to delete
+its entry in the <code>observation_by_observed</code> table. But, <code>std::unordered_multimap</code> doesn&rsquo;t have any
+way of looking up entries based on their <em>values</em>, we can only look up entries based on their
+<em>keys</em>. To remove an <code>observation_t *o</code>, we first have to look up <code>o-&gt;observed</code>. However, this
+will return <em>all</em> the values with that key, so we then have to search that list for the particular
+<code>observation_t *o</code> we want to remove:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">auto</span> its <span style="color:#f92672">=</span> observation_by_observed.equal_range(o<span style="color:#f92672">-&gt;</span>observed);
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> it <span style="color:#f92672">=</span> its.first; it <span style="color:#f92672">!=</span> its.second; <span style="color:#f92672">++</span>it) {
+    <span style="color:#66d9ef">if</span> (it<span style="color:#f92672">-&gt;</span>second <span style="color:#f92672">==</span> o) {
+        observation_by_observed.erase(it);
+        <span style="color:#66d9ef">break</span>;
+    }
+}
+</code></pre></div><p>This search is <em>O(m)</em>, where <em>m</em> is the number of entries in the bucket with the key <code>o-&gt;observed</code>.
+That may not seem too bad, but there are situations where it can blow up. Suppose that we have
+<em>n</em> enemies in the game that are all observing the player (so <code>o-&gt;observed</code> is identical for all
+of them). In this case, removing a single enemy is <em>O(n)</em>, so removing all of them is <em>O(n²)</em>.
+Ugh! In game development, your primary performance goal is basically to never ever hit <em>O(n²)</em>.
+<em>O(n²)</em> is bad, m&rsquo;kay!</p>
+<p>So no array of arrays, no <code>std::unordered_multimap</code> &ndash; do we have anything left in our bag of
+tricks?</p>
+<p>Remember in the <a href=" ../../post/data-structures-part-1-bulk-data/">last post</a> how we
+used a <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Free_list">free list</a> to link together the &ldquo;holes&rdquo; in the
+array for reuse, and how we could add items to and remove items from this list in <em>O(1)</em>.</p>
+<p>We can use the same basic technique to keep track of the set of items matching a certain key. All we
+have to do is to link the items in a set together using <code>next</code> pointers, just as we did for the free
+list. If we know <em>one</em> member of the set, we can now find all the other members just by walking the
+next pointers.</p>
+<p>How can we find <em>one</em> member of the set? Well, we already found a good solution for that in the last
+section of this post, our <em>A → o1</em> hash table map. So if we just combine these two ideas, we get
+the complete solution. We use the hash table to find the first item in the set and then walk the
+<code>next</code> pointers to get all the other ones.</p>
+<p>Note that to implement deletion of an arbitrary <code>observation_t *</code> efficiently, we also need <code>prev</code>
+pointers, because when we remove an item, we need to update the <code>next</code> pointer of the item before it
+in the set. And we can only do that efficiently if we have a <code>prev</code> pointer to get to that item. We
+didn&rsquo;t need this for our free list, because with the free list, we never remove items in the middle,
+we&rsquo;re always just removing the first item in the list, so there is no previous item to consider.</p>
+<p>Here&rsquo;s the data layout and the code for finding the set of items for a specific key:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    entity_t <span style="color:#f92672">*</span>observed;
+    entity_t <span style="color:#f92672">*</span>observer;
+    uint32_t prev;
+    uint32_t next;
+} observation_t;
+
+uint32_t num_observations;
+observation_t <span style="color:#f92672">*</span>observations;
+chash32_t first_observation_by_observed;
+
+observation_t <span style="color:#f92672">**</span><span style="color:#a6e22e">find_observations_by_observed</span>(entity_t <span style="color:#f92672">*</span>observed, 
+    temp_allocator_i <span style="color:#f92672">*</span>ta)
+{
+    observeration_t <span style="color:#f92672">**</span>res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)observed;
+    <span style="color:#66d9ef">const</span> uint32_t first_idx <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>first_observation_by_observed, key, 
+        UINT32_MAX);
+    <span style="color:#66d9ef">if</span> (first_idx <span style="color:#f92672">==</span> UINT32_MAX)
+        <span style="color:#66d9ef">return</span> res;
+    
+    uint32_t idx <span style="color:#f92672">=</span> first_idx;
+    <span style="color:#66d9ef">do</span> {
+        observation_t <span style="color:#f92672">*</span>o <span style="color:#f92672">=</span> observations <span style="color:#f92672">+</span> idx;
+        carray_temp_push(res, o, ta);
+        idx <span style="color:#f92672">=</span> o<span style="color:#f92672">-&gt;</span>next;
+    } <span style="color:#66d9ef">while</span> (idx <span style="color:#f92672">!=</span> first_idx);
+    <span style="color:#66d9ef">return</span> res;
+}
+</code></pre></div><p>Here I use an array allocated using temporary or &ldquo;scratch&rdquo; memory to return the items. Another
+possible approach would be to just return the first item and let the caller follow the <code>next</code>
+pointers.</p>
+<p>Just as I did with the free list, I store the items in a cyclical list, where the last item points
+back to the first. I link this better than linear lists because it makes the code more uniform with
+fewer special cases:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Index data structure." src="../../images/ds2-index.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Index data structure.</h4>
+    </figcaption>
+  </figure>
+<p>This sample code shows how adding and removing objects can work:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add_observation</span>(<span style="color:#66d9ef">const</span> observation_t <span style="color:#f92672">*</span>o)
+{
+    <span style="color:#75715e">// Commit memory as needed...
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> num_observations<span style="color:#f92672">++</span>;
+    observations[idx] <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>o;
+
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)o<span style="color:#f92672">-&gt;</span>observer;
+    <span style="color:#66d9ef">const</span> uint32_t first <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>first_observation_by_observer, key,
+        UINT32_MAX);
+    <span style="color:#66d9ef">if</span> (first <span style="color:#f92672">!=</span> UINT32_MAX) {
+        <span style="color:#66d9ef">const</span> uint32_t second <span style="color:#f92672">=</span> observations[first].next;
+        observations[idx].prev <span style="color:#f92672">=</span> first;
+        observations[idx].next <span style="color:#f92672">=</span> second;
+        observations[first].next <span style="color:#f92672">=</span> idx;
+        observations[second].prev <span style="color:#f92672">=</span> idx;
+    } <span style="color:#66d9ef">else</span> {
+        observations[idx].prev <span style="color:#f92672">=</span> idx;
+        observations[idx].next <span style="color:#f92672">=</span> idx;
+        chash32_add(<span style="color:#f92672">&amp;</span>first_observation_by_observer, key, idx);
+    }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">delete_observation</span>(<span style="color:#66d9ef">const</span> observation_t <span style="color:#f92672">*</span>o)
+{
+    <span style="color:#66d9ef">const</span> uint32_t idx <span style="color:#f92672">=</span> o <span style="color:#f92672">-</span> observations;
+    <span style="color:#66d9ef">const</span> uint32_t prev <span style="color:#f92672">=</span> o<span style="color:#f92672">-&gt;</span>prev;
+    <span style="color:#66d9ef">const</span> uint32_t next <span style="color:#f92672">=</span> o<span style="color:#f92672">-&gt;</span>next;
+    observations[prev].next <span style="color:#f92672">=</span> next;
+    observations[next].prev <span style="color:#f92672">=</span> prev;
+
+    <span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> (uint64_t)o<span style="color:#f92672">-&gt;</span>observer;
+    <span style="color:#66d9ef">const</span> uint32_t first <span style="color:#f92672">=</span> chash32_get(<span style="color:#f92672">&amp;</span>first_observation_by_observer, key);
+    <span style="color:#66d9ef">if</span> (first <span style="color:#f92672">==</span> idx) {
+        <span style="color:#66d9ef">if</span> (next <span style="color:#f92672">!=</span> idx)
+            chash32_update(<span style="color:#f92672">&amp;</span>first_observation_by_observer, key, next);
+        <span style="color:#66d9ef">else</span>
+            chash32_remove(<span style="color:#f92672">&amp;</span>first_observation_by_observer, key, idx);
+    }
+
+    <span style="color:#75715e">// Add item to free list (see previous post)...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>With this approach, all the basic operations are <em>O(1)</em> &ndash; adding, removing and finding the
+first element of a set. Finding all the elements of a set is <em>O(m)</em>, where <em>m</em> is the size of
+the set, but that is ok. Presumably, we are finding the elements in order to do something with
+them, which will be <em>O(m)</em> anyway.</p>
+<p>In terms of memory, we&rsquo;re adding two extra <code>uint32_t</code> to each item to hold the <code>prev</code> and <code>next</code>
+pointers, which is not too bad.</p>
+<h2 id="cache-behavior">Cache behavior</h2>
+<p>A drawback of using linked lists for storage can be that they have bad cache performance since the
+elements in the list can be spread out in memory. This can happen in this case too. The items in the
+double-linked list created by the <code>prev</code> and <code>next</code> pointers can be anywhere in the array, causing
+us to jump erratically through memory as we follow them:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Items in a set can be spread out in memory." src="../../images/ds2-cache.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Items in a set can be spread out in memory.</h4>
+    </figcaption>
+  </figure>
+<p>But again, assuming that we are finding the items in order to <em>do</em> something with them, this is
+the access pattern we will have, no matter what kind of search index we use because this is where
+the items <em>are</em> in memory.</p>
+<p>The only way to get a different access pattern is to <em>move</em> the items in memory. For example, we
+could sort the items by the lookup key, so that all the items with the same lookup key ended up
+together in memory:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Clustered index." src="../../images/ds2-clustered-index.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Clustered index.</h4>
+    </figcaption>
+  </figure>
+<p>In database terminology, this is called a <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Database_index#Clustered">clustered
+index</a>. Note that a database cannot have
+more than one clustered index, because we cannot physically sort the records in more than one way.</p>
+<p>If we wanted to, we could implement something similar to clustered indexing to get better cache
+behavior. For example, we could incrementally sort the array &ndash; a little bit every frame. However,
+note that this would mean that items would move around in memory and we would no longer have
+permanent indices or permanent object pointers. Generally, I don&rsquo;t think it&rsquo;s worth doing, having
+stable indices and pointers is more important than improving the cache behavior of queries.</p>
+<h2 id="multiple-indices">Multiple indices</h2>
+<p>Nothing with this approach restricts us to using just a single index. We can simply add as many
+indices as we need, for all the queries we want to accelerate.</p>
+<p>Here&rsquo;s what our observer pattern example might look like if we add indices for both observeds and
+observers:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    entity_t <span style="color:#f92672">*</span>observed;
+    entity_t <span style="color:#f92672">*</span>observer;
+    uint32_t prev_by_observed;
+    uint32_t next_by_observed;
+    uint32_t prev_by_observer;
+    uint32_t next_by_observer;
+} observation_t;
+
+uint32_t num_observations;
+observation_t <span style="color:#f92672">*</span>observations;
+
+chash32_t first_observation_by_observed;
+chash32_t first_observation_by_observer;
+</code></pre></div><p>Note that we need multiple <code>prev</code> and <code>next</code> pointers in this case because the set an object will
+be a part of based on its <code>observer</code> field is different than the set it will be a part of based on
+its <code>observed</code> field.</p>
+<p>If you need a lot of indices, this can get kind of messy. If you want to, you can rearrange the
+index data into separate structs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    entity_t <span style="color:#f92672">*</span>observed;
+    entity_t <span style="color:#f92672">*</span>observer;
+} observation_t;
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    uint32_t prev;
+    uint32_t next;
+} pointers_t;
+
+<span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> {
+    pointers_t <span style="color:#f92672">*</span>pointers;
+    chash32_t first;
+} index_t;
+
+int32_t num_observations;
+observation_t <span style="color:#f92672">*</span>observations;
+
+index_t observations_by_observed;
+index_t observations_by_observer;
+</code></pre></div><p>Here <code>pointers</code> is a separately allocated array with <code>num_observations</code> entries. Each observation
+in the <code>observations</code> array has a corresponding entry in the <code>pointers</code> arrays.</p>
+<p>With this data layout, you can add as many indices as you need, without disturbing the original
+data structure. Whenever you have a query that you want to accelerate, you can just add an index
+for it.</p>
+<h2 id="fuzzy-hashing">Fuzzy hashing</h2>
+<p>I mentioned earlier that one of the few cases where range lookups are useful is in position queries,
+such as <em>&ldquo;find all pickups within 5 m from (x, y)&quot;</em>. But even in this case, a sorted array is
+usually not a good solution, since we need to search across multiple dimensions. Say, that you&rsquo;ve
+sorted your data along the x-coordinate. This lets you quickly find all objects with x in the range
+(x-5, x+5). However, only a tiny fraction of those objects will have y in the range (y-5,
+y+5), and if the objects are sorted on the x-coordinate, you pretty much have to go through all of
+them to find the ones with the right y-coordinate.</p>
+<p>There are lots of ways to accelerate spatial queries. Christer Ericson&rsquo;s <a href="http://web.archive.org/web/20220314011542/http://realtimecollisiondetection.net/">Real-Time Collision
+Detection</a> is a good overview. In this post, I just want to
+mention one method related to what we&rsquo;re already talking about.</p>
+<p>It turns out we actually <em>can</em> use a hash table to answer spatial queries. All we have to do is to
+suitably quantize the data. For example, to find all pickups within 5 m of a certain point P all we
+have to do is to divide the world into a 10 m grid. We can then use the (integer) grid coordinates
+as a hash key. All objects in the same grid cell will end up in the same hash bucket:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> uint64_t ix <span style="color:#f92672">=</span> (uint64_t)(p.x <span style="color:#f92672">/</span> <span style="color:#ae81ff">10.0f</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">float</span>)INT64_MAX);
+<span style="color:#66d9ef">const</span> uint64_t iy <span style="color:#f92672">=</span> (uint64_t)(p.y <span style="color:#f92672">/</span> <span style="color:#ae81ff">10.0f</span> <span style="color:#f92672">+</span> (<span style="color:#66d9ef">float</span>)INT64_MAX);
+<span style="color:#66d9ef">const</span> uint64_t key <span style="color:#f92672">=</span> mix(ix, iy);
+</code></pre></div><p>Here <code>mix(a, b)</code> is a suitable mixing function for mixing the bits of <code>a</code> and <code>b</code>. Note
+that you don&rsquo;t want to use something too simple like <em>a ^ b</em>, because that would put the grid cells
+<code>(0,0)</code> and <code>(1,1)</code> in the same hash bucket. Something like this should be decent, I think, haven&rsquo;t
+thought too much about it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> uint64_t <span style="color:#a6e22e">mix</span>(uint64_t a, uint64_t b)
+{
+    a <span style="color:#f92672">*=</span> <span style="color:#ae81ff">0xc6a4a7935bd1e995ULL</span>;
+    a <span style="color:#f92672">^=</span> a <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">47ULL</span> ;
+    a <span style="color:#f92672">*=</span> <span style="color:#ae81ff">0xc6a4a7935bd1e995ULL</span>;
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">^</span> b;
+}
+</code></pre></div><p>This technique of quantizing continuous data, so we can hash it, is sometimes called &ldquo;fuzzy hashing&rdquo;.
+Weirdly, I actually worked on &ldquo;fuzzy hashing&rdquo; during my <a href="http://web.archive.org/web/20220314011542/http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.3989&amp;rep=rep1&amp;type=pdf">short stint in
+cryptography</a>,
+before I got into game development.</p>
+<p>With fuzzy hashing giving us a suitable hash key, we can now use all the techniques from before to
+create a database index for positions too.</p>
+<p>Note that when searching this data structure, it is not enough to search a single hash bucket,
+because if the position <em>P</em> we&rsquo;re querying for is closer to the grid edge than 5 m, then there may
+be objects in neighboring cells that are closer to <em>P</em> than 5 m.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Fuzzy hashing." src="../../images/ds2-fuzzy-hashing.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Fuzzy hashing.</h4>
+    </figcaption>
+  </figure>
+<p>This approach suffers a bit from the <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of
+dimensionality</a>. If we want to find an
+approximate match in <em>n</em> dimensions, we have to search <em>2^n</em> cells. For 2D and 3D, which are our
+most common cases, it is still manageable though.</p>
+<p>One thing you might ask yourself is: how big should the grid cells be? If you want to search for
+things within a 5 m range, but also for things within a 50 m range, won&rsquo;t you need two indices with
+two different grid cell sizes? Because if you want to search with a 50 m range on a 10 m grid, you
+will have to search 36 cells.</p>
+<p>Maybe. But I kind of think that is the wrong way of looking at it. You should pick the cell size
+based on the density of the objects, so that you expect to have some low number of objects, say 16 or
+so, in each group of <em>2^n</em> cells.</p>
+<p>If your search size is much smaller than this cell size, the grid is too coarse, but it doesn&rsquo;t
+really matter. Things are still fast because you still only need to look at ~16 objects.</p>
+<p>What if your search size is a lot larger than the cell size? Then you have to look at a lot of
+cells. Say your search size is 10 times larger than the normal search size, so you will have to
+examine 10² = 100 cells. That seems bad.</p>
+<p>But, remember that each cell has ~16 objects. So in this case you would expect to find ~1600
+objects. And that is regardless of the cell size &ndash; it is only determined by the size of your search
+and the density of the objects. Going through those 1600 objects will be pretty slow, no matter if
+they are all in one big grid cell or 100 small grid cells. So the grid cell size doesn&rsquo;t
+matter as much as you might think.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In the previous post I described an efficient way of storing the bulk data of a system. In this post
+I showed how you can add search indices to this data to be able to quickly find all elements with
+certain properties. Combined, these two techniques fill the data storage needs of most systems.</p>
+<p>There is one thing I haven&rsquo;t looked at yet. What if our data records contain a dynamically sized
+field, such as a string? In this case we can no longer represent the data as a fixed sized POD
+struct, we have to come up with something else. I&rsquo;ll look at this in the next post.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220314011542/https://twitter.com/share?text=Data%20Structures%20Part%202%3a%20Indices - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-2-indices%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220314011542/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdata-structures-part-2-indices%2f&amp;description=Data%20Structures%20Part%202%3a%20Indices" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/summertime-rolls/">Summertime Rolls</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-06-24T00:00:00Z">
+                      24 Jun 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hey Friends, it’s that time of year again, summer break! The whole team will be taking some time off
+here and there …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/summertime-rolls/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">1 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/syncing-a-data-oriented-ecs/" class="text-decoration-none"><img src="../../images/hierarchical-dirty-flags.jpeg" class="card-img-top" alt="Syncing a data-oriented ECS with a stateful external system"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/syncing-a-data-oriented-ecs/">Syncing a data-oriented ECS with a stateful external system</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-06-08T00:00:00Z">
+                      8 Jun 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>The simulation model in <em>The Machinery</em> is based around a
+<a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Data-oriented_design">data-oriented</a> <a href="http://web.archive.org/web/20220314011542/https://en.wikipedia.org/wiki/Entity_component_system">entity-component-system
+framework (ECS)</a>. In this …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/syncing-a-data-oriented-ecs/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">20 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/the-machinery-asset-pipeline/">The Machinery Asset Pipeline</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-05-29T00:00:00Z">
+                      29 May 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In my last post, I covered the idea of building data pipelines for buffer and image processing using
+a concept called …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/the-machinery-asset-pipeline/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/data-structures-part-2-indices/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220314011542/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220314011542/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220314011542/https://ourmachinery.com/cdn-cgi/l/email-protection#c9b9a0a7ae89a6bcbba4a8aaa1a0a7acbbb0e7aaa6a4" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 01:15:42 Mar 14, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:39 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 111.711
+  exclusion.robots: 0.175
+  exclusion.robots.policy: 0.161
+  cdx.remote: 0.103
+  esindex: 0.015
+  LoadShardBlock: 77.899 (3)
+  PetaboxLoader3.datanode: 101.75 (4)
+  CDXLines.iter: 21.725 (3)
+  PetaboxLoader3.resolve: 70.621 (2)
+  load_resource: 160.864
+-->

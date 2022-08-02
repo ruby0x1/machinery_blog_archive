@@ -1,0 +1,756 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Adding high-performance multi-threading support to a complicated data structure."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/lookup-table.png"/>
+  
+  <meta name="twitter:title" content="Multi-Threading The Truth">
+  <meta name="twitter:description" content="Adding high-performance multi-threading support to a complicated data structure."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Multi-Threading The Truth · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/multi-threading-the-truth/"/>
+  
+  <meta property="og:image" content="../../images/lookup-table.png"/>
+  
+  
+  <meta property="og:description" content="Adding high-performance multi-threading support to a complicated data structure."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-10-16T00:00:00Z"/>
+  
+
+  <title>Multi-Threading The Truth &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220316014137/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220316014137\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220316014137\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Multi-Threading The Truth",
+    "name": "Multi-Threading The Truth",
+    "wordCount":  4735 ,
+    "timeRequired": "PT23M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/multi-threading-the-truth/",
+    "datePublished": "2017-10-16T00:00Z",
+    "dateModified": "2017-10-16T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220316014137/https://ourmachinery.com/lookup-table.png"
+    },
+    
+    
+    "description": "Adding high-performance multi-threading support to a complicated data structure."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220316014137/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Multi-Threading The Truth</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-10-16T00:00:00Z">
+          Oct 16, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>For the last week I’ve been working on making a big engine system thread-safe. I found that there is relative little information out there on how to multi-thread actual, real-world systems (if you need something faster than a single global lock). Most of the articles I found focused on simple data types, such as linked lists. So I thought it would be interesting to share my experiences.</p>
+<p><em>The Truth</em> is our toungue-in-cheek name for a centralized system that stores the application data. It is based around <em>IDs</em>, <em>objects</em>, <em>types</em> and <em>properties</em>. An <em>object</em> in the system is identified by a <code>uint64_t</code> <em>ID</em>. Each <em>object</em> has a set of properties (bools, ints, floats, strings, …) based on its <em>type</em>. Using the API looks something like this:</p>
+<pre><code>uint64_t asset_id = the_truth-&gt;create_object_of_type(tt, asset_type);
+the_truth-&gt;set_string(tt, asset_id, ASSET_NAME_PROPERTY, &quot;foo&quot;);
+</code></pre>
+<p><em>The Truth</em> is the place where other systems read and write their data. They can of course use internal buffers too, for better performance, but if they want to share data with the outside world, it goes through <em>The Truth</em>.</p>
+<p>In addition to basic data storage, The Truth has other features too, such as sub-objects (objects owned by other objects), references (between objects), prototypes (or &ldquo;prefabs&rdquo; — objects acting as templates for other objects) and change notifications.</p>
+<h2 id="goals-of-the-design">Goals of the design</h2>
+<p>Since The Truth is a low-level system that we expect to shuffle a lot of data through, it is important that the design is performant. Having a single lock for the entire Truth certainly won’t cut it. We need to have many threads accessing the Truth simultaneously. At the same time, we don’t want to have to obtain a lock for every single piece of data that we get from the Truth either, because that could be costly too.</p>
+<p>So we’re looking for something like this:</p>
+<ul>
+<li>
+<p>Read/get operations should not require any waiting/locking.</p>
+</li>
+<li>
+<p>Write/set operations may require waiting/locking, but they should only lock the actual object that is being touched. Threads should be able to write to different objects without contention.</p>
+</li>
+</ul>
+<p>One problem is immediately obvious here: If <code>get()</code> doesn’t use any locks, how can we make sure that the data we are reading is not being trashed by a simultaneous <code>set()</code> operation?</p>
+<p>Luckily, we are rescued by the concept of atomicity. On modern hardware, writes and reads of aligned 64-bit values are <em>atomic</em>. I.e., other threads will always see either the old 64-bit value or the new 64-bit value, never 32 bits from one and 32 bits from the other. So as long as we are only writing 64-bit values, <code>get()</code> and <code>set()</code> can run simultaneously on the same object without creating problems.</p>
+<p>Unfortunately, we also have larger objects that we want to store, such as strings or sets. Luckily, we can handle those with pointers. Instead of writing a string piece by piece, which could result in a garbled up value, we can just write a new <code>char *</code> into the object. This is a 64-bit value which can be written atomically.</p>
+<p>In fact, we can take this one step further. Instead of writing individual values we can just create a whole new copy of the object, change some values and then atomically replace the old copy with the new one in a lookup table:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Object lookup table." src="../../images/lookup-table.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Object lookup table.</h4>
+    </figcaption>
+  </figure>
+<p>We could have this copying and replacing be implicit and completely hidden behind the get/set function interface, but that has two drawbacks:</p>
+<ul>
+<li>
+<p>The reader could see objects in a “half-written” state. I.e. even though each individual property would be either fully written or not, the properties themselves could come from different versions of the object. I.e. a reader could see <code>y = 5</code> and <code>z = 2</code>, an object which never existed.</p>
+</li>
+<li>
+<p>If a writer wants to set multiple properties (which usually is the case) we would have to copy the object multiple times behind the scenes, which is inefficient.</p>
+</li>
+</ul>
+<p>So instead, we make the interface explicit. We require a <code>read()</code> or <code>write()</code> operation to get a pointer to the object, and a <code>commit()</code> operation to finalize the writes:</p>
+<pre><code>const object_o *reader = the_truth-&gt;read(tt, id);
+float x = the_truth-&gt;get_float(tt, reader, POSITION_X_PROPERTY);
+float y = the_truth-&gt;get_float(tt, reader, POSITION_Y_PROPERTY);
+float z = the_truth-&gt;get_float(tt, reader, POSITION_Z_PROPERTY);
+
+object_o *writer = the_truth-&gt;write(tt, id);
+the_truth-&gt;set_float(tt, writer, POSITION_Y_PROPERTY, 5.0f);
+the_truth-&gt;set_float(tt, writer, POSITION_Z_PROPERTY, 5.0f);
+the_truth-&gt;commit(tt, writer);
+</code></pre>
+<p>Note that with this change, the reader’s pointer will either point to the new or the old object, so the reader will either see (7, 3, 2) or (7, 5, 5), never (7, 5, 2).</p>
+<p>Also note that what we are doing here is pretty similar to how version control works — we are creating a new version of the object. This is also why I choose the name <code>commit()</code>.</p>
+<p>Also also note that we can’t delete the old object when we <code>commit()</code>, because there might still be readers that are using that old object (more on that later).</p>
+<h2 id="some-notes-on-consistency">Some notes on consistency</h2>
+<p>With this design we are saved from reading half-written values. We are also saved from reading half-written objects. But we still can have other consistency problems.</p>
+<p>The simplest one is a write conflict. What if two writers start writing the same object simultaneously? They will both get a copy of the old object, change some values and then commit. Whoever commits last will overwrite the other writer’s values.</p>
+<p>A more complicated consistency problem can occur when multiple objects depend on one another. For example, a writer might do this:</p>
+<ol>
+<li>Remove the reference from object A to object B.</li>
+<li>Delete object B.</li>
+</ol>
+<p>A reader could read object A before step 1 and discover the reference to B, then after step 2 attempt to access B. This would fail, since B is now deleted.</p>
+<p>A classic example of the same problem in the database world is moving money between accounts. With withdrawing the money from one account and adding it to the other as separate operations a reader could see money appearing out of thin air.</p>
+<p>Interestingly, we can solve both these problems without forcing the reader to lock.</p>
+<p>To solve the write conflict, we can use the <a href="http://web.archive.org/web/20220316014137/https://en.wikipedia.org/wiki/Compare-and-swap">compare-and-swap</a> (CAS) instruction which is available on all modern CPUs and also through the atomics library in C11 and C++11. Compare-and-swap atomically writes a 64-bit value only if the value there matches our expectation. Otherwise, it leaves the old value alone. It also tells us whether the write succeeded or not.</p>
+<p>We can change <code>commit()</code> so that instead of just writing the new pointer, it does a CAS with the pointer we initially used to obtain our write-copy of the object. This means that the <code>commit()</code> will only succeed if the object hasn’t changed since we obtained it. In our example above, the second writer’s <code>commit()</code> would fail, and the object would keep the values set by the first writer.</p>
+<p>To solve consistency problems involving more than one object, such as the money transfer, we need some kind of <em>transaction</em> mechanism. In other words, we need to be able to commit the changes to multiple objects simultaneously and have the reader see all these changes at once. This might seem tricky, initially, because we can only write one atomic value at a time. But we can repeat the trick we did before, when we need to write a bigger value, we just write a pointer to that value instead.</p>
+<p>In this case, the pointer we can replace is the pointer to the <em>entire lookup table.</em> By replacing the lookup table, we can replace as many individual objects in it as we like:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Replacing the lookup table." src="../../images/hierarchical-lookup-table.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Replacing the lookup table.</h4>
+    </figcaption>
+  </figure>
+<p>A reader will either have a pointer to the old or the new lookup table. Thus, the reader will either see (A, B, C, D, E) or (A, B’, C, D, E’) and both sets of objects are consistent.</p>
+<p>We can combine this with the CAS technique too, and only replace the root pointer if it hasn’t changed. This allows us to make a change to an arbitrary number of objects as a single transaction that will either succeed or fail. Pretty similar to the transaction model you would get in a relational database.</p>
+<p>Another interesting thing: If you know how git works on the inside with tree objects and blobs, you can see that this approach is actually very similar to git&rsquo;s.</p>
+<p>The drawback of this approach is that every transaction requires changing the root pointer. (It requires copying the lookup table too, but we can reduce the cost of that by having hierarchical tables, similar to git.) Thus, there will be a lot of contention for the root pointer and that contention will cause a lot of commits to fail. (There is probably some way of being a bit smarter about this to let some of the commits that touch disjoint set of objects through, but I haven’t dug deeper into this.)</p>
+<p>In the end, we have to consider what kind of consistency model works for us and if we are willing to pay for it. After all, if performance is not a big deal, we can just use a regular database.</p>
+<p>In our case, we are not dealing with critical financial data. It’s not a big deal if a reader sees some object from one write and some objects from another write. So we don’t need the full transaction model.</p>
+<p>Doing the CAS on <code>commit()</code> is not costly, but having to deal with commits failing can be costly. Every piece of code that writes data to the Truth would need a little loop that attempted to rewrite the data on a failed commit. Preventing simultaneous writes to the same object is probably better dealt with at a higher level anyway. For example, if both an <em>animation</em> system and a <em>physics</em> system wants to write object positions, the right way to solve it isn’t with locks on the position data. Instead, we need to figure out on a higher level how animation and physics work together to control an object’s position.</p>
+<p>For this reason we’ve decided to keep the simple version of <code>commit()</code> . You can only commit one object at a time and the last write wins. We <em>might</em> add a separate <code>try_commit()</code> too, that does CAS and can fail, for code that needs that kind of synchronization.</p>
+<h2 id="the-devil-in-the-details">The devil in the details</h2>
+<p>So far, this seems pretty good. We have a (weak) consistency model. We have a mechanism for implementing it that doesn’t require any locks or waits in the reader. In fact, we don’t have any locks or waits in the writer either, just an atomic write operation. Seems almost too good to be true.</p>
+<p>In fact, it <em>is</em> too good to be true. We sketched out the implementation, but we conveniently skipped over all the details. That doesn’t matter that much in single-threaded code, but in multi-threaded code, the details <em>matter</em>. So let’s dig in!</p>
+<p><strong>Garbage collection</strong></p>
+<p>When an object is replaced or deleted by a <code>commit()</code>, we can’t immediately delete the old copy, since some readers might still be reading it. So when can we delete it?</p>
+<p>One option would be to reference count the readers. When the number of readers goes to zero, we can safely delete the object. This requires an <code>end_read()</code> operation, similar to the <code>commit()</code>, that decreases the reference count when we are done reading the object.</p>
+<pre><code>const object_o *reader = the_truth-&gt;read(tt, id);
+float x = the_truth-&gt;get_float(tt, reader, POSITION_X_PROPERTY);
+float y = the_truth-&gt;get_float(tt, reader, POSITION_Y_PROPERTY);
+float z = the_truth-&gt;get_float(tt, reader, POSITION_Z_PROPERTY);
+the_truth-&gt;end_read(tt, reader);
+</code></pre>
+<p>Having to write <code>end_read()</code>  is inconvenient for the user of the API, but this solution has more serious problems. Consider how <code>read()</code> would be implemented. Something like:</p>
+<pre><code>const object_o *read(const the_truth *tt, uint64_t id)
+{
+    const object_o *obj = tt-&gt;object_table[id];
+    ++obj-&gt;refcount;
+    return obj;
+}
+</code></pre>
+<p>First of all, we can’t use <code>++obj-&gt;refcount</code> because <code>++</code> is not an atomic operation. On the CPU it is translated to:</p>
+<pre><code>obj-&gt;refcount = obj-&gt;refcount + 1;
+</code></pre>
+<p>And with two threads running this simultaneously they could both read a refcount of 7, increase it by 1 and then both write 8, even though the result really should have been 9.</p>
+<p>No big sweat, there is actually a function in the C11 atomics library that does this atomically:</p>
+<pre><code>atomic_fetch_add(&amp;obj-&gt;refcount, 1);
+</code></pre>
+<p>But this <em>still</em> doesn’t work, because we have two separate steps for looking up the object and increasing its reference count. Another thread could enter <em>between</em> those two steps, see the <code>refcount</code> at 0 and free the object. Boom, we crash.</p>
+<p>To make this work we have to make sure that the lookup of the pointer <em>and</em> the bump of the refcount happen as a single atomic operation. But I don’t know how to do that without introducing some kind of lock, which we don’t want in our reader code.</p>
+<p>See, devil in the details.</p>
+<p>So what can we do instead?</p>
+<p>Well readers typically don’t need to hold on to objects for very long. They just read a few values and then they’re done. So if we just <em>wait a little while</em> before deleting objects, we should be fine.</p>
+<p>Of course we need to define more precisely what <em>“wait a little while”</em> means in order to make this work. Luckily, the kind of applications we are interested in have a cyclic behavior. They regularly return to a “root state”. For a game, or other real time application, that would be the main update or frame tick loop. Similarly, for a desktop application, it’s when we return to the main message processing loop.</p>
+<p>When we get back to the root state, all <code>read()</code> operations should have finished which means we can finally “garbage collect” all the objects that we wanted to delete, but wasn’t sure if we could. This gives us safe deletion without locks or explicit <code>end_read()</code> operations. (We have an implicit <code>end_read()</code> operation at the end of the frame.)</p>
+<p>Of course, this can cause trouble if we have long-running background threads that also need to access the system. My current take on this is that these threads need to call special functions <code>lock_read()</code>, <code>unlock_read()</code> to read objects. These functions either increase an object reference counter or register <a href="http://web.archive.org/web/20220316014137/https://en.wikipedia.org/wiki/Hazard_pointer"><em>hazard pointers</em></a> that the GC checks. Using locks, we can ensure that the reference counting is atomic with respect to the GC. Since this is a special case of reading data we’re ok with the performance penalty of taking a lock.</p>
+<p>Just to dive even further into details, what do we mean by “queueing an object for garbage collection”? We need to put the object’s pointer into a list or queue or something. And this will require some form of synchronization — either a lock or a lockfree wait loop. This is ok though, because this only happens during write operations (that’s the only time when we commit and create garbage) and we’re ok with taking locks during writes. But it shows that the simple picture we had initially were no locks or waits would be necessary, even in the writers, was false. We should also be wary, because if we only have a single lock for the garbage queue, every commit operation will need to obtain this lock and we will see a lot of contention.</p>
+<p><strong>The lookup table</strong></p>
+<p>Another thing we glossed over was how the lookup table should work. We assumed it was a big table of pointers indexed by some bits of the object ID (we use the rest of the bits to store things like object type). But how would we actually implement that table? <code>vector&lt;object_o *&gt;</code>? No, that doesn’t work, because the vector will regularly reallocate its backing memory and copy all the data to a new location. If a reader was accessing the vector in the middle of such an operation it could read trash data.</p>
+<p>A raw array would work: <code>object_o *objects[MAX_OBJECTS]</code>. The writers can atomically write new pointers into the array without disrupting the readers. But now we have to define <code>MAX_OBJECTS</code> which is annoying. Set it too low, and we run out of objects. Set it too high, and we’re wasting memory. For a one-off application like a game, that works pretty well, we can just find a value that is right for our game — the highest value we’ve ever seen plus a comfortable safety margin — we don’t need any dynamic allocation and there will be no memory wasted. But for a more general engine it’s not a nice solution.</p>
+<p>But, we can use the idea of hierarchies to our advantage again, and make something like this:</p>
+<pre><code>struct object_block_t {
+    object_o *objects[1024];
+};
+struct object_super_block_t {
+    object_block_t *blocks[1024];
+};
+struct the_truth {
+    object_super_block_t *super_blocks[1024];
+    ...
+};
+</code></pre>
+<p>The Truth holds a fixed array of 1024 “super blocks”. Each “super block”, when it’s allocated, holds 1024 block pointers, and each block, when it’s allocated, holds 1024 object pointers. A writer can atomically replace null pointers in these arrays with actually allocated blocks and super blocks without disturbing the readers. We never waste more than 24 K of memory (for one allocated block of each type) and can support up to one billion objects. To look up the pointer for an object we would do:</p>
+<pre><code>struct id_t {
+    unsigned int super_block : 10;
+    unsigned int block : 10;
+    unsigned int index : 10;
+    ...
+};
+
+object_o *o = the_truth.super_blocks[id.super_block][id.block][id.index];
+</code></pre>
+<p>Of course you could tweak the number of hierarchy levels and the number of objects in each level to get a different balance of wasted memory, maximum number of objects and number of indirections needed for lookup.</p>
+<p><em>Another</em> approach to the same problem would be to use a <code>vector&lt;object_o *&gt;</code> like approach, but implement garbage collection. I.e. you would keep an array of object pointers, and when the array got full you would reallocate it and copy the data (just as the standard vector implementation does). But you wouldn’t free the old data array. You would put it on the queue to be garbage collected, just as we do with old objects. Thus, readers using the old array would be fine.</p>
+<p>This approach works too, but it has the drawback that as the array gets large, the copying operation will become more and more expensive. You could ameliorate that by combining it with the hierarchical approach. I.e. let the array contain block pointers.</p>
+<p><strong>Allocating memory and IDs</strong></p>
+<p>Another thing we’ve glossed over is memory and ID allocation. When we allocate a new object we need to make an ID for it. This ID can’t collide with IDs created by other threads or we’ll be in trouble. Similarly, if we need to allocate a new block or a new super block we need to make sure that no other thread is allocating that memory at the same time.</p>
+<p>We can achieve this by putting locks around these operations. Again, this is ok, because these operations only happen when we are writing objects. But we should be a bit careful, because if multiple threads are writing with high frequency, there could be high contention for these locks. For example, a global ID lock would have to be obtained by every thread that needs to create new objects.</p>
+<p>A way of avoiding this is to allocate specific blocks for specific threads. For example, we could say that the thread with index <em>t</em> can only use super blocks where <em>i % N == t</em>. Here <em>i</em> is the index of the super block and <em>N</em> the total number of threads. Since the threads use different super blocks, they never compete for IDs or block allocation. We trade more internal fragmentation in the blocks for avoiding contention.</p>
+<p>This approach works well when the number of threads is low. Our system tries not to <a href="http://web.archive.org/web/20220316014137/https://blogs.msdn.microsoft.com/visualizeparallel/2009/12/01/oversubscription-a-classic-parallel-performance-problem/">oversubscribe</a> the number of threads and use one thread/core. So it could work. But core numbers are always going up, never going down, so it’s a bad future to bet on.</p>
+<p>We should also note that even if we fix these issues, the allocation of memory itself goes through an allocator that enforces serialization. So unless we switch to a multi-threaded allocator we may just replace contention for our data structures with contention for the memory allocator.</p>
+<p>For now I think we will start with a simple locking scheme and investigate more advanced solutions (per-thread ID and memory pools) as needed.</p>
+<p><strong>Synchronizing mechanisms</strong></p>
+<p>Before wrapping up, I wanted to say something about different methods for synchronizing and their advantages and disadvantages as I see them. The mechanisms you most typically run into are:</p>
+<ol>
+<li>Windows <a href="http://web.archive.org/web/20220316014137/https://msdn.microsoft.com/en-us/library/windows/desktop/ms682530(v=vs.85).aspx">critical sections</a> (lightweight mutexes on other platform — a spinlock with fallback to an OS event)</li>
+<li>Custom <a href="http://web.archive.org/web/20220316014137/https://en.wikipedia.org/wiki/Spinlock">spinlock</a> based on CAS</li>
+<li><a href="http://web.archive.org/web/20220316014137/https://en.wikipedia.org/wiki/Non-blocking_algorithm">Lockfree</a> solution</li>
+</ol>
+<p>A common misunderstanding is that the main difference between these three solutions is <em>performance</em> and that the advantage of lockfree algorithms is that they are <em>faster</em>. But if you look at the cycle counts in the case of no contention they are all pretty similar. In fact, they are all pretty fast.</p>
+<p>Regarding contention, since we are interested in high-performance code, I will assume that all the locks are fine-grained and that they are only held to perform a couple of simple operations. If that is <em>not</em> the case, you should optimize your code by making the locks more fine grained, not by changing the locking mechanism.</p>
+<p>In this case, the mechanisms’ behaviors under contention is also similar. All of them will spin a few cycles, until the other thread is done with its manipulation, and then proceed. In the case of lockfree — it is not really a lock of course, but one of the threads’ CAS will fail, causing it to spin in a similar manner.</p>
+<p>In my mind, the main difference is what happens <em>if a context switch happens and a thread is swapped out while holding a lock</em>. This is a big deal, because it may be milliseconds until the OS swaps the thread back in again. And milliseconds are an eon in CPU time.</p>
+<p>This is what happens in each case:</p>
+<p>With critical sections, our thread will go to sleep waiting for the swapped out thread. This is good, because it frees our core for use by the swapped out thread. Also, the OS is made aware that we are waiting for a thread, which it can use to bump the priority of that thread. I.e., we still have to wait for the swapped out thread, but most likely that thread will be swapped in faster.</p>
+<p>With a spinlock, our CPU will churn waiting for the busy thread. This consumes power and creates heat. But worse, there is no way for the OS to know that we are waiting, so our core doesn’t get freed and the priority of the swapped out thread doesn’t get raised. I.e., we have to wait for the swapped out thread and the wait will likely be longer.</p>
+<p>With a lockfree algorithm, we don’t have to wait for the swapped out thread. Our CAS will succeed since the other thread is sleeping and can’t modify the address we are looking at. This is in fact the definition of lockfree. Lockfree doesn’t mean we never stall — if there is contention we may be stuck in a loop trying to set a value, potentially for a long time. But it means one thread can’t block the progress of all other threads — someone will progress.</p>
+<p>So in this case the lockfree approach is clearly better. But one thing we must ask ourselves is: <em>Does it really matter?</em></p>
+<p>First, how likely is the situation to occur? If we don’t oversubscribe our threads and locks are only held for short times, maybe it doesn’t happen that often? I have no good numbers for this and it would require a thorough investigation.</p>
+<p>Second, how bad is it? A common multithreaded programming model is to create a number of jobs, go wide to execute them, and then go single-threaded again to collect the results. In this case, the lockfree approach doesn’t buy us that much, because even though the other threads don’t have to wait for the stalled one and can continue to process jobs, in the end we can’t proceed until the stalled thread has finished. (You can try to design around that, make the other threads do the job of the stalled thread so the application can move on. The tricky part of that, the <em>very very</em> tricky part of that, is that when the stalled thread starts to run again and the application has moved on to some other unknown state, all the things that that thread tries to touch are likely to break — memory has been freed, etc. In fact, I don’t know any general job system that successfully does this.)</p>
+<p>So in the end, since we have to wait for the stalled thread to finish anyway, we <em>still</em> get the millisecond delay, even with the lockfree solution. (It might be fewer milliseconds, though.) It is only in very specific situations that the lockfree approach will actually prevent the stall.</p>
+<p>In addition, lockfree algorithms are notoriously hard to program. And to make something lockfree, all of it must be lockfree. If the memory allocator still locks, it doesn’t matter if the rest of the system is lockfree.</p>
+<p>In summary:</p>
+<ul>
+<li>Lockfree algorithms are really really hard.</li>
+<li>To get the lockfree behavior, every part of the system must be lockfree.</li>
+<li>And usually you still end up stalling, just at a higher level.</li>
+</ul>
+<p>For these reasons I recommend avoiding lockfree solutions except in a few very special cases. This means our best contender is good old Windows critical sections.</p>
+<p>One situation where we can run into problems with critical sections is if we want to create a really fine-grained locking system. Say that we wanted to have an individual lock for each object, so we would need millions of locks. This has two problems. First of all, a critical section is 40 bytes, so we would be using a lot of memory. Second, a critical section will lazily allocate an OS event if there is contention. This event is never freed. So with a lot of critical sections our OS event count would slowly increase as those critical sections randomly run into contention. This would consume even more memory (an OS event is 128 bytes I think) and put us at risk for running out of system handles. Interestingly — if we’re close to running out of handles, the OS will actually <a href="http://web.archive.org/web/20220316014137/http://joeduffyblog.com/2006/11/28/windows-keyed-events-critical-sections-and-new-vista-synchronization-features/">switch to a different algorithm</a> that doesn’t allocate individual events for critical sections. As far as I understand, in recent versions of Windows, this algorithm has similar performance and the allocation of individual events is mostly done for backwards compatibility. But I don’t know all the details of this. I’m also not sure how things work in the Linux world.</p>
+<p>If you need a cheaper way of creating millions of locks, some of the options are:</p>
+<ul>
+<li>
+<p>Use a spin lock and accept the risk of churn and swap-out.</p>
+</li>
+<li>
+<p>Have a fixed sized pool of critical sections and access them with a hash of the object ID. You could keep say 8192 critical sections in an array, hash the object ID to the range 0—8191 and use the corresponding critical section as a lock. As long as you have a lot more critical sections than threads, the risk of artificial contention (two IDs hashing to the same value) is low.</p>
+</li>
+<li>
+<p>Use a synchronization mechanism that doesn’t require a lot of memory or OS objects. Windows actually has several of these, although they are not as well known as critical sections. <a href="http://web.archive.org/web/20220316014137/https://msdn.microsoft.com/en-us/library/windows/desktop/aa904937(v=vs.85).aspx">Slim Reader/Writer Locks</a> are only the size of a pointer and use no OS objects. In fact, you should probably replace all your uses of critical sections with exclusive SRW locks. There is also <a href="http://web.archive.org/web/20220316014137/https://msdn.microsoft.com/en-us/library/windows/desktop/hh706898(v=vs.85).aspx">WaitOnAddress</a> which allows you to wait on any memory location. In the Linux world a <a href="http://web.archive.org/web/20220316014137/http://man7.org/linux/man-pages/man2/futex.2.html">futex</a> can be used for similar functionality.</p>
+</li>
+</ul>
+<h2 id="wrap-up">Wrap-Up</h2>
+<p>Multi-threading an advanced data structure gets real gnarly real fast. Even though I tried to go into implementation details in this article there’s still a lot I left out — how to build the garbage queues, for instance. And I haven’t said anything about the more advanced features of The Truth — prototypes,  references, sub-objects and change notifications. They all need multi-threaded implementations too. But this article is getting too long already. If there is interest, maybe I’ll revisit those topics in a future post.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220316014137/https://twitter.com/share?text=Multi-Threading%20The%20Truth - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fmulti-threading-the-truth%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220316014137/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fmulti-threading-the-truth%2f&amp;description=Multi-Threading%20The%20Truth" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/" class="text-decoration-none"><img src="../../images/keyboard-focus.gif" class="card-img-top" alt="Keyboard Focus and Event Trickling in Immediate Mode GUIs"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/">Keyboard Focus and Event Trickling in Immediate Mode GUIs</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-25T00:00:00Z">
+                      25 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>One thing I haven&rsquo;t seen addressed a lot in writings about immediate mode GUIs (IMGUIs) is keyboard focus and …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/keyboard-focus-and-event-trickling-in-immediate-mode-guis/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/simple-parallel-rendering/">Simple Parallel Rendering</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-18T00:00:00Z">
+                      18 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Working on implementing the Render Graph system that I talked about in my <a href=" ../../post/high-level-rendering-using-render-graphs/">last post</a> got me thinking more about how to …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/simple-parallel-rendering/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/how-to-marketing-events/">How to Marketing (A 10-Part Mini Series)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-09-11T00:00:00Z">
+                      11 Sep 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p><em>For the next 10 blog posts, I’m going to share some of my thoughts based on my varied experiences in the world of …</em></p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/how-to-marketing-events/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">4 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/multi-threading-the-truth/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220316014137/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014137/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220316014137/https://ourmachinery.com/cdn-cgi/l/email-protection#43332a2d24032c36312e22202b2a2d26313a6d202c2e" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 01:41:37 Mar 16, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:27 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 595.626
+  exclusion.robots: 0.086
+  exclusion.robots.policy: 0.079
+  cdx.remote: 0.06
+  esindex: 0.008
+  LoadShardBlock: 556.731 (3)
+  PetaboxLoader3.datanode: 555.945 (4)
+  CDXLines.iter: 15.328 (3)
+  load_resource: 119.836
+  PetaboxLoader3.resolve: 43.283
+-->

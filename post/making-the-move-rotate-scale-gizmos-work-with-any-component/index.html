@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20190604103351/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/gizmo-spline-transform.jpeg"/>
+    
+    <meta name="twitter:title" content="Making the move/rotate/scale gizmos work with any component">
+    <meta name="twitter:description" content="The Machinery allows new entity components to be added in plugins. This post shows how we can make the move/rotate/scale gizmos interact with these components without knowing their exact innards."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Making the move/rotate/scale gizmos work with any component · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/making-the-move-rotate-scale-gizmos-work-with-any-component/"/>
+    
+       <meta property="og:image" content="../../images/gizmo-spline-transform.jpeg"/>
+    
+
+    
+    <meta property="og:description" content="The Machinery allows new entity components to be added in plugins. This post shows how we can make the move/rotate/scale gizmos interact with these components without knowing their exact innards."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2018-06-11T00:00:00Z"/>
+
+    
+    
+
+    <title>Making the move/rotate/scale gizmos work with any component &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="The Machinery allows new entity components to be added in plugins. This post shows how we can make the move/rotate/scale gizmos interact with these components without knowing their exact innards."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.0.3"/>
+    <link rel="stylesheet" type="text/css" href="../../css/nav.css"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20190604103351cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20190604103351/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.19"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20190604103351/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Making the move/rotate/scale gizmos work with any component,
+    "name": Making the move/rotate/scale gizmos work with any component,
+    "wordCount": 1993,
+    "timeRequired": "PT10M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://ourmachinery.com/post/making-the-move-rotate-scale-gizmos-work-with-any-component/,
+    "datePublished": 2018-06-11T00:00Z,
+    "dateModified": 2018-06-11T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://ourmachinery.com/gizmo-spline-transform.jpeg,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": ,
+    "description": The Machinery allows new entity components to be added in plugins. This post shows how we can make the move/rotate/scale gizmos interact with these components without knowing their exact innards.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://ourmachinery.com/post/making-the-move-rotate-scale-gizmos-work-with-any-component/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20190604103351/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+ <div class="site-wrapper">
+
+    <header class="main-header">
+        <nav class="main-nav overlay clearfix">
+            <a class="blog-logo" href="../../"><img src="../../images/full-logo.png"/></a>
+    
+           
+            <a class="menu-button" href=" ../../post/">Blog</a>
+        </nav>
+    </header>
+
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Making the move/rotate/scale gizmos work with any component</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2018-06-11T00:00:00Z">
+            Jun 11, 2018
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>Our goal with <em>The Machinery</em> has always been to make a system that takes flexibility and extensibility to new levels. This leads to some unique challenges.</p>
+
+<p>At the heart of our system is an <a href="http://web.archive.org/web/20190604103351/https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system">entity-component model</a>, where user written plugins can add new components. However, in addition to adding components, we also want the user to be able to extend the system by adding new custom editors to work with these components. For example, we want it to be possible to replace the 3D scene editor with a customized tile-based 2D editor, or do other crazy things that we haven’t even thought of.</p>
+
+<p></p>
+
+<p>This presents a bit of a problem, how can we make editors and components work together when the editors don’t know exactly what components there are and the components don’t know exactly what editors there are?</p>
+
+
+<figure>
+    
+        <img src="../../images/gizmo-editors-and-components.jpeg"/>
+    
+    
+    <figcaption>
+        <h4>How can editors and components talk with each other?</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>As an example, let’s look at the implementation of the transform gizmos that are used move, scale, and rotate objects. We usually think of these as manipulators for the <em>Transform</em> component. I.e., they move, rotate or scale the entity’s transform (stored in the <em>Transform</em> component) which in turn affects any graphical components owned by the entity. However, we want to make it possible to use these tools to manipulate other components too.</p>
+
+<p>For example, a <em>Spline</em> component might want to use the gizmos to move the control points of the spline. A <em>Wire</em> component for drawing and animating power lines might want to use the gizmos to manipulate the end and middle points of the wire.</p>
+
+
+<figure>
+    
+        <img src="../../images/gizmo-spline-transform.jpeg"/>
+    
+    
+    <figcaption>
+        <h4>Manipulating splines and wires with transform gizmo.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Note that in these cases, the <em>Move</em> manipulators aren’t moving entities around. They are moving sub-parts of an entity component (such as points on a spline). How can we make the manipulator do this in a way that works with new components that the manipulator doesn’t know anything about?</p>
+
+<p>The Machinery is C based and as <a href=" ../../post/little-machines-working-together-part-1/">discussed before</a>, our basic method of abstraction is an <em>interface</em> which we represent as a <code>struct</code> filled with function pointers. For example our file I/O interface looks like this:</p>
+
+<pre><code class="language-c">struct tm_os_file_io_api
+{
+    tm_file_o (*open_input)(const char *path);
+    tm_file_o (*open_output)(const char *path, bool append);
+    void (*set_position)(tm_file_o file, uint64_t pos);
+    int32_t (*read)(tm_file_o file, void *buffer, uint32_t size);
+    bool (*write)(tm_file_o file, const void *buffer, uint32_t size);
+    void (*close)(tm_file_o file);
+};
+</code></pre>
+
+<p>Our API registry allows these interfaces to be registered and queried for. This way, an API can be registered in one plugin and queried for and used in a different one.</p>
+
+<p>APIs can either have a single or multiple implementations. The <em>File I/O</em> API only has a single implementation — we only have one way of manipulating files. Components, on the other hand, are an example of an API with multiple implementations. Each component — <em>Transform, Light, Spline,</em> etc provides an implementation of the component API. When a plugin is loaded, it registers its components with the API registry, and other parts of The Machinery can query the registry to get a list of all the components:</p>
+
+<pre><code class="language-c">#define TM_COMPONENT_INTERFACE_NAME &quot;tm_component_i&quot;
+
+reg-&gt;add_implementation(TM_COMPONENT_INTERFACE_NAME, tm_transform_component);
+reg-&gt;add_implementation(TM_COMPONENT_INTERFACE_NAME, tm_location_component);
+reg-&gt;add_implementation(TM_COMPONENT_INTERFACE_NAME, tm_link_component);
+</code></pre>
+
+<p><code>TM_COMPONENT_INTERFACE_NAME</code> is just a unique name to identify the <em>Component</em> API, among all the other APIs in <em>The Machinery</em>. Each API has a unique name and a plugin can extend the system with new APIs by just providing a unique name and a function pointer struct in a header.</p>
+
+<p>The basic <code>tm_component_i</code> looks like this (we’ll add more stuff to it soon):</p>
+
+<pre><code class="language-c">typedef struct tm_component_i
+{
+    uint64_t (*truth_type_name_hash)();
+} tm_component_plugin_i;
+</code></pre>
+
+<p>Here <code>truth_type_name_hash()</code> is a function that returns the type name of the component’s data in The Truth. <a href=" ../../post/multi-threading-the-truth/">If you recall</a> — <em>The Truth</em> is our data model — it allows arbitrary data to be stored and retrieved. <em>The Truth</em> contains a collection of objects of different types. The types are identified by unique strings, just as our APIs, but for performance we usually use 64-bit hash values of these strings rather than the strings themselves.</p>
+
+<p>These hash values are set up as defines like this:</p>
+
+<pre><code class="language-c">#define TM_TT_TYPE_HASH__TRANSFORM_COMPONENT \
+    TM_STATIC_HASH(&quot;tm_transform_component&quot;, 0x8c878bd87b046f80ULL)
+</code></pre>
+
+<p>A short side note about this: <code>TM_STATIC_HASH</code> is a macro that just returns the second value:</p>
+
+<pre><code class="language-c">#define TM_STATIC_HASH(s, v) v
+</code></pre>
+
+<p>We have a utility program that automatically searches the source code for <code>TM_STATIC_HASH</code> macros and patches them if the hash value isn’t correct. So when you write the code you can just write <code>TM_STATIC_HASH(</code><code>&quot;</code><code>tm_transform_component</code><code>&quot;</code><code>, 0)</code> and then run the program. It will compute the correct hash value and patch the file.</p>
+
+<p>I’ve made the source code of this utility <a href="http://web.archive.org/web/20190604103351/https://gist.github.com/niklas-ourmachinery/0c391d378a9d327867d46772c4d7eedc">available here</a>. As you can see, we dogfood by writing all our little utilities and tools like this in C, using our standard APIs. This has the added advantage that we have the entire codebase in a single language instead of a hodgepodge mix of C, C++, Perl, Python, Ruby, JavaScript, Lua, Go, Rust, C#, etc.</p>
+
+<p>Anyways, since we know The Truth type of all components, we can go back and forth between a component’s representation in the data model (The Truth) and the API we use to talk to that component.</p>
+
+<p>Let’s see how we can use this to define the interaction between components and the editor.</p>
+
+<p>One thing we could do is just to extend the <code>tm_component_i</code> with the functions that the editor needs to interact with the component. For example, the editor probably needs to know the name of the component so it can display it in the entity tree:</p>
+
+
+<figure>
+    
+        <img src="../../images/gizmo-entity-tree.jpeg"/>
+    
+    
+    <figcaption>
+        <h4>The entity tree shows the name of components.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>So we could just add that to the API:</p>
+
+<pre><code class="language-c">typedef struct tm_component_i
+{
+    uint64_t (*truth_type_name_hash)();
+    const char *(*display_name)();
+} tm_component_i;
+
+const char *transform_display_name()
+{
+    return TM_LOCALIZE(&quot;Transform&quot;);
+}
+</code></pre>
+
+<p>We could continue like this, and add everything else that our editor needs, but this would create a tightly coupled component interface that is completely tied to how our editor works right now. It doesn’t make it possible for some one else to come up with new editor workflows in a plugin. And it also makes it harder for us to modify the editor workflows in the future.</p>
+
+<p>In addition, the editor isn’t the only system that needs to interact with the components. The renderer needs to interface with renderable components, and there might be other systems in the future that also need their own special component interactions.</p>
+
+<p>To accommodate this, we add another layer of abstraction, instead of putting the editor interactions directly in the component, we put them in a separate interface and make it possible to query the component for whether it supports this interface or not:</p>
+
+<pre><code class="language-c">typedef struct tm_component_i
+{
+    uint64_t (*truth_type_name_hash)();
+    void *(*get_interface)(uint64_t name_hash);
+} tm_component_i;
+</code></pre>
+
+<p>This works similarly to the API registry. Any part of The Machinery can define an interface component together with a hash value used to query for it. And any component that supports the interface can return it as a response to a <code>get_interface()</code> query:</p>
+
+<pre><code class="language-c">#define TM_EDITOR_COMPONENT_NAME \
+    TM_STATIC_HASH(&quot;tm_editor_component_i&quot;, 0xcf29a2363dadc28eULL)
+    
+typedef struct tm_editor_component_i
+{
+    const char *(*display_name)();
+} tm_editor_component_i;
+</code></pre>
+
+<p>Now if the editor wants to interact with a component, it can call <code>get_interface()</code> with the right constant to get a pointer to the interface and then use that interface to manipulate the object.</p>
+
+<pre><code class="language-c">tm_editor_component_i *editor = (tm_editor_component_i *)
+    c-&gt;get_interface(TM_EDITOR_COMPONENT_NAME);
+const char *name = editor-&gt;display_name();
+</code></pre>
+
+<p>With this approach you can add completely new systems and functionality to the engine and any component can interact with them by implementing and exposing the appropriate interfaces.</p>
+
+<p>With this framework in place we can now go back to the problem of implementing our transform gizmos. Let’s start at the beginning, with the selected object that we want to move. This could be anything — an entity, a particular component in an entity or some feature of that component, such as a point on a spline, a face on a piece of modelled geometry, etc.</p>
+
+<p>If the selection is a component, the next step is easy — we look up that component in the API registry and talk to it. But what if the selection is something else?</p>
+
+<p>In The Machinery, a <a href=" ../../post/implementing-drag-and-drop-in-an-imgui/">selected object is represented by an ID</a> that references an object in The Truth. The objects in The Truth form a hierarchy where every object has an <em>owner</em>. This means that if the user has selected some sub feature of a component, such as a node in a spline, we can just walk the owner chain up until we get to that component. Then we can use the component API to handle interactions with it.</p>
+
+<p>If an <em>entity</em> is selected, we have to choose which of its component that we should control the transform of (there may be multiple ones). If the entity has a <em>Transform</em> component, we should probably use that over anything else, since it represents what we think of as the “position” of the entity. But we don’t want to hard code that, rather we want to leave the door open for other “position” concepts, such as 2D positions, or double precision positions to represent astronomical distances. We can achieve this by adding a “gizmo priority” to the editor component interface:</p>
+
+<pre><code class="language-c">float (*gizmo_priority)();
+</code></pre>
+
+<p>When an entity is selected, the gizmo will manipulate the component with the highest “gizmo priority”. If the user wants to manipulate another component, she can select that particular component. Components that don’t have transforms to manipulate will have <code>NULL</code> function pointers for the gizmo callback functions.</p>
+
+<p>Next up is the gizmo interaction itself. We could just give the component <code>move_gizmo()</code>, <code>rotate_gizmo()</code>  and <code>scale_gizmo()</code> callbacks and leave it up to the component to draw the gizmos and handle all of the interaction, but I would argue that this is actually *too muc*h customization. First, it will lead to a lot of code duplication across the different components. Second, it creates the risk of fragmenting the code so that the move tool behaves subtly different for different components — when we actually want it to always be the same. And third, it makes it impossible for us to improve the move tool in the future without going in and changing all the code in all the plugins (some of which won’t be written by us).</p>
+
+<p>So instead of giving the component full control, we just want it to give us the transform of the selected object, then we will draw the move gizmo, handle the interaction, and in the end, tell the component to update the transform with a new value.</p>
+
+<p>Here’s the interface:</p>
+
+<pre><code class="language-c">bool (*gizmo_get_transform)(const tm_the_truth_o *tt, tm_entity_context_o *ctx,
+    uint64_t object, tm_transform_t *world, tm_transform_t *local);
+        
+void (*gizmo_set_transform)(tm_the_truth_o *tt, tm_entity_context_o *ctx,
+    uint64_t object, const tm_transform_t *local, uint64_t undo_scope);
+</code></pre>
+
+<p><code>gizmo_get_transform()</code> gets the transform for the selected <code>object</code>. We pass in references to <em>The Truth</em> and the <em>context</em> where entities live, so the component can use that to obtain the transform. Note that the function returns both the world (global) transform of the object and its local transform (the transform relative to its parent). The reason is that depending on what modifier keys we press, the transform gizmos can work either in local or global space.</p>
+
+<p>As the object is being moved, we call <code>gizmo_set_transform()</code> to tell the component to update the transform of the object. <code>undo_scope</code> is a reference to a set of undoable events in The Truth. If it is zero, that means that the user is still actively dragging the object around, so we shouldn’t create any undo event yet. (If we created undo entries while the user was dragging an object around, the undo queue would get spammed and unusable.) If <code>undo_scope</code> is non-zero it means the user released the mouse button and finished the dragging interaction — so we should create an undo event and add it to the specified scope.</p>
+
+<p>With this interface we can easily create new components that interact with the move gizmo in natural ways. And we can use the same technique to add other forms of editor interactions, such as components adding their own tools to the editor.</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="../../">Niklas Gray</a></h4>
+  
+  
+  <div class="author-meta">
+    
+    
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20190604103351/https://twitter.com/share?text=Making%20the%20move%2frotate%2fscale%20gizmos%20work%20with%20any%20component - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fmaking-the-move-rotate-scale-gizmos-work-with-any-component%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20190604103351/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fmaking-the-move-rotate-scale-gizmos-work-with-any-component%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20190604103351/http://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fmaking-the-move-rotate-scale-gizmos-work-with-any-component%2f&amp;description=Making%20the%20move%2frotate%2fscale%20gizmos%20work%20with%20any%20component" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.2em" href="http://web.archive.org/web/20190604103351/https://plus.google.com/share?url=https%3a%2f%2fourmachinery.com%2fpost%2fmaking-the-move-rotate-scale-gizmos-work-with-any-component%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2019</section>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604103351/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604103351/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="bloglogo" href="http://web.archive.org/web/20190604103351/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604103351/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="bloglogo" href="http://web.archive.org/web/20190604103351/https://ourmachinery.com/cdn-cgi/l/email-protection#c3b3aaada483acb6b1aea2a0abaaada6b1baeda0acae" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div>
+    <script data-cfasync="false" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="../../js/index.js"></script>
+</body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 10:33:51 Jun 04, 2019 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:02 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 97.238
+  exclusion.robots: 0.099
+  exclusion.robots.policy: 0.09
+  cdx.remote: 0.071
+  esindex: 0.012
+  LoadShardBlock: 69.221 (3)
+  PetaboxLoader3.datanode: 115.736 (4)
+  CDXLines.iter: 18.637 (3)
+  load_resource: 142.274
+  PetaboxLoader3.resolve: 83.954
+-->

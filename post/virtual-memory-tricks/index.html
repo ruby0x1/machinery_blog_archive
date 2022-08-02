@@ -1,0 +1,730 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Some tricks you can do with virtual memory."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/virtual-memory-fragmentation.png"/>
+  
+  <meta name="twitter:title" content="Virtual Memory Tricks">
+  <meta name="twitter:description" content="Some tricks you can do with virtual memory."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Virtual Memory Tricks · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/virtual-memory-tricks/"/>
+  
+  <meta property="og:image" content="../../images/virtual-memory-fragmentation.png"/>
+  
+  
+  <meta property="og:description" content="Some tricks you can do with virtual memory."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-11-06T00:00:00Z"/>
+  
+
+  <title>Virtual Memory Tricks &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220401023033/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220401023033\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220401023033\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Virtual Memory Tricks",
+    "name": "Virtual Memory Tricks",
+    "wordCount":  3541 ,
+    "timeRequired": "PT17M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/virtual-memory-tricks/",
+    "datePublished": "2017-11-06T00:00Z",
+    "dateModified": "2017-11-06T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220401023033/https://ourmachinery.com/virtual-memory-fragmentation.png"
+    },
+    
+    
+    "description": "Some tricks you can do with virtual memory."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220401023033/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Virtual Memory Tricks</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-11-06T00:00:00Z">
+          Nov 6, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>I’ve been planning for some time to make a post about things you can do with <a href="http://web.archive.org/web/20220401023033/https://en.wikipedia.org/wiki/Virtual_memory">virtual memory</a>, so when <a href="http://web.archive.org/web/20220401023033/https://twitter.com/jimsagevid">@jimsagevid</a> <a href="http://web.archive.org/web/20220401023033/https://twitter.com/jimsagevid/status/920351713529344003">tweeted</a> me about virtual memory in response to my last post, I felt the time was right.</p>
+<p>Virtual memory is funny. As programmers, we <em>know</em> that it’s there (on all modern CPUs and OSs), but we tend to forget about it, perhaps because it’s not directly exposed in our programming languages. Or, we just think of it as the thing that makes our software run really slow instead of crashing, when it runs out of physical RAM.</p>
+<p>But, it turns out, if you actually make use of what virtual memory can do, you can achieve some pretty cool things.</p>
+<h2 id="obscenely-big-array">Obscenely big array</h2>
+<p>To recap — in my <a href=" ../../post/multi-threading-the-truth/">last post</a> I faced the problem of wanting a big lookup table from object IDs to object pointers. Furthermore, I wanted this table to stay fixed in memory, so that writers could atomically replace pointers in the table without disturbing readers. This means that using something like a <code>std::vector</code> is not possible, since the underlying data will be reallocated when the vector grows.</p>
+<p>A fixed array works:</p>
+<pre><code>object_o *objects[MAX_OBJECTS].
+</code></pre>
+<p>But what size should we use for the array? Pick a big size, and we’re wasting memory. Pick a small size, and we might run out of objects. In the article, I used a hierarchical approach, but as <a href="http://web.archive.org/web/20220401023033/https://twitter.com/jimsagevid">@jimsagevid</a> pointed out, we could use virtual memory instead, and avoid the complexity of a hierarchical table layout.</p>
+<p>When we allocate memory through the virtual memory system we reserve address space for the pages we allocate immediately (no other code can allocate memory in that address range), but actual physical memory is not allocated until we actually touch the pages.</p>
+<p>So for this situation, we can just pick a comfortably large number for our array and virtually allocate it. Say <em>1 billion</em> of objects, for example:</p>
+<pre><code>#define MAX_OBJECTS 1000000000ULL
+object_o **objects = virtual_alloc(MAX_OBJECTS * sizeof(object_o *));
+</code></pre>
+<p>We’re using 8 GB of address space and virtual memory, but only as much physical memory as we actually need for our objects. A simple solution that only requires one line of code.</p>
+<p>Note: I’m using <code>virtual_alloc()</code> here as my OS agnostic virtual memory allocation call. On Windows you would actually call <a href="http://web.archive.org/web/20220401023033/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;ved=0ahUKEwjE__aguZ7XAhUNwGMKHWPIDkAQFgguMAE&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fwindows%2Fdesktop%2Faa366887(v%3Dvs.85).aspx&amp;usg=AOvVaw3EQf1l0Ifuh9GKCNmSmO6x">VirtualAlloc()</a> and on Linux <a href="http://web.archive.org/web/20220401023033/http://man7.org/linux/man-pages/man2/mmap.2.html">mmap()</a>.</p>
+<p>Another note: Windows separates virtual memory allocation into separate <a href="http://web.archive.org/web/20220401023033/https://msdn.microsoft.com/en-us/library/windows/desktop/aa366887(v=vs.85).aspx">MEM_RESERVE</a> and <a href="http://web.archive.org/web/20220401023033/https://msdn.microsoft.com/en-us/library/windows/desktop/aa366887(v=vs.85).aspx">MEM_COMMIT</a> calls. <em>MEM_RESERVE</em> reserves address space and <em>MEM_COMMIT</em> commits it to physical memory. That does <em>not</em> mean that physical memory is actually allocated when you <em>MEM_COMMIT</em>, the physical memory is still not allocated until you actually touch the pages. But <em>MEM_COMMIT</em> reserves memory in the page file, and if you try to commit more memory than you have in your page file, <em>MEM_COMMIT</em> will fail. So on Windows, you probably don’t want to <em>MEM_COMMIT</em> the entire lookup table (because you only have a limited size page file). Instead you want to <em>MEM_RESERVE</em> the whole table in the beginning and then just <em>MEM_COMMIT</em> the range of the table that you actually use.</p>
+<p>In contrast, Linux allows <em>overcommitting</em> — i.e., you can commit more memory than the size of your page file. For this reason, Linux doesn’t need separate reserve/commit operations which makes the virtual memory a lot simpler to use.</p>
+<p>Is reserving 8 GB of virtual memory for the array a problem? Not really. There are two limits that concern us here. The first is <em>address space</em>. In a 64-bit application (which we assume), the address space is 2<sup>64</sup>, a staggeringly large number with room for billions of gigabyte-sized arrays. The second limit is for virtual memory. The OS typically doesn’t let us allocate the whole possible address space as virtual memory. On 64-bit Windows, for example, we can only allocate 256 TB of virtual memory. Still, that’s room for 32 000 arrays of 8 GB each, so as long as we don’t go totally crazy, we’re fine.</p>
+<p>In fact, you could probably use this technique for <em>all</em> global or semi-global arrays in your application without any problems.</p>
+<p>Remember the old-school C way of writing games with static arrays for all objects:</p>
+<pre><code>uint32_t num_tanks;
+tank_t tanks[MAX_TANKS];
+
+uint32_t num_bullets;
+bullet_t bullets[MAX_BULLETS];
+
+...
+</code></pre>
+<p>If you write code like this, you can be sure that someone will complain that it’s not “future-proof”, since you have caps on the number of objects. That is kind of ridiculous, but to satisfy the complaint in a simpler and more fun way than using a <code>std::vector</code>  you can just get rid of the <code>MAX_*</code> defines and allocate 1 GB of virtual memory for each array:</p>
+<pre><code>#define GB 1000000000
+uint32_t num_tanks;
+tank_t *tanks = virtual_alloc(GB);
+uint32_t num_bullets;
+bullet_t *bullets = virtual_alloc(GB);
+</code></pre>
+<h2 id="application-wide-unique-ids">Application wide unique IDs</h2>
+<p>A lot of game engine systems need unique IDs to identify objects. Usually the code looks something like this:</p>
+<pre><code>uint64_t allocate_id(system_t *sys)
+{
+    return sys-&gt;next_free_id++;
+} 
+</code></pre>
+<p>But virtual memory gives us another option. Instead of using integers as identifiers, we could use addresses reserved from the virtual memory system. This allows us to create IDs that are unique, not just in the current system, but throughout the entire application. And since we never actually use the memory pointed to by these addresses, we won’t consume any physical memory.</p>
+<p>It might look something like this:</p>
+<pre><code>system_id_t *allocate_id(system_t *sys)
+{
+    if (!sys-&gt;id_block || sys-&gt;id_block_used == PAGE_SIZE) {
+        sys-&gt;id_block = virtual_alloc(PAGE_SIZE);
+        sys-&gt;id_block_used = 0;
+    }
+    return (system_id_t *)(sys-&gt;id_block + sys-&gt;id_block_used++);
+}
+</code></pre>
+<p>Note that by using a pointer to an opaque struct for the ID we also get some type safety, that we didn’t have with the <code>uint64_t</code> approach.</p>
+<h2 id="memory-overwrite-detection">Memory overwrite detection</h2>
+<p>One of the hardest bugs to fix is random memory overwrites, where some piece of code is writing to memory that it shouldn’t touch. Then, later, when some other piece of code tries to use that memory, it will read that trash data and (most likely) crash. The problem here is that while the crash itself is easy to find, it is tricky to know where the bad write that corrupted the data to begin with occurred.</p>
+<p>Luckily, virtual memory can help us here too.</p>
+<p>To see why, first note that the term <em>random memory overwrite</em> is actually a misnomer. Just like regular space, address space is mostly empty. With a 64 bit address space and an application size of say 2 GB, the address space is 99.999999988 % empty. This means that if the memory overwrites were truly random, most likely they would hit this empty space and cause a <em>page fault/access violation</em>. That would give us a crash at the point of the bad write, instead of the innocent read, which would make the bug much easier to find and fix.</p>
+<p>But of course, the writes are usually not truly random. Instead they typically fall in one of two categories:</p>
+<ul>
+<li>Writing to memory that has been freed.</li>
+<li>Writing beyond the allocated memory for an object.</li>
+</ul>
+<p>In both cases, it is pretty likely that the write will actually hit some other object, rather than empty space. In the first case, the memory will probably have been recycled for something else. In the second case, the write will probably hit a neighboring object, or allocation block headers.</p>
+<p>We can make these cases look more like the random case by replacing the standard system allocator with an end-of-page allocator. Such an allocator uses the virtual memory system to allocate each object on its own set of pages, and furthermore, it aligns the object so that the end of the object coincides with the end of the last page.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="End of page block placement." src="../../images/end-of-page.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>End of page block placement.</h4>
+    </figcaption>
+  </figure>
+<p>This accomplishes two things. First, when we free the pages, we free them in the virtual memory system. This means that attempting to write to the pages after they have been freed will result in an access violation. Note that this typically doesn’t happen with a regular memory allocator — it will save the freed memory in its freelists to be used for other allocations, instead of returning it to the OS.</p>
+<p>Second, as the end of the block coincides with the end of the page, writing beyond the end of the block will also cause an access violation. In other words, with this approach, our typical bad memory writes will crash at the point of the write and allow us to easily diagnose the problem.</p>
+<p>Since this allocator rounds up all allocations to the page size, it will waste a lot of memory for small allocations. It is probably not something that you want enabled all the time. What I typically do is work with the standard allocator. Then, if I suspect bad memory overwrites, I switch it out for the end-of-page allocator. Once I’ve fixed the problem, I switch back to the standard allocator. This of course requires you to have an architecture where you can easily change which allocator your system is using.</p>
+<p>Writing an end end-of-page allocator is not complicated at all. Here’s what <code>malloc</code> looks like:</p>
+<pre><code>void *eop_malloc(uint64_t size)
+{
+    uint64_t pages = (size + PAGE_SIZE - 1) / PAGE_SIZE;
+    char *base = virtual_alloc(pages * PAGE_SIZE);
+    uint64_t offset = pages * PAGE_SIZE - size;
+    return base + offset;
+}
+</code></pre>
+<p>Note: There’s still bad writes that could go undetected with this approach. For example, after we’ve freed the pages, a new page allocation could happen in the same memory range. Also, it is possible that another set of pages could be allocated directly after ours in memory, in which case we wouldn’t detect overwrites beyond the last page.</p>
+<p>Both these problems can be fixed. For the first issue, we can leave the pages reserved, but not committed. That way, the physical memory is freed and we will get page faults, but the addresses are reserved and cannot be used by other objects. For the second issue, we could reserve an extra page after our pages, but not commit that page. No other object could then claim those addresses and writing to them would still cause an access violation. (Note: This only works on Windows, where reserve and commit are separate operations.)</p>
+<p>In practice though, I’ve never needed to take these extra precautions. For me, the basic end-of-page allocator has always been enough to find and fix the bugs.</p>
+<h2 id="fragment-free-memory-allocation">Fragment free memory allocation</h2>
+<p>On old console hardware, <a href="http://web.archive.org/web/20220401023033/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=14&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiPuPLQxZ3XAhVD6Z8KHVvWDQYQFghnMA0&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFragmentation_(computing)&amp;usg=AOvVaw0fUv3ewpnuk2ivdWDPdkYs">memory fragmentation</a> could give programmers nightmares. But even on modern machines, memory fragmentation can be a big problem when trying to implement efficient memory allocators.</p>
+<p>A memory allocator works by requesting big chunks of memory from the system and chopping them up into smaller pieces on request of the user. Memory fragmentation occurs when only some of those objects are freed, leaving holes in the used memory block:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Memory fragmentation." src="../../images/memory-fragmentation.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Memory fragmentation.</h4>
+    </figcaption>
+  </figure>
+<p>The problem here is that if the user requests a big chunk of memory, none of the “holes” may be big enough. This means we have to allocate it from the free memory block at the end — increasing the memory use of the application. In other words, we have a lot of wasted memory that we can’t really use. In the olden days, memory was a precious resource. Today, it’s less so, but we still don’t want to <em>waste</em> it.</p>
+<p>Memory fragmentation is a <em>huge</em> topic, but instead of diving too deep into it, I’m just going to look at it from the virtual memory perspective, which is pretty simple. When you are allocating from virtual memory, <em>fragmentation is a non-issue.</em></p>
+<p>The reason is that when we are using virtual memory, each page in address space is individually mapped to a page in physical memory. So if we create “holes” in physical memory by allocating and freeing pages, it doesn’t matter, because those “holes” can later be used to allocate what to us seems like contiguous memory. Let me try to illustrate it with a picture:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Physical memory can't be fragmented by virtual memory allocations." src="../../images/virtual-memory-fragmentation.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Physical memory can&#39;t be fragmented by virtual memory allocations.</h4>
+    </figcaption>
+  </figure>
+<p>Here, we have first made the red allocations and freed some of them, leaving holes in address space and physical memory. However, this doesn’t prevent us from making the big purple allocation. Each page in the purple allocation can be mapped to one of the hole pages we created earlier, without the need for allocating any more physical memory. So nothing is lost to fragmentation.</p>
+<p>Note that we still have fragmentation in the <em>address space</em>. I.e. we can’t make a big contiguous allocation in the address space where the red allocations are. But we can’t have any fragmentation in physical memory. Fragmentation in address space doesn’t really worry us, because as I said before, address space is typically 99.999999988 % empty anyway, so we have no problem finding contiguous address blocks. (On 32 bit systems, it’s a different story.)</p>
+<p>The drawback compared to using an ordinary allocator is that we have to round up the allocations to the page size, which typically is 4 K on modern systems. This rounding up means we are not using all of the available memory, a problem which is somewhat confusingly referred to as <em>internal fragmentation</em>.</p>
+<p>There are lots of ways of dealing with this. For fixed size objects we can use object pools — allocate a page of memory and divide it into as many objects will fit on that page.</p>
+<p>For dynamically growing buffers, we can just make the buffer size match the page size. This is a simple but interesting technique that I haven’t seen mentioned a lot. Say that you have an array of objects that are 300 bytes big. The conventional setup is that as you need more entries you grow the array geometrically by say doubling it in size. So you go from 16 to 32 to 64 to 128 elements. Geometrical growth is important because it means you only pay an <a href="http://web.archive.org/web/20220401023033/https://en.wikipedia.org/wiki/Amortized_analysis">amortized constant</a> cost for adding an element to the array.</p>
+<p>However, 16 * 300 = 4800. If you allocate that from virtual memory, you have to round it up to 8 K, wasting almost an entire page. But we can easily fix that. Instead of focusing on the number of elements, we just grow the buffer by multiples of the page size: 4 K, 8 K, 16 K, 32 K, … and then put as many elements as will fit in there  (13, 27, 54, 109, …). This is still geometric growth, so the cost is still amortized constant, but now the internal fragmentation is just 150 bytes on average, instead of 2 K.</p>
+<p>I find it a bit surprising that standard memory allocators don’t take more advantage of virtual memory to avoid fragmentation. Most allocators I’ve looked at still work by obtaining large chunks from the OS and chopping them up, instead of working with page sized virtual memory allocations.</p>
+<p>Is getting larger chunks from the OS more efficient? I’m heading into territory where my knowledge is pretty sketchy here, but I don’t think so. Using a larger <em>page size</em> can be more efficient, because it means a smaller <a href="http://web.archive.org/web/20220401023033/https://en.wikipedia.org/wiki/Page_table">page table</a> and better use of the <a href="http://web.archive.org/web/20220401023033/https://en.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> cache. But, given a fixed page size, I don’t think it matters if you have one big or many small virtual memory allocations, because the address resolve is done page-by-page anyway. And even if you allocate large chunks, consecutive virtual pages are <a href="http://web.archive.org/web/20220401023033/https://dl.acm.org/citation.cfm?id=1242537">often not consecutive</a> in physical memory anyway.</p>
+<p>There is probably some memory overhead for the OS to keep track of a large number of individual memory allocations. Also we need system calls to allocate and release the pages which will consume a little time. Maybe that’s the reason. Or maybe it’s just that general allocators are written to run in a variety of environments — on 32 bit systems or systems with large page sizes — so they can’t take advantage of the fragment free allocations you can get with 64 bit address space and 4 K pages.</p>
+<h2 id="gapless-ring-buffer">Gapless ring buffer</h2>
+<p>This is a trick I found out about from <a href="http://web.archive.org/web/20220401023033/https://fgiesen.wordpress.com/2012/07/21/the-magic-ring-buffer/">Fabian Giesen</a>’<a href="http://web.archive.org/web/20220401023033/https://fgiesen.wordpress.com/2012/07/21/the-magic-ring-buffer/">s blog</a>, but the idea seems to have been around <a href="http://web.archive.org/web/20220401023033/https://www.codeproject.com/Articles/3479/The-Bip-Buffer-The-Circular-Buffer-with-a-Twist">for longer</a>.</p>
+<p>A <a href="http://web.archive.org/web/20220401023033/https://en.wikipedia.org/wiki/Circular_buffer">ring buffer</a> is a very useful data structure for any situation where data is produced and consumed at different rates. For example, when reading from a socket, you may receive data in chunks that do not match your packet size, so you need to buffer it until you have received a full packet.</p>
+<p>A ring buffer stores the data in an array of fixed size that “wraps around”, i.e. once the array has been filled we start writing data to the beginning of the array again.</p>
+<p>In addition to the array we also need read and write pointers to know where in the buffer to read and write data. I like to use <code>uint64_t</code> counters for this, specifying the total number of data written and read, something like this:</p>
+<pre><code>enum {BUFFER_SIZE = 8*1024};
+struct ring_buffer_t {
+    uint8_t data[BUFFER_SIZE];
+    uint64_t read;
+    uint64_t written;
+};
+</code></pre>
+<p>Note that since the buffer wraps around, we cannot let the write pointer run too far ahead of the read pointer or it will start to trash data that hasn’t been read yet. Basically, the <code>BUFFER_SIZE</code> controls how far ahead the writer can get. If the buffer is full, the writer must stall and wait for the reader. If the buffer is empty, the reader must stall and wait for the writer. (The number of bytes available to the reader is <code>written - read</code>.)</p>
+<p>A really annoying part of ring buffers is that you need special code to handle the wraparound. If it weren’t for this, writing to the buffer would be a simple <code>memcpy</code>, but instead we have to be careful that we do the right thing when the write straddles the wraparound point:</p>
+<pre><code>void write(ring_buffer_t *rb, uint8_t *p, uint64_t n)
+{
+    uint64_t offset = rb-&gt;written % BUFFER_SIZE;
+    uint64_t space = BUFFER_SIZE - offset;
+    uint64_t first_write = n &lt; space ? n : space;
+    memcpy(rb-&gt;data + offset, p, first_write);
+    memcpy(rb-&gt;data, p + first_write, n - first_write);
+    rb-&gt;written += n;
+}
+</code></pre>
+<p>As annoying as this is, reading is even worse. If it wasn’t for the wraparound, reading wouldn’t even require any copying at all — we could just use the data directly from the buffer — but with the wraparound, we need two <code>memcpy()</code> calls to move the data to a contiguous memory block for further processing.</p>
+<p>How can virtual memory help here? We could use the “huge array” technique and just reserve a huge array instead of the ring buffer, commit pages as the writer advanced and decommit them as the reader advanced. With this we wouldn’t even need to set a fixed size for the array — it would just use as much memory as needed. Pretty ingenious. But note that you might need a <em>huge</em> array. To buffer a 1 Gbps network stream with an uptime of a year you will need to reserve 4 PB (petabytes) of memory. Sadly, as we saw above, 64-bit windows caps the virtual memory at 256 TB. Also, those commit and decommit calls aren’t free.</p>
+<p>But we can fix this in another way, by taking advantage of the fact that multiple virtual pages can be setup to resolve to the same physical page. This is usually used to share memory between different processes, but we can also set it up in a single process. To use this for the ring buffer we set up a set of pages, immediately after the ring buffer that point to the same physical memory:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Ring buffer with page mapping. The shaded block appears twice." src="../../images/ring-buffer.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Ring buffer with page mapping. The shaded block appears twice.</h4>
+    </figcaption>
+  </figure>
+<p>As you can see, with this setup the virtual memory system takes care of the wraparound for us. In the address space we can always find a contiguous copy of the memory in the ring buffer, even though the buffer is split up physically. The read and write functions become simply:</p>
+<pre><code>void write(ring_buffer_t *rb, uint8_t *p, uint64_t n)
+{
+    memcpy(rb-&gt;data + (rb-&gt;written % BUFFER_SIZE), p, n);
+    rb-&gt;written += n;
+}
+
+uint8_t *read(ring_buffer_t *rb, uint64_t n)
+{
+    uint8_t *p = rb-&gt;data + (rb-&gt;read % BUFFER_SIZE);
+    rb-&gt;read += n;
+    return p;
+}
+</code></pre>
+<p>A lot nicer, and we’re still using the same amount of (physical) memory.</p>
+<p>Note that setting up this memory layout can be a bit tricky. On Windows you have to create a file mapping into virtual memory with <a href="http://web.archive.org/web/20220401023033/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiZ6Ii-uJ7XAhUVwWMKHV2VBeoQFggoMAA&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fwindows%2Fdesktop%2Faa366537(v%3Dvs.85).aspx&amp;usg=AOvVaw1ffsAazaEGxbP6YuWa5n0R">CreateFileMapping()</a>  — yes, even though no files on disk are involved we still need a “file mapping” because that’s how virtual memory is shared. Since we don’t need a file on disk we use <code>INVALID_HANDLE_VALUE</code> for the file handle which creates a mapping against the page file. Then we use <a href="http://web.archive.org/web/20220401023033/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjru_zSuJ7XAhUL2mMKHVevBNQQFggoMAA&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fwindows%2Fdesktop%2Faa366763(v%3Dvs.85).aspx&amp;usg=AOvVaw3c_JIGhDa6FmBA3juUDUeL">MapViewOfFileEx()</a> to map that file mapping into two consecutive memory regions. Unfortunately, there is no way of guaranteeing that the memory regions we pass are available. We can reserve them, and then free them just before calling <a href="http://web.archive.org/web/20220401023033/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjru_zSuJ7XAhUL2mMKHVevBNQQFggoMAA&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fwindows%2Fdesktop%2Faa366763(v%3Dvs.85).aspx&amp;usg=AOvVaw3c_JIGhDa6FmBA3juUDUeL">MapViewOfFileEx()</a> , but that still leaves a window of time where if we’re super unlucky, someone else could come and allocate something in that address area. We might have to retry the mapping a few times before it succeeds, but after that setup we can use the buffer without worrying about it.</p>
+<h2 id="and-thats-all-from-me">And that’s all from me</h2>
+<p>Do you know of any neat virtual memory tricks not mentioned here. Tweet them to me at <a href="http://web.archive.org/web/20220401023033/https://twitter.com/niklasfrykholm">@niklasfrykholm</a>.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220401023033/https://twitter.com/share?text=Virtual%20Memory%20Tricks - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fvirtual-memory-tricks%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220401023033/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fvirtual-memory-tricks%2f&amp;description=Virtual%20Memory%20Tricks" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-miniseries-part-2-user-groups-and-user-conferences/">Marketing Miniseries: Part 2 User Groups and User Conferences</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-10-24T00:00:00Z">
+                      24 Oct 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>To continue on our marketing miniseries of blog posts, I wanted to touch briefly on user group meetups and conferences. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-miniseries-part-2-user-groups-and-user-conferences/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/multi-threading-the-truth/" class="text-decoration-none"><img src="../../images/lookup-table.png" class="card-img-top" alt="Multi-Threading The Truth"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/multi-threading-the-truth/">Multi-Threading The Truth</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-10-16T00:00:00Z">
+                      16 Oct 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>For the last week I’ve been working on making a big engine system thread-safe. I found that there is relative little …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/multi-threading-the-truth/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">23 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/its-all-about-the-data/" class="text-decoration-none"><img src="../../images/its-all-about-the-data.png" class="card-img-top" alt="It’s All About The Data"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/its-all-about-the-data/">It’s All About The Data</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-10-09T00:00:00Z">
+                      9 Oct 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In today’s post I will try to give a few tips on how to structure your cross-platform rendering APIs to make it easier …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/its-all-about-the-data/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/virtual-memory-tricks/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220401023033/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220401023033/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220401023033/https://ourmachinery.com/cdn-cgi/l/email-protection#3d4d54535a7d52484f505c5e555453584f44135e5250" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 02:30:33 Apr 01, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:19 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 71.971
+  exclusion.robots: 0.131
+  exclusion.robots.policy: 0.123
+  RedisCDXSource: 0.69
+  esindex: 0.024
+  LoadShardBlock: 47.8 (3)
+  PetaboxLoader3.datanode: 58.399 (4)
+  CDXLines.iter: 19.484 (3)
+  load_resource: 74.256
+  PetaboxLoader3.resolve: 30.13
+-->

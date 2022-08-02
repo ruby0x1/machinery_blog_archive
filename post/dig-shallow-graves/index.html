@@ -1,0 +1,919 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Some notes about API design."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Dig Shallow Graves">
+  <meta name="twitter:description" content="Some notes about API design."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Dig Shallow Graves · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content="../dig-shallow-graves/"/>
+  
+  <meta property="og:image" content="images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="Some notes about API design."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-04-08T00:00:00Z"/>
+  
+
+  <title>Dig Shallow Graves &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804195900/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804195900\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804195900\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Dig Shallow Graves",
+    "name": "Dig Shallow Graves",
+    "wordCount":  3551 ,
+    "timeRequired": "PT17M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": "../dig-shallow-graves/",
+    "datePublished": "2021-04-08T00:00Z",
+    "dateModified": "2021-04-08T00:00Z",
+    
+    
+    "description": "Some notes about API design."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Community
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="../" aria-label="Link Blog">Blog</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://discord.gg/SHHSZaH" aria-label="Link Discord" target="_blank">Discord</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://github.com/OurMachinery/themachinery-public/discussions" aria-label="Link Forum" target="_blank">Forum</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804195900/https://anchor.fm/ourmachinery" aria-label="Link Podcast" target="_blank">Podcast</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="../">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804195900/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Dig Shallow Graves</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-04-08T00:00:00Z">
+          Apr 8, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Recently I’ve been trying to help our interns with API design and I figured I should write something
+about it.</p>
+<p>If I have expertise in anything, it’s probably API design. This is kind of frustrating because it is
+not very tangible. Like if someone is good at optimizing microcode for x86 processors or something
+like that, you can point to it and say look, this is what she’s good at. But API design is so much
+<em>fuzzier</em>. What even is a good API?</p>
+<p>Not that I can’t code, or optimize, or debug — I’m pretty good at that too! In fact, I don’t think
+you can be a good API designer if you don’t <em>code</em> a lot. An API isn’t some abstract, ivory tower
+thing. It’s a user interface for programmers. And how are you supposed to design that user interface
+if you never use it?</p>
+<h2 id="what-is-a-good-api">What is a good API?</h2>
+<p>So, to get back to the question: What is a good API?</p>
+<p>A good API is a good user interface for programmers. What does this mean?</p>
+<ul>
+<li>It’s easy to understand how to use the API.</li>
+<li>The code that uses the API is simple and straightforward.</li>
+<li>The API helps you in writing code that is performant, correct, and bug free.</li>
+<li>The API is pleasant to work with. (Sparks joy!)</li>
+</ul>
+<p>Terms like “easy”, “simple” and “pleasant” are of course subjective. What is easy depends on what
+you have encountered before. Since most programmers are familiar with for-loops an API designed
+around that might be easier than one using other forms of iteration. But I don’t think <em>everything</em>
+about APIs is subjective. Bad APIs can feel unpleasant to work with in an almost visceral way, and
+they tend to share some common traits:</p>
+<ul>
+<li>Functions take lots of arguments — either directly or in structs — and behave very differently depending on what arguments you pass. Some of the arguments are only used in some of the call modes.</li>
+<li>You need multiple lines of setup before you can call the function that does the thing you want to do and multiple lines of cleanup afterward. It is not very clear exactly what setup and cleanup is needed and what “state” the system is in.</li>
+<li>The documentation is confusing and mentions lots of special cases.</li>
+</ul>
+<p>Similarly, there are signs of a good API:</p>
+<ul>
+<li>Each function has a clear single purpose and few arguments. There are no confusing options that
+fundamentally change what the function does.</li>
+<li>Calling a function is a one-liner. If any setup is needed, it is clear what needs to be done and
+hard to do it wrong.</li>
+<li>The documentation tends to be short because it is obvious what the functions do and they don’t
+have a lot of special cases.</li>
+<li>Simple things are simple, complicated things are possible.</li>
+</ul>
+<p>Another important property of an API is that it is <em>easy to implement</em>.</p>
+<p>This may be a bit controversial. After all, an API is an <em>interface</em> — why should we care what the
+implementation looks like? Shouldn’t we just make the best possible interface regardless of how
+complicated it is to implement?</p>
+<p>I think there are two counterarguments. First, you cannot view any single software system in
+complete isolation. Every line of code added somewhere increases the total complexity. It is not
+just the cost of implementation, it also needs to be maintained, upgraded, documented, refactored,
+learned, etc. The more complex something is, the harder all of this becomes.</p>
+<p>Second, the purpose of an API is to abstract the underlying implementation. But the abstraction is
+almost never 100 % perfect. One way or another, some properties of the implementation leak through.
+This can be things like:</p>
+<ul>
+<li>
+<p><strong>Debugging.</strong> You call the API, but you get an error, a crash, or some other unexpected result.
+Now you need to go into the implementation to figure out why you got that result. (You could of
+course also avoid doing that and just try to debug the system as a black box, but that’s orders of
+magnitude harder.)</p>
+</li>
+<li>
+<p><strong>Performance.</strong> You call the API, but you get worse performance than you expected or needed. Now
+you have to go into the actual implementation to try to understand why the calls are so expensive.</p>
+</li>
+</ul>
+<p>When the implementation of the API is simple, doing this kind of deep digging is easy. There is
+relatively little code in the implementation and it is easy to see where something goes wrong or
+where time is being spent. The concepts in the implementation match up with the concepts in the API,
+making the transition from interface to implementation straightforward.</p>
+<p>If the implementation is complex, has multiple layers, and different concepts than the API, this is
+much harder.</p>
+<p>Let’s look at some practical tips for API design.</p>
+<h2 id="know-your-domain-and-your-users">Know your domain and your users</h2>
+<p>When you design an API you design a way of thinking and reasoning about a problem in a structured
+and precise way. To be able to do that you need to <em>understand</em> the problem domain. For example, you
+can’t design an API that handles colors unless you understand RGB color theory, gamma spaces, etc.</p>
+<p>You must also understand your <em>users</em>. What are their needs? What are they trying to do with your
+API? What’s their background knowledge? You need to be able to put yourself in their shoes —
+<em>empathize</em> with them.</p>
+<p>The best APIs are almost educational, serving as a bridge between the users’ ideas of what they want
+to do and your technical knowledge of how it can be achieved.</p>
+<p>Sometimes you can achieve this by borrowing already established domain concepts and terminology. If
+you can, that’s great, because your users might already know them. But often you have to invent your
+own completely new concepts. This is the creative part of API design, which, at least for me, is a
+big part of the fun.</p>
+<p>So understanding the users and the domain is paramount, but how do you acquire that understanding?
+That brings me to the next point.</p>
+<h2 id="minimize-planning">Minimize planning</h2>
+<p>There’s a lot of programming advice out there that says that you should plan out and fully design
+your system before even thinking about writing any code. If you follow this school you work in
+distinct phases. First, you learn about the domain, then you create the system design, and finally,
+you implement it.</p>
+<p>I guess this style might work for some people, but I find it hard to learn and plan in a vacuum. I
+prefer to approach the design as a dialogue. I learn a little about the domain, design a single
+feature, implement it, then go back and learn about the next thing I want to do. As my understanding
+of the domain and the challenges improve, I need to go back and revise my earlier decisions.</p>
+<p>I think this is crucial. To know how an API design works, you have to get in there, try it out, see
+how it feels. As you get more experience in the space, your understanding improves and this helps
+you make better decisions.</p>
+<p>Consider this: At the very start of a project is when you have the <em>least</em> information and knowledge
+about the problem domain — every moment you spend working on it gives you more experience. So why
+should you do all the planning and decisions in the beginning, when you have the least information.</p>
+<h2 id="dig-shallow-graves">Dig shallow graves</h2>
+<p>Instead of planning everything out I pick one small task that the system needs to do and implement
+it. I try to pick the smallest possible task that I can think of that would still somehow be useful
+to the end-user. I find it valuable to implement “real features” like this instead of just building
+out low-level functionality because it tests how well the system integrates with everything else and
+gives a fairly good picture of how the API works in the “real world”.</p>
+<p>After it is done, I take a step back and look at it to see if there are any obvious design issues that need to be fixed before moving on to the next task.</p>
+<p>During this process, I fully expect that I <em>will</em> make mistakes and have to backtrack. So an
+important part is to make sure that if I dig myself into a hole with the design — which I’m likely
+to do at some point, regardless of how much planning I do — it is a pretty shallow hole that I can
+easily get myself out of. By taking small steps, one at a time, I never have to backtrack too far —
+typically the full circle of picking a feature, planning it, and implementing it is done in just a
+day or two.</p>
+<p>Digging shallow graves also means trying to avoid design choices that are hard to back out of if
+they should prove problematic. Two situations where I’ve seen this happen are:</p>
+<ol>
+<li>
+<p>Basing your implementation on a third-party library that does not cover all your use cases.
+(Can’t do feature X, doesn’t work on platform Y, etc) If you need to change the technology your
+implementation is built on, you typically need a full rewrite.</p>
+</li>
+<li>
+<p>Not considering performance. A system designed and tested with only 10 elements often becomes
+unbearably slow when run with 10 000 elements. Sometimes this can be fixed with a few targeted
+optimizations, but often improving the performance by several orders of magnitude requires a
+complete redesign.</p>
+</li>
+</ol>
+<p>Complexity comes into play here too. The more complex your implementation is, the harder these
+necessary refactors and rewrites will be and consciously or unconsciously, you will start to resist
+them.</p>
+<p>Let’s see how this works in a real-world example.</p>
+<p>We are currently working on adding debugging support to our visual scripting system. This is a big
+and complex task with lots of intricate pieces — watch windows, breakpoints, single-stepping, etc.
+Planning all of this upfront would be daunting.</p>
+<p>So instead we start with a minimally useful task: To have nodes in the graph light up as they are
+being triggered. This gives the user a quick at-a-glance picture of how the graph is running.</p>
+<p>Given this task, we design the simplest possible API we can think of:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_graph_debugging_api {
+    <span style="color:#75715e">// Return the node&#39;s activity level. The activity level is 1 when the node
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// is first activiated and then fades to 0 over time.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">float</span> (<span style="color:#f92672">*</span>node_activity)(tm_tt_id_t node);
+
+    <span style="color:#75715e">// Marks the node as active in the current frame.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>set_node_active)(tm_tt_id_t node);
+};
+</code></pre></div><p>The graph view in the editor calls  <code>node_activity()</code> to check the activity level of a node and
+highlight the active nodes. The graph interpreter calls  <code>set_node_active()</code> when a node is
+triggered to mark it as active.</p>
+<p>This API is so ridiculously simple that implementing it is almost trivial. But by doing it, we’ve
+not only added a useful feature to the editor, we’ve also taken a small step towards having a
+fully-featured graph debugger. Once this is done, we can pick the next small task, such as
+displaying the values that are being transmitted on the graph wires.</p>
+<p>This simple API might not hold up in the long run. In fact, we’ve already made changes to it. We
+decided to have it return the <em>time</em> when the node was last activated instead and have the caller
+interpret that as an activity level:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Returns the time at which the `node` was last activated.
+</span><span style="color:#75715e"></span>tm_clock_o (<span style="color:#f92672">*</span>node_active)(tm_tt_id_t node);
+</code></pre></div><p>This change is a tradeoff. We’ve made the API more flexible (the caller can now control the fade-out
+time of highlights) at the cost of making it more complicated to use. (To get the highlight, the
+caller needs to subtract the returned value from the current time and convert that elapsed time into
+a highlight value.) These kinds of tradeoffs are inevitable and as the designer, you have to make a
+call on what is the right choice for your API.</p>
+<p>You might think you can get away from the tradeoff by putting <em>both</em> functions in the API. But that
+is just another kind of tradeoff. This time the tradeoff is a more complex API with more functions
+that the user has to understand.</p>
+<p>We fully expect to make additional changes. For example, we need some way of telling <em>which</em> graph
+is being debugged and that may change the API further.  But I think it is always best to start as
+simple as possible. It’s always easier to add complexity than to try to take it away.</p>
+<h2 id="test-your-api-and-fix-your-bugs">Test your API and fix your bugs</h2>
+<p>Related to this, make sure that you test your APIs, by actually using them in production code, and
+fix any “bugs” that you or others discover.</p>
+<p>Bugs in implementations happen when your code has a special case that you didn’t really think about,
+so it computes the wrong value or crashes.</p>
+<p>Bugs in APIs happen when the user of your API doesn’t understand how it’s supposed to be used, so
+they call it in the wrong way and it computes the wrong value or crashes.</p>
+<p>I would venture that bugs in APIs are a bigger issue than bugs in implementations. They are harder
+to detect and fix so they tend to hang around longer. And a lot of the time, what looks like an
+implementation bug is just a bug in the interface below it (insufficient documentation, confusing
+behavior, etc).</p>
+<p>A big problem is that programmers often don’t report bugs in APIs. Instead, they just figure out
+what they did wrong, fix the problem, and go about their day. If you want to catch “bugs” in your
+API you have to listen carefully to what problems the users are having and modify your API to fix or
+alleviate those problems.</p>
+<p>Sometimes that user is you! I think as programmers we’re so trained to “solve problems and move on”
+that we sometimes miss the chance to fix an underlying issue. Even when the issue is in our own code
+and we’re the ones running into it!</p>
+<p>Also, note that I say <em>fix</em> <em>or alleviate</em>. Another common trait of programmers is that we often
+think in binaries and absolutes. If we can’t do something that 100 % guaranteed fixes the issue in
+every possible case, we say that the problem is <em>logically impossible</em> to solve and do nothing.</p>
+<p>I propose to instead think in terms of <em>ergonomics</em> and <em>harm reduction</em>. If we can do something
+that reduces the risk of misuse of our API by 95 %, we will have saved our users a ton of
+frustration and headache even though the possibility of misuse is still there. It might be something
+really simple, like improved documentation or a small change to the API arguments that nudges the
+user in the right direction.</p>
+<p>As an example, I noticed multiple bugs where we were doing <code>enter_critical_section()</code> but forgetting
+to clean up with <code>leave_critical_section()</code>. If we were using C++, I would have used a stack object
+with a destructor to clean up the critical section, but since we are using C I can’t really do that.
+So instead I introduced the following macros:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define TM_OS_ENTER_CRITICAL_SECTION(cs)              \
+</span><span style="color:#75715e">    uint32_t TM_OS_LEAVE_CRITICAL_SECTION_is_missing; \
+</span><span style="color:#75715e">    tm_os_api-&gt;thread-&gt;enter_critical_section(cs);
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define TM_OS_LEAVE_CRITICAL_SECTION(cs)           \
+</span><span style="color:#75715e">    (void)TM_OS_LEAVE_CRITICAL_SECTION_is_missing; \
+</span><span style="color:#75715e">    tm_os_api-&gt;thread-&gt;leave_critical_section(cs);
+</span></code></pre></div><p>Now, if a scope has <code>TM_OS_ENTER_CRITICAL_SECTION(cs)</code> but not <code>TM_OS_LEAVE_CRITICAL_SECTION(cs)</code>
+the compiler will print a warning that the variable <code>TM_OS_LEAVE_CRITICAL_SECTION_is_missing</code> is
+unused.</p>
+<p>This isn’t perfect, it’s still possible to forget to close the critical section with code like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">{
+    TM_ENTER_CRITICAL_SECTION(cs);
+
+    <span style="color:#66d9ef">if</span> (bla)
+        <span style="color:#66d9ef">return</span>;
+
+    TM_LEAVE_CRITICAL_SECTION(cs);
+}
+</code></pre></div><p>But we have still significantly reduced the risk of this happening.</p>
+<p>We could add additional steps of mitigation to this too. For example, we could record the <code>__FILE__</code>
+and <code>__LINE__</code> whenever we enter a critical section and dump those values if there are any open
+critical sections when we reach the main loop.</p>
+<p>I think the important part here is that we are not trying to make a perfect design of what a
+critical section API should look like. Instead, we’re looking at the issues our users (programmers)
+have with the API and what we can do to fix them. I.e., if none of our users ever forgot the
+<code>leave()</code> call, the macros above wouldn’t be necessary. They are a reaction to the <em>actual</em> problems
+users are having.</p>
+<h2 id="postpone-hard-problems">Postpone hard problems</h2>
+<p>Sometimes in API design, you will run into a <em>Hard Problem</em>. A <em>hard problem</em> is any problem that
+doesn’t have a simple and straightforward solution so that you are unsure of what the right thing to
+do is.</p>
+<p><em>Hard problems</em> are dangerous in two ways. First, they can be very time-consuming, taking weeks,
+months, or years to solve. That might be fine if you have a salaried position at some research
+institute, but not if you are trying to build a complete game engine with a small team. Second, if
+you force yourself to implement a solution to a problem when you can’t see a clear and simple
+solution, there’s a chance that you will implement a muddy and complex solution that reflects your
+own lack of understanding of the problem. This bad solution will be a millstone around your neck
+going forward.</p>
+<p>So when dealing with hard problems we want to be sure of two things. First, that we only solve the
+<em>absolutely necessary</em> ones. We only have so much time and energy to spend and we want to make sure
+we put it in the right place. Second, that we don’t go ahead and implement a complex and convoluted
+solution to a problem because we missed a simple and straightforward one.</p>
+<p>So how do we do that? My favorite approach is to “do nothing”. I.e., instead of actually solving the
+problem I just put a sticker on it that says “Fix this later”. Surprisingly often, this Zen-like
+approach will actually solve the problem in one way or another:</p>
+<ul>
+<li>
+<p>Sometimes, while I’m taking a walk or a shower, I’ll come up with a simple and straightforward
+solution.</p>
+</li>
+<li>
+<p>Sometimes, as I work on other parts of the system, and my understanding of the problem space
+deepens, I realize that actually there is no problem. It only seemed like there was a problem
+because my understanding was incomplete.</p>
+</li>
+<li>
+<p>Sometimes, I never solve the hard problem and that’s OK. It turns out the system is still useful
+and provides value even if it doesn&rsquo;t handle <a href="http://web.archive.org/web/20210804195900/https://infiniteundo.com/post/25509354022/more-falsehoods-programmers-believe-about-time">every single imaginable
+thing</a>.</p>
+</li>
+</ul>
+<p>Postponing hard problems can feel <em>irresponsible</em>, but responsibility isn’t about solving every
+imaginable problem. It’s about using your time and resources where it matters. You also have to be
+careful about over-design. Over-design happens when you try to make your API cover every possible
+use case instead of focusing on the issues that the majority of users care about (there are some
+great examples in the newer C++ standard libraries).</p>
+<p>Let’s look at a concrete example of postponing a hard problem to see how it might work in practice.
+Consider the <em>Graph Debugging API</em> again. We know that at some point we need a way for the user to
+specify <em>what</em> to debug. The engine can have multiple <em>Simulation</em> tabs running, and each of those
+tabs can have multiple enemy entities running around in them, each one running an instance of the
+enemy script. Now, what if the user wants to debug one specific enemy in one specific simulation to
+see why it’s behaving erratically? There needs to be some way to “connect” the graph view to a
+specific entity for debugging, but how should that work?</p>
+<p>Obviously, there could be some drop-down menu with a search field where the user could navigate
+first to a simulation tab and then to a particular entity in that tab… by its entity ID? But that
+doesn’t seem very elegant. So instead of banging our heads against this issue or implementing
+something that doesn&rsquo;t feel great, we just decided that… we’ll fix it later! Maybe we’ll stumble on
+a better solution along the way. If not, at least we will have a better idea of how we would want
+things to work after playing around with the system some more.</p>
+<p>A small word of caution with regards to postponing hard problems. As mentioned earlier, we want to
+make sure that we “dig shallow graves”. Make sure you don’t postpone a hard problem that is an
+essential part of your system in such a way that when you <em>do</em> implement it, everything else needs
+to be rewritten.</p>
+<h2 id="modifying-and-versioning-apis">Modifying and versioning APIs</h2>
+<p>Above, I’ve talked a lot about modifying, redesigning, and evolving APIs. I envision most of this
+happening during the development of the API, before it is actually released to the public.</p>
+<p>But I think you should also have a mechanism for evolving your API <em>after</em> it has been released. As
+your API gets some actual use, you will undoubtedly discover more design flaws, things confusing the
+user, and other things you want to fix.</p>
+<p>The mechanism can be as simple as deprecating old functions in the API and replacing them with new
+versions. There are lots of other options too, but that could be an entire article in itself. I just
+want to emphasize that you should have a path for evolving your API <em>after</em> the release. As always,
+the most important thing with code is that it is easy to change and you don’t want to be locked in
+forever by a bad API design choice.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804195900/https://twitter.com/share?text=Dig%20Shallow%20Graves - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fdig-shallow-graves%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804195900/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fdig-shallow-graves%2f&amp;description=Dig%20Shallow%20Graves" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../porting-the-machinery-to-linux/">Porting The Machinery to Linux</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-03-08T00:00:00Z">
+                      8 Mar 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hi, my name is Raphael, and I&rsquo;m an intern at Our Machinery.</p>
+<p>I&rsquo;m a Linux user and passionate about Game …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../porting-the-machinery-to-linux/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href="../beta-2021-2/" class="text-decoration-none"><img src="images/beta_21_2__node_highlights.png" class="card-img-top" alt="The Machinery Beta — February 2021 (version 2021.2)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../beta-2021-2/">The Machinery Beta — February 2021 (version 2021.2)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-02-26T00:00:00Z">
+                      26 Feb 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hope your winter was cozy and warm. Days are starting to get longer and we see spring buds on the
+branches. To brighten …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../beta-2021-2/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href="../moving-the-machinery-to-bindless/">Moving The Machinery to Bindless</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-02-22T00:00:00Z">
+                      22 Feb 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>It’s been quite some time since I wrote anything about the low-level rendering architecture in <em>The
+Machinery</em>, but …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href="../moving-the-machinery-to-bindless/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src="post/dig-shallow-graves/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804195900/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195900/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/cdn-cgi/l/email-protection#24544d4a43644b51564945474c4d4a41565d0a474b49" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804195900/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 19:59:00 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:54 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 67.602
+  exclusion.robots: 0.16
+  exclusion.robots.policy: 0.147
+  RedisCDXSource: 0.769
+  esindex: 0.011
+  LoadShardBlock: 37.269 (3)
+  PetaboxLoader3.datanode: 36.135 (4)
+  CDXLines.iter: 23.926 (3)
+  load_resource: 26.857
+  PetaboxLoader3.resolve: 21.325
+-->

@@ -1,0 +1,766 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="First steps of designing a shader system for The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="The Machinery Shader System (part 1)">
+  <meta name="twitter:description" content="First steps of designing a shader system for The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="The Machinery Shader System (part 1) · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/the-machinery-shader-system-part-1/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="First steps of designing a shader system for The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2018-02-12T00:00:00Z"/>
+  
+
+  <title>The Machinery Shader System (part 1) &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210711062143/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210711062143\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210711062143\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "The Machinery Shader System (part 1)",
+    "name": "The Machinery Shader System (part 1)",
+    "wordCount":  2452 ,
+    "timeRequired": "PT12M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/the-machinery-shader-system-part-1/",
+    "datePublished": "2018-02-12T00:00Z",
+    "dateModified": "2018-02-12T00:00Z",
+    
+    
+    "description": "First steps of designing a shader system for The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210711062143/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210711062143/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>The Machinery Shader System (part 1)</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2018-02-12T00:00:00Z">
+          Feb 12, 2018
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Designing and implementing a solid shader system has been in the back of my head, itching for attention, since even before we started Our Machinery. I’ve successfully managed to ignore it all the way up until last week, when reality finally caught up with my procrastination, rubbing in the fact that I’ve reached the point where I need to do some more serious shader development, and that the current bare-bones system simply won’t cut it.</p>
+<p>My definition of a “Shader System” is rather simple, it boils down to a few things:</p>
+<ul>
+<li>
+<p>Some kind of meta-language and compiler for authoring of shaders where the user can define various render states, write shader source snippets (in some flavor), and then piece together more or less complete pipeline state objects from that.</p>
+</li>
+<li>
+<p>Some way to get data in the form of constants and resources (textures, buffers, samplers), in and out of the shader system as efficiently as possible.</p>
+</li>
+<li>
+<p>Some kind of resource management system for loading, reloading and unloading the finished shaders.</p>
+</li>
+</ul>
+<p>To be honest, I kind of hate shader systems. It’s not that they are particularly hard to write, it’s more that whatever you do, chances are overwhelmingly big that you won’t feel too satisfied with the final result. Or at least, that is my experience with my previous four (rather ambitious) shader systems that I have designed, written and maintained. Not to mention all the hard words and hate I’ve gotten from various co-workers when they’ve had to fix bugs or extend any of these systems. But it’s all fine. I have seen the authoring workflows and implementations of many different shader systems over the years, and so far they all pretty much suck in one way or another. And while it is somewhat comforting to know that I’m not alone in causing frustration among co-workers and users, it is also a sad realization that it appears to be inevitable ending up with a system that is quite far from perfection.</p>
+<p>But why are they so hard? I think there are a bunch of reasons for that, here are a few from the top of my head:</p>
+<ul>
+<li>
+<p>There’s a big chance that the final system will spread its tentacles into almost all other rendering systems, and if you don’t plan for this you are likely to introduce rather harsh coupling between the systems. This makes it very time consuming to refactor the shader system when that day comes.</p>
+</li>
+<li>
+<p>The best way to handle resource and constant bindings tends to differ not only between graphics APIs and platforms, but also between the different underlying rendering systems. E.g. a system responsible for rendering a crowd of 20 000 skinned characters with carefully planned material variations is very different from a system for rendering a few full screen triangles as part of a post processing stack. Yet, they both need to talk to the shader system.</p>
+</li>
+<li>
+<p>Deciding how to best handle generating shader variations (e.g skinning on/off, light maps on/off, etc.) is not only hard from a shader authoring point-of-view, but can also very quickly blow up your shader compile times to insanity if you aren’t careful. At the same time, you have to provide really fast incremental compile times during shader authoring.</p>
+</li>
+<li>
+<p>Finding a good balance between how much of the code that deals with declaration of resources and constants that should live in the actual shader source snippets vs be declared and generated through some form of meta-data, is hard. The same also applies for shader stage-to-stage linkage information.</p>
+</li>
+<li>
+<p>As with any system exposing an interface that allows users to author content on top of it, what you expose to the user through the front-end becomes very important. If you are too restrictive with exposing platform specific aspects it is easy to end up limiting the shader authors, moving them too far from the hardware. But on the other hand, if you expose too much, there’s a big chance you won’t be able to refactor the system simply because there’s too much data depending on it.</p>
+</li>
+</ul>
+<p>Then, on top of all this, is the fact that we still do not have a single obvious choice when it comes to which language to use when writing the actual shader source snippets.</p>
+<p>But do we really need a “system” for this? If it is so hard to build a good generic shader system should we even offer one as part of <em>The Machinery</em>? To be honest this is a question I’ve been struggling with since we started this project, but I have reached the conclusion that the answer is <em>yes</em>.</p>
+<p>Without providing a standardized way to author shaders there’s no quick way to build more advanced rendering systems. As soon as a rendering system needs to do anything more complex than running a few hardcoded shaders, it will very quickly end up needing some kind of authoring environment and management of shaders. And while it’s not unlikely that you can hand-tailor the shader management within a rendering system in a way that provides benefits on top of a more generic shader management system, the price for reinventing the wheel for every rendering system will simply become too time consuming and bug-prone. Not to mention the fact that sharing shaders between different systems would become more or less impossible, porting The Machinery to run on more platforms would become much harder, and keeping shader compile times under control will be, well… also hard.</p>
+<p>Okay, so here we go… Fifth time around, maybe this time it will all pan out, and the most clean, amazing and beautifully architected shader system will come out of my fingers. Probably not, but I’m at least fairly sure that it will be a decent step up from the last system I built.</p>
+<p>So in this, and probably the coming two posts, I will walk you through my ideas, design and certain implementation aspects of The Machinery’s “Shader System”.</p>
+<h2 id="goals">Goals</h2>
+<p>Let’s begin by defining some basic design goals for the system:</p>
+<ul>
+<li>
+<p>The shader system offers two tiers,</p>
+<ul>
+<li>
+<p><em>Tier 0 - Shaders:</em> The user of the system reasons about <em>Shaders</em>. A <em>Shader</em> is as close to a complete pipeline state as possible (i.e. all shader stages linked together, coupled with necessary states). At this tier there are no concepts of multi-pass shaders, execution contexts, or frame scheduling.</p>
+</li>
+<li>
+<p><em>Tier 1 - Materials:</em> At this tier the user reasons about <em>Materials</em>. A <em>Material</em> groups one or many shaders together and adds the missing concepts:</p>
+<ul>
+<li>
+<p>Multi-pass &amp; frame scheduling: An array of shaders executing immediately after each other or scheduled into various rendering layers dictated by the <a href=" ../../post/high-level-rendering-using-render-graphs/">render graph</a>.</p>
+</li>
+<li>
+<p>Execution contexts: Provides the possibility to select which shaders to run depending on an external “execution context”. A typical example when something like this is needed is when rendering a material into a shadow map vs rendering the same material into the regular viewport.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>The shader system is developed as a stand alone plugin. In Tier 0 it only depends on the the <a href=" ../../post/high-level-rendering-using-render-graphs/">render graph system</a>.</p>
+</li>
+<li>
+<p>As far as possible the shader system should only act as a convenience layer providing a simple yet powerful way for rendering plugins to interact with shaders. If desirable there should be nothing stopping the user from opting out of using the system or providing their own implementation.</p>
+</li>
+<li>
+<p>While the first version of the system won’t offer a shader graph authoring front-end, the APIs are designed to hopefully make that easy to add.</p>
+</li>
+</ul>
+<p>Next, let’s take a look at some more technical design goals:</p>
+<ul>
+<li>
+<p>There should be a clear concept for grouping constants and resources together based on frequency of update (frame, view, object, material, etc).</p>
+</li>
+<li>
+<p>The same resource or constant referenced from multiple shader stages should never get duplicated into multiple buffers as the cost of scattering the data easily becomes unpredictable. Indirectly this means that the system will be in charge of generating and declaring load/store helper functions (or macros) for all constants and resources and expose those to the shader source.</p>
+</li>
+<li>
+<p>The API for updating constants and resources should be able to do efficient batch updates.</p>
+</li>
+<li>
+<p>The underlying management of constants and resources should be hidden from the shader author. Striving for flexibility, being able to completely rearrange memory layouts of data in any way that makes sense on a low-level without it affecting the hand authored shader source.</p>
+</li>
+<li>
+<p>The system should provide a good interface for iterating over shader source and hot-reloading the finished result.</p>
+</li>
+<li>
+<p>As with the rest of the rendering code in <em>The Machinery</em>, the system should primarily be designed to run on top of new explicit graphics APIs (Vulkan, DX12). It will utilize “bindless” concepts and be structured in a way that should make it easy to move “scene submission” to run on the GPU using graphic API extensions such as Nvidia’s “Device Generated Commands” (<code>VK_NVX_device_generated_commands</code>).</p>
+</li>
+</ul>
+<p>Enough listing goals, let’s start low-level with the stuff that is already in place and then walk our way up to the finished system over the coming two posts, or however many it will take.</p>
+<h2 id="low-level-shader-compiliation">Low-level shader compiliation</h2>
+<p>The render resource representing a shader aims to provide enough data to the render backend to almost be able to create a full “pipeline state object” (I discussed the reasons for not taking it all the way in my post on <a href=" ../../post/vulkan-pipelines-and-render-states/">“Vulkan: Pipelines and Render States”</a>) and looks something like this:</p>
+<pre><code>enum tm_renderer_shader_stage {
+    TM_RENDERER_SHADER_STAGE_VERTEX,
+    TM_RENDERER_SHADER_STAGE_TESS_CONTROL,
+    TM_RENDERER_SHADER_STAGE_TESS_EVAL,
+    TM_RENDERER_SHADER_STAGE_GEOMETRY,
+    TM_RENDERER_SHADER_STAGE_PIXEL,
+    TM_RENDERER_SHADER_STAGE_COMPUTE,
+    TM_RENDERER_SHADER_STAGE_MAX
+};
+
+typedef struct tm_renderer_shader_blob_t
+{
+    uint64_t size;
+    uint8_t *data;
+} tm_renderer_shader_blob_t;
+
+typedef struct tm_renderer_shader_t
+{
+    tm_renderer_shader_blob_t raster_states;
+    tm_renderer_shader_blob_t depth_stencil_states;
+    tm_renderer_shader_blob_t blend_states;
+    tm_renderer_shader_blob_t multi_sample_states;
+
+    tm_renderer_shader_blob_t stages[TM_RENDERER_SHADER_STAGE_MAX];
+} tm_renderer_shader_t;
+</code></pre>
+<p><code>tm_renderer_shader_compiler_api</code> is the name of our low-level shader compiler API that is responsible for producing these <code>tm_renderer_shader_blob_t</code>  structs that assembles the final shader. Each render backend has to implement this API and it has three responsibilities:</p>
+<ol>
+<li>
+<p>Act as a reflection API for enumerating all state blocks (such as raster states, depth stencil states, blend states, sampler states, etc) and their valid inputs.</p>
+</li>
+<li>
+<p>Expose an interface for “compiling” state blocks into backend specific binary blobs.</p>
+</li>
+<li>
+<p>Expose an interface for compiling shader source for a specific shader stage (vertex, hull, domain, geometry, pixel or compute) into a backend specific binary blob.</p>
+</li>
+</ol>
+<h3 id="state-blocks">State blocks</h3>
+<p>The bulk of the API functions deal with reflection (or enumeration) of the state blocks. The idea is that while most states that go into setting up the render pipeline are very similar in all graphics APIs, we don’t want to lock us down to only supporting the least common denominator of states. So while the renderer plugin serves us with the descriptions of the most common state blocks and their contents, we still want to allow a backend to be able to expose both new state blocks as well as extend the existing state blocks with more states. This makes it easy to expose graphics API specific states to the shader author.</p>
+<p>The API exposes functions for retrieving the number of supported state blocks, and then, for each state block, the user can retrieve a unique type ID and a human readable name, together with the number of supported states in the block.</p>
+<p>Then, for each state, which essentially is a simple key-value pair, the user can query an id and human readable name of the key, together with type information for the value. If the type of the value is an enum, the user can use a similar mechanic to enumerate all existing values.</p>
+<p>From this information the user can build a simple linear array with key-value pairs for all states in a state block, where each state looks something like this:</p>
+<pre><code>typedef struct tm_renderer_state_value_pair_t
+{
+    uint32_t state;
+    union
+    {
+        uint32_t enum_value;
+        uint32_t uint32_value;
+        float float_value;
+    };
+} tm_renderer_state_value_pair_t;
+</code></pre>
+<p>The user can then generate the final <code>tm_renderer_shader_blob_t</code> by handing over an array of states to the <code>compile_state_block()</code> function in the <code>tm_renderer_shader_compiler_api</code>. Any states not defined in the array will end up with valid default values. As mentioned before, the contents of the resulting blob is backend specific, for the Vulkan backend it simply results in Vulkan specific structs describing each state block (e.g. <code>VkPipelineRasterizationStateCreateInfo</code>, <code>VkPipelineDepthStencilStateCreateInfo</code>, etc.)</p>
+<h3 id="shaders">Shaders</h3>
+<p>The second part of the API is a single function that handles compiling shader source into whatever representation makes sense for the backend. E.g. for Vulkan the resulting output is a SPIR-V blob. The function looks something like this:</p>
+<pre><code>tm_renderer_shader_blob_t (*compile_shader)(tm_renderer_shader_compiler_o *inst,
+    const char *source, const char *entry_point, uint32_t source_language,
+    uint32_t stage);
+</code></pre>
+<p><code>source</code> is a string with the shader source. <code>entry_point</code>  is the name of the program’s entry point, <code>source_language</code> is an enum informing the compiler what language the <code>source</code> has been written in (HLSL, GLSL, etc) and <code>stage</code> is what shader stage that the shader will be bound to.</p>
+<p>Fairly simple and straight forward stuff. Before I wrap up I’d like to make a quick note about selecting a shader language when authoring our default shaders.</p>
+<p>My current take is to use HLSL and generate SPIR-V from that. The main reason for using HLSL instead of GLSL as input language is that I want to make it simple to add a DX12-backend.</p>
+<p>At the moment we are using <a href="http://web.archive.org/web/20210711062143/https://github.com/google/shaderc/tree/master/libshaderc">libshaderc</a> with a slightly modified version of <a href="http://web.archive.org/web/20210711062143/https://github.com/KhronosGroup/glslang">glslang</a> where I have hacked in some stuff (e.g. <code>Readfirstlane</code>) in the HLSL-front-end. It’s pretty messy but so far it appears to work. I’ve been planning to try out the new SPIR-V backend to the <a href="http://web.archive.org/web/20210711062143/https://github.com/Microsoft/DirectXShaderCompiler">DirectX Shader Compiler</a> project which looks promising, but so far haven’t gotten around to it.
+I wish there was a simple goto-solution when it comes to picking what shader language to use, but the reality is that there’s not. I anticipate being stuck with having to juggle shader source in lots of different languages. As soon as you peek outside the game development industry you realize that all bets are off when it comes to standardizing on a single language (just a few examples from the VFX-industry: <a href="http://web.archive.org/web/20210711062143/https://github.com/imageworks/OpenShadingLanguage">OSL</a>, <a href="http://web.archive.org/web/20210711062143/https://www.nvidia.com/en-us/design-visualization/technologies/material-definition-language/">MDL</a>, <a href="http://web.archive.org/web/20210711062143/http://www.materialx.org/">Material-X</a>).</p>
+<h2 id="next-time">Next time</h2>
+<p>I think that covers the low-level API for state and shader compilation in enough detail. The shader system plugin sits on top of the <code>tm_renderer_shader_compiler_api</code> feeding it with data to compile.</p>
+<p>In my next post I will go through a concept that I currently call “shader system IO”, which will sit as an interface between various systems in need of doing rendering and the actual shaders. It creates a concept for grouping resources and constants by their update frequency, and is the main mechanics for feeding data defined in C/C++-code to shaders. But on top of that it also plays a central role in keeping systems nicely decoupled and generating variations of shaders.</p>
+<p>Stay tuned.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210711062143/https://twitter.com/share?text=The%20Machinery%20Shader%20System%20%28part%201%29 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-machinery-shader-system-part-1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210711062143/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-machinery-shader-system-part-1%2f&amp;description=The%20Machinery%20Shader%20System%20%28part%201%29" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/minimalist-container-library-in-c-part-2/" class="text-decoration-none"><img src="../../images/container-array-of-strings.png" class="card-img-top" alt="Minimalist container library in C (part 2)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/minimalist-container-library-in-c-part-2/">Minimalist container library in C (part 2)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-01-29T00:00:00Z">
+                      29 Jan 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>In my <a href=" ../../post/minimalist-container-library-in-c-part-1/">last blog post</a> I talked about how we only have two basic container types in our foundation library: arrays (“ …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/minimalist-container-library-in-c-part-2/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">17 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/explicit-multi-gpu-programming/" class="text-decoration-none"><img src="../../images/multi-gpu-rendering.png" class="card-img-top" alt="Explicit Multi-GPU Programming"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/explicit-multi-gpu-programming/">Explicit Multi-GPU Programming</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-01-22T00:00:00Z">
+                      22 Jan 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I’ve touched on today’s topic a few times before, but so far not dived into any actual details. However, since I’ve …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/explicit-multi-gpu-programming/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-mini-series-part-5-demos/">Marketing Mini Series Part 5: Demos</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-01-16T00:00:00Z">
+                      16 Jan 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I know they’re often lots of work, but from my perspective demos are an incredibly crucial part of marketing a game or …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-mini-series-part-5-demos/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/the-machinery-shader-system-part-1/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210711062143/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210711062143/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/cdn-cgi/l/email-protection#64140d0a03240b11160905070c0d0a01161d4a070b09" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210711062143/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 06:21:43 Jul 11, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:08 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 113.643
+  exclusion.robots: 0.091
+  exclusion.robots.policy: 0.081
+  RedisCDXSource: 3.304
+  esindex: 0.009
+  LoadShardBlock: 93.386 (3)
+  PetaboxLoader3.datanode: 75.782 (5)
+  CDXLines.iter: 14.676 (3)
+  PetaboxLoader3.resolve: 74.132 (2)
+  load_resource: 80.614
+  loaddict: 29.841
+-->

@@ -1,0 +1,874 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="A comparison between the two major way of referencing objects: by names or by GUIDs."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Referencing Objects: Names vs GUIDs">
+  <meta name="twitter:description" content="A comparison between the two major way of referencing objects: by names or by GUIDs."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Referencing Objects: Names vs GUIDs · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/referencing-objects-names-vs-guids/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content="A comparison between the two major way of referencing objects: by names or by GUIDs."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2019-04-17T00:00:00Z"/>
+  
+
+  <title>Referencing Objects: Names vs GUIDs &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220330202033/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220330202033\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220330202033\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Referencing Objects: Names vs GUIDs",
+    "name": "Referencing Objects: Names vs GUIDs",
+    "wordCount":  2917 ,
+    "timeRequired": "PT14M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/referencing-objects-names-vs-guids/",
+    "datePublished": "2019-04-17T00:00Z",
+    "dateModified": "2019-04-17T00:00Z",
+    
+    
+    "description": "A comparison between the two major way of referencing objects: by names or by GUIDs."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220330202033/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Referencing Objects: Names vs GUIDs</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2019-04-17T00:00:00Z">
+          Apr 17, 2019
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>One question that I keep coming back to again and again is whether references
+between objects are best represented as <em>names</em> or
+<a href="http://web.archive.org/web/20220330202033/https://en.wikipedia.org/wiki/Universally_unique_identifier"><em>GUIDs</em></a>.</p>
+<p>Here is the situation: You have created some sort of <a href=" ../../post/the-story-behind-the-truth-designing-a-data-model/">data
+model</a>
+for representing objects in memory/on disk. Now you need the ability for objects
+to refer to other objects. I.e., an object needs to talk <em>about</em> another object.
+Some examples:</p>
+<ul>
+<li>A material object may point to a texture object and say “I want to use this as
+my diffuse map”.</li>
+<li>An animation object may point to a model object and say “I want to rotate this
+model around its z-axis”.</li>
+</ul>
+<p>How can we accomplish this?</p>
+<p>Here are two options:</p>
+<ul>
+<li>
+<p><strong>Names:</strong> Each object is referred to by its <em>name.</em> The name is a string
+assigned to the object by the user and the user can change this string at will
+(rename the object).</p>
+</li>
+<li>
+<p><strong>GUIDs:</strong> Each object is referred to by a globally unique identifier (GUID).
+The GUID is assigned to the object on creation and never changes. It is
+guaranteed to only represent this particular object and no other.</p>
+</li>
+</ul>
+<p>Names are resolved in some kind of context (typically the children of the
+current object). Thus, to refer to an object that is “far away” from us we might
+have to use a sequence of names to navigate the object tree, e.g.,
+<code>../../player/head/left_eye</code>. Much like a path in a file system, this sequence
+of names provides a <em>path</em> from one object in our object tree to another. Note
+that in this post I will sometimes somewhat sloppily talk about the <em>name</em> of an
+object when I actually mean the full path to an object.</p>
+<p>You might protest that there are other ways of representing references too. For
+example, an in-memory representation could just use a pointer. A disk
+representation could use a file offset. Combinations are possible too — for
+example (filename + offset) to represent an object inside a file. However, it is
+easy to become confused when considering the myriad of possibilities, so let’s
+put all of that aside for the moment. In this post, I’m going to focus on the
+difference between <em>names</em> and <em>GUIDs</em> and in the end we will see how the
+discussion applies to the other possibilities.</p>
+<blockquote>
+<p>Side note: There is another interesting option apart from names and GUIDs and
+that is to refer to an object by the hash of its content. With this approach,
+the same content is always referred to by the same unique identifier (its
+hash) and if you change the content all the references have to be updated. If
+you start to think about it, most of <a href="http://web.archive.org/web/20220330202033/https://en.wikipedia.org/wiki/Git">git</a>
+falls out as the result of this single design decision.</p>
+</blockquote>
+<p>Names and GUIDs both have their pros and cons, making it hard to say that one is
+strictly better than the other:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Names</strong></th>
+<th><strong>IDs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fragile — if objects are renamed, moved or deleted, references will break</td>
+<td>Unreadable — references look like random numbers which makes them hard to debug</td>
+</tr>
+<tr>
+<td>Cumbersome — coming up with meaningful names for everything is a chore</td>
+<td></td>
+</tr>
+<tr>
+<td>Expensive — names have to be matched against the object tree to find the objects</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Each of these points can be argued back-and-forth endlessly. Can’t we
+auto-assign names to make them easier to come up with? But how readable are
+names really if most of the things are just named <code>box_723</code>? Can’t we make a
+tool that looks up a readable name from a GUID? Can’t we also make a tool that
+automatically patches references when an object is renamed? Etc, etc, etc.</p>
+<p>Again, it’s easy to get stuck in the nitty-gritty details of this and miss the
+bigger picture. To make things clearer, let’s take a step back and ask
+ourselves:</p>
+<blockquote>
+<p>What is the fundamental difference between names and GUIDs?</p>
+</blockquote>
+<p>Think about it for a bit. Here’s my answer:</p>
+<blockquote>
+<p>A GUID specifies an object identity, but a name specifies an object’s role.</p>
+</blockquote>
+<p>The GUID <code>90e2294e-9daf-45f0-b75b-01fb85bb6dc8</code> always refers to one specific
+object — the one single object in the universe with that GUID. The path
+<code>head/left_eye</code> refers to whatever object is currently acting as the character’s
+left eye. It does not always have to be the same object. Maybe the character
+loses her eye at some point and it gets replaced with a glass eye. Maybe we can
+spawn multiple instances of the character in different configurations with
+different kinds of eyes — flesh eyes, robot eyes, anime eyes, etc. Regardless of
+the setup, <code>head/left_eye</code> will refer to the character’s left eye.</p>
+<p>In contrast, if we used a GUID to refer to the left eye and the eye got
+replaced, the GUID would still refer to the old eye we lost. And a single GUID
+couldn’t be used to refer to different eyes in different character setups.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Name</strong></th>
+<th><strong>GUID</strong></th>
+<th><strong>Hash</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>References objects by</strong></td>
+<td>Their role</td>
+<td>Their identity</td>
+<td>Their content</td>
+</tr>
+</tbody>
+</table>
+<p>The pointers and offsets that I talked about in the beginning of the post are
+similar to GUIDs, since they reference objects by identity. A pointer always
+points to the same object. In fact, you could see a pointer as a deserialized
+version of a GUID — a way of uniquely referencing an object in memory. Offsets
+too, uniquely identify objects. (But offsets are not permanent, so references
+must be updated each time a file is saved.)</p>
+<blockquote>
+<p>A name allows for “late binding” of references.</p>
+</blockquote>
+<p>To get from a name to an actual object, we need to <em>resolve</em> the name at some
+point. This involves matching the path against the object tree and finding the
+corresponding object. In contrast to a GUID, which always points to the same
+object, a name might resolve to different things at different points in time, or
+in different contexts. The reference isn’t bound to a particular target until
+the name is resolved.</p>
+<p>When does this happen? You can decide that when you design a system based on
+your performance/flexibility requirements. For example, you can decide to
+resolve all references once and only once — when the object is spawned. This is
+faster, because you only need to look references up once, but it also means that
+in the case where the eye is removed and replaced, the reference won’t be
+updated to point to the new eye. So it’s less flexible.</p>
+<p>The other option is to resolve the reference every single frame. This can handle
+objects being removed and/or replaced, but it also means having to pay the
+performance cost of resolving the reference every single frame.</p>
+<p>With this new understanding of the fundamental difference between names and
+GUIDs we can take another look at the pros and cons we listed above and see if
+we can understand them better.</p>
+<p><strong>Names are fragile — they can break if objects are moved, renamed or deleted</strong></p>
+<p>Yes, this is the whole point!</p>
+<p>The main reason for using names is to allow late binding. Late binding means we
+don’t know beforehand what the name will resolve to (or if it will resolve to
+anything at all). We can’t get the benefits of late binding without also getting
+the drawbacks.</p>
+<p>For instance, in the example above, after the eye has been removed, but before
+it has been replaced with a glass eye, <code>head/left_eye</code>  will not resolve to
+anything — because the character doesn’t have a left eye. Code that expects to
+find an object at <code>head/left_eye</code> might break.</p>
+<p>A name might also resolve to <em>something unexpected</em>. For example, the eye might
+be removed and replaced by a little man. Code that was written to deal with an
+eye, or even with no eye, might break when it finds a little man in the eye
+socket.</p>
+<p>In addition to breaking in this correct way — where a resolve rightly fails
+because the object doesn’t exist — references can also break in incorrect ways.
+The resolve might fail, not because there is no eye, but because the user made a
+mistake. For example, maybe the eye was named <code>LeftEye</code> instead of <code>left_eye</code>.</p>
+<p>To an extent — problems like this can be mitigated by good tooling. For example,
+the tools might warn about unresolved references. The tools might also assist
+with renaming, so that if you rename <code>left_eye</code> → <code>LeftEye</code> all the references
+are updated to <code>LeftEye</code> too.</p>
+<p>But note that there is an inherent conflict here. The whole point of using names
+is to allow the references to be more lax and flexible. If the tools are too
+anal with their warnings it kind of defeats that purpose. For example, it might
+be totally correct that <code>head/halo</code> doesn’t refer to anything, because the
+character starts out without a halo — she only gets that once she’s completed
+the Holy Mission. If a tool spews out false positive warnings about things like
+this, users will soon learn to ignore them and miss the actually valuable
+warnings about real typos.</p>
+<p>Similarly, tools can’t be too aggressive about updating references when objects
+are renamed either. Suppose that you designed a really cool robotic left eye for
+the character. Then you decide that it would look better as the right eye, so
+you move it into the right eye socket and rename it from <code>left_eye</code> to
+<code>right_eye</code>. If the references are auto-patched, all references to the left eye
+will now be changed to the right eye, which probably isn’t correct. For example,
+if the <code>left_eyebrow</code> had a reference to its eye, and that reference was
+auto-patched, the <code>left_eyebrow</code> would now think it sits over the <code>right_eye</code>.
+On the other hand, some references could have meant “the robotic eye” rather
+than “the eye in the left socket” when they talked about <code>left_eye</code> and those
+references <em>should</em> get patched. Pretty messy and hard to make a nice UI for,
+although <a href="http://web.archive.org/web/20220330202033/https://bitsquid.blogspot.com/2010/10/dependency-checker.html">I’ve tried
+before</a>.</p>
+<p><strong>Names are cumbersome — coming up with meaningful names for everything is a chore</strong></p>
+<p>As discussed above, a <em>name</em> isn’t just a string of characters, it is a
+description of a role, of a relationship.  <code>head/left_eye</code> means the left eye
+object in the head of the character. If you gave it a nonsensical name like
+<code>bob</code> or an auto-generated name like <code>Object_13</code> it wouldn’t say anything about
+the role.</p>
+<p>To take advantage of the late binding feature of names you want to use
+meaningful names that match the concepts that you have in your game. I.e. if
+your characters can put on different helmets and backpacks you probably need
+<code>helmet</code> and <code>backpack</code> names. If helmets and backpacks are just visual features
+of some character models, can’t be removed or swapped out and don’t have any
+gameplay purpose, they might not need their own names, they might just be part
+of the <code>head</code> and <code>body</code>.</p>
+<p>You can think of this naming as sort of a “logical rigging” of the model.</p>
+<p>So yes, if you want to take advantage of late binding, you do have to spend some
+time coming up with meaningful names and hierarchies. If all your objects are
+just named <code>entity_2713</code> you are basically just using names as IDs. This has all
+the drawbacks of names (fragility, costly resolution) as well as all the
+drawbacks of IDs (unreadability). Don’t do that.</p>
+<p><strong>Names are expensive — they have to be resolved</strong></p>
+<p>Again, late resolve is the point of using names, and it will always have a cost.
+You can’t get the benefit of late resolve without paying the cost for it.</p>
+<p>Of course, it can be more or less costly, depending on how you implement it. My
+most important performance tip is: be clear about the scope in which names are
+resolved.</p>
+<p>I like to use fully qualified paths. I.e., referring to a character’s left eye
+would be <code>head/left_eye</code>. Referring to the left eye from the right eye would be
+<code>../left_eye</code>. Here,  <code>..</code> goes up to the head and then <code>left_eye</code> descends to
+the right eye.</p>
+<p>It can be tempting to fall into the trap of convenience and say that we should
+be able to just use the name <code>left_eye</code> to refer to the left eye instead of a
+full path, but it has scary performance implications. Instead of just searching
+our children for a name match, we now have to search all our descendants
+recursively. And if we want this to work from the right eye too, we not only
+have to search all <em>our</em> descendants, we have to search all our <em>parent’s
+descendants</em> too. Before you know it, you have to search the entire world for
+this <code>left_eye</code>. And even if we find it, how do we know it is the “right one” —
+the one the user meant? Maybe our helmet has a little statue on it, and maybe
+that statue has a <code>left_eye</code> too? How do we make sure we don’t find that one?
+Messy.</p>
+<p>My preferred implementation for resolving paths is to first hash each part of
+the path (this can be done offline), and then at each step, we match the hash at
+that step against the hashed names of the current object’s children — either
+through a lookup table or directly. Maintaining a lookup table is probably only
+worth it once you start to have hundreds of children to match against.</p>
+<p>Even though this avoids really expensive stuff like searching the entire object
+tree or doing string comparison, it is still a lot more expensive than just
+following a pointer (which an ID deserializes into).</p>
+<h2 id="names-vs-guids--the-smackdown">Names vs GUIDs — The Smackdown</h2>
+<p>With this deepened understanding — who wins, names or GUIDs?</p>
+<p>As discussed above, names have many disadvantages — they’re fragile, cumbersome
+and costly. But they have two main advantages:</p>
+<ul>
+<li>
+<p>They express intent. When I refer to <code>head/left_eye</code> it is clear to the reader
+what I <em>want</em> to refer to. Thus names have a <em>meaning</em> that pointers/GUIDs
+don’t have. Recording this meaning can be helpful. When we complain that
+identifiers are <em>unreadable</em>, it is the lack of <em>meaning</em> we talk about — not
+just the fact that the identifier is a jumble of hex characters. But meaning
+requires explicit intent. If your object is named <code>entity_23415</code> — there is no
+meaning in the name, it might just as well be called
+<code>cc1b9a7b-a5bb-4355-8cf1-f78b74fe2774</code>.</p>
+</li>
+<li>
+<p>They allow for “late binding” of the reference to an actual object. This
+allows new objects to “take the place”/”fill the role” of the originally
+referred object. Using this, we can “patch” objects in lots of interesting
+way. For example, we can take a character, replace its eye with something else
+and all references to the eye will still work. To do this with GUIDs we need
+to patch up all references too, so that they point to the “new eye”.</p>
+</li>
+</ul>
+<p>So which is best? It comes down to a judgment call.</p>
+<p>My take is this — we’re trying to create a high-performance user-friendly game
+engine. Thus, we only want to pay the costs of using names (bad performance &amp;
+fragility) in the cases where we really take advantage of their strengths
+(intent &amp; late binding). In my experience — most of the times, we <em>don’t need</em>
+these features. For example, when you are placing a bunch of trees in a level
+you don’t really care about naming them and you don’t have any need for
+something else “assuming” the role of one of those trees.</p>
+<p>For this reason, <em>The Machinery</em> uses GUIDs as the default way to represent
+references. When a model refers to a texture, it does so with a GUID. You can
+move or rename the texture and the model will still keep using the same texture
+until you explicitly point it to a different one.</p>
+<p>But in addition to this, we also explicitly allow for <em>name</em> references in some
+systems — systems that we think benefit from the extra flexibility:</p>
+<ul>
+<li>
+<p>Our visual scripting system has a “lookup entity by name” node, allowing
+entities to be referred to semantically (such as <code>head/left_eye</code>) from within
+the scripts.</p>
+</li>
+<li>
+<p>Our animation system is still under construction, but we plan to have a
+similar feature there, allowing animations to target loose and flexible things
+such as <code>helmet/headlight/color</code>.</p>
+</li>
+</ul>
+<p>Having two different “kinds” of references like this is in the engine by no
+means ideal. Whenever we are designing a system we have to ask ourselves: does
+this reference need the flexibility offered by names or is using a GUID OK? We
+are also possibly missing out on some flexibility  — in the cases where we’ve
+decided to use a GUID, it is much more cumbersome for the user to achieve the
+kind of dynamic retargeting that names make easy.</p>
+<p>Still, it seems like the best compromise to me — we get the performance and
+stability of GUIDs/pointers in the majority of the code, but can still use the
+flexibility of names in the situations where we think it’s needed.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li>
+<p>Pixar’s
+<a href="http://web.archive.org/web/20220330202033/https://graphics.pixar.com/usd/docs/index.html#IntroductiontoUSD-Whatcan'tUSDdo?">USD</a>
+format uses names for everything. From their viewpoint, having to occasionally
+fix broken references is worth the extra flexibility they get from using names
+everywhere. Of course, since they’re not primarily targeting real-time
+rendering, their performance requirements are different.</p>
+</li>
+<li>
+<p>I’ve <a href="http://web.archive.org/web/20220330202033/https://bitsquid.blogspot.com/2014/06/what-is-in-name.html">written about this topic
+before</a>, if you
+want to see how my viewpoint has shifted over the years. Note though that the
+focus of that article is a little bit different. In that article I’m talking
+about referencing assets/resources on disk, so when I mention a <em>path</em> in that
+article I mean a <em>disk path</em>. Whereas, in this post, I’m talking more about
+references in general and I’m not that concerned with exactly how things get
+serialized to disk.</p>
+</li>
+</ul>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220330202033/https://twitter.com/share?text=Referencing%20Objects%3a%20Names%20vs%20GUIDs - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2freferencing-objects-names-vs-guids%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220330202033/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2freferencing-objects-names-vs-guids%2f&amp;description=Referencing%20Objects%3a%20Names%20vs%20GUIDs" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/our-machinery-meetup/">Our Machinery Meetup</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-03-07T00:00:00Z">
+                      7 Mar 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hey Friends,</p>
+<p>We will have our 2nd Annual GDC Meetup at <a href="http://web.archive.org/web/20220330202033/https://www.waystonesf.com/">Waystone</a> again this year. We knew it got a bit crowded last year, …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/our-machinery-meetup/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">1 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/whats-happening-this-year/">What&#39;s happening this year</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-02-01T00:00:00Z">
+                      1 Feb 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hello Friends! Just a quick update on what’s happening this year. We feel 2019 is going to be a big year for us. We’ve …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/whats-happening-this-year/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/localization-in-the-machinerys-ui/">Localization in The Machinery’s UI</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2019-01-14T00:00:00Z">
+                      14 Jan 2019
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>One thing we never really addressed back when we were making the <a href="http://web.archive.org/web/20220330202033/https://en.wikipedia.org/wiki/Bitsquid">Bitsquid</a> engine was localization of the tools. We …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/localization-in-the-machinerys-ui/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">13 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/referencing-objects-names-vs-guids/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220330202033/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220330202033/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220330202033/https://ourmachinery.com/cdn-cgi/l/email-protection#691900070e29061c1b04080a0100070c1b10470a0604" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:20:33 Mar 30, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:44 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 115.495
+  exclusion.robots: 0.266
+  exclusion.robots.policy: 0.249
+  cdx.remote: 0.064
+  esindex: 0.01
+  LoadShardBlock: 84.154 (3)
+  PetaboxLoader3.datanode: 85.932 (4)
+  CDXLines.iter: 17.419 (3)
+  load_resource: 113.523
+  PetaboxLoader3.resolve: 40.537
+-->

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+    
+        <meta name="twitter:image" content="../../images/hierarchical-dirty-flags.jpeg"/>
+    
+    <meta name="twitter:title" content="Syncing a data-oriented ECS with a stateful external system">
+    <meta name="twitter:description" content="Discusses strategies for synchronizing a data-oriented ECS with an external system tat keeps state."/>
+
+
+
+
+<meta name="twitter:site" content="@ourmachinery"/>
+
+
+  	<meta property="og:title" content="Syncing a data-oriented ECS with a stateful external system · Our Machinery"/>
+  	<meta property="og:site_name" content="Our Machinery"/>
+  	<meta property="og:url" content=" ../../post/syncing-a-data-oriented-ecs/"/>
+    
+       <meta property="og:image" content="../../images/hierarchical-dirty-flags.jpeg"/>
+    
+
+    
+    <meta property="og:description" content="Discusses strategies for synchronizing a data-oriented ECS with an external system tat keeps state."/>
+  	<meta property="og:type" content="article"/>
+    <meta property="article:published_time" content="2019-06-08T00:00:00Z"/>
+
+    
+    
+
+    <title>Syncing a data-oriented ECS with a stateful external system &middot; Our Machinery</title>
+
+    
+    <meta name="description" content="Discusses strategies for synchronizing a data-oriented ECS with an external system tat keeps state."/>
+    
+
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+	  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/screen.css?v=1.1.12"/>
+    <link rel="stylesheet" type="text/css" href="http://web.archive.org/web/20201107231937cs_/https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata"/>
+
+    
+
+    
+        <link href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+    
+    <meta name="generator" content="Hugo 0.37.1"/>
+
+    <link rel="canonical" href="index.html"/>
+
+    
+      
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20201107231937/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": 
+    },
+    "author": {
+        "@type": "Person",
+        "name": ,
+        "url": ,
+        "sameAs": [
+            
+            
+             
+             
+             
+             
+             
+            
+        ]
+    },
+    "headline": Syncing a data-oriented ECS with a stateful external system,
+    "name": Syncing a data-oriented ECS with a stateful external system,
+    "wordCount": 4061,
+    "timeRequired": "PT20M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": en
+    },
+    "url": https://ourmachinery.com/post/syncing-a-data-oriented-ecs/,
+    "datePublished": 2019-06-08T00:00Z,
+    "dateModified": 2019-06-08T00:00Z,
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": https://ourmachinery.com/hierarchical-dirty-flags.jpeg,
+        "width": 3000,
+        "height": 1445
+    },
+    
+    "keywords": ,
+    "description": Discusses strategies for synchronizing a data-oriented ECS with an external system tat keeps state.,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": https://ourmachinery.com/post/syncing-a-data-oriented-ecs/
+    }
+}
+    </script>
+    
+
+
+    
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//web.archive.org/web/20201107231937/https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96359368-1', 'auto');
+      
+
+    </script>
+    
+</head>
+
+    <body class="body-light">
+
+
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+    <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="../../js/login.js?v=1.0.8"></script>
+
+ <div class="site-wrapper">
+    <header class="site-header">
+        <nav class="site-header-nav clearfix">
+          
+          <a class="our-machinery-logo" href="../../"><img src="../../images/full-logo.png"></a>
+
+          <div id="menu-bar">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/sign-up.html">Sign Up</a>
+            <a class="dropdown-icon menu-option-hamburger" onclick="toggleHamburgerMenu()">&#9776;</a>
+            <a class="dropdown-icon menu-option-user" onclick="toggleUserMenu()"><img class="user-icon" src="../../images/user.png"/></a>
+          </div>
+
+          <div class="dropdown-menu" id="hamburger-menu">
+            <a style="color: #C7A81E;" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/beta.html">Download Beta</a>
+            
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/about.html">About</a>
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/product.html">Product</a>
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/forum.html">Forum</a>
+            <a href=" ../../post/">Blog</a>
+            <a class="menu-option-sign-in" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/sign-in.html">Sign In</a>
+            <a class="menu-option-sign-up" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/sign-up.html">Sign Up</a>
+          </div>
+         
+          <div class="dropdown-menu" id="user-menu">
+            <a href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/profile.html">Profile</a>
+            <a href="index.html" onclick="signOut(); return false;">Sign Out</a>
+          </div>
+        </nav>
+    </header>
+
+
+<script>
+
+function toggleDisplay(item, visibleDisplayStyle) {
+  item.style.display = item.style.display != visibleDisplayStyle ? visibleDisplayStyle : "none";
+}
+
+
+function toggleHamburgerMenu() {
+  document.getElementById("user-menu").style.display = "none";
+  toggleDisplay(document.getElementById("hamburger-menu"), "block");
+}
+
+
+function toggleUserMenu() {
+  document.getElementById("hamburger-menu").style.display = "none";
+  toggleDisplay(document.getElementById("user-menu"), "block");
+}
+
+
+window.onclick = function(event) {
+  let e = event.target;
+  let hitMenu = false;
+  while (e && e.classList && !hitMenu) {
+    if (e.classList.contains("dropdown-menu") || e.classList.contains("dropdown-icon"))
+      hitMenu = true;
+    e = e.parentNode;
+  }
+  if (!hitMenu) {
+    document.getElementById("user-menu").style.display = "none";
+    document.getElementById("hamburger-menu").style.display = "none";
+  }
+}
+
+initLogin();
+</script>
+
+
+<main class="content" role="main">
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Syncing a data-oriented ECS with a stateful external system</h1>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2019-06-08T00:00:00Z">
+            Jun 8, 2019
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>The simulation model in <em>The Machinery</em> is based around a
+<a href="http://web.archive.org/web/20201107231937/https://en.wikipedia.org/wiki/Data-oriented_design">data-oriented</a> <a href="http://web.archive.org/web/20201107231937/https://en.wikipedia.org/wiki/Entity_component_system">entity-component-system
+framework (ECS)</a>. In this model, <em>components</em>
+are just chunks of raw data, for example, a <em>Transform</em> <em>Component</em> can be represented as:</p>
+
+<p></p>
+
+<pre><code class="language-c">struct tm_transform_t
+{
+    tm_vec3_t pos;
+    tm_vec4_t rot;
+    tm_vec3_t scl;
+};
+</code></pre>
+
+<p>An <em>entity</em> is a collection of such components. The set of components held by an entity determines
+its <em>type</em>. For example, a typical rendered object may have the components: (<em>transform, link,
+mesh)</em>. Here, the <em>Link Component</em> links the entity to its parent and the <em>Mesh Component</em>
+references the mesh to be rendered.</p>
+
+<p>In our system, an entity cannot have multiple components of the same kind — i.e. there can’t be two
+<em>Transform Components</em> in the same entity. Thus, an entity’s <em>type</em> can be fully identified by a bit
+mask of its components.</p>
+
+<p>The component data for entities of the same type are stored together, in big blocks of raw memory.
+When algorithms work on entities of the same type, they can just walk over this memory linearly,
+which ensures that the operations are cache friendly.</p>
+
+<p><em>Systems</em> are algorithms that run on all entities that have a certain set of components. For
+example, the <em>Velocity System</em> runs on all entities that have a <em>Velocity Component</em> and a
+<em>Transform</em> <em>Component</em> and updates the transform with the velocity integrated over the time step.
+An implementation of the <em>Velocity System</em> might look something like this:</p>
+
+<pre><code class="language-c">void velocity_system(tm_transform_t *td, const tm_velocity_t *vd,
+    uint32_t n, float dt)
+{
+    while (n) {
+        td-&gt;pos = tm_vec3_mul_add(td-&gt;pos, vd-&gt;vel, dt);
+        ++td, ++vd, --n;
+    }
+}
+</code></pre>
+
+<p>To run the <em>Velocity System,</em> we first filter out which entities it should run on, by finding all
+entities that have <em>Velocity</em> and <em>Transform</em> components. Note that this filter only needs to check
+each entity <em>type</em>, since all entities of the same type have the same set of components. If the type
+passes the test, the raw buffers of data can then be passed down to the <code>velocity_system()</code> function
+for processing.</p>
+
+<p>Running a system over the ECS data is thus really efficient. First, we perform a quick bitmask test
+for each entity type. (In theory, we could have up to <em>2^n</em> different entity types, where <em>n</em> is the
+number of components. But in practice, we expect most entities to have similar sets of components,
+so the number of entity type will probably stay &lt;1000.) Then, the system runs in bulk over the data
+stored for each entity type using cache friendly linear memory access.</p>
+
+<p>This all works well as long as we stay inside the ECS model, but it gets trickier when we want to
+synchronize the changes that happen inside ECS with an external system. For example, consider
+synchronizing the ECS state with an external, stateful physics system, such as PhysX. This requires
+us to implement two-way mirroring. If the position of a kinematic actor changes in the ECS world —
+that change must be copied over to PhysX. Similarly, when a dynamic actor moves in PhysX, that
+movement must be mirrored back to the ECS world.</p>
+
+<p>In this post, I will look at how we can do that mirroring. I will focus on the ECS → PhysX direction
+since PhysX → ECS has more to do with PhysX internals (i.e., how to get a list of actors that have
+moved in the physics world).</p>
+
+<h2 id="the-ecs-physx-mirroring-problem">The ECS → PhysX Mirroring Problem</h2>
+
+<p>There are three kinds of situations we need to handle to have a complete mirroring solution:</p>
+
+<ol>
+<li><p>When an object is created in ECS that should have a PhysX representation, we need to create that representation.</p></li>
+
+<li><p>When an object is moved in the ECS world, the movement must be mirrored to the PhysX world.</p></li>
+
+<li><p>When an object is deleted in the ECS world, its corresponding PhysX actor must be destroyed.</p></li>
+</ol>
+
+<p>All of these are aspects of the same problem — we need to be able to find out when certain things
+change in the ECS world so that we can mirror those changes to PhysX. Thus, the fundamental question
+is: how can we track changes in the ECS data in an efficient way?</p>
+
+<p>Note that this problem doesn’t just pop up with physics. We run into it whenever the ECS data needs
+to be synchronized with an external system or if we for some other reason (performance, etc) want to
+process just the data that has changed. Rendering, sound, UI and even basic scene tree updates all
+run into this same issue.</p>
+
+<h2 id="change-tracking-methods">Change Tracking Methods</h2>
+
+<p>Let’s attack the problem by first listing all possible ways we can think of tracking changes and
+then we will try to find the best solution.</p>
+
+<h3 id="brute-force">Brute force</h3>
+
+<p>The simplest and most zen way of doing change tracking is by <em>not</em> doing change tracking. To mirror
+changes into our external system, we don’t do anything fancy, we just mirror <em>everything.</em> I.e. we
+run a system every frame on entities with the mask (<em>Kinematic PhysX Actor &amp; Transform</em>). The system
+copies the transform from the <em>Transform Component</em> over to the <em>Kinematic PhysX Actor Component</em>.</p>
+
+<pre><code class="language-c">void mirror_kinematics_system(tm_kinematic_actor_t *kd,
+    const tm_transform_t *td, uint32_t n)
+{
+    while (n) {
+        kd-&gt;actor-&gt;setGlobalPose(to_physx(td));
+        ++kd, ++td, --n;
+    }
+}
+</code></pre>
+
+<p>This approach is super simple and requires no additional data structures. The drawback, of course,
+is performance. Since we process every object, regardless of whether it has actually moved or not,
+we are potentially doing a lot of unnecessary work.</p>
+
+<p>How big of a problem is this? It depends. I think one of the key lessons of data-oriented design is
+that brute force algorithms can be surprisingly effective when they are parallelized and operate
+linearly on cache-friendly data. It’s hard to know how expensive the PhysX <code>setGlobalPose()</code> call is
+and it might not be cache friendly (since we don’t control how the PhysX actors are laid out in
+memory). However, we can easily get around that by adding a <em>dirty</em> or <em>version</em> flag to the
+<em>Transform Component</em>. This way, we can just skip over the objects that haven’t moved since the last
+frame and only call <code>setGlobalPose()</code> on the things that have actually moved. The cost of processing
+the non-moving objects is then just the cost of traversing their memory.</p>
+
+<p>How bad is this? The worst case would be if we had a scene with say 10 000 actors and only one of
+them is moving. Even this case is not terrible. Walking through the memory of those 10 000 objects
+is not <em>that</em> expensive. You could also argue that this is a completely contrived example. Why would
+you have 10 000 kinematic actors in the scene if they are not moving? In that case, you should
+probably just use static actors instead and switch them over to kinematic actors once they start to
+move. That will also reduce the cost of physics collision detection and simulation.</p>
+
+<p>But say that this was a real problem. Is there anything we could do to speed up this case?</p>
+
+<p>Sure! Instead of just storing a <em>version/dirty</em> flag per-object we could create a binary tree of
+them:</p>
+
+
+<figure>
+    
+        <img src="../../images/hierarchicial-dirty-flags.jpeg"/>
+    
+    
+    <figcaption>
+        <h4>Hierarchical dirty flags.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>This tree works similar to a voxel octree for raycasting. First, we check the highest level
+<em>version/dirty</em> flag to find out if any of our 16 384 objects have changed. If not, we’re done.
+Otherwise, we check the flag for the first 8 192 objects — if none of them have changed, we skip to
+the next 8 192 objects and check their flag, and so on.</p>
+
+<p>In the degenerate case above when 1 out of N objects moved, the update cost will just be O(log N)
+rather than O(N).</p>
+
+<h3 id="orchestrated-by-higher-level-system">Orchestrated by higher-level system</h3>
+
+<p>Another way of doing change tracking without doing change tracking is to remove the responsibility
+from the ECS code altogether. With this approach, we don’t put any change tracking code in the ECS
+at all. Instead, for change propagation to happen, it must be orchestrated by a higher level system.</p>
+
+<p>In practice, this would work something like this: Say that a higher level system (such as <em>Script</em>
+or <em>Animation</em>) wanted to move an object. This system would “know” that the <em>Physics</em> system might
+be interested in such movements. So in addition to moving the object, the higher level system would
+also send a notification to the <em>Physics</em> system: “Hey, I just moved this object”. The <em>Physics</em>
+system could then check if the move needed to be mirrored and take appropriate action.</p>
+
+<p>This setup can work in a game where all components are known. In that case, you can enumerate all
+the possible interactions that can happen between systems and make sure that systems are explicitly
+notified about changes.</p>
+
+<p>However, it is not a great fit for <em>Our Machinery</em>. We are building a generic engine that can be
+extended with new components and new systems through plugins. Thus, there is no way for us to
+predict and enumerate all the possible interactions that can happen.</p>
+
+<h3 id="callbacks">Callbacks</h3>
+
+<p>Callbacks, or the observer/observable pattern, is a very common and traditional way of propagating
+changes between systems. With this approach, the system who wants to track changes would register a
+callback function to be called whenever a specific component of a specific entity is changed. A
+function that modifies component data would call a <code>notify()</code> function on the entity, which in turn
+would trigger these registered callbacks.</p>
+
+<p>An advantage of callbacks is that they allow change tracking to be very finely controlled since they
+can target individual entities. For example, a <em>Follow</em> system that allows one entity to follow
+another could be set up to only listen to changes to that particular entity’s movements. No other
+entity transforms would need to be processed.</p>
+
+<p>Another advantage of callbacks is that they can be set up to happen immediately.</p>
+
+<p>The <em>Brute Force</em> method described above is a batch method. We make changes to our ECS world. Then,
+at some specific point in time<em>,</em> we run the <em>Mirror Kinematics System</em> and the changes get copied
+over to the physics world. This means that for some time, between the ECS changes and the mirroring,
+the ECS world and the physics world will be out of sync. If we do a raycast during this time, it
+might miss objects that it should hit, based on their positions in the ECS world.</p>
+
+<p>In contrast, if we were using callbacks, we could make sure that the physics positions were updated
+immediately, and the physics world would always match the ECS world.</p>
+
+<p>Out-of-sync physics can create lots of trouble in the gameplay layer. For example, if a car is
+driving at 100 km/h, it will move a full meter in a 30 Hz frame. Weapons targeting the car with a
+raycast may miss it completely if the physics is lagging a frame.</p>
+
+<p>There are lots of ways of dealing with out-of-sync issues and lots of ways they can come creeping
+back in again.</p>
+
+<p>For example, we might make sure that any “gameplay” code (where raycasts are being made) is run
+“after” the “mirror step”, so when the gameplay code runs, the physics and ECS worlds are
+synchronized. That works to an extent but breaks down if the gameplay code moves some entities that
+have physics (either directly or indirectly). Now, those moves won’t be reflected into physics for
+gameplay code that runs after that.</p>
+
+<p>So maybe we can divide the gameplay code into a “before physics mirror” and “after physics mirror”
+step? Or run the physics mirror system multiple times? Or have a back door for the gameplay code to
+tell the physics system that it moved some object, so the physics system can mirror just those
+objects (basically, an orchestrated solution)?</p>
+
+<p>A ton of possibilities… which can fix some issues but also potentially cause other ones. I won’t
+dive deeper into these out-of-sync issues here, that could be a whole other post, just note that
+using callbacks instead of batched updates can potentially fix the problem.</p>
+
+<p>What are the drawbacks of using callbacks? Unfortunately, precisely the things that make them
+useful.</p>
+
+<p>We want our ECS system updates to run efficiently on multi-core processors. Fortunately, we can
+achieve a lot of this parallelism automatically without using locks or critical sections (which tend
+to hurt performance). If we let each system declare which components it reads from and writes to, we
+can schedule systems to run in parallel as long as no system is writing a component that another
+system is using (sharing reads is ok).</p>
+
+<p>However, if we have a callback system, that reasoning goes out the window, since we don’t know what
+the callback might do and how it might interact with other threads. For example, the callback might
+write to an unrelated component, or touch global data.</p>
+
+<p>There are only two ways out of this. Either we need to defer the calling of callbacks until we’re
+back on a “main thread” where “touching anything” is safe or we need to add a way of declaring reads
+and writes for callbacks too so that the system scheduler can reason about when it’s safe to perform
+the callbacks.</p>
+
+<p>Deferring the callbacks means they no longer happen immediately, so that means we’re back in the
+situation where the ECS world and the physics world go out of sync. Depending on how long it takes
+us to get back on the “main thread” that problematic window when the worlds are out-of-sync may be
+shorter than in the brute force case though, which is a plus.</p>
+
+<p>Calling callbacks immediately can also be bad for performance. It can cause instruction and data
+cache misses as we’re suddenly jumping to a completely different part of the code.</p>
+
+<p>The <code>notify()</code> call we have to make each time we change component data can also be expensive. Bulk
+updates of component data can be as cheap as a <code>memcpy()</code>. If we have to call <code>notify()</code> for each
+update, that can add a significant cost.</p>
+
+<h3 id="lists-of-changed-entities">Lists of changed entities</h3>
+
+<p>Instead of calling callbacks whenever an entity is changed, we can just put the changed entity on a
+list. Later, we can process this list of changed entities and mirror them to an external system, or
+do whatever other kinds of change tracking we need to do.</p>
+
+<p>Note that this approach is pretty similar to using callbacks when we defer the callbacks to “later”.
+The only difference is that instead of a list of callbacks to call, we have a list of changed
+entities that other systems can poll. It’s thus a “poll” rather than “push” method of change
+tracking.</p>
+
+<p>The advantage of polling is that it gives you more control over the code and data flow. With
+polling, you know exactly at which point in your code you are doing the polling and when changes are
+being processed. With callbacks, the callback can come at “any time”. That makes it harder to
+predict all kinds of code flow that can happen and it is easy to get bugs. (For example, a callback
+may trigger another callback recursively.)</p>
+
+<p>Systems for processing changes will typically be interested only in specific changes. For example,
+the ECS → PhysX mirror will be looking for entities with a <em>Transform</em> and a <em>Kinematic Actor</em>
+component, where the <em>Transform</em> component has changed. If we just have one big list of all changed
+entities, the mirror code will have to skip past a lot of changes that concern other entities and
+other components (similar to how the brute force method has to skip over a lot of components that
+hasn’t changed).</p>
+
+<p>To avoid this we could keep a list for each changed component for each entity type. That way we can
+use the same filtering technique that we use for our system updates to run our change processing.
+Another advantage of arranging the lists like this is that since we’re already making sure that no
+systems that write to the same component run simultaneously, we don’t need any additional
+synchronization for the changelists. (Since each component has its own changelist and we only add to
+the changelist if we hold the write lock for the component.)</p>
+
+<p>This is potentially a lot of lists though, so we have to be a bit clever with how we update them.</p>
+
+<p>Using changelists is pretty cheap. We only need to push an item to the end of an array whenever we
+change component data.</p>
+
+<h3 id="using-the-entity-type-system">Using the entity type system</h3>
+
+<p>Here’s a final idea. We already have an efficient way of filtering system updates — the entity type
+system. What if we use the same system for tracking changes?</p>
+
+<p>Here is how it would work: Whenever a component (say the <em>Transform Component)</em> is changing, we add
+an additional component — the <em>Transform Changing Component</em>. To mirror moving objects to the
+physics system we can then just run a regular system update on all entities that have the components
+<em>(transform, transform changing, kinematic actor)</em>.</p>
+
+<p>Since all the entities that have the same set of components store their data together, the data for
+processing the moving entities would be efficiently packed, for maximum cache performance.</p>
+
+<p>What is the cost of this? Whenever we change the transform of an entity, we will have to check if it
+already has a <em>Transform Changing Component</em> or not and make sure we add that component if it’s
+missing. This could be relatively cheap though.</p>
+
+<p>In addition, we need some way of removing the <em>Transform Changing Component</em> if the entity is no
+longer moving. When we update our entities with the <em>Transform Changing Component</em>, we could check
+if the entity hasn’t moved in the last <em>N</em> frames, and in that case, get rid of the component.</p>
+
+<p>This solution also has a cost for adding and removing the <em>Changing</em> component. Every time we do
+that, we need to move the entity’s data which is not cheap. The cost of this depends on how often
+this is changing if the entity is starting and stopping a lot.</p>
+
+<p>In addition, there will also be a cost of having a lot of more entity types in the system. If we do
+this for every component, we are doubling the number of components. Entity types may increase even
+more. For example, without this, a basic mesh entity would have the type <em>(transform, link, mesh)</em>.
+With this approach, that basic mesh could have any of the following types (based on which components
+are changing):</p>
+
+<ul>
+<li>(transform, link, mesh)</li>
+<li>(transform, transform changing, link, mesh)</li>
+<li>(transform, link, link changing, mesh)</li>
+<li>(transform, transform changing, link, link changing, mesh)</li>
+<li>(transform, link, mesh, mesh changing)</li>
+<li>(transform, transform changing, link, mesh, mesh changing)</li>
+<li>(transform, link, link changing, mesh, mesh changing)</li>
+<li>(transform, transform changing, link, link changing, mesh, mesh changing)</li>
+</ul>
+
+<p>A lot more entity types means that all our systems will have to do more filtering and work on
+smaller batches, which will hurt performance.</p>
+
+<p>Again, the costs depend a lot on the specifics of the setup. Are components mostly static? In that
+case, we might not get a big proliferation of entity types and it might be worth it to get things
+nicely sorted.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>I think all these systems have their merits.</p>
+
+<ul>
+<li><p><strong>Brute force:</strong> I think this should be the default go-to solution for most change tracking
+problems. It should be fast enough for most scenarios and in the cases where it is not, adding
+hierarchical dirty tracking gives a nice speedup.</p>
+
+<p>In The Machinery, we use this for most things.</p></li>
+
+<li><p><strong>Orchestrated:</strong> I don’t like how this approach requires special knowledge about components, but
+there are situations where that special knowledge can be used to significantly speed up or
+simplify a system and in those cases, an orchestrated solution might be the right fit.</p>
+
+<p>As an example of this, in The Machinery, our <em>Link Component API</em> has a <code>transform()</code> function
+that propagates any changes to the <em>Link Component</em> (parent, local position, etc) to the
+<em>Transform Component</em> and its children. This avoids having to run a custom system to check for
+changes to the <em>Link Component</em>, but it requires that everyone who changes the <em>Link Component</em>
+data knows about and makes sure to call the <code>transform()</code> function.</p>
+
+<p>In this case, the orchestration isn’t so bad, because anyone who knows about the <em>Link
+Component</em> should also know about its API. Orchestration is trickier when it involves more than
+one component. For example, if you need to notify the <em>Physics Mirror System</em> when the
+<em>Transform Component</em> is changed.</p></li>
+
+<li><p><strong>Callbacks:</strong> Callbacks are generally problematic and I’d like to avoid them, but there are
+situations where I still use them. We have <code>add_component()</code> and <code>remove_component()</code> callbacks
+that get called whenever a component is added to or removed from an entity. These can be used to
+perform necessary setup/teardown of a component — for example, create or destroy a corresponding
+PhysX actor.</p>
+
+<p>For propagating changes, the one big advantage of callbacks is that they happen immediately.
+There are some cases where we really want this. For example, I like to do parent-child scene
+tree transformations immediately rather than deferred. I.e., when we move the parent, its
+children are immediately moved. The reason I prefer this is that if you defer the update of the
+children’s positions then you again end up with out-of-sync issues, where the children’s world
+positions are lagging a frame until we do the batch update.</p>
+
+<p>Currently, we use callbacks to trigger the scene tree updates. This works, but I’m not super
+happy with the approach. Anyone modifying the Transform Component needs to call <code>notify()</code> which
+adds an extra cost. We are also relying on special knowledge that it’s safe to call this
+callback from the system update thread since it will only write to the Transform Component
+(which the system calling <code>notify</code> already has requested write access too).</p>
+
+<p>Having all this special knowledge feels ugly. On the other hand, I have no other good way of
+making sure that child transforms are updated immediately. In theory, we would like our users to
+be able to implement their own Transform Component and have it work with all our systems, just
+as well as the Transform Component we supply. In practice, it seems very unlikely that any user
+would actually want to do that, so maybe we shouldn’t be bending over backward to make that
+possible.</p></li>
+
+<li><p><strong>Lists:</strong> I’m not sure lists are that useful. I can’t think of that many real-world scenarios
+where lists would have a big performance advantage over <em>Brute Force</em> methods. Especially
+considering the possibility of hierarchical version tracking.</p>
+
+<p>One possible exemption is in the case where you want to do a lot of synchronizations. Suppose
+that as a way of combating the out-of-sync problems, instead of using callbacks, you just run a
+lot of batch updates — one before the script runs, one after the script runs, etc, etc. In this
+case, lists are nice because you are only processing the objects that actually changed and avoid
+the O(log N) overhead of hierarchical brute force. I think I would still try to do brute force
+in this case though, and only change it if profiling showed big performance issues.</p>
+
+<p>We currently don’t use lists anywhere in <em>The Machinery</em>.</p></li>
+
+<li><p><strong>Entity types:</strong> I think adding different kinds of “helper components” can be a powerful way of
+grouping data for fast updates. I don’t think I would add a <em>Changing</em> component for each
+component in the system, because of the risk of a blow-up in the number of entity types and also
+because most components don’t really need it. Having a <em>Transform Changing</em> component might be
+interesting though. It would kind of mimic the setup we used to have at
+<a href="http://web.archive.org/web/20201107231937/https://en.wikipedia.org/wiki/Bitsquid">Bitsquid</a> where we kept separate arrays of moving and
+non-moving units.</p>
+
+<p>Entity types can be used in other ways too. For example, one way of implementing the <em>Follow</em>
+behavior discussed above would be to add a <em>Followed Component</em> to any entity that is targeted
+by a <em>Follow Component.</em> That way, we could easily extract the transforms of all followed
+entities and apply them to the entities that follow them.</p></li>
+</ul>
+
+<p>It is a bit unsatisfying that we don’t have a single system for change tracking that we can use
+across all our different components and systems instead of a hodgepodge of different approaches. It
+would be nice if we had a single system of tracking and processing changes that we could use for
+everything. However, right now I can’t see a good single way that will work well in all the
+situations we need.</p>
+    </section>
+
+
+  <footer class="post-footer">
+
+    
+
+
+<section class="author">
+  <h4><a href="../../">Niklas Gray</a></h4>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.2em" href="http://web.archive.org/web/20201107231937/https://twitter.com/share?text=Syncing%20a%20data-oriented%20ECS%20with%20a%20stateful%20external%20system - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fsyncing-a-data-oriented-ecs%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.2em" href="http://web.archive.org/web/20201107231937/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fourmachinery.com%2fpost%2fsyncing-a-data-oriented-ecs%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.2em" href="http://web.archive.org/web/20201107231937/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fsyncing-a-data-oriented-ecs%2f&amp;description=Syncing%20a%20data-oriented%20ECS%20with%20a%20stateful%20external%20system" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+</section>
+
+
+
+  </footer>
+
+  <br clear="all"/>
+
+  
+
+
+
+
+</article>
+
+</main>
+    <footer class="site-footer clearfix body-dark">
+        <section class="copyright">&copy; <a href="index.html">Our Machinery</a>  2020</section>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201107231937/https://twitter.com/ourmachinery" target="_blank">
+            <span class="icon-twitter"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201107231937/https://www.facebook.com/Our-Machinery-1828502157362699" target="_blank">
+            <span class="icon-facebook"></span>
+        </a>    
+    
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201107231937/https://instagram.com/ourmachinery" target="_blank">
+            <span class="icon-instagram"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/index.xml" target="_blank">
+            <span class="icon-feed"></span>
+        </a>
+
+        <a class="site-footer-icon" href="http://web.archive.org/web/20201107231937/https://ourmachinery.com/cdn-cgi/l/email-protection#3a4a53545d7a554f48575b595253545f484314595557" target="_blank">
+            <span class="icon-mail"></span>
+        </a>
+    </footer>
+    </div> 
+<script data-cfasync="false" src="http://web.archive.org/web/20201107231937js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
+
+<!--
+     FILE ARCHIVED ON 23:19:37 Nov 07, 2020 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:41 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 130.784
+  exclusion.robots: 0.098
+  exclusion.robots.policy: 0.09
+  RedisCDXSource: 0.574
+  esindex: 0.01
+  LoadShardBlock: 106.25 (3)
+  PetaboxLoader3.datanode: 44.565 (5)
+  CDXLines.iter: 21.284 (3)
+  PetaboxLoader3.resolve: 97.331 (2)
+  load_resource: 68.979
+  loaddict: 31.185
+-->

@@ -1,0 +1,985 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="How to program incrementally."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/step__trunk-based-development.png"/>
+  
+  <meta name="twitter:title" content="Step-by-step: Programming incrementally">
+  <meta name="twitter:description" content="How to program incrementally."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Step-by-step: Programming incrementally · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/step-by-step-programming-incrementally/"/>
+  
+  <meta property="og:image" content="../../images/step__trunk-based-development.png"/>
+  
+  
+  <meta property="og:description" content="How to program incrementally."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2020-10-07T00:00:00Z"/>
+  
+
+  <title>Step-by-step: Programming incrementally &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220512072646/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220512072646\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220512072646\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Step-by-step: Programming incrementally",
+    "name": "Step-by-step: Programming incrementally",
+    "wordCount":  4591 ,
+    "timeRequired": "PT22M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/step-by-step-programming-incrementally/",
+    "datePublished": "2020-10-07T00:00Z",
+    "dateModified": "2020-10-07T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220512072646/https://ourmachinery.com/step__trunk-based-development.png"
+    },
+    
+    
+    "description": "How to program incrementally."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220512072646/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Step-by-step: Programming incrementally</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2020-10-07T00:00:00Z">
+          Oct 7, 2020
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>One thing that has really benefited my productivity (and also my general sanity), has been learning
+how to take a big task and break it down into smaller, more manageable steps. Big tasks can be
+frightening and overwhelming, but if I just keep working on the list of smaller tasks, then somehow,
+as if by magic, the big task gets completed.</p>
+<h2 id="adding-value">Adding value</h2>
+<p>When programming, I take a very specific approach to this breakdown. I make sure that each step is
+something that <em>compiles, runs, passes</em> all the tests*,* and *adds value* to the codebase*.* Exactly
+what “adds value” means is purposefully left vague, but it can be things like adding a small
+feature, fixing a bug, or taking a step towards refactoring the code into better shape (i.e.,
+reducing <a href="http://web.archive.org/web/20220512072646/https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwikqYmb_6DsAhXSpZ4KHYm9BhgQFjAHegQIBxAC&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTechnical_debt&amp;usg=AOvVaw1ZJ1dsWoB5Jn1hXvtLGuSZ">technical
+debt</a>).</p>
+<p>An example of <em>not</em> adding value is adding a new feature, but also introducing ten new bugs. It’s
+not clear that the value of the feature outweighs the cost of the bugs, so it might be a net loss.</p>
+<p>Another example of not adding value is making the UI prettier, but also make the app run ten times
+slower. Again, it’s not clear that the prettier look is worth the performance hit, so it might be a
+net loss.</p>
+<p>Of course, I can’t always be sure that I’m not introducing bugs, and “value” is inherently
+subjective (how much performance is a new feature worth). The important part is the <em>intention</em>. My
+<em>intention</em> is to always add value with every single commit.</p>
+<p>Basically, what I want to avoid is the “It has to get worse before it gets better”-attitude. Also
+known as: “The new system is the modern way to do it. Sure, it has some bugs and runs kind of slow
+right now, but once we’ve fixed that, it’s going to be way better than what we had before.” I’ve
+seen too many cases where these supposed fixes never happen and the new system, which was supposed
+to be better, just made things worse.</p>
+<p>Plus, you know, it feels good to add value. If every day I can make a commit and that commit makes
+the engine better in some way, that makes me happy.</p>
+<h2 id="pushing-to-master">Pushing to master</h2>
+<p>In addition to implementing changes through a series of small commits, I also <em>push every one of
+those small commits back to the master branch.</em></p>
+<p>Note that this is the exact opposite of a <a href="http://web.archive.org/web/20220512072646/https://guides.github.com/introduction/flow/">feature
+branch</a> workflow, instead, it is a form of
+<a href="http://web.archive.org/web/20220512072646/https://cloud.google.com/solutions/devops/devops-tech-trunk-based-development">trunk-based</a>
+development:</p>
+<ul>
+<li>
+<p>In a feature branch workflow developers work on new features in isolated, separate branches of the
+code and don’t merge them back to master until they’re “complete”: fully working, debugged,
+documented, code reviewed, etc.</p>
+</li>
+<li>
+<p>In the trunk-based approach, features are implemented as a series of small individual commits to
+the master branch itself. Care must be taken so that everything works even when the features are
+only “partially implemented”:</p>
+</li>
+</ul>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Trunk-based vs feature branch development." src="../../images/step__trunk-based-development.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Trunk-based vs feature branch development.</h4>
+    </figcaption>
+  </figure>
+<p>Proponents of the feature branch approach claim that it is a safer way to work since changes to the
+feature branch don’t disrupt the master and cause bugs. Personally, I think this safety is illusory.
+Bugs in the feature branch just get hidden until it’s merged back to master when we suddenly get
+<em>all</em> the bugs.</p>
+<p>Feature branches also go against my philosophy that every commit should add value. The whole idea
+behind a feature branch is: “we’re going to break a bunch of shit over here, but don’t worry, we’ll
+fix it before we merge back to master”. Better not to break stuff in the first place.</p>
+<p>Here are some other advantages I see with the trunk-based approach:</p>
+<ul>
+<li>
+<p><strong>Fewer merge conflicts.</strong> With long-running feature branches, the code in the branch drifts
+further and further away from the code in master, causing more and more merge conflicts. Dealing
+with these is a lot of busy work for programmers and it also risks introducing bugs. Some of these
+bugs won’t be seen until the branch is merged.</p>
+</li>
+<li>
+<p><strong>Less release-day chaos.</strong> Typically, all features scheduled for a certain release have the same
+deadline. This leads to all feature branches being merged just before the deadline. This means
+that we get all the merge and integration bugs at the same time, just before the release date.
+Getting a lot of bugs at the same time is a lot worse than having them spread out evenly. And
+getting them just before a release is due is the absolute worst time to get them.</p>
+</li>
+<li>
+<p><strong>No worry about the right time to merge.</strong> Since everybody knows that merging a feature branch
+tends to cause instability, this leads to worry about the “right time” to merge. You want to avoid
+merging right before a release (unless the feature is required for the release) to avoid
+introducing bugs in the release. So maybe just after the release has been made? But what if we
+need a hotfix for the release? While the merge is being held, valuable programmer time is being
+wasted.</p>
+</li>
+<li>
+<p><strong>No rush to merge.</strong> When working with feature branches, I often felt a hurriedness about getting
+the branches merged. Sometimes because a branch was needed for a specific release. But also often
+because the developer was tired of dealing with merge conflicts, wanted to get it over with, and
+move on to the next thing. Thus, the goal of only merging feature branches when they are
+“complete” was often compromised. (And of course, nothing is ever really “complete”.)</p>
+</li>
+<li>
+<p><strong>Easier to revert.</strong> If major issues are discovered after the merge of a feature branch (which
+often happens), there is often a lot of reluctance to revert the merge. Another big feature branch
+might already have been merged on top of it (since lots of feature branches often get merged at
+the same time, just before a release), and reverting it would cause total merge chaos. So instead
+of doing a calm, sensible rollback, the team has to scramble desperately to fix the issues before
+the release. With trunk-based development, any major issues would most likely have already been
+discovered. The final commit that makes the new feature “go live” is typically a simple one-line
+change that is painless to revert.</p>
+</li>
+<li>
+<p><strong>Partial work is shared.</strong> In trunk-based development, the partial work done on a feature is seen
+by all developers (in the master branch). Thus, everybody has a good idea of where the engine is
+going. Bugs, design flaws, and other issues can be discovered early. And it is easier for others
+to adapt their code to work with the new feature. It’s also easier to get an estimate of how much
+work is needed to complete a feature when everybody can see how far it has progressed.</p>
+</li>
+<li>
+<p><strong>Easier to pause and pick up later.</strong> Sometimes, work on a feature might have to be paused for a
+variety of reasons. There might be more critical issues that need to be addressed. Or the main
+developer of the feature might get sick, or have vacation coming up. This is a problem for feature
+branches because they tend to “rot” over time, as the code base drifts further and further away,
+causing more and more merge conflicts with the branch. Code that is checked into master does not
+“rot” in the same way.</p>
+</li>
+<li>
+<p><strong>Easier to address other bugs/refactors at the same time.</strong> When working on a feature or a
+problem, it is pretty common to find other, related problems, exposed by the work you are doing.
+In the trunk-based approach, this is not an issue. You would just make one or more separate
+commits to the trunk to fix those issues. With the feature branch approach, it is more tricky. I
+guess the <em>right</em> thing to do would be to branch off a new separate bug fix branch from master,
+fix the issue in that branch, merge <em>that</em> branch into the branch you are currently working on,
+and (once it passes code review) into master (so that other people get the bug fix before your
+feature branch is merged, because who knows when that will happen). But who has time for all that
+shit? So instead, people just fix the problem in their feature branch, and maybe cherry-pick it
+into master if they’re having a good day. So now, instead of being about a single isolated
+feature, the feature branch becomes a tangled mix of different features, bug fixes, and refactors.</p>
+</li>
+</ul>
+<p>The main challenge of the trunk-based approach is how to break a big task down into individual
+pieces. Especially, with the requirement that each piece should compile, run, add value, and be
+ready to be pushed into master. How can we push partial work without exposing users to half-baked,
+not yet fully working features?</p>
+<p>Let’s look at some problems and how to solve them.</p>
+<h2 id="problem-1-new-features">Problem #1: New features</h2>
+<p>An approach that works well for new features is to use a flag to control whether a feature is
+visible to end-users or not.</p>
+<p>Let’s look at an example. A feature that I recently added to the engine was a <em>Download</em> tab that
+lets the users download new engine versions and sample projects from within the engine itself:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Download tab." src="../../images/step__download-tab.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Download tab.</h4>
+    </figcaption>
+  </figure>
+<p>There are lots of different ways this could be broken down into smaller steps. Here’s an example:</p>
+<ul>
+<li>Add the <em>Download</em> tab to the menus and show a new blank tab when it’s opened.</li>
+<li>Show a (hard-coded) list of things to download (without working download buttons).</li>
+<li>Download the list of files from a server instead of having it hard-coded.</li>
+<li>Implement the <code>[Get]</code> button by synchronously downloading the file when it’s clicked.</li>
+<li>Switch to asynchronous, background downloading.</li>
+<li>Show a progress bar for the download.</li>
+<li>…</li>
+</ul>
+<p>Normally, I don’t do a full breakdown like this upfront. Instead, I just kind of figure out the next
+logical step as I go along. I only sit down and do a serious planning session if the task is
+particularly tricky and incremental steps like this don’t come naturally.</p>
+<p>To prevent end-users from seeing the tab before it’s actually working, I hide it behind a flag. This
+can be as simple as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">bool</span> download_tab_enabled <span style="color:#f92672">=</span> false;
+
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">if</span> (download_tab_enabled) {
+    add_menu_item(tabs, <span style="color:#e6db74">&#34;Download&#34;</span>, open_download_tab);
+}
+</code></pre></div><p>To get the menu option to show the <em>Download</em> tab, you have to change the <code>download_tab_enabled</code>
+flag to <code>true</code> and recompile.</p>
+<p>We call these flags <a href="http://web.archive.org/web/20220512072646/https://en.wikipedia.org/wiki/Feature_toggle"><em>feature flags</em></a> since they
+selectively enable or disable individual features of the application. Once the feature is complete,
+we can remove the flag and just leave the <code>true</code> code path.</p>
+<p>There are three main ways of implementing a feature flag:</p>
+<ul>
+<li>
+<p>Through a <code>#define</code> macro that is checked by <code>#ifdef</code>.</p>
+</li>
+<li>
+<p>Through a <code>const bool</code> in the code (as in the example above).</p>
+</li>
+<li>
+<p>Through a dynamic <code>bool</code>  variable that is initialized from a config file, a menu option or an
+internal debug console.</p>
+</li>
+</ul>
+<p>Out of these options, I think the third one is the best. You want to expose your new code to <em>as
+many people as possible</em>. That way, they can find bugs in your code, if they refactor the codebase,
+they take your code into account, etc.</p>
+<p>If you use a <code>#define</code> flag, other people on your team won’t even compile your code. Thus, one of
+their changes could easily end up breaking your code. A <code>const</code> flag is better, because your code
+will still be compiled, but since people can’t try the new feature without recompiling your code,
+most people won’t bother.</p>
+<p>With a dynamic flag, artists, producers, or end-users who don’t want to be bothered with rebuilding
+the application can just modify the config file and then give your new feature a test run.</p>
+<p>When the time comes to release a feature, you simply flip the default value of the feature flag from
+<code>false</code> to <code>true</code> and everybody will see the new feature. If there are issues and you need to
+revert, you simply flip the flag back. Later, when the feature seems stable, you can get rid of the
+flag and just keep the <em>true</em> path in the code.</p>
+<p>You can even do a partial, staged rollout. E.g., you could set the flag to <em>true</em> for 1 % of the
+users and then slowly ramp that up while monitoring the crash logs and the forums for any issues.
+That way, if a problem is encountered, it will only affect a small number of users and you can
+quickly revert.</p>
+<h2 id="problem-2-rewrites">Problem #2: Rewrites</h2>
+<p>The above approach works well for new features, but what should you do if you are doing a major
+rewrite of an existing system?</p>
+<p>In this case, it might be trickier to find an incremental step-by-step approach, because you might
+want to rip out large parts of the old system and it will take a while until the replacement code
+reaches feature parity.</p>
+<p>It might be tempting to reach for the feature branch approach in this case, but again, I don’t think
+it’s the right strategy. A big problem is you will have two conflicting goals. On the one hand, you
+want to merge early so that people see the improved code and you get some testing on the rewrites.
+On the other hand, you want to delay it as long as possible, so that you can reach feature parity
+and iron out all the bugs. What usually happens is an unsatisfying mix of the two.</p>
+<p>A better approach is to make a parallel implementation and let the engine have two copies of the
+same system.</p>
+<p>If you are doing a major overhaul, you could start by just copying the entire system code to a new
+folder. If you are rewriting from the ground up, you could start with an empty folder.</p>
+<p>Depending on the nature of the system you are replacing, you could either have both systems (the old
+and the new one) running in parallel, or you could have a feature flag that selects which of the
+systems should be the default. For example, if you are rewriting the physics simulation, you
+probably need a flag to select if you are using the old or the new one since you want all physics
+objects to live in the same simulation (otherwise they won’t interact). On the other hand, if you
+are rewriting the particle effect system, you could potentially have both systems running and just
+select for each played effect whether it should play in the old or the new system.</p>
+<p>Having parallel implementations lets you do a much smoother transition from the old to the new
+system. Everyone on the team can easily test out the new system. You can compare it to the old one
+for feature completeness, stability, performance, etc. If applicable, you could even run automated
+tests to verify that the new system produces the exact same output as the old one. Once the new
+system has been thoroughly verified, you can change the flag and start using it as the default.</p>
+<p>The parallel implementations also provide a much gentler upgrade path for end-users. Instead of
+tying everyone to the same “merge date”, you can just expose the system selection flag to the
+end-users. Users who are eager to try out the improved features in the new system can turn the flag
+on early, while users who favor stability or depend on certain quirks in the old system can decide
+to stay on it, even after the new one has become the default.</p>
+<p>And there is no immediate rush to retire the old system once the new one has become the default, you
+can eventually deprecate and phase it out once the burden of maintaining it outweighs the value of
+having it around.</p>
+<h2 id="problem-3-refactoring">Problem #3: Refactoring</h2>
+<p>For our final problem, let’s consider something even trickier — making a big refactoring change to
+the entire codebase. It could be things like:</p>
+<ul>
+<li>Enabling a new warning such as <code>-Wshadow</code> or <code>-Wunused</code>.</li>
+<li>Changing the parameters of a commonly used function.</li>
+<li>Changing a commonly used type, such as switching from  <code>std::string</code> to an internal string type.</li>
+</ul>
+<p>The challenge with refactors like this is that:</p>
+<ul>
+<li>
+<p>They tend to touch a lot of the code, increasing the risk of merge conflicts.</p>
+</li>
+<li>
+<p>It’s often tricky to see how to do them incrementally. For example, if you change the parameters
+of a function, you must update all the call sites. Otherwise, the code simply won’t compile.</p>
+</li>
+</ul>
+<p>In some cases, it can be pretty straightforward how to approach the problem incrementally. For
+example, when we add a new warning such as <code>-Wshadow</code>, the fixes we do in order to make the code
+compile <em>with</em> the warning do not cause any problems when compiling the code <em>without</em> the warning.
+So we can simply turn on the warning, fix a bunch of the errors we get (however many makes a
+suitably sized commit), turn the warning off again, and then commit the result. Rinse and repeat
+until all the warnings are fixed and then do a final commit that turns the <code>-Wshadow</code> flag on for
+everybody.</p>
+<p>In other cases, we can employ the parallel implementation strategy. Suppose we have a function that
+is used all over the code to allocate memory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mem_alloc</span>(uint64_t bytes);
+</code></pre></div><p>Now we want to add a <code>system</code> parameter so that all memory allocations can be tagged as belonging to a particular system (gameplay, graphics, sound, animation, etc):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mem_alloc</span>(uint64_t bytes, <span style="color:#66d9ef">enum</span> system sys);
+</code></pre></div><p>If we just added the parameter like this, the code wouldn’t compile until we fixed <em>all</em> the call
+sites. I.e., the incremental approach would not work.</p>
+<p>What we can do instead is introduce a new parallel function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mem_alloc</span>(uint64_t bytes);
+<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">mem_alloc_new</span>(uint64_t bytes, <span style="color:#66d9ef">enum</span> system sys);
+</code></pre></div><p>Now we can incrementally transition all of the code to use <code>mem_alloc_new()</code> instead of
+<code>mem_alloc()</code>. Once we have transitioned all of the code, we can remove <code>mem_alloc()</code> and then do a
+global search-and-replace that renames <code>mem_alloc_new()</code> → <code>mem_alloc()</code>.</p>
+<p>The final challenge is the trickiest one of them all — changing one of the fundamental types in the
+codebase.</p>
+<p>In fact, I recently had a run-in with this, which is what prompted me to write this whole blog post.
+In my case, I wanted to refactor our codebase to introduce a new type to represent the IDs of
+objects in The Truth. <a href=" ../../post/the-story-behind-the-truth-designing-a-data-model/">The
+Truth</a> is our main
+data store in The Machinery. All the data that the editor works on is stored in The Truth, and every
+object in The Truth is referenced by its ID.</p>
+<p>We used to represent Truth IDs with just an <code>uint64_t</code>, but since we have lots of other values that
+are also represented by <code>uint64_t</code>s this was causing increasing confusion. In order to provide
+better documentation of where a Truth ID is expected and some type-safety against passing other
+<code>uint64_t</code> values, we decided to switch from using a plain <code>uint64_t</code> to wrapping it in a struct:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> tm_tt_id_t {
+    uint64_t u64;
+} tm_id_tt_t;
+</code></pre></div><p>Note that since Truth IDs are used <em>everywhere,</em> this change impacts thousands of lines in the code.</p>
+<p>Somewhat arrogantly, I still set out to do this refactor as a single concentrated push. I <em>know</em> I
+should do things incrementally, that’s what this whole blog post is about, but sometimes I mess up.</p>
+<p>As I worked on it, I realized this change was a lot bigger than I had originally thought and there
+was no way I was going to be able to finish it in a single sitting. I started to get that sinking
+feeling that things were spiraling out of control. I was changing <em>thousands</em> of lines of code. Was
+I really sure that I wasn’t introducing typos anywhere?</p>
+<p>A lot of the changes were changing things like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>object_a) {
+</code></pre></div><p>into:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>object_a.u64) {
+</code></pre></div><p>Was I really 100 % sure that I wasn’t sometimes typing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (object_a.u64) {
+</code></pre></div><p>instead? Running some tests would have increased my confidence, but since the code wouldn’t compile
+until I had fixed <em>everything</em>, I couldn’t run any tests.</p>
+<p>Then I started to get merge conflicts with other people’s changes which I had to resolve by hand,
+hoping that I understood their code well enough not to break anything. It became harder and harder
+to picture the consequences of all the changes. How many bugs was I introducing?</p>
+<p>In the past, I’ve often tried to deal with these “panicky” feelings by “powering through”. Starting
+to pull long late-night coding sessions to try to wrestle this thing that is slipping away from me
+back under control. Get all my changes in before someone else has a chance to push anything so that
+I don’t have to deal with the merge conflicts. (Which of course just means that <em>they</em> have to deal
+with the merge conflicts instead. Ha ha!)</p>
+<p>But these days I’m maybe a little bit wiser? I realize that these feelings are a sign that I have
+bitten off more than I could chew and that the right response is not to push forward, but instead
+take a step back, reflect and try to reformulate the problem so it can be approached in a series of
+smaller steps instead. Depending on how much trouble I’ve gotten myself into, I might be able to
+salvage some of the changes or I might just throw it all away and start over with an iterative
+approach. Even when I’ve had to throw everything away, I’ve never regretted it. In the end, working
+in a series of small, controlled steps is so much more productive that I feel like I always gained
+back the time I “lost”.</p>
+<p>Back to the problem at hand. I knew I wanted to change the type <em>incrementally.</em> I.e., change it in
+some files, but not in others, and still be able to compile and test the code. But how could I
+possibly do that, when everything depends on everything else? Once I change some parameters to use
+<code>tm_tt_id_t</code>, anything that calls it with <code>uint64_t</code> will produce an error.</p>
+<p>My key insight was that this situation is very similar to the one of enabling <code>-Wshadow</code>. That
+transition was easy to do because we changed the code from compiling just under <code>-Wno-shadow</code> so
+that it compiles under <em>both</em> <code>-Wshadow</code> and <code>-Wno-shadow</code>. We can do this change incrementally
+until we’re finally ready to turn on <code>-Wshadow</code>.</p>
+<p>Let’s do the same thing here. We’ll call the type of the ID objects <code>ID_TYPE</code>. Right now, our code
+compiles when <code>ID_TYPE</code> is <code>uint64_t</code>. Our goal is to rewrite that code so that it compiles <em>both</em>
+when <code>ID_TYPE</code> is <code>uint64_t</code> and when it is <code>tm_tt_id_t</code>. If we can incrementally transition to that
+state, then once all the code compiles when <code>ID_TYPE</code> is <code>tm_tt_id_t</code> we can make that the default.</p>
+<p>Here’s a simple example to show how this works:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">uint64_t <span style="color:#a6e22e">get_data</span>(uint64_t asset)
+{
+    <span style="color:#66d9ef">const</span> tm_the_truth_object_o <span style="color:#f92672">*</span>asset_r <span style="color:#f92672">=</span> tm_tt_read(tt, asset);
+    uint64_t data <span style="color:#f92672">=</span> api<span style="color:#f92672">-&gt;</span>get_subobject(tt, asset_r, TM_TT_PROP__ASSET__OBJECT);
+    <span style="color:#66d9ef">return</span> data;
+}
+</code></pre></div><p>To make this independent of the value of <code>ID_TYPE</code>, we can rewrite it as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">ID_TYPE <span style="color:#a6e22e">get_data</span>(ID_TYPE asset)
+{
+    <span style="color:#66d9ef">const</span> tm_the_truth_object_o <span style="color:#f92672">*</span>asset_r <span style="color:#f92672">=</span> tm_tt_read(tt, asset);
+    ID_TYPE data <span style="color:#f92672">=</span> api<span style="color:#f92672">-&gt;</span>get_subobject(tt, asset_r, TM_TT_PROP__ASSET__OBJECT);
+    <span style="color:#66d9ef">return</span> data;
+}
+</code></pre></div><p>This works regardless of whether <code>ID_TYPE</code> is <code>uint64_t</code> or <code>tm_tt_id_t</code>. In our header file, we put
+something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> tm_tt_id_t {
+    uint64_t u64;
+} tm_tt_id_t;
+
+<span style="color:#75715e">#define TM_NEW_ID_TYPE 0
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#if TM_NEW_ID_TYPE
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">typedef</span> tm_tt_id_t ID_TYPE;
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">typedef</span> uint64_t ID_TYPE;
+<span style="color:#75715e">#endif
+</span></code></pre></div><p>We can now commit and push our <code>get_data()</code> function without needing to change anything else in the
+code. Everything will still compile because <code>ID_TYPE</code> is by default defined as <code>uint64_t</code>, so all
+the places that call <code>get_data()</code> with an <code>uint64_t</code> will still work. We’ve taken a small,
+incremental step towards switching out the ID type.</p>
+<p>To take another step, just as we did with <code>-Wshadow</code>, we set <code>TM_NEW_ID_TYPE=1</code> locally. This will
+produce thousands of errors, but we don’t have to fix them all at once. We just fix a few (whatever
+is a suitable commit chunk) by modifying the code just as we did with <code>get_data()</code>. Then we change
+<code>TM_NEW_ID_TYPE</code> back to 0 and check that everything still compiles and runs OK. If it does, we can
+commit <em>those</em> changes. Rinse and repeat until the whole codebase is fixed.</p>
+<p>There might be some situations where just changing <code>uint64_t</code> to <code>ID_TYPE</code> doesn’t work. For
+example, there is some code in the codebase that looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">objects_equal</span>(uint64_t a, uint64_t b)
+{
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">==</span> b;
+}
+</code></pre></div><p>Since we are writing strict C code, we can’t implement <code>operator==</code> for <code>tm_tt_id_t</code>. We need to
+compare the objects with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">return</span> a.u64 <span style="color:#f92672">==</span> b.u64;
+</code></pre></div><p>(Side note: I often wish that == would work on C structs. The compiler should determine whether the
+struct contains any padding bytes. If not, == should be implemented as <code>memcmp</code>, otherwise, as a
+member-by-member comparison.)</p>
+<p>Again, our goal is to replace the old code with new code that compiles for <em>both</em> possible values of
+<code>ID_TYPE</code>. This means we can’t just write <code>a.u64</code>, because that won’t compile when <code>a</code> is an
+<code>uint64_t</code>. But we can make use of the preprocessor once again and write something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#if TM_NEW_ID_TYPE
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TO_U64(x) ((x).u64)
+</span><span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">#define TO_U64(x) (x)
+</span><span style="color:#75715e">#endif
+</span></code></pre></div><p>Here, the <code>TO_U64</code> macro will produce an <code>uint64_t</code> from an <code>ID_TYPE</code> object, regardless of whether
+the <code>ID_TYPE</code> is wrapped or not. Now, we can rewrite the <code>objects_equal()</code> function as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">objects_equal</span>(ID_TYPE a, ID_TYPE b)
+{
+    <span style="color:#66d9ef">return</span> TO_U64(a) <span style="color:#f92672">==</span> TO_U64(b);
+}
+</code></pre></div><p>And the code will compile with both the new ID type and the old one.</p>
+<p>There are other ways of doing this too. For example, instead of <code>TO_U64(x)</code>, we could have created
+an <code>ID_EQUAL(a,b)</code> macro.</p>
+<p>The main point is that by making use of the preprocessor, it should be possible to take whatever
+code we have and rewrite it in such a way that it compiles with both possible values for
+<code>TM_NEW_ID_TYPE</code>. Once we can do that, we can incrementally transition more and more code to the new
+type.</p>
+<p>Once the whole code is converted we can disable the <code>TM_NEW_ID_TYPE=0</code> code path and then
+(incrementally, if we so desire) remove all the transitional macros, <code>ID_TYPE</code>, <code>TO_U64</code>, etc by
+replacing them with their <code>TM_NEW_ID_TYPE=1</code> values.</p>
+<p>Using this approach, I was able to completely transition over from <code>uint64_t</code> to <code>tm_tt_id_t</code> with
+10-15 incremental commits over a couple of days, while all the time compiling and testing to make
+sure nothing was broken by the changes. Commits from other team members didn’t cause many merge
+issues, because my commits were all short-lived (an hour or so of work) and didn’t touch that many
+files. This big and scary change was suddenly very manageable.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>I think the incremental pattern can be applied everywhere. It just requires a little bit of
+ingenuity to reformulate the problem in an incremental way and this is something that you get better
+at with practice.</p>
+<p>Doing things incrementally has a bit more overhead. For example, we weren’t able to change <code>object</code>
+to <code>object.u64</code> in one go, we had to transition via <code>TO_U64(object)</code>. However, I think that extra
+time is soon earned back. By working incrementally you can make calm, steady, confident progress
+towards your goal, and in the end that allows you to work a lot faster. For example, with the ID
+type change, I was able to make a lot of changes using global search-and-replace with regular
+expressions. If I hadn’t been able to regularly compile and test my code, it would have been a lot
+harder to trust that the search-and-replace was doing the right thing.</p>
+<p>Also, the C preprocessor is kind of a weird thing to have in the language, but sometimes it’s really
+neat that it’s there, when you need to do stuff like this.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220512072646/https://twitter.com/share?text=Step-by-step%3a%20Programming%20incrementally - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fstep-by-step-programming-incrementally%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220512072646/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fstep-by-step-programming-incrementally%2f&amp;description=Step-by-step%3a%20Programming%20incrementally" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/borderland-part-3-selection-highlighting/" class="text-decoration-none"><img src="../../images/selection__outline.gif" class="card-img-top" alt="Borderland between Rendering and Editor — Part 3: Selection Highlighting"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/borderland-part-3-selection-highlighting/">Borderland between Rendering and Editor — Part 3: Selection Highlighting</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-09-22T00:00:00Z">
+                      22 Sep 2020
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>We’ve reached the third post in this series about often overlooked rendering features typically
+needed when building …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/borderland-part-3-selection-highlighting/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/wasabi-part-5-making-it-wfh/">WaSaBi Part 5: Making it WFH</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-09-02T00:00:00Z">
+                      2 Sep 2020
+                    </time>
+                  </h6>
+                  <p class="card-text">In my last blog, I wrote what my thoughts were on the US office and how I felt about working from home. We are …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/wasabi-part-5-making-it-wfh/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2020-8/">The Machinery Beta — August 2020 (version 2020.8)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2020-08-28T00:00:00Z">
+                      28 Aug 2020
+                    </time>
+                  </h6>
+                  <p class="card-text">Hope you all have managed to get some rest and relaxation during these strange times. We are wrapping up our summer …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2020-8/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">4 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/step-by-step-programming-incrementally/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220512072646/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220512072646/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220512072646/https://ourmachinery.com/cdn-cgi/l/email-protection#e3938a8d84a38c96918e82808b8a8d86919acd808c8e" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 07:26:46 May 12, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:10 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 67.062
+  exclusion.robots: 0.16
+  exclusion.robots.policy: 0.147
+  cdx.remote: 0.111
+  esindex: 0.016
+  LoadShardBlock: 37.143 (3)
+  PetaboxLoader3.datanode: 75.35 (4)
+  CDXLines.iter: 13.011 (3)
+  load_resource: 85.408
+  PetaboxLoader3.resolve: 34.073
+-->

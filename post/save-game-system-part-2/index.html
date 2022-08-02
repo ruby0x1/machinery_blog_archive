@@ -1,0 +1,730 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="How we implemented the save game system for The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/sgs__moving_box.gif"/>
+  
+  <meta name="twitter:title" content="One-Click Save Game System -- Part 2">
+  <meta name="twitter:description" content="How we implemented the save game system for The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="One-Click Save Game System -- Part 2 · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/save-game-system-part-2/"/>
+  
+  <meta property="og:image" content="../../images/sgs__moving_box.gif"/>
+  
+  
+  <meta property="og:description" content="How we implemented the save game system for The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-07-02T00:00:00Z"/>
+  
+
+  <title>One-Click Save Game System -- Part 2 &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210804201827/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210804201827\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Leonardo Lucania",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210804201827\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "One-Click Save Game System -- Part 2",
+    "name": "One-Click Save Game System -- Part 2",
+    "wordCount":  1054 ,
+    "timeRequired": "PT5M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/save-game-system-part-2/",
+    "datePublished": "2021-07-02T00:00Z",
+    "dateModified": "2021-07-02T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210804201827/https://ourmachinery.com/sgs__moving_box.gif"
+    },
+    
+    
+    "description": "How we implemented the save game system for The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/press.html" aria-label="Link Press Kit">Press Kit</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210804201827/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210804201827/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>One-Click Save Game System -- Part 2</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-07-02T00:00:00Z">
+          Jul 2, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Part-1: <a href=" ../../post/save-game-system-part-1/">https://ourmachinery.com/post/save-game-system-part-1/</a></p>
+<p>With the basic prototype up and running and a clearer view of the requirements, the next challenge
+was to integrate the system with the engine, specifically with our Entity Component System (ECS).</p>
+<h2 id="requirements-part-2">Requirements, part 2</h2>
+<p>The ECS is the core system that runs the runtime simulation. For many games, the “state” of the game
+is exactly the state of the ECS (what entities exist and what the values of their component structs
+are). Therefore, how the Gamestate interoperates with the ECS is really important.</p>
+<p>(Note though, that this is not true for <em>all</em> games. For example, the <em>State</em> of a chess game might
+be represented by the sequence of moves that brought the board to its current state, rather than by
+the positions of the Entities that represent the chess pieces in the 3D world. )</p>
+<p>We went back to the drawing board and brainstormed the use cases for the ECS:</p>
+<ol>
+<li>
+<p>It would be nice if the ECS could automatically store its state to and restore it from the
+<em>Gamestate</em>. That way, any game that used the ECS would get Save Game support “for free”. A game
+that wasn’t designed with Save Game support in mind, could just “turn on” the feature without
+having to make any big changes to the game code.</p>
+</li>
+<li>
+<p>Since our ECS is extensible and allows for user-defined Components, we need a way for the
+developer of a component to tell the ECS how the component should be saved and restored. (Note
+that in some cases this might be as simple as just saving and restoring the raw bytes of the
+component’s runtime data.) The ECS needs to provide a configuration API to specify how a
+component can be persisted:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> tm_component_persistence_i
+{
+    <span style="color:#75715e">// Name that the component will have in the Persistent Gamestate.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+   
+    <span style="color:#75715e">// Size that the component will have in the Persistent Gamestate.
+</span><span style="color:#75715e"></span>    uint32_t size;
+   
+    uint32_t member_count;
+    <span style="color:#66d9ef">struct</span> tm_gamestate_member_t <span style="color:#f92672">*</span>members;
+   
+    <span style="color:#75715e">// Callback to serialize the specified component to `buffer`.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>serialize)(<span style="color:#66d9ef">struct</span> tm_entity_context_o <span style="color:#f92672">*</span>ctx, tm_entity_t e, tm_component_type_t component, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>buffer, uint32_t buffer_size);
+   
+    <span style="color:#75715e">// Callback to deserialize the specified buffer to the component.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>deserialize)(<span style="color:#66d9ef">struct</span> tm_entity_context_o <span style="color:#f92672">*</span>ctx, tm_entity_t e, tm_component_type_t component, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>buffer, uint32_t buffer_size);
+} tm_component_persistence_i;
+</code></pre></div></li>
+<li>
+<p>The Game should be able to decide whether an Entity should be considered <em>Persistent</em> or not.
+(Non-persistent entities might be used for special effects, static objects, or other things that
+do not need to be saved.)</p>
+</li>
+<li>
+<p>Entity Assets in The Machinery are really entity hierarchies — they can contain child entities
+and the child entities may themselves have children. So we need to consider how the entire
+hierarchy works with persistence. We decided that you cannot mix and match persistence for
+individual child entities in the hierarchy — the entire entity asset is either completely
+persistent or completely non-persistent (we may change this in the future).</p>
+</li>
+</ol>
+<h2 id="implementation-part-2">Implementation, part 2</h2>
+<p>The time had come. I created a project with some simple entities with the goal of being able to
+<em>Save</em> and <em>Load</em> this project via the <em>Gamestate.</em></p>
+<p>Once again, I started by sketching out what the ECS API for serialization should look like (note
+that the three main phases we talked about in part one are still clearly defined):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Reminder: a `tm_entity_t` is basically how Entities are identified in our Entity Context.
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Configuration
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>configure_component_persistence)(tm_entity_context_o <span style="color:#f92672">*</span>ctx, tm_component_type_t c, tm_tt_component_persistence_aspect_i <span style="color:#f92672">*</span>persistence);
+
+<span style="color:#75715e">// Runtime
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>gamestate_float_member_changed)(tm_entity_context_o <span style="color:#f92672">*</span>ctx, tm_entity_t e, tm_component_type_t c, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>member, <span style="color:#66d9ef">float</span> value);
+<span style="color:#75715e">// The Entity Context will automatically do the two lookups for you! you don&#39;t need to worry about anything &#34;persistence-related&#34;.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>gamestate_reference_member_changed)(tm_entity_context_o <span style="color:#f92672">*</span>ctx, tm_entity_t e, tm_component_type_t c, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>member_name, tm_entity_t ref);
+<span style="color:#75715e">// ... Other types here...
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// One-time actions
+</span><span style="color:#75715e"></span>uint8_t <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>dump_persistent_gamestate)(tm_entity_context_o <span style="color:#f92672">*</span>ctx, uint32_t <span style="color:#f92672">*</span>written, <span style="color:#66d9ef">struct</span> tm_allocator_i <span style="color:#f92672">*</span>a);
+<span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>load_persistent_gamestate)(tm_entity_context_o <span style="color:#f92672">*</span>ctx, uint8_t <span style="color:#f92672">*</span>state, uint32_t size);
+</code></pre></div><p>And proceeded to implement them:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Saving and Restoring the state of a simple box moving around a plane." src="../../images/sgs__moving_box.gif"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Saving and Restoring the state of a simple box moving around a plane.</h4>
+    </figcaption>
+  </figure>
+<p>At this point, I made a key realization about the system. It should be able to both:</p>
+<ul>
+<li>
+<p>Keep track of changes that happen to a specific piece of data, without maintaining a copy of it
+(it will just keep the change you pushed, without needing a full copy of the structure).</p>
+</li>
+<li>
+<p>Keep a copy of the entire data structure, if that&rsquo;s what the user wants.</p>
+</li>
+</ul>
+<p>To better illustrate the point, think about an entity that was part of a world procedurally
+generated from a seed: we don’t need to store the full state, because we will be able to generate
+the same state starting from the same seed. All we need to store is whatever changes happened
+<em>after</em> the procedural generation step. For static entities, that never change and can’t be
+destroyed, we don’t need to store anything, apart from the seed that is used to generate them, of
+course.</p>
+<p>On the other hand, if the user creates an entity “manually” — by spawning a completely empty entity
+and then manually adding components to it, we need to store the full state of that entity. Or, in
+another way of looking at it, in this case, the “initial state” is an empty entity, so all the
+components that were added should be considered changes from this initial state.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Sample procedural world. If you’re wondering, that is actually an horse. I don’t think I can blame Microsoft Paint that much for that one, unfortunately." src="../../images/sgs__procedural.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Sample procedural world. If you’re wondering, that is actually an horse. I don’t think I can blame Microsoft Paint that much for that one, unfortunately.</h4>
+    </figcaption>
+  </figure>
+<p>In the procedural world depicted in the image above, there’s no need to store anything about the
+trees, but we have to store the entire state of the Horse, as we wouldn’t able to recreate this
+world exactly as it is otherwise. (We would be able to recreate the trees thanks to the seed, but we
+wouldn’t have all the data about the horse.)</p>
+<p>After implementing this (I won&rsquo;t bother with the actual implementation steps, feel free to ping me
+if you want to know more), our system was ready to handle both procedurally generated entities and
+entities generated &ldquo;from scratch&rdquo; at runtime,q using the same API: it keeps track of just the
+changes for the former while keeping a full copy of the state for the latter. And thanks to the ECS,
+this all happens automatically “behind the scenes” without any user intervention.</p>
+<p>That’s everything for now, rest yourself as next time we’ll take a look at the third (and last)
+iteration of the system.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/authors/leo" class="text-decoration-none">Leonardo Lucania</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804201827/https://twitter.com/share?text=One-Click%20Save%20Game%20System%20--%20Part%202 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fsave-game-system-part-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210804201827/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fsave-game-system-part-2%2f&amp;description=One-Click%20Save%20Game%20System%20--%20Part%202" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/save-game-system-part-1/" class="text-decoration-none"><img src="../../images/sgs__prototype.png" class="card-img-top" alt="One-Click Save Game System -- Part 1"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/save-game-system-part-1/">One-Click Save Game System -- Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-06-21T00:00:00Z">
+                      21 Jun 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hello fellow developers! It&rsquo;s Leo here.</p>
+<p>I&rsquo;ve been working on a Save Game system for The Machinery for quite …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/save-game-system-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/supporting-native-hdr-monitors/" class="text-decoration-none"><img src="../../images/hdr__gamut.png" class="card-img-top" alt="Supporting Native HDR Monitors"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/supporting-native-hdr-monitors/">Supporting Native HDR Monitors</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-06-15T00:00:00Z">
+                      15 Jun 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Monitors that can display HDR color spaces are not very common on gaming PCs. Nevertheless, I bought
+one when creating …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/supporting-native-hdr-monitors/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">12 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/beta-2021-5/" class="text-decoration-none"><img src="../../images/beta_21_5__fabrik.png" class="card-img-top" alt="The Machinery Beta — May 2021 (version 2021.5)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/beta-2021-5/">The Machinery Beta — May 2021 (version 2021.5)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-05-27T00:00:00Z">
+                      27 May 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Here at Our Machinery, we’re pretty excited about the flexibility of The Machinery. It offers
+options in customizing …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/beta-2021-5/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">7 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/save-game-system-part-2/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210804201827/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804201827/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/cdn-cgi/l/email-protection#83f3eaede4c3ecf6f1eee2e0ebeaede6f1faade0ecee" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210804201827/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:18:27 Aug 04, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:42 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 379.504
+  exclusion.robots: 0.09
+  exclusion.robots.policy: 0.082
+  cdx.remote: 0.058
+  esindex: 0.009
+  LoadShardBlock: 55.417 (3)
+  PetaboxLoader3.datanode: 55.954 (4)
+  CDXLines.iter: 13.528 (3)
+  load_resource: 66.374
+  PetaboxLoader3.resolve: 59.124
+-->

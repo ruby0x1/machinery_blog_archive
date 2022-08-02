@@ -1,0 +1,1175 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="Introducing a new API versioning scheme for The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/apiver__dependencies.png"/>
+  
+  <meta name="twitter:title" content="API Versioning">
+  <meta name="twitter:description" content="Introducing a new API versioning scheme for The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="API Versioning · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/api-versioning/"/>
+  
+  <meta property="og:image" content="../../images/apiver__dependencies.png"/>
+  
+  
+  <meta property="og:description" content="Introducing a new API versioning scheme for The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2021-09-22T00:00:00Z"/>
+  
+
+  <title>API Versioning &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210923033545/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210923033545\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210923033545\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "API Versioning",
+    "name": "API Versioning",
+    "wordCount":  6116 ,
+    "timeRequired": "PT29M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/api-versioning/",
+    "datePublished": "2021-09-22T00:00Z",
+    "dateModified": "2021-09-22T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20210923033545/https://ourmachinery.com/apiver__dependencies.png"
+    },
+    
+    
+    "description": "Introducing a new API versioning scheme for The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210923033545/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>API Versioning</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2021-09-22T00:00:00Z">
+          Sep 22, 2021
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>The plugin API system is one of the central pieces of technology in <em>The Machinery</em>. Plugins can
+use it to call APIs defined in the engine, call APIs from other external plugins, or expose APIs of
+their own. The Machinery is essentially just a collection of plugins collaborating through these
+interfaces.</p>
+<!-- more -->
+<p>I’ve written about the plug-in system before:</p>
+<ul>
+<li><a href=" ../../post/little-machines-working-together-part-1/">Little Machines Working Together (Part 1)</a></li>
+<li><a href=" ../../post/little-machines-working-together-part-2/">Little Machines Working Together (Part 2)</a></li>
+</ul>
+<p>Today, I want to focus on a new feature that I’ve been working on for the 2021.9 release: API
+versioning.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Versioning is needed for plugins to deal with changes to other plugins. For example, suppose the
+engine has this API (APIs in The Machinery are structs with function pointers):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_engine_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>allocate)(uint64_t size);
+};
+</code></pre></div><p>and you use that in your plugin:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_engine_api <span style="color:#f92672">*</span>tm_engine_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(<span style="color:#e6db74">&#34;tm_engine_api&#34;</span>);
+
+thing_t <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> tm_engine_api<span style="color:#f92672">-&gt;</span>allocate(<span style="color:#66d9ef">sizeof</span>(thing_t));
+</code></pre></div><p>You compile your plugin to a DLL that gets used by thousands of happy users. Then, one day, we
+decide to change <em>our</em> API to add tags to allocations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_engine_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>allocate)(uint64_t size, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>tag);
+};
+</code></pre></div><p>Users who use your DLL with our new engine version will now have the <code>allocate()</code> function called
+with the wrong number of parameters. This won’t result in any helpful error message, because
+there’s no runtime check that a function is called with the right number and type of parameters
+— all those checks happen at compile time. Instead, the function will just try to get the
+parameters from the stack, get some garbage values back and most likely crash horribly.</p>
+<p>You can fix this by compiling a new version of the DLL, fixing all the <code>Not enough parameters for function allocate()</code> compile errors you get and then try to get that new DLL out to the users as
+soon as possible.</p>
+<p>But it’s kind of annoying that the crashes even happen in the first place. It’s also annoying
+that you have to tell the users to use the right version of the DLL with the right version of the
+engine or everything will crash.</p>
+<p>And there might be many reasons why you <em>can’t</em> just compile a new version of your DLL at the
+drop of a hat. Maybe you have other stuff to do? Maybe you have moved on to greener pastures? Maybe
+your DLL depends on some other DLL and you have to wait for <em>that</em> DLL to upgrade first.
+For users, trying to puzzle together a working application from DLLs of different versions can
+quickly become a nightmare (known as <a href="http://web.archive.org/web/20210923033545/https://en.wikipedia.org/wiki/Dependency_hell">dependency
+hell</a>).</p>
+<p>This is not a great situation. What we would like instead would be something like:</p>
+<ul>
+<li>
+<p>As far as possible, the engine should be <em>backward compatible</em> with older DLLs. I.e., a DLL
+compiled for an older version of the engine should continue to run on the new version.</p>
+</li>
+<li>
+<p>If we can’t do that, we should at least fail gracefully instead of bringing the whole editor down.
+This would mean showing an error message, saying something like “<em>plugin XXX was compiled for an
+older version of the engine”</em> and then disabling the plugin before it can do any damage.</p>
+</li>
+</ul>
+<p>If we can solve this, we can continue to evolve the engine rapidly without constantly breaking
+everybody’s projects.</p>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<p>To preserve backward compatibility, we must make sure that whatever changes we make to an API does
+not cause any problems for a plugin that was compiled against an older version of that API.</p>
+<p>We could achieve this by not changing the API at all, but that’s not very interesting. We <em>want</em>
+to change the API, to add new features, fix bugs, and adapt the code to new use cases. Being
+flexible and easy to change is the most important property of code. Code that can’t change is
+doomed to die.</p>
+<p>So let’s look at what changes we <em>can</em> make.</p>
+<p>For binary compatibility between different versions of DLLs and executables, what matters is not
+the API (the definitions in the header file), but the
+<a href="http://web.archive.org/web/20210923033545/https://en.wikipedia.org/wiki/Application_binary_interface">ABI</a> (the Application Binary
+Interface) — the binary layout of structs and function parameters. As long as the changes we make
+to the <em>API</em> do not change the <em>ABI</em>, everything is good.</p>
+<p>This can be a bit tricky if you are not used to thinking and reasoning about the <em>ABI</em>, so let’s
+look at some examples:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(uint32_t x);
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(uint32_t y);
+};
+</code></pre></div><p>Old code calling v1 of this API will still work with v2. It doesn’t matter that we changed the
+name of the parameter because the name isn’t a part of the ABI. In compiled code, we don’t
+reason about the names of function parameters, only about how they are passed (in registers or on
+the stack). Even though the names differ, code using v1 will put the parameter in the place where
+v2 expects to find it.</p>
+<p>In fact, the name of the parameter doesn’t even appear anywhere in the compiled code (it’s
+saved in the PDB though, so the debugger can use it).</p>
+<p>The same is true for fields in structs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    uint32_t people;
+    uint32_t cats;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">struct</span> bla bla);
+};
+
+<span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    uint32_t number_of_people;
+    uint32_t number_of_cats;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">struct</span> bla bla);
+};
+</code></pre></div><p><code>tm_my_api (v1)</code> and <code>tm_my_api (v2)</code> are still binary compatible. In the ABI, the struct fields
+have no names, just byte offsets. The caller puts the number of people at a certain byte offset in
+the struct and the callee looks for the number of people at that same offset. It doesn’t matter what
+the struct fields are called.</p>
+<p>Renaming the function pointers in the API struct is safe too. They are just fields in the API
+structs, so the same thing applies to them. As long as the same function is found at the same
+offset in the API struct, it doesn’t matter what it’s called.</p>
+<blockquote>
+<p>Note: This is true for function pointers in a struct, but it’s not true for exported functions. If
+you export a function from a DLL with <code>__declspec(dllexport)</code>, the name of the function gets saved
+in the DLL so that it can be retrieved by <code>GetProcAddress()</code> or <code>dlsym()</code>, but since the plugin
+system in The Machinery is based around API structs with function pointers rather than exported
+symbols, I won’t dwell on this further.</p>
+</blockquote>
+<p>Let’s look at a change that <em>would</em> cause problems:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    uint32_t cats;
+    uint32_t people;
+};
+</code></pre></div><p>Here we have switched the order of the fields in the struct. The first four bytes of the struct
+data, at offset 0, are now interpreted as the number of <em>cats</em> while the next four bytes, at offset
+4, are interpreted as the number of <em>people</em>. A caller that was compiled for v1 of the API would
+put the people count in the first 4 bytes and the cats in the last 4 bytes. If that caller was used
+with v2 of the API, the callee would see the value that the caller put in the <code>people</code> field in the
+<code>cats</code> field and vice versa. Effectively, we have <a href="http://web.archive.org/web/20210923033545/https://www.youtube.com/watch?v=FtSd844cI7U">transformed people into
+cats</a>.</p>
+<p>Let’s recap quickly:</p>
+<ul>
+<li>Safe: Changing the name of struct fields and/or function parameters.</li>
+<li>Unsafe: Changing the order of struct fields and/or function parameters.</li>
+<li>Unsafe: Changing the types of struct fields and/or function parameters.</li>
+<li>Unsafe: Adding or removing struct fields and/or function parameters.</li>
+</ul>
+<p>Another safe thing we can do is make use of unused bits and bytes in the struct, as long as we know
+they have been zeroed. For example, suppose we have:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+
+    <span style="color:#75715e">// Must be zero
+</span><span style="color:#75715e"></span>    uint32_t reserved;
+};
+</code></pre></div><p>We can now do:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    <span style="color:#66d9ef">float</span> height;
+};
+</code></pre></div><p>Hey now, this doesn’t look very safe. We changed the type of the <code>reserved</code> field from <code>uint32_t</code>
+to <code>float</code> and didn’t I just say that we can’t change the types of fields?</p>
+<p>But in this case, it actually works. Both <code>unit32_t</code> and <code>float</code> have the same size and alignment,
+so they end up at the same position in the struct. The only allowed value for <code>reserved</code> in v1 is
+0, which is represented in memory as four zero bytes: <code>0 0 0 0</code>.</p>
+<p>So if v2 gets called from v1, it will find four zero bytes in the <code>height</code> field: <code>0 0 0 0</code>. But
+these four bytes are also a valid value for a <code>float</code>. In fact, they represent the floating-point
+zero: <code>0.0f</code>. (Making sure that setting all the bytes of a data structure to 0 results in a good
+default value is a good idea generally.)</p>
+<p>So as long as the code in v2 has been written to handle the case where <code>0.0f</code> is passed in the
+<code>height</code> field (which it should be since the whole goal here is to maintain backward
+compatibility), everything will work out fine.</p>
+<p>If you expect that you will need more data in a <code>struct</code> in the future, you can pad it with
+<code>reserved</code> fields so you have somewhere to put that data when the time comes. You can find lots of
+examples of this in the Microsoft APIs, for example, the
+<a href="http://web.archive.org/web/20210923033545/https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa">WIN32_FIND_DATA</a>
+structure has two reserved fields called <code>dwReserved0</code> and <code>dwReserved1</code>.</p>
+<p>Personally, I’m not a huge fan of this approach. First, I find it aesthetically displeasing.
+Second, anticipating future needs is really hard. How do you know which structs are going to need
+more fields in the future and which aren’t? How many bytes of reserved data should you put in? 4?
+8? 128? Third, this has the danger of running into <a href="http://web.archive.org/web/20210923033545/https://www.hyrumslaw.com/">Hyrum’s Law</a>.</p>
+<p>Hyrum’s Law says that if your API has enough users, it doesn’t matter what your documentation
+says. Any observable behavior of your code will be <a href="http://web.archive.org/web/20210923033545/https://xkcd.com/1172/">depended on by
+somebody</a>.</p>
+<p>You <em>said</em> the <code>reserved</code> field <em>had</em> to be zero, right? But did you actually check it? And did you
+<em>crash</em> if it wasn’t zero? Because if you didn’t, you know some user will have called it with
+garbage data instead of zero:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">// Bla is created on the stack, contains random data.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> bla bla;
+
+<span style="color:#75715e">// bla.name is set to a reasonable value, but bla.reserved
+</span><span style="color:#75715e">// is still uninitialized.
+</span><span style="color:#75715e"></span>bla.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Niklas&#34;</span>;
+
+tm_my_api<span style="color:#f92672">-&gt;</span>f(bla);
+</code></pre></div><p>This works fine in v1 of the API since we didn’t really use the <code>reserved</code> field for anything.
+But in v2, this passes random data in the <code>height</code> field which will likely lead to unexpected
+behavior.</p>
+<p>How you look at this situation depends on how you feel about backward compatibility. You could say
+that any developer who passed random data in the <code>reserved</code> field was using the API wrongly and
+doesn’t deserve backward compatibility in the first place. It’s their fault if the code crashes
+in a future version and you take no responsibility for it. We can call that the Apple approach.</p>
+<p>Or, you can say that you value backward compatibility above everything else. Since some apps have
+been passing garbage data in the <code>reserved</code> field and you don’t want to crash those apps you can
+now never use the <code>reserved</code> field for anything. It will just have to sit there unused in your API
+for all eternity. We can call that the Microsoft approach.</p>
+<p>Another “prepare for the future approach” that you can see in Microsoft APIs is to have a size
+field specifying the size of the struct:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Must be set to sizeof(struct bla).
+</span><span style="color:#75715e"></span>    uint32_t size;
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> bla <span style="color:#f92672">*</span>bla);
+};
+
+<span style="color:#66d9ef">struct</span> bla { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Must be set to sizeof(struct bla).
+</span><span style="color:#75715e"></span>    uint32_t size;
+    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    <span style="color:#66d9ef">float</span> height;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> bla <span style="color:#f92672">*</span>bla);
+};
+</code></pre></div><p>Here, the first field of <code>bla</code> specifies the size of the struct. When <code>f()</code> receives a struct, it
+can check this value to figure out if a <code>struct bla (v1)</code> or a <code>struct bla (v2)</code> was passed and act
+accordingly. Note that for this to work, we must pass the struct as a <em>pointer</em> to <code>f()</code>, because
+if we passed it by value, the stack layout would depend on the size of the struct.</p>
+<p>You can see the use of a <code>dwSize</code> field for this purpose all over the Microsoft APIs, for example
+in
+<a href="http://web.archive.org/web/20210923033545/https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32">PROCESSENTRY32</a>.</p>
+<p>There’s nothing magic about using the size of the struct for this purpose. You could use anything
+that makes it possible to identify specific versions of the struct. For example, you could have an
+explicit version number. But using the size is kind of convenient since it changes automatically as
+you add new stuff and you don’t have to figure out what version number to use. You can just type
+<code>sizeof(struct bla)</code> and you will always get the right value.</p>
+<blockquote>
+<p>Note: If you forgot to put in a version number and realize you need one later, you might be able
+to reuse some bits for that purpose. Find a bit that a v1 caller would never set (for example, the
+highest bit of a size field) and set that to <code>1</code> to mean v2 or later and then of course add a
+version number, so you don’t have to resort to tricks like that again.</p>
+</blockquote>
+<p>Again, I’m personally not a huge fan of the <code>dwSize</code> field approach that Microsoft uses. I can
+see the value when you want to maintain backward compatibility at all costs, but I find it ugly to
+have <code>.dwsize = sizeof(BLA)</code> all over the code.</p>
+<p>A final observation about this. The <code>dwSize</code> field is needed when you want to <em>pass</em> a struct
+pointer into an API function. However, if the API <em>returns</em> a struct pointer, you can actually do
+without it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> foo { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> foo <span style="color:#f92672">*</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">void</span>);
+};
+
+<span style="color:#66d9ef">struct</span> foo { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+    <span style="color:#66d9ef">float</span> height;
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> foo <span style="color:#f92672">*</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">void</span>);
+};
+</code></pre></div><p>Consider here what happens if the v1 code runs against the v2 interface. We will get back a pointer
+to a block of memory containing a v2 struct. The first bytes of that block are identical to the v1
+struct. After that, we have some extra data (the <code>height</code> field), but the v1 code doesn’t know
+about this data and won’t care if it’s there or not.</p>
+<p>Since the APIs in our plugin system are structs returned by pointers, the same is true for them:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">void</span>);
+};
+
+<span style="color:#66d9ef">struct</span> tm_my_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>f)(<span style="color:#66d9ef">void</span>);
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>g)(<span style="color:#66d9ef">void</span>);
+};
+</code></pre></div><p>Code that is written for this v1 API will work just fine with the v2 API. It will find all the v1
+functions at the expected position in the <code>struct tm_my_api * (v2)</code> and doesn’t care that there
+are additional functions at the end of it. So we can add new functions to an API without breaking
+backward compatibility, which is really nice.</p>
+<p>In fact, our APIs also have a certain amount of <em>forward compatibility</em>. When we register an API,
+we copy the API struct to a memory block that has some extra space initialized to zero. This means
+that if code that has been compiled for v2 runs against the v1 ABI, <code>tm_my_api_v2-&gt;g</code> is guaranteed
+to be <code>NULL</code>. The code can check for this to determine if it’s running against the v1 or v2
+version of the ABI.</p>
+<p>Let’s summarize all we have learned:</p>
+<ul>
+<li>Safe: Changing the name of struct fields and/or function parameters.</li>
+<li>Unsafe: Changing the order of struct fields and/or function parameters.</li>
+<li>Unsafe: Changing the types of struct fields and/or function parameters.</li>
+<li>Unsafe: Adding or removing struct fields and/or function parameters.</li>
+<li>Safe: Repurposing unused bits and bytes in structs, as long as they are zero-initialized.</li>
+<li>Safe: Changing the layout of structs passed as pointers, as long as we have a way of distinguishing different versions of the struct (e.g. a <code>size</code> field).</li>
+<li>Safe: Adding fields at the end of structs returned as pointers.</li>
+<li>Safe: Adding functions at the end of API structs.</li>
+</ul>
+<h2 id="breaking-backward-compatibility">Breaking backward compatibility</h2>
+<p>As we saw above, it’s possible to modify an API without breaking backward compatibility, but it
+comes at a cost. We must be careful about what changes we make. Over time, the API will tend to
+acquire more and more “cruft” — stuff that’s just there to provide backward compatibility
+for older users.</p>
+<p>So there’s a tradeoff to be made here. We can either prioritize stability or we can prioritize
+rapid development and being able to easily change and refactor the code. There’s no right answer.
+Down one path lies the trap of stagnation and obsolescence, down the other you run the risk of
+annoying your users with constantly breaking changes.</p>
+<p>The tradeoff might change during the lifetime of the API too. In the beginning, when the API is new
+and doesn’t have many users, it might be more important to focus on development speed and being
+able to fix any design mistakes. Later, when the API has matured and has more users, stability is
+more important. It also depends on whether the API is internal — i.e., mostly used by your own
+code — or external and affecting other users.</p>
+<p>We want an approach that supports both these modes of development.</p>
+<p>My initial plan was to not have version numbers for APIs in The Machinery, but instead do something
+like this:</p>
+<ul>
+<li>While APIs are “under development” or “unstable” — we change them at will and do not promise anything about backward compatibility.</li>
+<li>When a particular API becomes “locked” or “stable” — we maintain backward compatibility by only adding new functions at the end of the API struct.</li>
+<li>If we need to break backward compatibility of a stable API — we do it by introducing a completely new API.</li>
+</ul>
+<p>Say we’re working on the <code>tm_ui_api</code> for example. We could add new functionality to it by adding
+functions at the end of the API. If we needed to change the parameters of a function, we could do
+so by deprecating the old function and adding a new one at the end of the API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_ui_api { <span style="color:#75715e">// v1
+</span><span style="color:#75715e"></span>    ...
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>set_active)(tm_ui_o <span style="color:#f92672">*</span>ui, uint64_t id);
+    ...
+};
+
+<span style="color:#66d9ef">struct</span> tm_ui_api { <span style="color:#75715e">// v2
+</span><span style="color:#75715e"></span>    ...
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>set_active_v1)(tm_ui_o <span style="color:#f92672">*</span>ui, uint64_t id);
+    ...
+    <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>(<span style="color:#f92672">*</span>set_active)(tm_ui_o <span style="color:#f92672">*</span>ui, uint64_t id, tm_strhash_t active_data_format);
+};
+</code></pre></div><p>Note that this change is backward compatible. We’re not changing the parameters of the original
+<code>set_active()</code> function, just its name, which is ok. And we’re adding the new <code>set_active()</code> at
+the end of the API struct which is also OK. Also, note that we’ve complicated the API with some
+cruft — an extra function for backward compatibility.</p>
+<p>If we for some reason need to make a breaking change (hopefully that’s rare) we can do it by
+introducing a whole new API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_ui_api {
+    <span style="color:#75715e">// original layout
+</span><span style="color:#75715e"></span>};
+<span style="color:#75715e">#define TM_UI_API_NAME &#34;tm_ui_api&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">struct</span> tm_ui_api_v2 {
+    <span style="color:#75715e">// new layout
+</span><span style="color:#75715e"></span>};
+<span style="color:#75715e">#define TM_UI_API_V2_NAME &#34;tm_ui_api_v2&#34;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">struct</span> tm_ui_api <span style="color:#f92672">*</span>tm_ui_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(TM_UI_API_NAME);
+<span style="color:#66d9ef">struct</span> tm_ui_api_v2 <span style="color:#f92672">*</span>tm_ui_api_v2 <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(TM_UI_API_V2_NAME);
+</code></pre></div><p>For a time, the application can continue to expose both <code>tm_ui_api</code> and <code>tm_ui_api_v2</code> until
+<code>tm_ui_api</code> is deprecated and all clients are switched over to <code>tm_ui_api_v2</code>.</p>
+<p>I still think this is a pretty decent plan. It maximizes backward compatibility and clients don’t
+have to deal with versioning (which is an extra burden). So what’s the problem?</p>
+<p>The main issue is the “unstable” APIs. We kind of need them, because when we add a new API, we
+don’t want to promise stability from day one. We want to be able to experiment and explore the
+design space. This is especially true since a lot of users are working directly against our master
+branch and see every little change we make to the engine, not just fixed release points.</p>
+<p>This means that if anyone uses one of these unstable APIs and we make a change to it, their plugin
+will just crash and bring down the whole editor. That’s not really a tenable situation.
+We could tell people to just <em>not</em> use any of the “unstable” APIs or we could wait with
+publishing them until they’re “done”. But that’s not a great approach either. We believe in
+iterative workflows, pushing early and often. We want the development of the engine to move fast,
+and we want to encourage people to experiment with it. It’s very valuable to have real users try
+out an API at an early stage to get feedback on it.</p>
+<h2 id="versioning">Versioning</h2>
+<p>So looks like we’re going to need versioning of APIs. This means:</p>
+<ul>
+<li>We assign a version number to each API.</li>
+<li>Any time the API changes, we update the version number.</li>
+<li>When you request an API, you specify which version of the API you want.</li>
+<li>If you request a version that’s not available, an error message will be printed and your plugin will be disabled. The same happens if the API doesn’t exist at all.</li>
+</ul>
+<p>We have some additional requirements too. We want the system to be easy to use in the most common
+case (get the latest version), but support more advanced use cases when we need them. It should
+also support both forward and backward compatibility.</p>
+<p>For version numbers, we’ll use the <a href="http://web.archive.org/web/20210923033545/https://semver.org/">semver</a> standard. Semver version numbers
+consist of three numbers: <em>major</em>, <em>minor</em>, and <em>patch</em> (e.g. 10.2.3):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_version_t {
+    uint32_t major;
+    uint32_t minor;
+    uint32_t patch;
+};
+</code></pre></div><p>The server standard also specifies how these numbers should be updated:</p>
+<ul>
+<li>If you make a breaking change to the API, you should increase the <em>major</em> version number (and set <em>minor</em> and <em>patch</em> to 0).</li>
+<li>If you add new functionality to the API in a backward compatible way, you should increase the <em>minor</em> version number (and set <em>patch</em> to 0). In our case, this usually happens when we add new functions at the end of the API.</li>
+<li>If you fix bugs in the implementation without changing the API, you should increase the patch version.</li>
+<li>When the <em>major</em> version is 0, the API is considered <em>unstable</em>. In this case, nothing is promised about backward compatibility.</li>
+</ul>
+<p>For basic versioning support, we will just add version numbers to the functions that query for and
+register APIs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_ui_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(TM_UI_API_NAME, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+
+reg<span style="color:#f92672">-&gt;</span>set(TM_UI_API_NAME, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>}, tm_ui_api, <span style="color:#66d9ef">sizeof</span>(<span style="color:#f92672">*</span>tm_ui_api));
+</code></pre></div><p>Many systems that work with version numbers allow for more complex queries. For example, you may
+ask for <code>&gt;2.0.0</code> (any version greater than 2.0.0) or <code>3.1.*</code> — requiring major version 3 and
+minor version 1, but any patch number.</p>
+<p>However, for our purposes, I don’t think such queries are necessary. What’s special about our
+system is that it uses <em>binary versions shipped in an executable</em> whereas many other versioning
+systems are created to work with <em>source code modules stored on a server.</em></p>
+<p>With source code modules, using a different major version than the one you requested might very
+well work — as long as you are not calling any of the functions that changed. And if you do, you
+will get an error message when you compile the final executable. In contrast, with binary versions,
+a major version mismatch will almost guarantee a crash, with no way of fixing it (unless you are
+the developer of the crashing plugin). So we really want the major version to match exactly what
+the user asked for.</p>
+<p>When it comes to minor and patch versions, since APIs with the same major version are backward
+compatible, there is really no point for a plugin/executable to export multiple APIs with the same
+major version (e.g. 2.1.0, 2.2.1, 2.2.2, etc). The plugin/executable can just export the latest one
+(2.2.2) and clients that ask for an earlier version (2.1.0) can just use that since it’s backward
+compatible.</p>
+<p>If a client asks for a later minor version of the same major version (e.g. 2.3.0), I think the
+right thing to do is to fail the request. 2.3.0 may have some additional API functions that are not
+there in 2.2.0, and if the client asks for 2.3.0, we must assume that they might call those
+functions, which would crash on 2.2.0. So we fail the request with a message that 2.3.0 is not
+available.</p>
+<p>What about the patch version? What should we do if the client asks for 2.2.2, but we only have
+2.2.1. My mind is a bit split on this one. On the one hand, the client might depend on a bug fix
+that was done in 2.2.2 and crash under 2.2.1. On the other, maybe it’s better to run with the
+2.2.1 than to not be able to run the client at all. For now, I’ve decided to fulfill the request
+in this case.</p>
+<p>Since <em>unstable</em> APIs (major version 0) don’t promise anything about backward compatibility, a
+request for an unstable API will only succeed if the version matches exactly.</p>
+<p>If a plugin fails to obtain an API that it depends on we want to disable that plugin. Let’s see
+how this can work in practice:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">load</span>(tm_api_registry_api <span style="color:#f92672">*</span>reg, <span style="color:#66d9ef">bool</span> load)
+{
+    tm_engine_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(<span style="color:#e6db74">&#34;tm_engine_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+    tm_other_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(<span style="color:#e6db74">&#34;tm_other_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+
+    reg<span style="color:#f92672">-&gt;</span>set(<span style="color:#e6db74">&#34;my_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>}, <span style="color:#f92672">&amp;</span>my_api, <span style="color:#66d9ef">sizeof</span>(my_api));
+}
+</code></pre></div><p>You might think that disabling the plugin could be implemented like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (tm_engine_api <span style="color:#f92672">&amp;&amp;</span> tm_other_api)
+    reg<span style="color:#f92672">-&gt;</span>set(<span style="color:#e6db74">&#34;my_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>}, <span style="color:#f92672">&amp;</span>my_api, <span style="color:#66d9ef">sizeof</span>(my_api));
+</code></pre></div><p>But in The Machinery <code>tm_engine_api</code> will always be non-NULL, because we allow the <code>get()</code> and
+<code>set()</code> calls to resolve in any order — i.e., <code>set()</code> can be called <em>after</em> <code>get()</code>.</p>
+<p>When <code>get()</code> is called we return a pointer to a pre-sized internal buffer filled with NULL values.
+Then later, when <code>set()</code> is called, for the same API and version, that buffer gets populated with
+the actual API struct through a <code>memcpy()</code>.</p>
+<p>So we can’t really check if <code>get()</code> was successful or not until we have loaded all the plugins
+(and know all the <code>set()</code> calls that were made).</p>
+<p>To do that, we can simply record all the <code>get()</code> and <code>set()</code> calls made by a plugin in the load
+phase. When loading has completed, we go through all the <code>get()</code> calls that we recorded and check
+if we were able to find matching APIs. If any of the <code>get()</code> calls failed, we print an error
+message and disable the plugin. “Disabling” in this case, means just going through all the
+<code>set()</code> calls that we recorded and undoing them — effectively removing the APIs from the
+registry. In the example above, if the plugin was not able to retrieve <code>tm_other_api</code>, <code>my_api</code> API
+will be removed.</p>
+<p>Note that this can cause a cascading effect where one plugin gets disabled because it’s missing a
+dependency, which in turn causes other plugins to be disabled because they depended on <em>that</em>
+plugin, etc.</p>
+<p>This is what it might look like when we get a cascade of dependency failures:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Disabling tm_application_api in libthe<span style="color:#f92672">-</span>machinery<span style="color:#f92672">-</span>dll.dylib (tm_dxc_shader_compiler_api <span style="color:#ae81ff">1.0.0</span>)
+Disabling tm_draw2d_api in libtm_ui.dylib (tm_application_api <span style="color:#ae81ff">1.0.0</span>)
+Disabling libtm_pong_tab.dylib (tm_draw2d_api <span style="color:#ae81ff">1.0.0</span>)
+</code></pre></div><p><code>tm_application_api</code> was disabled because it couldn’t get the <code>tm_dxc_shader_compiler_api</code>. The
+<code>tm_draw2d_api</code> in turn was disabled because it depends on the <code>tm_application_api</code> and then the
+Pong Tab plugin was disabled because it uses the <code>tm_draw2d_api</code>.</p>
+<p>To help diagnose dependency problems, I made a quick helper tool that can print the dependencies of
+a plugin in GraphViz format. For example, here are the current dependencies of the <code>tm_entity_api</code>:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Dependencies of tm_entity_api." src="../../images/apiver__dependencies.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Dependencies of tm_entity_api.</h4>
+    </figcaption>
+  </figure>
+<p>If you are not careful, you can easily end up in situations where your API depends on <em>everything</em>,
+because it depends on something, that depends on something, that depends on something else.</p>
+<p>To help break those dependency chains we have the concept of an <em>optional</em> dependency. An optional
+dependency means that your plugin will use the API if it’s there, but the plugin will still run
+even if it’s not:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">reg<span style="color:#f92672">-&gt;</span>get_optional(<span style="color:#f92672">&amp;</span>tm_other_api_opt, <span style="color:#e6db74">&#34;tm_other_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+</code></pre></div><p>Unlike <code>get()</code>, <code>get_optional()</code> doesn’t return the API pointer, instead, we pass in a <em>pointer</em>
+to the API pointer. This lets the API registry patch the pointer in the <code>set()</code> and <code>remove()</code>
+calls. So we can determine if the optional API has been loaded with a simple test of the pointer:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (tm_other_api_opt)
+    tm_other_api_opt<span style="color:#f92672">-&gt;</span>foo();
+</code></pre></div><h2 id="ergonomics">Ergonomics</h2>
+<p>Being able to <code>set()</code> and <code>get()</code> specific versions of an API and handling errors is really all we
+need for the versioning system to work. But I also wanted to do something to improve the
+<em>ergonomics</em> of using this functionality.</p>
+<p>When I’m talking about ergonomics of code I mean things that don’t really change the
+functionality but make the code easier to use and steers the user in the right direction. Let’s
+look again at our basic call for accessing an API. In context, it will look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> tm_engine_api <span style="color:#f92672">*</span>tm_engine_api;
+
+<span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>
+tm_engine_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(<span style="color:#e6db74">&#34;tm_engine_api&#34;</span>, (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+</code></pre></div><p>There are multiple things that can go wrong here.</p>
+<ol>
+<li>The user may request the wrong version of the API. While there are legitimate use cases for
+requesting a specific, older version of the API (and we’ll talk more about that later), the
+typical case is that you want to compile your code against the current version of the API. If the
+user types in a manual version number there’s a chance they type the wrong thing. It can also be
+a bit of a chore to keep updating the version number (although you could argue that it’s good to
+make a conscious choice about what version you are depending on).</li>
+<li>The user may misspell the name of the API in the request. For example, a request for
+<code>tm_egine_api</code> will fail.</li>
+<li>Since C doesn’t have generics, the <code>get()</code> call returns a <code>void *</code>. The user must assign this
+to an API pointer of the right type. This is another possibility for mistakes.</li>
+</ol>
+<p>None of these issues are super serious. It’s fairly easy to make mistakes, but the issues will be
+pretty obvious — the API will fail to load or you will get a crash as soon as you try to call
+something. Still, I think it can be useful to help the users a little bit. As programmers, we are
+constantly dealing with mental overload. Anything we can do to improve that situation is worth it.</p>
+<p>For the first issue, we can simply define a macro that holds the current version number:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define tm_engine_api_version TM_VERSION(2, 1, 0)
+</span></code></pre></div><p>Now the call becomes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_engine_api <span style="color:#f92672">=</span> reg<span style="color:#f92672">-&gt;</span>get(<span style="color:#e6db74">&#34;tm_engine_api&#34;</span>, tm_engine_api_version);
+</code></pre></div><p>We could do the same thing for <code>”tm_engine_api”</code> and introduce a define <code>tm_engine_api_name</code>.
+But since we want the name to <em>always</em> be the same as the name of the API, we can use the
+preprocessor’s ability to stringify symbols instead:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define tm_get_api(reg, TYPE) reg-&gt;get(#TYPE, TYPE##_version)
+</span></code></pre></div><p>Which can be used like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_engine_api <span style="color:#f92672">=</span> tm_get_api(reg, tm_engine_api);
+</code></pre></div><p>The <code>#</code> macro operator turns <code>tm_engine_api</code> into the string <code>&quot;tm_engine_api&quot;</code> while <code>##</code>
+concatenates the symbols <code>tm_engine_api</code> and <code>_version</code> into <code>tm_engine_api_version</code>. So the
+preprocessor expands this into the same text as we earlier wrote by hand.
+We can use this same macro to provide type safety too:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define tm_get_api(reg, TYPE) (TYPE *)reg-&gt;get(#TYPE, TYPE##_version)
+</span></code></pre></div><p>When expanded, this will cast the <code>void *</code> returned by <code>get()</code> into a <code>tm_engine_api *</code> . If the
+type of the <code>tm_engine_api</code> variable doesn’t match, an error will be generated.
+We have a similar macro for setting an API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define tm_set_or_remove_api(reg, load, TYPE, ptr)                           \
+</span><span style="color:#75715e">    do {                                                                     \
+</span><span style="color:#75715e">        if (load) {                                                          \
+</span><span style="color:#75715e">            struct TYPE *typed_ptr = ptr;                                    \
+</span><span style="color:#75715e">            reg-&gt;set(#TYPE, TYPE##_version, typed_ptr, sizeof(struct TYPE)); \
+</span><span style="color:#75715e">        } else                                                               \
+</span><span style="color:#75715e">            reg-&gt;remove(ptr);                                                \
+</span><span style="color:#75715e">    } while (0)
+</span></code></pre></div><p>Here we assign <code>ptr</code> to a local variable <code>typed_ptr</code> to ensure type safety. We also use <code>#</code> and
+<code>##</code> to generate the API name and version number as before. Finally, we use the same macro to both
+<em>set</em> the API (when <em>load</em> is <em>true</em>) and <em>remove</em> the API (when <em>load</em> is <em>false</em>). This lets us
+run the same code snippet for load and unload of the API, ensuring that the <code>set()</code> and <code>remove()</code>
+calls match up.</p>
+<p>I’m a bit of two minds when it comes to the use of preprocessor macros like this. I’m not a
+huge fan of macros that expand to huge globs of stuff. It makes it hard to read the code and figure
+out what’s going on. On the other hand, macros are the <em>only</em> way to get something akin to
+type-safe generics in C, so we kind of need them. And for things like this, a few well-chosen
+macros can reduce the amount of code we need by a lot and change things that would have been
+runtime errors into compile errors, which is always good.</p>
+<h2 id="forward-and-backward-compatibility">Forward and backward compatibility</h2>
+<p>Let’s see how this solution works for forward and backward compatibility. We’ll assume that we
+have a plugin API <code>my_plugin_api</code> that has been compiled against an engine API <code>tm_engine_api</code> of
+version 2.1.0.</p>
+<p><strong>Compatibility with a new minor version</strong></p>
+<p>A new version of the engine is released. In this version <code>tm_engine_api</code> has version 2.2.0.
+The compiled plugin will request 2.1.0 of the API. According to our rules, the 2.2.0 version that
+the engine has is compatible, so the engine will return it. Since 2.2.0 is backward compatible, the
+plugin will be able to call it the same way as it called 2.1.0 and everything will work
+automatically.</p>
+<p><strong>Compatibility with an old minor version</strong></p>
+<p>In this case, someone takes our plugin — that was compiled for version 2.1.0 — and tries to run
+it with an engine that just has 2.0.0.</p>
+<p>What happens here depends on what our plugin is doing. If our plugin is requesting the latest
+version of <code>tm_engine_api</code> with a call such as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">tm_engine_api <span style="color:#f92672">=</span> tm_get_api(reg, tm_engine_api);
+</code></pre></div><p>The version we’re requesting will be locked to the value that <code>tm_engine_api_version</code> has when we
+compile our plugin, i.e. 2.1.0. This means that the call will fail with the older engine version.
+The plugin is requesting 2.1.0 and the engine only has 2.0.0 available and according to our rules,
+2.0.0 cannot be returned for a request for 2.1.0.</p>
+<p>If you want to make sure that your plugin is compatible with older engine versions, you have to
+make sure to explicitly request the API from that version, even if a newer version is available.
+The easiest way of doing that is by using a header from that older version of the engine:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;engine_api_200.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+tm_engine_api <span style="color:#f92672">=</span> tm_get_api(reg, tm_engine_api);
+</code></pre></div><p>By including the older header rather than the current one, you get the <code>tm_engine_api_version</code> that
+was used in that header (2.0.0). You also make sure that you don’t accidentally use any
+functionality that was added in 2.1.0 (which would be easy to do if you included the latest
+header). This is important because using those functions would crash when run against 2.0.0.</p>
+<p><strong>Compatibility with a new major version</strong></p>
+<p>Suppose a new version of the engine is released and in this engine, the API has version 3.0.0. Your
+plugin won’t work with this API, because 3.0.0 is not backward compatible with 2.1.0.
+Your only hope in this situation is that the developers of the API decided to provide backward
+compatibility with the 2.1.0 version. They could do that by publishing <em>both</em> a 2.1.0 and a 3.0.0
+version of the API. But it’s up to them and what they want to prioritize. If their main focus is
+on developing new features, they may decide to just ship a 3.0.0 version and force everybody to
+recompile their plugins to work with the new version. If they are willing to put in the extra work
+to support backward compatibility they may export both 2.x.x and 3.x.x versions.</p>
+<p>Similarly, you, as a developer of <code>tm_my_api</code> may decide if you want to ship multiple versions of
+the API or not.</p>
+<p><strong>Compatibility with an old major version</strong></p>
+<p>Suppose that in addition to running on an engine that has the 2.0.0 API, you want your plugin to
+also work with engines that have the 1.0.0 API. You can achieve this by requesting both 1.0.0 and
+2.0.0 and use whichever one is available.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> tm_engine_api_100 <span style="color:#f92672">*</span>tm_engine_api_100;
+<span style="color:#66d9ef">struct</span> tm_engine_api <span style="color:#f92672">*</span>tm_engine_api;
+
+reg<span style="color:#f92672">-&gt;</span>get_optional(<span style="color:#f92672">&amp;</span>tm_engine_api_100, TM_STRINGIFY(tm_engine_api),
+    (tm_version_t){<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>});
+
+reg<span style="color:#f92672">-&gt;</span>get_optional(<span style="color:#f92672">&amp;</span>tm_engine_api, TM_STRINGIFY(tm_engine_api),
+    tm_engine_api_version);
+</code></pre></div><p>Note the use of <code>get_optional()</code> instead of <code>get()</code> here. We don’t want our plugin to fail if
+1.0.0 is not available, since we’re fine with using 2.0.0. Similarly, we don’t want to fail if
+2.0.0 is not available either, since we can do with 1.0.0.</p>
+<p>Also note that in this case, we need a separate type <code>struct tm_engine_api_100</code> to represent the
+layout of the API struct as it looked in version 1.0.0.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>I feel pretty happy with the way the version system came out. Though it adds a bit of complexity,
+by using the helper macros, users that just want to compile with the latest version can pretty much
+ignore the versioning system and still get the benefit of getting explicit errors if there is a
+version mismatch. At the same time, users who want to dig deep and make sure they are compatible
+with multiple versions can do so.</p>
+
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210923033545/https://twitter.com/share?text=API%20Versioning - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fapi-versioning%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210923033545/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fapi-versioning%2f&amp;description=API%20Versioning" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/procedural-forest-sample/" class="text-decoration-none"><img src="../../images/procforest__screenshot.png" class="card-img-top" alt="Procedural Forest Sample"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/procedural-forest-sample/">Procedural Forest Sample</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-09-03T00:00:00Z">
+                      3 Sep 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">Today we are releasing a new sample project for The Machinery that we call Procedural Forest. It is our own …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/procedural-forest-sample/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">2 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/release-2021-8/" class="text-decoration-none"><img src="../../images/release_21_8__workspaces.gif" class="card-img-top" alt="The Machinery — August 2021 (version 2021.8)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/release-2021-8/">The Machinery — August 2021 (version 2021.8)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-08-26T00:00:00Z">
+                      26 Aug 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>We’re super happy too see so many people starting to work with both the
+<a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/pricing.html">Free</a> and the <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/pricing.html">Pro</a>
+versions of The Machinery and …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/release-2021-8/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/roadmap/">The Machinery Roadmap Update!</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-08-24T00:00:00Z">
+                      24 Aug 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>First off, I want to thank everyone that has downloaded or bought a license as part of our <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/pricing.html">Early
+Adopters Program</a>. Also, …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/roadmap/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">1 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/api-versioning/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210923033545/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210923033545/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/cdn-cgi/l/email-protection#6111080f06210e14130c000209080f0413184f020e0c" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021 <a style="text-decoration:none; margin-left:1em;" href="http://web.archive.org/web/20210923033545/https://ourmachinery.com/privacy.html">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 03:35:45 Sep 23, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:29 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 63.587
+  exclusion.robots: 0.174
+  exclusion.robots.policy: 0.16
+  RedisCDXSource: 0.936
+  esindex: 0.013
+  LoadShardBlock: 40.195 (3)
+  PetaboxLoader3.datanode: 46.504 (5)
+  CDXLines.iter: 17.712 (3)
+  load_resource: 88.423
+  PetaboxLoader3.resolve: 36.833
+  loaddict: 44.111
+-->

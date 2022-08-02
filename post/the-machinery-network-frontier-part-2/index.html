@@ -1,0 +1,742 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="A deeper look at how the multiplayer system in The Machinery works."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/netfront2__simulate_tabs.png"/>
+  
+  <meta name="twitter:title" content="The (Machinery) Network Frontier, Part 2">
+  <meta name="twitter:description" content="A deeper look at how the multiplayer system in The Machinery works."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="The (Machinery) Network Frontier, Part 2 · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/the-machinery-network-frontier-part-2/"/>
+  
+  <meta property="og:image" content="../../images/netfront2__simulate_tabs.png"/>
+  
+  
+  <meta property="og:description" content="A deeper look at how the multiplayer system in The Machinery works."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2022-01-14T00:00:00Z"/>
+  
+
+  <title>The (Machinery) Network Frontier, Part 2 &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220519205135/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220519205135\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Leonardo Lucania",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220519205135\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "The (Machinery) Network Frontier, Part 2",
+    "name": "The (Machinery) Network Frontier, Part 2",
+    "wordCount":  1544 ,
+    "timeRequired": "PT8M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/the-machinery-network-frontier-part-2/",
+    "datePublished": "2022-01-14T00:00Z",
+    "dateModified": "2022-01-14T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220519205135/https://ourmachinery.com/netfront2__simulate_tabs.png"
+    },
+    
+    
+    "description": "A deeper look at how the multiplayer system in The Machinery works."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220519205135/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>The (Machinery) Network Frontier, Part 2</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2022-01-14T00:00:00Z">
+          Jan 14, 2022
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In this part of the series, we’ll take a look at some high-level constructs that leverage the
+basic concepts we saw in <a href=" ../../post/the-machinery-network-frontier-part-1/">part
+1</a> and, more importantly, how
+those concepts are exposed to the final user in the editor.</p>
+<p>Without further ado, let’s start.</p>
+<h2 id="network-node-asset">Network Node Asset</h2>
+<p>A <em>Network Node Asset</em> defines what a <em>Network Node</em> should do with regards to the network: should
+this node accept connection requests from other nodes? What systems/engines should this node’s
+simulation run? Should changes that happen to entities be sent to other nodes? Etc.
+Stated more concisely: every <em>Network Node</em> in The Machinery is an <em>instance</em> of a specific
+<em>Network Node Asset</em>.</p>
+<p>A <em>Network</em> <em>Node Asset</em> is an asset just like any other kind of asset: it can be imported,
+exported, modified, and reused as you wish directly in the editor.</p>
+<p>The idea behind this concept is that we don’t want to support just the classic Client-Server
+model in The Machinery: we want to be a bit more flexible and allow any networking model the
+end-user can think of. (Still, we will ship with predefined <code>server</code> and <code>client</code> Network Node
+Assets, ready to be used and customized for your specific needs.)</p>
+<h2 id="virtual-network-simulation">Virtual Network Simulation</h2>
+<p>The Network API abstracts away the internet completely, meaning that two nodes that run in the same
+The Machinery Exe instance (imagine you are testing a server-client game in the editor) will
+communicate in the exact same way (to the user’s eyes) as two nodes that are on two separate
+machines, far away from each other. This was very important to us as it means that to debug a
+multiplayer game, the users can just launch multiple network nodes from within the editor, and
+debug the game as if those instances were running on different machines, communicating over the
+Internet.</p>
+<p>To do this, the <code>open_pipe</code> and <code>send</code> APIs are implemented so that if the node you want to talk to
+is local, then no messages are sent at all, but everything is done locally in the same process, and
+the <code>receiver</code> interfaces are called instantaneously, without making any copies of the data.</p>
+<p>As a concrete example, you can simulate two different Network Nodes in two different <em>Simulate</em>
+tabs in The Machinery (a <code>Server</code> Node and a <code>Client</code> Node), and no code needs to be adjusted to
+make it work across the internet later on when you publish the game.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Two Network Nodes running in two different Simulate Tabs." src="../../images/netfront2__simulate_tabs.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Two Network Nodes running in two different Simulate Tabs.</h4>
+    </figcaption>
+  </figure>
+<h2 id="component-synchronization">Component Synchronization</h2>
+<p>A simulation in The Machinery contains a number of <em>Entities</em>, each of which is constructed from
+<em>Components.</em>  Multiplayer games are implemented by synchronizing the state of components over the
+network.</p>
+<p>When registering a component, a <code>tm_component_network_replication_i</code> interface can be added to
+define if and how the component should be synchronized: if none is provided, the component won’t
+be synchronized at all.</p>
+<p>As discussed in <a href=" ../../post/the-machinery-network-frontier-part-1/">part 1</a>,
+one of the goals of the multiplayer implementation was to provide an easy (possibly inefficient)
+“default” way to synchronize components across the network. It should be possible for the user
+to experiment with multiplayer quickly, and then later go in and do the necessary optimizations to
+make it run well over low-bandwidth connections.</p>
+<p>In the <code>tm_component_network_replication_i</code> interface, you can achieve this by setting the
+<code>watch_timer</code> to a non-zero value <em>x</em>. If you do, the component will be checked for changes every
+<em>x</em> seconds, and if there are any changes, they will be replicated across the network.</p>
+<p>Note: remember to flag the entities you want to be replicated as in the <em>Entity Tree.</em> Entities
+that aren’t marked for replication won’t ever be replicated, even if their components have a
+<code>network_replication_i</code> interface.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> replicated_component
+{
+  <span style="color:#66d9ef">float</span> foo;
+  <span style="color:#66d9ef">float</span> bar;
+} replicated_component;
+
+<span style="color:#66d9ef">static</span> tm_component_network_replication_i <span style="color:#f92672">*</span>replicated_component_network_replication
+    <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>(tm_component_network_replication_i){
+   .watch_timer <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0f</span>,
+};
+
+tm_component_i component <span style="color:#f92672">=</span> {
+        .name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;replicated component&#34;</span>,
+        .bytes <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(replicated_component),
+        .network_replication <span style="color:#f92672">=</span> replicated_component_network_replication,
+};
+
+tm_entity_api<span style="color:#f92672">-&gt;</span>register_component(ctx, <span style="color:#f92672">&amp;</span>component);
+</code></pre></div><p>With this setup, in a client-server game, the server will check the <code>replicated_component</code> of the
+synchronized entities every second and, if some changes are detected, send those changes to the
+clients. Note that with this setup, the entire component will always be sent across the network,
+even if only one of the members was changed. This is because we haven’t told the network system
+anything about the struct layout, so all it can do is transmit it as a single binary blob. For more
+efficient transmission, you can provide a description of the layout and provide a per-member
+<code>watch_timer</code>.</p>
+<h2 id="gamestate-synchronization">Gamestate Synchronization</h2>
+<p>The <em>Simulation</em> API and the <em>Entity</em> API make use of the <em>Gamestate</em> system to synchronize the
+state of two separate entity contexts.</p>
+<p>It does this by performing the following operations every frame:</p>
+<ol>
+<li><code>tm_entity_api-&gt;propagate_network_changes_to_gamestate()</code>  is called by the simulation. If
+automatic member/struct watches were configured on the components you asked to be replicated, they
+are run here so that the Gamestate is notified of those changes.</li>
+<li><code>tm_gamestate_api-&gt;dump_uncompressed_changes()</code> is called. All the changes that happened
+last frame are extracted and dumped to a buffer (or multiple buffers).</li>
+<li>The changes are sent to all nodes that are “interested” in receiving updates of our entity
+context, using the <code>tm_network_api-&gt;send()</code> call.</li>
+<li>if a new connection is detected, we need to send it the <em>complete</em> Gamestate, not just the most
+recent changes: <code>tm_gamestate_api-&gt;dump_all()</code> is called in this case and once again the state
+is sent using the <code>tm_network_api-&gt;send()</code> call.</li>
+<li>The receivers will have a receiver interface attached (it is attached by default to the <code>client</code>
+network node asset,) that calls <code>tm_gamestate_api-&gt;load_uncompressed_changes()</code> every time an
+update is received.</li>
+<li>The Gamestate notifies the Entity Context about changes that were loaded in, and the Entity
+Context will apply them: note that this is exactly the same thing that happens when you load a
+saved game from disk.</li>
+</ol>
+<h2 id="graph-event-and-variable-synchronization">Graph Event and Variable Synchronization</h2>
+<p>It is possible to replicate graph events and variables across the network as well: just use the
+corresponding <code>*_variable_network_replication</code> or <code>trigger_event_network_replication</code> graph nodes:
+in addition to setting the variable/ trigger the event <em>locally</em>, these nodes will also inform
+other connected nodes about those updates.</p>
+<p>When a graph event is replicated, we just send the event string hash together with the entity
+identifier: the receiver will call the event on the specified entity. All the graph event types
+marked with “Receive in order” will be received one after the other, while events not marked
+with “Received in order” can potentially be received out of order.</p>
+<p>Example 1: Both the events <code>foo</code> and <code>bar</code> are marked with “Receive in order”.
+If <em>n1</em> sends the following sequence to <em>n2</em>: <code>foo1</code>, <code>bar1</code>, <code>foo2</code>, <code>bar2</code> then <em>n2</em> will execute
+the events in the exact same order.</p>
+<p>Example 2: <code>foo</code> is marked with “Receive in order”, <code>bar</code> it’s not. If <em>n1 sends</em> the same
+sequence, <code>foo1</code>, <code>bar1</code>, <code>foo2</code>, <code>bar2</code> it is guaranteed that  <code>foo2</code> is executed after <code>foo1</code>,
+but there’s no guarantee that <code>bar2</code> will be executed after <code>bar1</code>, or even after the <code>foo</code>
+events… the events could arrive in any of these orders:</p>
+<ul>
+<li><code>bar1</code>, <code>foo1</code>, <code>foo2</code>, <code>bar2</code></li>
+<li><code>bar1</code>, <code>foo1</code>, <code>foo2</code>, <code>bar2</code></li>
+<li><code>bar1</code>, <code>bar2</code>, <code>foo1</code>, <code>foo2</code></li>
+<li><code>bar2</code>, <code>bar1</code>, <code>foo1</code>, <code>foo2</code></li>
+<li><code>bar2</code>, <code>foo1</code>, <code>foo2</code>, <code>bar1</code></li>
+</ul>
+<h2 id="the-network-switch-graph-node">The Network Switch Graph Node</h2>
+<p>To make it as easy as possible to transition from single-player to multiplayer and vice-versa, the
+<code>network switch</code> graph node was introduced for use in Entity Graphs.</p>
+<p>It works pretty much like a switch statement in C, but the variable that’s checked is the <em>type</em>
+of the network node of the simulation: for example, the graph might take a different path if the
+type of the node is <code>server</code> rather than <code>client</code>.</p>
+<p>If a network node doesn’t have an associated name, it is assumed to be a “catch-all”
+simulation and ALL the execution paths will be executed in sequence: this should make it trivial to
+publish the single-player version of a multiplayer game.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Server and Client taking different paths." src="../../images/netfront2__switch_node.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Server and Client taking different paths.</h4>
+    </figcaption>
+  </figure>
+<h2 id="network-profiler">Network Profiler</h2>
+<p>The Network Profiler allows the user to see what nodes are currently “involved” in the
+simulation that is being run in the editor, and also to alter and monitor the conditions of the
+network at a specific point in time: you can artificially add latency to a Pipe or limit the
+upload/download bandwidth of a Network Node.</p>
+<p>It is possible to pause the simulation by just pressing the pause button (all the running Simulation
+Instance will be paused at the same time). You can then inspect what packets are being
+sent/received by the network nodes. Packet statuses are shown so that questions like “how many
+packets of this specific type have been acked the last frame?” or “how many out of order
+packets there are?” can be answered.</p>
+<p>You can access the network profiler by opening the <em>Tab &gt; Debugging &gt; Network</em> tab.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Inspecting packet buffers with the Network Profiler." src="../../images/netfront2__inspect.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Inspecting packet buffers with the Network Profiler.</h4>
+    </figcaption>
+  </figure>
+<p>OK, You now know everything you need to know to start experimenting with multiplayer games in The
+Machinery… we wish you no network bugs for the rest of your life!</p>
+<p>As always we’d love to hear any feedback, suggestions, and critique from you, here in the
+comments or on discord.</p>
+<p>See you around,<br>
+Leonardo</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Wait… why are you still reading? Go check out the new shiny multiplayer features of The Machinery!</p>
+<p>Ok, ok… for those of you interested in the hardcore stuff, we’ll take a look at it next time
+around… stay tuned.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/authors/leo" class="text-decoration-none">Leonardo Lucania</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220519205135/https://twitter.com/share?text=The%20%28Machinery%29%20Network%20Frontier%2c%20Part%202 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-machinery-network-frontier-part-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220519205135/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-machinery-network-frontier-part-2%2f&amp;description=The%20%28Machinery%29%20Network%20Frontier%2c%20Part%202" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/compiling-the-machinery-with-emscripten-part-2/" class="text-decoration-none"><img src="../../images/emscripten2__simple_draw.png" class="card-img-top" alt="Compiling The Machinery with Emscripten: Part 2 — Graphics"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/compiling-the-machinery-with-emscripten-part-2/">Compiling The Machinery with Emscripten: Part 2 — Graphics</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-12-06T00:00:00Z">
+                      6 Dec 2021
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>This blog series is about getting <a href="../../">The Machinery</a> to run in the web
+browser using <a href="http://web.archive.org/web/20220519205135/https://emscripten.org/">Emscripten</a>. I spent two <a href="http://web.archive.org/web/20220519205135/https://en.wikipedia.org/wiki/Hackathon">Hack
+Days …</a></p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/compiling-the-machinery-with-emscripten-part-2/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">16 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/release-2021-11/" class="text-decoration-none"><img src="../../images/release_21_11__animation_curves.png" class="card-img-top" alt="The Machinery — November 2021 (version 2021.11)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/release-2021-11/">The Machinery — November 2021 (version 2021.11)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-11-30T00:00:00Z">
+                      30 Nov 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">As 2021 is drawing to a close, don’t miss your chance to get in on our Early Adopters license at half the regular price! …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/release-2021-11/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">11 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/" class="text-decoration-none"><img src="../../images/emscripten__simple_draw.png" class="card-img-top" alt="Compiling The Machinery with Emscripten: Part 1"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/compiling-the-machinery-with-emscripten-part-1/">Compiling The Machinery with Emscripten: Part 1</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2021-11-11T00:00:00Z">
+                      11 Nov 2021
+                    </time>
+                  </h6>
+                  <p class="card-text">At Our Machinery, the last Friday of every month is Hack Day. This means that you can work on whatever you like and try …</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/compiling-the-machinery-with-emscripten-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">9 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/the-machinery-network-frontier-part-2/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220519205135/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220519205135/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220519205135/https://ourmachinery.com/cdn-cgi/l/email-protection#24544d4a43644b51564945474c4d4a41565d0a474b49" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 20:51:35 May 19, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:51:23 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 349.272
+  exclusion.robots: 0.097
+  exclusion.robots.policy: 0.09
+  cdx.remote: 0.062
+  esindex: 0.01
+  LoadShardBlock: 328.119 (3)
+  PetaboxLoader3.datanode: 126.087 (4)
+  CDXLines.iter: 13.972 (3)
+  load_resource: 80.073
+  PetaboxLoader3.resolve: 34.024
+-->

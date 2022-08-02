@@ -1,0 +1,839 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="How to use our minimalist container library to handle more complex data structures."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/container-array-of-strings.png"/>
+  
+  <meta name="twitter:title" content="Minimalist container library in C (part 2)">
+  <meta name="twitter:description" content="How to use our minimalist container library to handle more complex data structures."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Minimalist container library in C (part 2) · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/minimalist-container-library-in-c-part-2/"/>
+  
+  <meta property="og:image" content="../../images/container-array-of-strings.png"/>
+  
+  
+  <meta property="og:description" content="How to use our minimalist container library to handle more complex data structures."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2018-01-29T00:00:00Z"/>
+  
+
+  <title>Minimalist container library in C (part 2) &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220504024640/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220504024640\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220504024640\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Minimalist container library in C (part 2)",
+    "name": "Minimalist container library in C (part 2)",
+    "wordCount":  3500 ,
+    "timeRequired": "PT17M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/minimalist-container-library-in-c-part-2/",
+    "datePublished": "2018-01-29T00:00Z",
+    "dateModified": "2018-01-29T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220504024640/https://ourmachinery.com/container-array-of-strings.png"
+    },
+    
+    
+    "description": "How to use our minimalist container library to handle more complex data structures."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220504024640/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Minimalist container library in C (part 2)</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2018-01-29T00:00:00Z">
+          Jan 29, 2018
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>In my <a href=" ../../post/minimalist-container-library-in-c-part-1/">last blog post</a> I talked about how we only have two basic container types in our foundation library: arrays (“<a href="http://web.archive.org/web/20220504024640/https://github.com/nothings/stb/blob/master/stretchy_buffer.h">stretchy buffers</a>”) and hashes. Today I’ll elaborate a bit on how we create more complicated types from these basic building blocks.</p>
+<h2 id="sometimes-you-dont-need-a-dynamic-container">Sometimes you don’t need a dynamic container</h2>
+<p>Before I get started on that though, I want to quickly note that in many cases you don’t even need a dynamic container. If you know the maximum number of items you are ever going to store, you can just use a regular fixed size C array:</p>
+<pre><code>enum {MAX_ITEMS = 64};
+uint32_t num_items;
+item_t items[MAX_ITEMS];
+</code></pre>
+<p>A caveat here: you should be careful with what you assume when you size these arrays.  <code>MAX_MONITORS = 8</code> may seem reasonable, but <a href="http://web.archive.org/web/20220504024640/https://i.imgur.com/thjGfZA.jpg">some people are crazy</a>.</p>
+<p>On the other hand, there is no reason to go to the other extreme either and require everything to be infinite. A menu bar with four billion items is not going to be usable in practice. To figure out when you can use a fixed size array consider this:</p>
+<ul>
+<li>
+<p>When <em>you</em> define the API, <em>you</em> can set its boundary conditions. For example, it is perfectly reasonable to say that your API only supports window titles of 512 characters or less, that your log window will only remember the last 1024 messages, etc, etc.</p>
+</li>
+<li>
+<p>Just make sure that your code behaves nice at the boundary conditions. I.e., if someone passes in a longer title, you should truncate it rather than overrun the buffer.</p>
+</li>
+</ul>
+<p>When you don’t define the API you don’t have that luxury. I.e. if the OS supports infinite filenames, your application needs to do it too.</p>
+<p>The nice thing about fixed sized arrays is that you can allocate them on the stack or store them in another array without any need for pointer indirection, which makes the code simpler and is nice on the cache. For example:</p>
+<pre><code>enum {MAX_PLAYER_NAME_LENGTH = 32};
+enum {MAX_PLAYERS = 16};
+struct player_t {
+    char name[MAX_PLAYER_NAME_LENGTH];
+    uint32_t score;
+};
+struct players_t {
+    struct player_t players[MAX_PLAYERS];
+    uint32_t num_players;
+};
+</code></pre>
+<p>In C++ land you sometimes see fixed size arrays represented by a template class <code>FixedArray&lt;T&gt;</code>. In my opinion, that’s a totally unnecessary overabstraction, since operations on a fixed size array can be written as simple one-liners:</p>
+<pre><code>// Push back: items.push_back(x)
+items[num_items++] = x;
+
+// Pop back: items.pop_back()
+--num_items;
+
+// Swap erase: std::swap(items.begin() + idx, items.back()); items.pop_back();
+items[idx] = items[--num_items];
+</code></pre>
+<p>Some people don’t like code like this. They will say that any code that uses postfix and prefix operators is “full of tricks” and “unreadable”. Needless to say, I don’t agree.</p>
+<p>The first time you see these operations they may seem tricky and you might need to take a second to figure out what they do, but once you get used to them you will start to immediately recognize them as common idioms. It’s nice to be able to write them tersely as a one-liner. It is also nice to have the code <em>right there</em> and not have to go look up a macro or function definition in a different file to figure out what’s going on.</p>
+<p>While I’m talking about idioms — here’s the idiom for writing an iterator-style for loop in C:</p>
+<pre><code>for (item_t *it = items; it != items + num_items; ++it)
+  // Do something with it
+</code></pre>
+<p>Note how this is shorter than the C++ counterpart:</p>
+<pre><code>std::vector&lt;item_t&gt;::iterator end = items.end();
+for (std::vector&lt;item_t&gt;::iterator it = items.begin(); it != end; ++it)
+    // Do something with it
+</code></pre>
+<p>The “modern C++” variant is shorter, but consider how many concepts you need to know to understand it: iterators, auto, references:</p>
+<pre><code>for (auto &amp;it : items)
+    // Do something with it
+</code></pre>
+<p>Quick: should that be <code>auto</code>, <code>auto &amp;</code> or <code>auto &amp;&amp;</code>?</p>
+<p>In addition to fixed size arrays, fixed size hash tables can also sometimes be useful. Sometimes you have a fixed number of items to look up and don’t need the hash table to grow beyond that. Here’s a little 30-line implementation:</p>
+<pre><code>static const uint64_t HASH_UNUSED = 0xffffffffffffffffULL;
+typedef struct hash32_static_t
+{
+    uint64_t *keys;
+    uint32_t *values;
+    uint32_t n;
+} tm_chash32_static_t;
+
+static inline void hash32_static_clear(hash32_static_t *h)
+{
+    memset(h-&gt;keys, 0xff, sizeof(*h-&gt;keys) * h-&gt;n);
+}
+
+static inline void hash32_static_set(hash32_static_t *h, uint64_t key, uint32_t value)
+{
+    uint32_t i = key % h-&gt;n;
+    while (h-&gt;keys[i] != key &amp;&amp; h-&gt;keys[i] != HASH_UNUSED)
+        i = (i + 1) % h-&gt;n;
+    h-&gt;keys[i] = key;
+    h-&gt;values[i] = value;
+}
+static inline uint32_t hash32_static_get(const hash32_static_t *h, uint64_t key)
+{
+    uint32_t i = key % h-&gt;n;
+    while (h-&gt;keys[i] != key &amp;&amp; h-&gt;keys[i] != HASH_UNUSED)
+        i = (i + 1) % h-&gt;n;
+    return h-&gt;keys[i] == HASH_UNUSED ? 0 : h-&gt;values[i];
+}
+</code></pre>
+<h2 id="strings">Strings</h2>
+<p>The Machinery doesn’t have a data type for strings. I wrote a <a href="http://web.archive.org/web/20220504024640/https://bitsquid.blogspot.com/2011/06/strings-redux.html">blog post</a> about this a long time ago. To sum it up, I find <code>std::string</code> to be highly overrated:</p>
+<ul>
+<li>
+<p>You should almost never use strings in your runtime (prefer hashes).</p>
+</li>
+<li>
+<p>The strings you use should almost always be static. Thus, they can be represented by a <code>const char *</code> and do not need a string class.</p>
+</li>
+<li>
+<p>For the few cases where you need dynamic (growing/shrinking strings), <code>std::string</code> is rarely a good choice. (Appending lots of strings is an O(n^2) operation.)</p>
+</li>
+</ul>
+<p>So how do we deal with dynamic strings? My experience is that most of the time when you do some dynamic string operation, you only need the result temporarily. For example, you might write something like:</p>
+<pre><code>std::string path = dir + &quot;/&quot; + file;
+open_file(path);
+</code></pre>
+<p>In Our Machinery we handle this with a <code>printf</code> function that uses our temporary allocator system:</p>
+<pre><code>char *p = tm_temp_allocator_api.printf(ta, &quot;%s/%s&quot;, dir, file);
+open_file(p);
+</code></pre>
+<p>This call allocates memory for the string using a temporary allocator, prints the formatted string to that memory and returns it. Unless you allocate a lot of memory, the temporary allocator can get its memory from the stack, which means it doesn’t even touch the heap. Also, I personally prefer using <code>printf()</code> over appending <code>std::strings</code> with <code>operator+</code>.</p>
+<p>The other common use case for dynamic strings is when you build up a long string by adding multiple pieces to it. In C++ you might use a <code>std::ostringstream</code> for this, if you happen to like the <code>&lt;iostream&gt;</code> interface, which I don’t. So instead we use — you guessed it — printf!</p>
+<p>For this case, we have a separate <code>printf()</code> function that appends the printed text to a stretchy buffer. Here is how it’s implemented, based on the stretchy buffer macros discussed in the last post:</p>
+<pre><code>static void array_vprintf(char **a, const char *format, va_list args)
+{
+    va_list args2;
+    va_copy(args2, args);
+    int32_t n = vsnprintf(NULL, 0, format, args2);
+    va_end(args2);
+    uint32_t an = tm_carray_size(*a);
+    array_ensure(*a, an + n + 1);
+    vsnprintf(*a + an, n + 1, format, args);
+    array_resize(*a, an + n);
+}
+static void array_printf(char **a, const char *format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    array_vprintf(a, allocator,format, args);
+    va_end(args);
+}
+
+// And the usage:
+char *a = 0;
+array_printf(&amp;a, &quot;Some text: %d\n&quot;, 3);
+array_printf(&amp;a, &quot;More text: %d\n&quot;, 4);
+</code></pre>
+<p>Note the rarely used <code>va_copy()</code> to duplicate the <code>va_list</code> so that we can call <code>vsnprintf()</code> twice — once to get the size of printed string so we can allocate memory for it, and a second time to generate the output. Also note the trick of allocating memory for the <code>NUL</code> byte at the end of the string, but not including that in the size of the array. That way, the array is always terminated by a “virtual” zero and we can use all the normal C string operations on it.</p>
+<h2 id="arrays-of-arrays">Arrays of arrays</h2>
+<p><code>std::vector&lt;T&gt;</code> properly calls constructors and destructors as objects are added and removed. This means that we can use it to represent things such as an array of arrays: <code>std::vector&lt; std::vector&lt;int&gt; &gt;</code>.</p>
+<p>Our stretchy buffer implementation treats it’s elements as raw memory blocks, and doesn’t call constructors or destructors, so if you naively try to make an array of arrays it doesn’t work.</p>
+<p>What we do instead is store <em>array pointers</em> and then manually allocate/deallocate them as necessary. For example, we might have a setup  like this:</p>
+<pre><code>struct item_t
+{
+   /* stretchy buffer */ int32_t *ints;
+   ...
+};
+
+/* stretchy buffer */ item_t *items;
+</code></pre>
+<p>Now, before we free the stretchy buffer of <code>items</code>, we must loop over the elements and make sure we free all the <code>ints</code> buffers:</p>
+<pre><code>for (item_t *i = items; i != array_end(items); ++i)
+    array_free(i-&gt;ints);
+array_free(items);
+</code></pre>
+<p>Part of the argument for destructors in C++ is that this kind of programming is dangerous. It is easy to forget to delete the <code>i-&gt;ints</code> object and create a memory leak.</p>
+<p>However, in The Machinery we track all memory allocations and at the shutdown of the program we verify that all allocations have been freed. If memory is leaked somewhere we print an error message with the file and the line number where the leak happened, allowing it to be promptly fixed.</p>
+<p>This means that this programming practice is much less dangerous. Indeed, since I started using allocation tracking (several years ago), bugs like this have never been a problem. If you don’t yet track and verify your memory allocations, I strongly suggest that you do so.</p>
+<p>If you still prefer the C++ way, there are ways of implementing something similar in C with macros that call constructor and destructor functions for your classes. For example, have a look at this library: <a href="http://web.archive.org/web/20220504024640/https://troydhanson.github.io/uthash/utarray.html">http://troydhanson.github.io/uthash/utarray.html</a></p>
+<p>Personally, I prefer the more straightforward approach of treating everything as raw bytes and doing some explicit allocation/deallocation when necessary. It is a bit of extra typing, but it is easier to see what goes on and where memory is being copied when you have nested containers, something that can be tricky with something like <code>map&lt;string, vector&lt; vector&lt;int&gt; &gt; &gt;</code>.</p>
+<h2 id="arrays-of-strings">Arrays of strings</h2>
+<p>An array of strings is just a special case of an array of arrays (if you see the strings as arrays of characters), so we could use the same strategy as we did for arrays of arrays.</p>
+<p>However, as mentioned above, strings are mostly <em>immutable</em>, so what we are usually interested in is an array of <em>immutable</em> strings — not an array we want to <code>push_back()</code> bytes onto each individual string.</p>
+<p>A <code>vector&lt;T&gt;</code> or a stretchy buffer will usually overallocate the memory by 50 % to ensure that <code>push_back()</code> has an <a href="http://web.archive.org/web/20220504024640/https://en.wikipedia.org/wiki/Amortized_analysis">amortized constant</a> cost. If the strings are immutable, we can get rid of this overhead and also the pointer chasing and allocator churn that comes from allocating each string as an individual heap object by just packing all the strings into a single big memory block and then use an array to hold pointers into this memory block:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Array of strings using a single memory block for string data." src="../../images/container-array-of-strings.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Array of strings using a single memory block for string data.</h4>
+    </figcaption>
+  </figure>
+<p>Here’s some some sample C code for pushing a string to a structure like this:</p>
+<pre><code>struct array_of_strings {
+    char *block;
+    uint64_t block_used;
+    char **strings;
+};
+
+void push(struct array_of_strings *a, char *s)
+{
+    uint64_t n = strlen(s) + 1;
+    array_push(a-&gt;strings, a-&gt;block + a-&gt;block_used);
+    memcpy(a-&gt;block + block_used, s, n);
+    a-&gt;block_used += n;
+}
+</code></pre>
+<p>Of course, for this to work, you need to somehow size the memory block so that it has room for all the string data. You could use the <a href=" ../../post/virtual-memory-tricks/">virtual memory trick</a> and create the memory block as a near-infinite virtual alloction. Another approach is to use multiple blocks (again allocated directly from the VM) and just allocate another one when the last one is full. You can chain the blocks together with pointers so that you can easily find them all when it’s time to release the memory. Finally, you could just use a stretchy buffer of <code>char</code> for the memory block. In this case though, you probably want the array to store offsets into that block instead of direct pointers, since the pointers will change when the block is reallocated.</p>
+<p>Strings don’t have to be totally immutable with this approach. You can update a string by pushing the new content to the end of the buffer and update the <code>char *</code> in the index. This will create some garbage in the array (so will removing a string), but unless the strings are mutating like crazy this is probably still a good approach.</p>
+<p>There are various ways of dealing with the garbage. You could try to reuse it for new strings, which essentially amounts to creating a little local memory allocator for your string buffer. Or, a simpler approach, you could just keep track of how much garbage you have and simply copy everything to a new buffer once you have “too much”. This is essentially a copying garbage collection. It is really easy to make incremental too, if you need it.</p>
+<p>But most of the time, I find there is no need to get too fancy, because I seldom have a need for storing strings that change a lot.</p>
+<p>If you combine this with a hashtable for string lookup you can use it as a way of “<a href="http://web.archive.org/web/20220504024640/https://en.wikipedia.org/wiki/String_interning">interning</a>” strings. This is a useful way of storing for example a JSON document. Here, the strings typically don’t mutate and we also see the same string repeated hundreds of times in the same document, so a <code>std::string</code> representation is really wasteful. With interning, you only need to store repeated strings a single time in the string buffer.</p>
+<h2 id="lists-and-trees">Lists and trees</h2>
+<p>Instead of having special data structures for lists and trees I like to store them in arrays. Indices into the array replace node pointers. This means we avoid making lots of small allocations, and all the nodes are together in memory which is good for the cache.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Singly linked list stored in an array." src="../../images/container-linked-list.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Singly linked list stored in an array.</h4>
+    </figcaption>
+  </figure>
+<p>With this approach, a doubly linked list might be:</p>
+<pre><code>struct node_t
+{
+    uint32_t prev;
+    uint32_t next;
+    item_t data;
+};
+
+node_t *list
+</code></pre>
+<p>Here, <code>list</code> is a stretchy buffer with all the nodes.</p>
+<p>Given this, you could easily write generic macros to do common list operations such as <code>push_back()</code>, <code>push_front()</code>, etc. But I usually just write them out as functions specific for a particular list type instead. It’s just a few lines of code and makes it easier to see what is going on.</p>
+<p>A general tip when it comes to dealing with lists is to link them up in a circle and have a dummy node that represents the head of the list. Like this:</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="Linking linked lists in a circle." src="../../images/container-circle-list.png"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>Linking linked lists in a circle.</h4>
+    </figcaption>
+  </figure>
+<p>The nice thing about this is that all the list pointers are always connected, so you never have to deal with special cases of NULL pointers. This makes the algorithms a lot simpler. Also, the <code>list_t</code> structure becomes simpler, because you don’t need explicit pointers to the start and end of the list. We put the dummy node first, so <code>nodes</code> points to it. The first element of the list is then <code>nodes-&gt;next</code> and the last element is <code>nodes-&gt;prev</code>, unless the list is empty, in which case <code>nodes-&gt;next == nodes-&gt;prev == 0</code>, i.e. the <code>prev</code> and <code>next</code> pointers of the dummy node point back to the node itself.</p>
+<p>Here are some sample list operations:</p>
+<pre><code>// Initializing the list (creating the dummy node)
+array_resize(list, 1);
+list-&gt;next = list-&gt;prev = 0;
+
+// Allocating a new node
+array_resize(array_size(list) + 1);
+uint32_t n = array_size(list) - 1;
+
+// Adding it to the front of the list
+list[n].next = list-&gt;next;
+list[n].prev = list;
+list[list[n].next].prev = n;
+list[list[n].prev].next = n;
+
+// Removing it
+list[list[n].next].prev = list[n].prev;
+list[list[n].prev].next = list[n].next;
+</code></pre>
+<p>When we remove an element from a list we will leave a “hole” in the node array. However, since all the list elements are of the same size, we can reuse that for another element later. We just need to somehow keep track of these free elements for reuse. Luckily we already have a way of doing that — a list! We can store another list in <em>the same buffer</em>, all we need is another dummy element.</p>
+<p>Since <code>list[0]</code> holds the dummy element for the list, let’s just use <code>list[1]</code> as the dummy element for this other list — the list of free elements. Whenever we remove something from <code>list[0]</code>, we just put it on <code>list[1]</code>. And before allocating a new element, we check <code>list[1]</code> to see if it has an element we can reuse instead.</p>
+<p>Since I feel like typing a lot of sample code in this post, here’s some sample code for that:</p>
+<pre><code>// Initializing the list (creating the two dummy nodes)
+array_resize(list, 2);
+enum {FREE = 1};
+list-&gt;next = list-&gt;prev = 0;
+list[FREE]-&gt;next = list[FREE]-&gt;prev = FREE;
+
+// Allocating a new node
+uint32_t n = 0;
+if (list[FREE]-&gt;next != FREE) {
+    n = list[FREE]-&gt;next;
+    list[list[n].next].prev = list[n].prev;
+    list[list[n].prev].next = list[n].next;
+} else {
+    array_resize(array_size(list) + 1);
+    n = array_size(list) - 1;
+}
+</code></pre>
+<p>For a doubly linked list you could also reclaim the memory immediately by moving the last element of the list into the “hole” and updating the <code>prev</code> and <code>next</code> pointers of its neighbors. Note though, that this requires that you have no external data structures “pointing” to the list element, because in that case, they too would have to be updated.</p>
+<p>Trees can be handled the same way as lists. We put the nodes in an array and use offsets as pointers. But to be honest, there are not many situations where I would use a tree structure. In fact, I don’t think The Machinery source code contains a single tree.</p>
+<h2 id="specialized-data-structures">Specialized data structures</h2>
+<p>In the cases where a generic array or hash doesn’t work I use a specialized data structure for that specific problem. That’s either because:</p>
+<ul>
+<li>
+<p>I have a need that the generic container doesn’t fulfill.</p>
+</li>
+<li>
+<p>I know something about how the data is used, that the generic container can’t assume and by taking advantage of that I can get a significant performance improvement over the generic container (an array of immutable strings is one example of that).</p>
+</li>
+</ul>
+<p>For example, I may want an array not to deallocate its data when it is resized, so that readers on another thread can continue to access it. This is not something that the generic array implementation can (or should) do.</p>
+<p>Another example: for an array that I know is going to be pretty large — instead of allocating a single contiguous buffer, I might allocate “blocks” of array elements directly from the VM. This way, the array can grow without the need to reallocate and copy the entire thing, something which can be pretty expensive and cause a hitch when the array grows over several MB.</p>
+<p>A third example: for things like logs and profiler data I don’t want them to grow and shrink uncontrollably, churning the memory system. Nor do I want the application to stall waiting for them to be “flushed”. So I just allocate a fixed size block and use it as a ring buffer.</p>
+<p>For an example of a (highly specialized) data structure see my post about <a href=" ../../post/multi-threading-the-truth/">multi-threading The Truth</a>.</p>
+<p>When it comes to specialized data structures like this I don’t try to create a “generic” solution — e.g. a reusable <code>BlockBasedArray&lt;T, BLOCK_SIZE&gt;</code>. I think that would kind of defeat the purpose. The whole point of a specialized data structure is to take advantage of the <em>specific</em> needs of that piece of code. And being specific and generic at the same time doesn’t make a whole lot of sense.</p>
+<p>Instead, I make a custom data structure in the system that needs it, matching its specific requirements. I realize that making custom data structures like this can seem daunting of error prone if you are not used to it. (I remember finding it hard to juggle the pointers of a double linked list when I first started programming.) But with experience it becomes easier and easier, and after a while you will think nothing of it. I make use of arrays and hashes where it makes sense and try to keep the code as simple as possible. As you can see from the examples above, a lot of data structures can be implemented in 20–30 lines, when you only need a few specific operations.</p>
+<h2 id="some-final-thoughts">Some final thoughts</h2>
+<p>For a long time, the lack of generic container support was the main thing (in addition to <a href="http://web.archive.org/web/20220504024640/https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">RAII</a> maybe, though I find <a href="http://web.archive.org/web/20220504024640/https://kylewbanks.com/blog/when-to-use-defer-in-go">defer</a> nicer) that prevented me from moving from “simple, no bullshit C++” to “plain old C”. Even after starting to work on The Machinery with C as the main interface language, I would still keep some implementations files in C++ just to get access to the generic containers.</p>
+<p>Now, almost a year in, I don’t feel that way anymore. The “stretchy buffers” feel as natural to me as <code>vector&lt;T&gt;</code>. In fact, their simplicity actually makes me prefer them. (If I could just get <a href="http://web.archive.org/web/20220504024640/https://docs.microsoft.com/en-us/visualstudio/debugger/create-custom-views-of-native-objects">natvis</a> working, I would be golden.) I like our simple hash tables way better than <code>std::unordered_map&lt;Key, T, Hash, KeyEqual, Allocator&gt;</code>. And at this point, we’ve rewritten almost all the files that were originally C++ into plain C (just one left). It is nice to have everything in the same language and C is so many magnitudes simpler than C++. It’s definitely the right language for us, though maybe not for everybody.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220504024640/https://twitter.com/share?text=Minimalist%20container%20library%20in%20C%20%28part%202%29 - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fminimalist-container-library-in-c-part-2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220504024640/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fminimalist-container-library-in-c-part-2%2f&amp;description=Minimalist%20container%20library%20in%20C%20%28part%202%29" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-mini-series-part-5-demos/">Marketing Mini Series Part 5: Demos</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-01-16T00:00:00Z">
+                      16 Jan 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>I know they’re often lots of work, but from my perspective demos are an incredibly crucial part of marketing a game or …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-mini-series-part-5-demos/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/minimalist-container-library-in-c-part-1/" class="text-decoration-none"><img src="../../images/stretchy-buffer.png" class="card-img-top" alt="Minimalist container library in C (part 1)"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/minimalist-container-library-in-c-part-1/">Minimalist container library in C (part 1)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-01-08T00:00:00Z">
+                      8 Jan 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>At <em>Our Machinery</em>, we’re strong believers in <em>minimalism —</em> we’re always trying to make things simpler and smaller. The …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/minimalist-container-library-in-c-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">10 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/a-year-in-review/">A year in review</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-12-18T00:00:00Z">
+                      18 Dec 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Hello friends!</p>
+<p>This year was really exciting for us, to start working on The Machinery and in the process informing you …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/a-year-in-review/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">2 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/minimalist-container-library-in-c-part-2/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220504024640/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024640/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220504024640/https://ourmachinery.com/cdn-cgi/l/email-protection#89f9e0e7eec9e6fcfbe4e8eae1e0e7ecfbf0a7eae6e4" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 02:46:40 May 04, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:10 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 226.731
+  exclusion.robots: 0.081
+  exclusion.robots.policy: 0.074
+  cdx.remote: 0.058
+  esindex: 0.009
+  LoadShardBlock: 179.271 (3)
+  PetaboxLoader3.datanode: 228.913 (4)
+  CDXLines.iter: 35.634 (3)
+  load_resource: 109.186
+  PetaboxLoader3.resolve: 40.235
+-->

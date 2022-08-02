@@ -1,0 +1,649 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content=""/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/machinery-logo.png"/>
+  
+  <meta name="twitter:title" content="Efficient binding of shader resources">
+  <meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="Efficient binding of shader resources · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/efficient-binding-of-shader-resources/"/>
+  
+  <meta property="og:image" content="../../images/machinery-logo.png"/>
+  
+  
+  <meta property="og:description" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2017-05-30T00:00:00Z"/>
+  
+
+  <title>Efficient binding of shader resources &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" integrity="" print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" integrity="" print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+
+    ga('create', 'UA-96359368-1', 'auto');
+    
+
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js" integrity=""></script>
+  <script type="text/javascript" src="../../js/page.min.js" integrity=""></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20210401063921/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20210401063921\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tobias Persson",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20210401063921\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "Efficient binding of shader resources",
+    "name": "Efficient binding of shader resources",
+    "wordCount":  1132 ,
+    "timeRequired": "PT6M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/efficient-binding-of-shader-resources/",
+    "datePublished": "2017-05-30T00:00Z",
+    "dateModified": "2017-05-30T00:00Z",
+    
+    
+    "description": ""
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+              <a class="nav-link text-yellow fw-bold" href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/beta.html" aria-label="Link Download Now">Download Now</a>
+            </li>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/about.html" aria-label="Link About Us">About Us</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/product.html" aria-label="Link The Machinery">The Machinery</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/tutorials/" aria-label="Link Tutorials">Tutorials</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Community
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href=" ../../post/" aria-label="Link Blog">Blog</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://discord.gg/SHHSZaH" aria-label="Link Discord" target="_blank">Discord</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://forums.ourmachinery.com/" aria-label="Link Forum" target="_blank">Forum</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20210401063921/https://anchor.fm/ourmachinery" aria-label="Link Podcast" target="_blank">Podcast</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="nav-link rounded-circle p-0 signed-in-only" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="om-gravatar d-none rounded-circle align-left mx-2" alt="gravatar of user" src="http://web.archive.org/web/20210401063921im_/https://www.gravatar.com/avatar/asdgasdhasd">
+            </a>
+
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id1">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id1" aria-expanded="false" aria-controls="#collapse-id1">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id1" class="accordion-collapse collapse" aria-labelledby="heading-id1" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/tutorials/">Tutorials</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://forums.ourmachinery.com/">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20210401063921/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer">
+      <div class="d-flex justify-content-center text-dark text-center">
+        <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/tutorials/" aria-label="Opens Tutorial" type="button" class="btn btn-outline-primary m-1"><span class="icon icon-book align-middle"></span> <span class="align-middle text-uppercase font-monospace">Tutorials</span></a>
+        <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-primary m-1"><span class="icon icon-document align-middle"></span> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+      <div class="bg-yellow d-grid gap-2 text-light text-center">
+        <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/beta.html" aria-label="Opens Download Page" type="button" class="btn btn-outline-light m-2"><span class="icon icon-download align-middle"></span> <span class="align-middle text-uppercase font-monospace">Download Now</span></a>
+    </div>
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>Efficient binding of shader resources</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2017-05-30T00:00:00Z">
+          May 30, 2017
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>Since my <a href=" ../../post/a-modern-rendering-architecture/">last post</a> I&rsquo;ve discovered a couple of more resource types that I feel it makes sense to expose through the <code>tm_renderer_resource_command_buffer_i</code> interface. Today we will take a closer look at one of them, which we call a <em>resource binder</em>. It can best be described as a graphics API agnostic object holding references to a number of resources (<em>buffers</em>, <em>textures</em>, <em>etc</em>) that should be bound to a shader.</p>
+<p>In previous projects I&rsquo;ve always relied on using reflection data from the compiled shaders to determine what kind of resources and constants that it needs as input/output, and then try to have the runtime slaving after that as efficiently as possible. I’m generally a big fan of letting data drive the runtime and it wasn’t until rather recently I started thinking about alternative approaches. As I see it there are primarily two problems with using the reflection based approach which led me into exploring alternatives:</p>
+<ol>
+<li>
+<p>Generally, shader reflection APIs tend to be kind of crappy. More than once I’ve stumbled across reflection APIs that lack even basic functionality — like getting the number of elements in an array. Stuff like that usually leads to very ugly hacks.</p>
+</li>
+<li>
+<p>It tends to complicate experimenting with drastically different strategies for binding resources across various platforms and projects. E.g. on one platform you might want to shove all your draw call constants into a large raw buffer, while on another platform you want to stick with a more traditional constant buffer approach. To support differences like that without going completely insane when authoring the shader code, you’ll end up with creating some kind of meta-language that generates the declaration of resources and constant buffers automatically. At that point you already posses all the binding information you need, which just makes the round-trip via the reflection APIs unnecessary overhead.</p>
+</li>
+</ol>
+<p>So in <em>The Machinery</em> I’ve decided to test a different approach.</p>
+<p>Let’s take a look at what we are trying to achieve by listing a few prerequisites:</p>
+<ul>
+<li>We want to move away from relying on shader reflection APIs. Data can still drive (through some kind of meta-language in the shader authoring system) but runtime/data-compiler should be in control. To make this work, all resources needs to get explicit register allocations in the shader code.</li>
+<li>We want to make it easy to experiment with different ways of feeding various graphics APIs without putting too much burden on the shader author. I.e., our shader authoring system will need to generate generic helper functions for retrieving data by name so that the shader author does not have to worry about where the data comes from.</li>
+<li>We want our resource binding model to map closely to Vulkan’s <em>Descriptor Sets</em> and D3D12’s <em>Descriptor Tables</em> and <em>Descriptor Heaps</em>.</li>
+<li>We want to encourage users to actively think about grouping resources by update frequency.</li>
+<li>We want to keep traffic on our <code>tm_renderer_command_buffer_i</code> related to resource bindings low.</li>
+</ul>
+<p>So far the shader authoring system in The Machinery is almost non-existent so I won’t be covering how I envision the generation of resource declarations/access-functions in the shader code to work. Instead we will pretend as if we had that part in place and focus on how to efficiently deal with binding of resources on the runtime side.</p>
+<p>For that we have an object that we call a <em>resource binder.</em> As I mentioned in the introduction, a <em>resource binder</em> basically groups a number of resources that one or many shaders want as input or output. We currently have two different types of <em>resource binders</em>: <code>UPDATABLE</code> and <code>DYNAMIC</code>:</p>
+<ul>
+<li><code>UPDATABLE</code>  — Updatable <em>resource binders</em> are updated using the <code>tm_renderer_resource_command_buffer_i</code> and are considered being immutable while the backend consumes any of the following <code>tm_renderer_command_buffer_i</code> that the user submits. This makes them suitable for storing any kind of resource bindings that won’t change in the middle of a frame. A typical usage scenario could be to have four different <code>UPDATABLE</code> <em>resource binders</em> assigned to a draw call:
+<ul>
+<li>Frame Global: time, light sources, look up tables and other stuff that typically only change at most once per frame.</li>
+<li>View Global: camera transforms and other view dependent data</li>
+<li>Material data: any resources related to the material (texture bindings, constant buffer with material colors, etc)</li>
+<li>Object data: object transforms and other object dependent data</li>
+</ul>
+</li>
+<li><code>DYNAMIC</code> — Dynamic <em>resource binders</em> are updated together with draw calls / compute dispatch commands on the <code>tm_renderer_command_buffer_i</code>. This means they can mutate any number of times during a frame. A typical usage scenario could be to manage resource bindings for a draw call belonging to a particle system where the bindings might change depending on view. (Disclaimer: I’m still not 100% sure if it makes sense to support <code>DYNAMIC</code> <em>resource binders,</em> or if it just complicates things. It feels like it should be possible to handle all scenarios by simply flipping through multiple <code>UPDATABLE</code> <em>resource binders</em> instead.)</li>
+</ul>
+<p>For <code>DYNAMIC</code> <em>resource binders</em> we also serialize the state (i.e., what resource handles are bound to what registers) together with the draw-/dispatch-command . We do this as we strive for keeping command data on the <code>tm_renderer_command_buffer_i</code>  as self-contained as possible. This becomes very important as soon as we start doing parallel translation of our API agnostic  <code>tm_renderer_command_buffer_i</code> into actual graphics API command buffers. Without it we would have to backtrack among potentially tens of thousands of commands to puzzle together the exact state of the <em>resource binder</em> at a particular command from a bunch of smaller deltas.</p>
+<p>So the basic idea is that we typically only need to pass the handles (where each handle is represented as a <code>uint32_t</code>) of the <em>resource binders</em> that we want to bind to the shader for a particular draw-/dispatch command on the <code>tm_renderer_command_buffer_i</code>. By decoupling the contents of the <code>UPDATABLE</code> <em>resource binders</em> from the draw-/dispatch commands we significantly reduce memory footprint for those command which tends to represent the bulk of all commands on a <code>tm_renderer_command_buffer_i</code>.</p>
+<p>I also believe this decoupling will encourage users to think more carefully about their bindings and naturally start grouping them based on update frequency.</p>
+<p>I won’t go into how this is implemented in our Vulkan backend as parts of the implementation is still a bit in flux, but if you are familiar with Vulkan you’ve probably already spotted that our <em>resource binder</em> maps 1:1 to a Vulkan <em>Descriptor Set</em>. But even if we later need to run on more old-school graphics APIs I think it makes sense to do this type of decoupling, it would be trivial to implement mapping from our <em>resource binders</em> to a slot-based shader binding model.</p>
+<p>That’s it for today’s post. We’ve just reached a point where we have the most fundamental building blocks in place to put together a more serious test application. I’m super excited to take the new rendering architecture for a proper test run. 😃</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/authors/tobias" class="text-decoration-none">Tobias Persson</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210401063921/https://twitter.com/share?text=Efficient%20binding%20of%20shader%20resources - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fefficient-binding-of-shader-resources%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20210401063921/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fefficient-binding-of-shader-resources%2f&amp;description=Efficient%20binding%20of%20shader%20resources" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/little-machines-working-together-part-1/">Little Machines Working Together (Part 1)</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-05-16T00:00:00Z">
+                      16 May 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>What we are building at <em>Our Machinery</em> is not so much a single monolithic thing as a collection of little things that can …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/little-machines-working-together-part-1/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">6 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/a-modern-rendering-architecture/">A modern rendering architecture</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-05-09T00:00:00Z">
+                      9 May 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Over the last few weeks I&rsquo;ve been deep into exploration mode, sketching out and prototyping the rendering API that …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/a-modern-rendering-architecture/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">8 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/quality-life-quality-work/">Quality Life, Quality Work</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2017-05-01T00:00:00Z">
+                      1 May 2017
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Two blog entries ago, Tobias touched upon some good practices when wanting to maintain a fast, stable development speed. …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/quality-life-quality-work/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">3 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/efficient-binding-of-shader-resources/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20210401063921/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210401063921/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20210401063921/https://ourmachinery.com/cdn-cgi/l/email-protection#780811161f38170d0a15191b1011161d0a01561b1715" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+        <p>&copy; Our Machinery 2021</p>
+    </div>
+</footer>
+<script data-cfasync="false" src="http://web.archive.org/web/20210401063921js_/https://ourmachinery.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    (async ()=>{
+        initLogin();
+        let user = await backend.getUserProfile(localStorage.sessionToken);
+        var elements = document.querySelectorAll('.om-gravatar');
+        elements.forEach(e=>{
+            if(user.ok){
+                e.classList.remove("d-none");
+                e.setAttribute("src","http://web.archive.org/web/20210401063921/https://www.gravatar.com/avatar/"+md5(user.email)) 
+            }
+        });
+    })();
+</script>
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 06:39:21 Apr 01, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:53:49 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 112.011
+  exclusion.robots: 0.075
+  exclusion.robots.policy: 0.069
+  cdx.remote: 0.06
+  esindex: 0.008
+  LoadShardBlock: 86.107 (3)
+  PetaboxLoader3.datanode: 99.846 (4)
+  CDXLines.iter: 13.249 (3)
+  load_resource: 256.731
+  PetaboxLoader3.resolve: 67.625
+-->

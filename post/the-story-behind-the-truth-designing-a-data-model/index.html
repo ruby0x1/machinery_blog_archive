@@ -1,0 +1,703 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script type="text/javascript" src="../../_static/js/bundle-playback.js@v=KTqwAcYd" charset="utf-8"></script>
+
+<script type="text/javascript">
+  
+  
+
+</script>
+<link rel="stylesheet" type="text/css" href="../../_static/css/banner-styles.css@v=fantwOh2.css" />
+<link rel="stylesheet" type="text/css" href="../../_static/css/iconochive.css@v=qtvMKcIJ.css" />
+<!-- End Wayback Rewrite JS Include -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../../images/favicon.ico">
+  <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png"/>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="The rationale and design goals behind the data model we use in The Machinery."/>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+  
+  
+  <meta name="twitter:image" content="../../images/the-bitsquid-data-model.jpg"/>
+  
+  <meta name="twitter:title" content="The Story behind The Truth: Designing a Data Model">
+  <meta name="twitter:description" content="The rationale and design goals behind the data model we use in The Machinery."/>
+  
+  <meta name="twitter:site" content="@ourmachinery"/>
+
+  
+  <meta property="og:title" content="The Story behind The Truth: Designing a Data Model · Our Machinery"/>
+  <meta property="og:site_name" content="Our Machinery"/>
+  <meta property="og:url" content=" ../../post/the-story-behind-the-truth-designing-a-data-model/"/>
+  
+  <meta property="og:image" content="../../images/the-bitsquid-data-model.jpg"/>
+  
+  
+  <meta property="og:description" content="The rationale and design goals behind the data model we use in The Machinery."/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content=" 2018-11-07T00:00:00Z"/>
+  
+
+  <title>The Story behind The Truth: Designing a Data Model &middot; Our Machinery</title>
+
+  
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="../../css/bootstrap.min.css" media="screen, print"/>
+  <link type="text/css" rel="stylesheet" href="../../css/style.min.css" media="screen, print"/>
+  
+
+  
+  
+  <link href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/index.xml" rel="alternate" type="application/rss+xml" title="Our Machinery"/>
+  
+
+  <link rel="canonical" href="index.html"/>
+
+  
+  
+  <script>
+
+      
+    
+    ga('set', 'anonymizeIp', true);
+    
+  </script>
+  
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  
+  <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+  <script src="../../cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script type="text/javascript" src="../../js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../js/page.min.js?v=1.16"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://web.archive.org/web/20220529231022/https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "url":"http:\/\/web.archive.org\/web\/20220529231022\/https:\/\/ourmachinery.com\/",
+        "email":"ping@ourmachinery.com",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/full-logo.png"
+        },
+        "name":"Our Machinery",
+        "description":""
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Niklas Gray",
+        "email": "ping@ourmachinery.com",
+        
+        "website":"http:\/\/web.archive.org\/web\/20220529231022\/https:\/\/ourmachinery.com\/"
+        
+        
+        
+    },
+    "headline": "The Story behind The Truth: Designing a Data Model",
+    "name": "The Story behind The Truth: Designing a Data Model",
+    "wordCount":  3393 ,
+    "timeRequired": "PT16M",
+    "inLanguage": {
+      "@type": "Language",
+      "alternateName": "en"
+    },
+    "url": " ../../post/the-story-behind-the-truth-designing-a-data-model/",
+    "datePublished": "2018-11-07T00:00Z",
+    "dateModified": "2018-11-07T00:00Z",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://web.archive.org/web/20220529231022/https://ourmachinery.com/the-bitsquid-data-model.jpg"
+    },
+    
+    
+    "description": "The rationale and design goals behind the data model we use in The Machinery."
+}
+    </script>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-block" id="navbarCollapse">
+          <ul class="navbar-nav  ms-auto mb-2 mb-md-0 align-items-center">
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+            <li>
+            <li class="nav-item">
+               
+            </li>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Learning &amp; Support
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Link API Documentation" target="_blank">API Documentation</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220529231022/https://ourmachinery.github.io/themachinery-books/" aria-label="Link Books">Books</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="../../videos.html" aria-label="Link Videos">Videos</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/samples.html" aria-label="Link Sample Projects">Sample Projects</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220529231022/https://github.com/OurMachinery/themachinery-public/issues" aria-label="Link Issue Tracker" target="_blank">Issue Tracker</a>
+                </li>
+                
+                <li>
+                  <a class="dropdown-item " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/academic.html" aria-label="Link Academic License" target="_blank">Academic License</a>
+                </li>
+                
+              </ul>
+            </li>
+            
+            
+            
+             
+            
+            
+            
+            <li class="nav-item dropdown" style="height:40px;min-width:58px;">
+              <a class="text-yellow fs-1 signed-in-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="person-circle-outline"></ion-icon>
+              </a>
+              <a class="text-yellow fs-1 signed-out-only" style="line-height: 1;" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <ion-icon name="log-in-outline"></ion-icon>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/sign-in.html">Sign In <ion-icon class="ms-auto" name="log-in-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-out-only d-flex align-items-center" href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/sign-up.html">Sign Up <ion-icon class="ms-auto" name="create-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/profile.html">Profile <ion-icon class="ms-auto" name="person-outline"></ion-icon></a></li>
+                <li><a class="dropdown-item signed-in-only d-flex align-items-center" role="button" onclick="signOut(); return false;">Sign Out <ion-icon class="ms-auto" name="log-out-outline"></ion-icon></a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="sidebar" tabindex="-1" role="dialog" aria-modal="false" class="b-sidebar b-sidebar-right collapse shadow bg-dark text-light vh-100">
+        <header class="b-sidebar-header">
+          <button type="button" aria-label="Close" class="fs-1 btn btn-default text-light float-start" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon icon-close"></span>
+        </button>
+        <div class=" d-flex justify-content-center">
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+  </div>
+      </header>
+          <div class="b-sidebar-body overflow-auto">
+            <div class="card text-primary">
+              
+              <div class="card-body d-flex justify-content-center signed-out-only">
+                <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/sign-in.html" aria-label="Login" class="btn btn-outline-primary me-2" style="flex: 1;"><span class="icon icon-user align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign In</span></a>
+                <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/sign-up.html" aria-label="Register Account" class="btn btn-outline-primary" style="flex: 1;"><span class="icon icon-edit align-middle"></span> <span class="align-middle text-uppercase font-monospace">Sign Up</span></a>
+              </div>
+              
+              <div class="card-body d-flex justify-content-center signed-in-only">
+                <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/profile.html" aria-label="Open Profile" class="btn btn-outline-primary me-2 d-flex" style="max-height: 56; min-height: 56px;"><span class="align-middle align-self-center text-uppercase font-monospace">Profile</span></a>
+                <a onclick="signOut(); return false;" class="btn btn-outline-primary  d-flex" style="max-height: 56; min-height: 56px;"><span class="icon icon-lock align-middle align-self-center"></span> <span class="align-middle align-self-center text-uppercase font-monospace">Logout</span></a>
+              </div>
+            </div>
+            <div class="accordion mt-0" id="accordion-menu">
+              
+              
+              
+              
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id2">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id2" aria-expanded="false" aria-controls="#collapse-id2">
+                      About
+                    </button>
+                  </h2>
+                  <div id="collapse-id2" class="accordion-collapse collapse" aria-labelledby="heading-id2" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/product.html">The Machinery</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/roadmap.html">Roadmap</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/about.html">About Us</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/press.html">Press Kit</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id3">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id3" aria-expanded="false" aria-controls="#collapse-id3">
+                      Learning &amp; Support
+                    </button>
+                  </h2>
+                  <div id="collapse-id3" class="accordion-collapse collapse" aria-labelledby="heading-id3" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.github.io/themachinery-books/">Books</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="../../videos.html">Videos</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/samples.html">Sample Projects</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://github.com/OurMachinery/themachinery-public/issues">Issue Tracker</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/academic.html">Academic License</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              
+                <div class="accordion-item  bg-light">
+                  <h2 class="accordion-header" id="heading-id4">
+                    <button class="accordion-button bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id4" aria-expanded="false" aria-controls="#collapse-id4">
+                      Community
+                    </button>
+                  </h2>
+                  <div id="collapse-id4" class="accordion-collapse collapse" aria-labelledby="heading-id4" data-bs-parent="#accordion-menu">
+                    <div class="accordion-body p-0">
+                      <div class="list-group border-0">
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href=" ../../post/">Blog</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://discord.gg/SHHSZaH">Discord</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://github.com/OurMachinery/themachinery-public/discussions">Forum</a>
+                        
+                          <a class="list-group-item list-group-item-action border-0 " href="http://web.archive.org/web/20220529231022/https://anchor.fm/ourmachinery">Podcast</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              
+            </div>
+    </div>
+  
+    <footer class="b-sidebar-footer w-100">
+      <div class="d-flex flex-row">
+        <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.github.io/themachinery-books/" aria-label="Opens Books" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Books</span></a>
+        <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/apidoc/apidoc.html" aria-label="Opens API Documentation" type="button" class="btn btn-outline-light m-1" style="flex: 1"> <span class="align-middle text-uppercase font-monospace">Documentation</span></a>
+    </div>
+
+    
+ 
+
+ 
+  </footer>
+  
+    </div>
+
+    </nav>
+  <main>
+
+
+<section class="mt-5 container">
+
+  <article class="post">
+    <header class="post-blog mx-auto">
+      <div class="mb-5 clearfix" role="group" aria-label="Basic example">
+          <a href=" ../../" type="button" class="btn btn-primary float-start">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+          </a>
+          <div class="float-end">
+          
+           
+        </div>
+        </div>
+      </div>
+
+      <div class="d-grid d-md-flex gap-2 pb-3 pb-md-0 mb-2">
+        <div class="flex-grow-1">
+          <h1>The Story behind The Truth: Designing a Data Model</h1>
+        </div>
+      </div>
+
+      <p>
+        <time class="post-date" datetime=" 2018-11-07T00:00:00Z">
+          Nov 7, 2018
+        </time>
+      </p>
+
+
+
+    </header>
+
+    <section class="text-break post-blog mx-auto">
+      <p>I’ve <a href=" ../../post/multi-threading-the-truth/">talked a little bit before</a> about <em>The Truth</em> — the system we use for representing data in <em>The Machinery</em>. But I haven’t said that much about the rationale behind it — why we chose this approach over something else. <a href="http://web.archive.org/web/20220529231022/https://twitter.com/wki_j">Jascha Wedowski</a> wrote to us on Twitter and wanted to know more about that and I think it makes for a really interesting blog topic, so here we go!</p>
+<h2 id="what-is-a-data-model-and-why-should-you-have-one">What is a data model and why should you have one?</h2>
+<p>Let’s start at the beginning. Most software programs need some way of representing and storing data. To have a word for it, we call it the application’s <em>data model</em>. There are many possible kinds of data models:</p>
+<ul>
+<li><a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/XML">XML</a> files together with some kind of <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/XML_Schema_(W3C)">schema</a>.</li>
+<li><a href="http://web.archive.org/web/20220529231022/https://www.json.org/">JSON</a> files with some agreed upon structure.</li>
+<li>An application specific custom binary format.</li>
+<li>A shared binary format with a well defined structure, such as <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Abstract_Syntax_Notation_One">ASN.1</a>.</li>
+<li>A <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Relational_database">relational database</a>.</li>
+<li>A <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/NoSQL">non-relational database (nosql)</a>.</li>
+<li>An hierarchy of versioned objects with hash identifiers (like a git repository).</li>
+<li>Etc…</li>
+</ul>
+<p>An application can have multiple representations of the same data. For example a program may use JSON configuration files on disk, but when the program is booted those files are read into in-memory data structures.  The JSON files are permanent, have a well-defined structure and can be easily shared between programs. The in-memory representation is faster to access, but temporary, lacks a high-level structure and can’t be easily shared.</p>
+<p>In this post, when I talk about the <em>data model</em> I’m mostly talking about these more permanent, structured models.</p>
+<p>Most programs do not handle that much data and computers are pretty fast so they can convert between a structured file representation and a high-performance memory representation each time the program is run, or each time you open a file. But games are different. They often deal with gigabytes of data and need to run really fast. Converting all that data on each boot of the game would lead to really long startup times. Therefore, they often convert from the structured format to the in-memory format in a separate <em>data-compile</em> step. They store the in-memory representation on disk (it needs to be stored somewhere), but in such a way that it can be quickly streamed into memory and used immediately without any costly parsing or conversion.</p>
+<p>Why not just use the in-memory format all the time and skip the compile step? You could, but typically the more structured format (whatever format it takes) has some advantages. For example, the compiled data might be one big <code>.pak</code> file, which doesn’t work well with version control. It might not merge well and thus not be a good fit when more than one person works on the project. It might also throw away information such as debug strings or compress textures to reduce the size of the final game.</p>
+<p>Having a structured data model is useful because it allows us to implement features that we want our data to have on the <em>data model itself</em>, rather than on the <em>systems that use it</em>. This means that we only have to implement the feature once, and all systems will get it, rather than having to do a separate implementation in each system.</p>
+<p>For example, consider <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Backward_compatibility">backward compatibility</a>. <em>Backward compatibility</em> means that a future version of our program is able to open files from an older version, even if the data has changed in some way (for example, we may have added new properties to an object). It is a pretty essential feature, because without it, an application update would break all the users’ old files.</p>
+<p>Without data model support, supporting backward compatibility might mean keeping all the code around for parsing every past version of the data. Your code might look something like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span> (version <span style="color:#f92672">==</span> VERSION_1_0) {
+    ...
+} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (version <span style="color:#f92672">==</span> VERSION_1_1) {
+    ...
+} ... 
+</code></pre></div><p>In contrast, if your data model handles backward compatibility you don’t have to do anything. As an example of how that might work, consider JSON. As long as you are just adding and removing properties, and give any new properties reasonable default values, JSON will automatically be backward compatible. JSON can also do a decent job of <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Forward_compatibility">forward compatibility</a> — i.e., allowing old executables to open newer data. The old executables will just ignore any properties they don’t understand. Forward compatibility is hard to achieve without some sort of structured data model, since you can’t do an <code>if (version == ???)</code> test for unknown future versions of the data.</p>
+<p>In addition to backward and forward compatibility there are a bunch of other things that a data model can potentially help with:</p>
+<ul>
+<li>
+<p><strong>Dependency tracking.</strong> If the data model has a consistent way of representing references, you can use it to detect missing or orphaned objects (objects not used by anyone).</p>
+</li>
+<li>
+<p><strong>Copy/paste.</strong> If the data model supports cloning objects, copy/paste operations can be implemented on top of that. This means that you don’t have to write custom copy/paste code for all your different objects.</p>
+</li>
+<li>
+<p><strong>Undo/redo.</strong> If the data model keeps track of a history of changes, undo can be implemented simply by rewinding the history. This is a lot simpler than using something like the <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Command_pattern">Command Pattern</a> to <a href="http://web.archive.org/web/20220529231022/https://matt.berther.io/2004/09/16/using-the-command-pattern-for-undo-functionality/">implement undo</a>.</p>
+</li>
+<li>
+<p><strong>Real-time collaboration.</strong> If the data model has a synchronization protocol, you get collaboration for free. Users can just make local changes to their data, and through the replication protocol, those changes will be propagated to other users in the same session.</p>
+</li>
+<li>
+<p><strong>Offline collaboration.</strong> By offline collaboration, I mean collaboration where you explicitly push and pull changes from collaborators (instead of all changes happening in real-time). In other words, the regular version control model. Since most version control tools are based around text-based merging, in order to support offline collaboration nicely, your file formats must be human readable and merge easily (unless you want to write your own merge tools).</p>
+</li>
+</ul>
+<p>In short, by putting a lot of responsibilities on the data model you can make the UI code for the editor a lot simpler. This is really important to us, because one of the problems we had in Bitsquid/Stingray was that we spent <em>a lot</em> of time on developing UI and tools. Sometimes we would spend 30 minutes to add a feature to the runtime and then a week to create a UI for it. In The Machinery we wanted to address that imbalance and make sure that we could write tool and UI code as efficiently as runtime code. (Of course, anything involving human interface design will always be <em>somewhat</em> time consuming.)</p>
+<h2 id="the-bitsquidstingray-data-model">The Bitsquid/Stingray data model</h2>
+<p>Picking a data model means balancing a range of different concerns. How fast does the code need to run? How much data does it need to handle? Do we need the model to support Undo, Copy/Paste, Collaboration, etc?</p>
+<p>It’s not an easy choice, and once you’ve made it you’re usually stuck with it. You can’t change the data model without either breaking all your users’ data or writing a data migration tool, which can be tricky and time-consuming.</p>
+<p>To understand our choices for <em>The Machinery,</em> it is helps to compare it to the data model we used for our last big project — Bitsquid/Stingray. The choices we made for <em>The Machinery</em> are in part a reaction to the problems we saw with that model.</p>
+<p>In the Bitsquid engine, data was represented as JSON files on disk (with some exceptions, we used binary data for things like textures). The data was read by a federation of independent, but co-operating executables, such as an <em>Animation Editor</em>, <em>Sound Editor, Level Editor</em>, etc. For the runtime, this JSON data was compiled into efficient <code>.pak</code> files that could be streamed from disk directly into memory.</p>
+<figure class="figure d-block">
+    <img class="figure-img img-fluid rounded d-block" alt="The Bitsquid/Stingray data model." src="../../images/the-bitsquid-data-model.jpg"/>
+    <figcaption class="figure-caption fs-5">
+        <h4>The Bitsquid/Stingray data model.</h4>
+    </figcaption>
+  </figure>
+<p>This model of having multiple independent tools and a separation between editor and runtime data has both advantages and disadvantages.</p>
+<p>On the plus side it provides a lot of independence. The runtime doesn’t care about the tools, it just needs to be fed data in the format it likes. And the tools don’t even need to know about each other. Each tool can be focused on a specific task, making the source code small and manageable. It is easy to throw a new tool into the mix, or replace an existing tool with a new one. <a href="http://web.archive.org/web/20220529231022/https://bitsquid.blogspot.com/2011/01/managing-coupling.html">Unwanted coupling</a> is one of the biggest problems of large software systems, so this independence is really valuable.</p>
+<p>A drawback is that you end up with a lot of repetition, since a lot of tools will need similar functionality: UI, engine viewports, copy/paste, undo, JSON parsing, etc. To some extent this can be mitigated with the use of common libraries, but relying on common libraries means coupling starts to creep back in. As these common libraries grow larger and larger with more shared functionality, the tools get less and less independent.</p>
+<p>By design, co-operation between the different tools and between the tools and the runtime is also tricky. Remember that the data model consists of the <em>JSON files on disk</em>. This means that a tool cannot see changes made by another tool unless those files are saved to disk. In the case of the runtime, the changes must be saved to disk <em>and</em> compiled to the runtime data format.</p>
+<p>This has a number of implications. First, it prohibits any real-time co-operation between the tools, since they don’t share data. Second, it means that the 3D viewports in the tools (which are using the runtime) cannot show the user’s changes until those changes have been saved and compiled. Finally, since the runtime can only access the compiled data, it is not possible to edit data using the runtime. This means it becomes tricky to create things like a VR editor — where you edit stuff from <em>within</em> the runtime.</p>
+<p>These problems can be hacked around in various ways and for the most part that is what we ended up doing. To give an example, to workaround the problem that the editor viewports can only show “saved” data, the tools would continuously save the user’s unsaved edits to temporary files that could then be compiled and displayed by the runtime.</p>
+<p>While hacks like this can be made to work, it is not a very nice solution. It makes the system complex and tricky to reason about. There are a lot of unnecessary disk operations, and race conditions can occur when multiple tools try to write temporary files and compile the project.</p>
+<p>When Autodesk acquired Bitsquid and renamed it Stingray, we wanted to move from this collection of tools to a single unified editor. While this in theory should have made it possible to share data between the tools and fix some of these issues — the rewrite was such a big project that it in fact <em>never fully completed during our time at Autodesk</em>. In the end, there were still some tasks that required using the “old tools”, and the basic setup with the JSON files on disk being “authoritative” wasn’t changed.</p>
+<p>Other problems with the Bitsquid data model were:</p>
+<ul>
+<li>
+<p>Since the model was <em>disk-based</em> (the JSON files on disk were authoritative) it couldn’t represent in-memory operations such as <em>Copy/Paste</em> and <em>Undo.</em> These operations therefore had to be custom-written for each tool.</p>
+</li>
+<li>
+<p>While the data model could represent references to other files with a path <code>texture = &quot;trees/03/larch&quot;</code> these “reference strings” were not distinguished from other strings in the JSON files. Thus, you couldn’t reason about references without knowing the semantics of each file. Also, there was no consistent way of representing references to a sub-object <em>inside</em> a file.</p>
+</li>
+<li>
+<p>Again, with a disk-based model there was no way of implementing real-time collaboration in the data model. While the Bitsquid level editor had real-time collaboration support (based on serializing the commands in its undo-queue), the lack of a consistent data model between the tools meant that collaboration didn’t carry over to the other tools. And when the tools were unified to a single all-in-one editor, this collaboration feature was lost.</p>
+</li>
+</ul>
+<h2 id="the-truth-the-data-model-we-use-for-the-machinery">The Truth: The data model we use for The Machinery</h2>
+<p>In The Machinery we store our data as <strong>objects with properties</strong>. This is somewhat similar to the JSON model we used in Bitsquid, except as explained later, we don’t actually represent the data as text files. Each object has a type and the type defines what properties the object has. Available property types are <em>bools, integers, floats, strings, buffers, references</em>, <em>sub-objects</em> and <em>sets of references or sub-objects</em>.</p>
+<p>The object/properties model gives us us <em>forward and backward compatibility</em> and allows us to implement operations such as <em>cloning</em> without knowing any details about the data. We can also represent modifications to the data in a uniform way <code>(object, property, old-value, new-value)</code> for undo/redo and collaboration.</p>
+<p>In contrast with the Bitsquid approach, the model is <strong>memory-based</strong> rather than disk-based. I.e. the in-memory representation of the data is considered <em>authoritative.</em> Read/write access to the data is provided by a thread-safe API. If two systems want to co-operate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).</p>
+<p>Since we have a memory-based model which supports cloning and change tracking, copy/paste and undo can be defined in terms of the data model. Real-time collaboration is also supported, by serializing modifications and transmitting them over the network. Since the runtime has equal access to the data model, modifying the data from within a VR session is also possible. This fixes a lot of the pain points with the Bitsquid approach.</p>
+<p>We make a clear <strong>distinction between “buffer data” and “object data”</strong>. <em>Object data</em> is stuff that can be reasoned about on a per-property level. I.e. if user A changes one property of an object, and user B changes another, we can merge those changes. <em>Buffer data</em> are binary blobs of data that are opaque to the data model. We use it for large pieces of binary data, such as textures, meshes and sound files. Since the data model cannot reason about the content of these blobs it can’t for example merge changes made to the same texture by different users.</p>
+<p>Making the distinction between buffer data and object data is important because we pay an overhead for representing data as objects. We only want to pay that overhead when the benefits outweigh the costs. Most of a game’s data (in terms of bytes) is found in things like textures, meshes, audio data, etc and does not really gain anything from being stored in a JSON-like object tree.</p>
+<p>Sometimes it can be tricky to draw the line between what should be considered “buffer data” and “object data”. What about animation data for instance?</p>
+<p>I would say that anything that can be considered as a big array of uniform items works better as <em>buffer data</em>. So I would put the raw animation tracks (positions, rotations) into buffers, but blend trees and state machines into object data.</p>
+<p>In The Truth, <strong>references are represented by IDs</strong>. Each object has a unique ID and we reference other objects by their IDs. Since references have their own property type in The Truth, it is easy for us to reason about references and find all the dependencies of an object.</p>
+<p>In general, a data model can reference things either by unique IDs (<code>dc002eba-19a5-40d1-b9b8-56c46173bc8f</code>) or by paths (<code>../textures/03/larch</code>). For example, file systems often support both <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Hard_link">hard links</a> (which correspond to IDs) and <a href="http://web.archive.org/web/20220529231022/https://en.wikipedia.org/wiki/Symbolic_link">symbolic links</a> (which correspond to paths). They each have advantages and disadvantages. With IDs, the system can make sure that references never break (by keeping objects alive as long as they are referenced). They’re also cheaper to resolve since they don’t require any string processing. And, they can be easier to reason about, since the same reference will always resolve to the same object.</p>
+<p>Paths, on the other hand, are <em>human readable</em> which makes them easier to edit and hack. They can be used to refer to things that may or may not exist or things that might not exist now, but may exist in the future. I.e. <code>../head/hat</code> might resolve to <code>NULL</code> now, but refer to the hat I’m wearing once I put it on. They can also refer to different things based on context. I.e. <code>../head/hat</code> will refer to different things for different characters. On the downside, paths are more <em>fragile</em>. If an object is moved or changes name, the reference might break.</p>
+<p>Choosing between using paths or IDs is not easy and I’ve gone back and forth over the years. With The Machinery we decided that our primary goal was to make sure that references didn’t break, so we decided to use IDs as the main mechanism. In addition this makes the code run faster and saves us a lot of checks to verify that referenced objects actually exist.</p>
+<p>We might still use path references in some places where a more “loose” and “dynamic” resolution can be beneficial. For example, using <code>..</code> to refer to an entity’s owner (which might change depending on where in the hierarchy the entity is instanced) can be really useful while scripting entity behaviors. In this case, we pay the cost of slower code and extra checks to get the benefit of a looser connection.</p>
+<p>Sub-objects in The Truth are references to <em>owned</em> objects. They work just as references, but have special behaviors in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.</p>
+<h2 id="is-the-truth-awesome">Is The Truth awesome?</h2>
+<p>Did we achieve what we set out to do with The Truth data model? Definitely.</p>
+<p>Having a single in-memory representation of the editor state has made implementing UI and tools a lot easier. There is a ton of stuff we get for free with The Truth: automatic propagation of changes between different editor windows, copy/paste, undo and even real-time collaboration. What’s more, all of this works not only in our own code, but also in plugins made by other developers.</p>
+<p>But I would stay it is still a bit too early to do a full post-mortem of The Truth. It takes time and perspective to get a full picture of the advantages and disadvantages of a system. We need to throw more people and bigger projects on it to see how it works out. And there are still some unanswered questions:</p>
+<ul>
+<li>
+<p>While the data in The Truth can be accessed really quickly, it is still not as fast as a packed custom binary format. So there is still a need for “runtime” data formats. How and when is that runtime data generated? Is it stored in The Truth (as buffers) or somewhere else?</p>
+</li>
+<li>
+<p>For large projects, it will be prohibitively expensive to have all the data in memory. How is data partially loaded and unloaded from The Truth and how do we reason about the data that isn’t loaded?</p>
+</li>
+<li>
+<p>How do we represent The Truth data on disk in a git-friendly way (i.e. in a way that supports textual merge)? Do we need multiple representations to account for the fact that git-friendly data can be orders of magnitude slower to load than git-unfriendly data?</p>
+</li>
+</ul>
+<p>Some people think that you shouldn’t start to implement a system until you’ve planned out in every detail how every little part of that system is going to work. I strongly disagree. The more you implement and work with a system, the more knowledge you get of usage patterns, potential pitfalls, problem areas, etc. Making decisions upfront, when you have the <em>least information</em> is the <em>worst possible time</em>.</p>
+<p>Instead I like to set a general direction, make sure I have a decent idea of what I want the system to do and how to achieve that (just to make sure I don’t paint myself into a corner) and then get my hands on a keyboard and start implementing. Of course, you can’t be afraid to rewrite as you learn more about how the system should work.</p>
+<p>So far this journey with The Truth has gone well. I’m interested to see where it will take us next.</p>
+      
+
+
+<section>
+  <h5>by <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/authors/niklas" class="text-decoration-none">Niklas Gray</a></h5>
+</section>
+
+
+    </section>
+    <footer class="mt-5 mb-5">
+      <hr>
+
+      <div class="d-flex">
+    <div class="me-auto">
+        <a href=" ../../post" type="button" class="btn btn-primary">
+            <ion-icon name="chevron-back-outline" class="align-middle" style="padding-right:0.2em"></ion-icon> <span class="align-middle">All Blogs</span>
+        </a>
+    </div>
+    
+    <a class="icon icon-twitter me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220529231022/https://twitter.com/share?text=The%20Story%20behind%20The%20Truth%3a%20Designing%20a%20Data%20Model - Our%20Machinery&amp;url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-story-behind-the-truth-designing-a-data-model%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon icon-pinterest me-1" style="font-size: 1.2em" href="http://web.archive.org/web/20220529231022/https://pinterest.com/pin/create/button/?url=https%3a%2f%2fourmachinery.com%2fpost%2fthe-story-behind-the-truth-designing-a-data-model%2f&amp;description=The%20Story%20behind%20The%20Truth%3a%20Designing%20a%20Data%20Model" onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+        <span class="hidden">Pinterest</span>
+    </a>
+    
+</div>
+
+      <div class="mt-5">
+        
+
+<p>The comment system uses a session cookie to keep track of your signed-in status. This cookie is
+created when you sign in with GitHub. If you don't sign in, no cookie is created.</p>
+
+
+
+
+      </div>
+
+      
+      <div class="container mb-5 mt-5">
+        <div class="row">
+          <h3>Previous Posts</h3>
+          <hr>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          
+              <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/our-machinery-podcast/">Our Machinery Podcast</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-10-11T00:00:00Z">
+                      11 Oct 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>As you might have heard through our Twitter, we wanted to do a Podcast. We were trying to find a podcast that touches on …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/our-machinery-podcast/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">2 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/marketing-miniseries-part-10-community-management/">Part 10: Community Management</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-10-02T00:00:00Z">
+                      2 Oct 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>Alas, we’re at the end of the marketing mini series! Fortunately, I saved my favorite subject for last: Community …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/marketing-miniseries-part-10-community-management/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">5 min</small>
+                </div>
+              </div>
+        </div>
+         <div class="col">
+              <div class="card om-post-preview shadow-sm">
+                
+                <a href=" ../../post/a-tale-of-two-bugs/" class="text-decoration-none"><img src="../../images/recursive-entities.png" class="card-img-top" alt="A Tale of Two Bugs"></a>
+                
+                <div class="card-body">
+                  <h5 class="card-title"><a class="text-decoration-none" href=" ../../post/a-tale-of-two-bugs/">A Tale of Two Bugs</a></h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <time class="post-date" datetime=" 2018-09-18T00:00:00Z">
+                      18 Sep 2018
+                    </time>
+                  </h6>
+                  <p class="card-text"><p>We recently released a closed pre-alpha of <em>The Machinery.</em> As a result, we of course discovered a few new bugs. In this …</p></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center p-2">
+                  <div class="btn-group">
+                    <a href=" ../../post/a-tale-of-two-bugs/" type="button" class="btn btn-lg btn-outline-primary">Read</a>
+                  </div>
+                  <small class="text-muted">16 min</small>
+                </div>
+              </div>
+        </div>
+        
+      </div>
+      </div>
+    </footer>
+  </article>
+
+</section>
+
+</main>
+
+<footer class="container-fluid mt-auto page-footer-bg">
+    <div class="mx-auto d-flex justify-content-center w-100 pt-5 pb-5">
+        <img alt="trees" src=" ../../post/the-story-behind-the-truth-designing-a-data-model/&#32;https:/ourmachinery.com/images/trees.png" style="height: 84.38px; width: 150px;">
+    </div>
+    <div class="page-info">
+        <p class="float-end">
+            
+            <a href="http://web.archive.org/web/20220529231022/https://twitter.com/ourmachinery" target="_blank" class="icon icon-twitter fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220529231022/https://instagram.com/ourmachinery" target="_blank" class="icon icon-instagram fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/index.xml" target="_blank" class="icon icon-feed fs-4"></a>
+            
+            <a href="http://web.archive.org/web/20220529231022/https://ourmachinery.com/cdn-cgi/l/email-protection#a1d1c8cfc6e1ced4d3ccc0c2c9c8cfc4d3d88fc2cecc" target="_blank" class="icon icon-mail fs-4"></a>
+            
+        </p>
+         
+    </div>
+</footer>
+
+<script type="module" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="../../unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><!--
+     FILE ARCHIVED ON 23:10:22 May 29, 2022 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:52:56 Aug 01, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 556.401
+  exclusion.robots: 0.23
+  exclusion.robots.policy: 0.216
+  cdx.remote: 0.116
+  esindex: 0.015
+  LoadShardBlock: 53.259 (3)
+  PetaboxLoader3.datanode: 44.104 (4)
+  CDXLines.iter: 20.139 (3)
+  PetaboxLoader3.resolve: 43.28 (2)
+  load_resource: 54.452
+-->
