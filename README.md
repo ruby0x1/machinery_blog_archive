@@ -1,6 +1,8 @@
 # machinery blog archive
-A mirror of the **publicly available** Our Machinery Blog Posts from archive.org. 
+A mirror of the **publicly available** Our Machinery Blog Posts from archive.org.   
 https://web.archive.org/https://ourmachinery.com/
+
+### [View the posts here](https://ruby0x1.github.io/machinery_blog_archive/)
 
 Archived for posterity as a public service. Removed by request if it's a problem.
 The pages have been stripped back to just the blog content as much as possible.
