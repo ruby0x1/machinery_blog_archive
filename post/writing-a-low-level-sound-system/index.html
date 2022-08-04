@@ -180,7 +180,7 @@
        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="../../">
-          <img src="images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
+          <img src="../../images/full-logo.png" alt="Our Machinery Logo" width="250" height="75">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar-1" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -266,7 +266,7 @@
           <span class="icon icon-close"></span>
         </button>
         <div class=" d-flex justify-content-center">
-        <a href="../../"><img src="images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
+        <a href="../../"><img src="../../images/full-logo.png" class="om-logo p-2 mb-2 mt-2" alt="Our Machinery Logo" width="100" height="75"></a>
   </div>
       </header>
           <div class="b-sidebar-body overflow-auto">
@@ -490,7 +490,7 @@ about that. We only have to care about pressure waves produced by <em>speakers.<
 that can move in and out to produce sound waves. We can represent the cone’s position over time with
 a simple graph:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Cone position of a speaker over time." src="images/low_level_sound__cone_position.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Cone position of a speaker over time." src="../../images/low_level_sound__cone_position.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Cone position of a speaker over time.</h4>
     </figcaption>
@@ -513,7 +513,7 @@ of the speaker as our 0 dB reference point works better.</p>
 <p>A tone can be represented as a sine wave of a specific frequency. For example, A above middle C is
 represented as by a 440 Hz sine wave:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="440 Hz sine wave." src="images/low_level_sound__sine_wave.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="440 Hz sine wave." src="../../images/low_level_sound__sine_wave.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>440 Hz sine wave.</h4>
     </figcaption>
@@ -531,7 +531,7 @@ sound wave by samples taken at discrete points in time. We call the number of sa
 second the <em>sample rate</em>. The higher the sample rate is, the more accurately we can represent the
 analog sound curve. The drawback is that we need more memory to hold all the sample data:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Sampling a sound wave at two different sample rates." src="images/low_level_sound__sample_rate.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Sampling a sound wave at two different sample rates." src="../../images/low_level_sound__sample_rate.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Sampling a sound wave at two different sample rates.</h4>
     </figcaption>
@@ -559,7 +559,7 @@ of some quality and the CPU time needed to decompress.</p>
 should do. We want it to manage a number of playing sounds and mix together their sound waves to
 produce output for the speakers:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Basic operation of the mixer." src="images/low_level_sound__basic_mixer.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Basic operation of the mixer." src="../../images/low_level_sound__basic_mixer.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Basic operation of the mixer.</h4>
     </figcaption>
@@ -569,7 +569,7 @@ samples at a time. The system should get the next <em>N</em> samples from each o
 determine how much of that sound should be sent to each speaker. Then add all the sounds for each
 speaker together and send that to our speaker output backend.</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Mixing samples." src="images/low_level_sound__mixing_samples.jpeg"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Mixing samples." src="../../images/low_level_sound__mixing_samples.jpeg"/>
     <figcaption class="figure-caption fs-5">
         <h4>Mixing samples.</h4>
     </figcaption>
@@ -838,7 +838,7 @@ interpolation for the resampling. This means that to find the sample at time <co
 points before and after <code>t</code> and linearly interpolate between them. This is the same as approximating
 the continuous “real” sound curve with straight lines between the sample points:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Linear interpolation of a sound wave." src="images/low_level_sound__linear_interpolation.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Linear interpolation of a sound wave." src="../../images/low_level_sound__linear_interpolation.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Linear interpolation of a sound wave.</h4>
     </figcaption>
@@ -966,7 +966,7 @@ make. That would be an interesting experiment.</p>
 artifacts. One is changing the sound volume. If you change the volume (amplitude) of a sound wave
 from one same to the next you will create a discontinuity in the sound wave:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Instant volume changes cause discontinuities." src="images/low_level_sound__discontinuities.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Instant volume changes cause discontinuities." src="../../images/low_level_sound__discontinuities.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Instant volume changes cause discontinuities.</h4>
     </figcaption>
@@ -975,7 +975,7 @@ from one same to the next you will create a discontinuity in the sound wave:</p>
 snaps, crackles, and pops in the sound. To get rid of the crackles we have to change the volume
 slowly, over a number of samples instead of doing it instantly:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="If we change the volume gradually, continuity is preserved." src="images/low_level_sound__ramping.jpeg"/>
+    <img class="figure-img img-fluid rounded d-block" alt="If we change the volume gradually, continuity is preserved." src="../../images/low_level_sound__ramping.jpeg"/>
     <figcaption class="figure-caption fs-5">
         <h4>If we change the volume gradually, continuity is preserved.</h4>
     </figcaption>
@@ -1058,7 +1058,7 @@ gain based positioning, which ends up being the same for speakers and headphones
 that with the angle to each speaker. I find the two speakers that the sound is closest to and fade
 between them. Then we multiply that with a distance-based attenuation model:</p>
 <figure class="figure d-block">
-    <img class="figure-img img-fluid rounded d-block" alt="Positioning a 3D sound onto a speaker setup." src="images/low_level_sound__positioning.png"/>
+    <img class="figure-img img-fluid rounded d-block" alt="Positioning a 3D sound onto a speaker setup." src="../../images/low_level_sound__positioning.png"/>
     <figcaption class="figure-caption fs-5">
         <h4>Positioning a 3D sound onto a speaker setup.</h4>
     </figcaption>
